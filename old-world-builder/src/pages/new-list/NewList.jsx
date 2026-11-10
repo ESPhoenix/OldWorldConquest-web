@@ -1,0 +1,391 @@
+import { useState, useEffect, Fragment } from "react";
+import { useLocation, Redirect } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { FormattedMessage, useIntl } from "react-intl";
+import classNames from "classnames";
+
+import { Button } from "../../components/button";
+import { Header, Main } from "../../components/page";
+import { Select } from "../../components/select";
+import { Expandable } from "../../components/expandable";
+import { Icon } from "../../components/icon";
+import { NumberInput } from "../../components/number-input";
+import { getGameSystems } from "../../utils/game-systems";
+import { getRandomId } from "../../utils/id";
+import { saveLocalLists } from "../../utils/list";
+import { useLanguage } from "../../utils/useLanguage";
+import { setLists } from "../../state/lists";
+import { updateSetting } from "../../state/settings";
+import { RulesIndex, RuleWithIcon } from "../../components/rules-index";
+
+import { nameMap } from "../magic";
+
+import "./NewList.css";
+
+export const NewList = ({ isMobile }) => {
+  const MainComponent = isMobile ? Main : Fragment;
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const intl = useIntl();
+  const { language } = useLanguage();
+  const gameSystems = getGameSystems();
+  const lists = useSelector((state) => state.lists);
+  const settings = useSelector((state) => state.settings);
+  const [game, setGame] = useState("the-old-world");
+  const [army, setArmy] = useState("empire-of-man");
+  const [compositionRule, setCompositionRule] = useState("open-war");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [points, setPoints] = useState(2000);
+  const [armyComposition, setArmyComposition] = useState("empire-of-man");
+  const [version, setVersion] = useState(null);
+  const [redirect, setRedirect] = useState(null);
+  const armies = gameSystems
+    .filter(({ id }) => id === game)[0]
+    .armies.sort((a, b) => a.id.localeCompare(b.id));
+  const journalArmies = armies.find(({ id }) => army === id)?.armyComposition;
+  const armyGroups = gameSystems.filter(({ id }) => id === game)[0].armyGroups;
+  const versions = armies.find(({ id }) => army === id)?.versions;
+  const compositionRules = [
+    {
+      id: "open-war",
+      name_en: intl.formatMessage({ id: "misc.open-war" }),
+    },
+    {
+      id: "grand-melee",
+      name_en: intl.formatMessage({ id: "misc.grand-melee" }),
+    },
+    {
+      id: "combined-arms",
+      name_en: intl.formatMessage({ id: "misc.combined-arms" }),
+    },
+    {
+      id: "grand-melee-combined-arms",
+      name_en: intl.formatMessage({ id: "misc.grand-melee-combined-arms" }),
+    },
+    {
+      id: "battle-march",
+      name_en: intl.formatMessage({ id: "misc.battle-march" }),
+    },
+  ];
+  const listsPoints = [
+    ...lists
+      .filter((list) => list.type !== "folder")
+      .map((list) => list.points),
+  ].reverse();
+  const quickActions =
+    compositionRule === "battle-march"
+      ? [500, 600, 750]
+      : lists.length
+      ? [...new Set([...listsPoints, 500, 1000, 1500, 2000, 2500])].slice(0, 5)
+      : [500, 1000, 1500, 2000, 2500];
+  const createList = () => {
+    const newId = getRandomId();
+    const armyData = armies.find(({ id }) => id === army);
+    const newList = {
+      name:
+        name ||
+        nameMap[armyComposition]?.[`name_${language}`] ||
+        nameMap[armyComposition]?.name_en ||
+        (nameMap[army] && nameMap[army][`name_${language}`]) ||
+        nameMap[army]?.name_en ||
+        army,
+      description: description,
+      game: game,
+      version: version,
+      points: points,
+      army: army,
+      characters: [],
+      core: [],
+      special: [],
+      rare: [],
+      mercenaries: [],
+      allies: [],
+      id: newId,
+      url: armyData?.url,
+      armyComposition,
+      compositionRule,
+    };
+    const newLists = [newList, ...lists];
+    const newSettings = { ...settings, lastChanged: new Date().toString() };
+
+    saveLocalLists(newLists);
+    localStorage.setItem("owb.settings", JSON.stringify(newSettings));
+    dispatch(setLists(newLists));
+    dispatch(updateSetting({ lastChanged: newSettings.lastChanged }));
+
+    setRedirect(newId);
+  };
+  const handleSystemChange = (event) => {
+    const gameSystem = gameSystems.filter(
+      ({ id }) => id === event.target.value,
+    )[0];
+    const army = gameSystem.armies[0];
+    const armyComposition = army.armyComposition[0];
+
+    setGame(event.target.value);
+    setArmy(army.id);
+    setArmyComposition(armyComposition);
+    setVersion(null);
+    setCompositionRule("open-war");
+  };
+  const handleArmyChange = (value) => {
+    setArmy(value);
+    setArmyComposition(
+      armies.find(({ id }) => value === id).armyComposition[0],
+    );
+    setVersion(null);
+    setCompositionRule("open-war");
+  };
+  const handleArcaneJournalChange = (value) => {
+    const [journalId, version] = value.split("#");
+
+    setArmyComposition(journalId);
+    setVersion(version || null);
+  };
+  const handleCompositionRuleChange = (value) => {
+    setCompositionRule(value);
+  };
+  const handlePointsChange = (event) => {
+    setPoints(event.target.value);
+  };
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    createList();
+  };
+  const handleQuickActionClick = (event) => {
+    event.preventDefault();
+    setPoints(Number(event.target.value));
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  const armyCompositionOptions = [];
+  const defaultVersion = versions?.[armyComposition]?.find(
+    (v) => v.isDefault,
+  )?.version;
+
+  if (journalArmies) {
+    journalArmies.forEach((journalArmy) => {
+      const matchingVersions = versions?.[journalArmy];
+
+      if (matchingVersions) {
+        matchingVersions.forEach(({ version }) => {
+          armyCompositionOptions.push({
+            id: `${journalArmy}#${version}`,
+            version,
+            name_en: `${
+              nameMap[journalArmy][`name_${language}`] ||
+              nameMap[journalArmy].name_en
+            } (v${version})`,
+          });
+        });
+      } else {
+        armyCompositionOptions.push({
+          id: journalArmy,
+          version: null,
+          name_en:
+            journalArmy === army
+              ? intl.formatMessage({ id: "new.grandArmy" })
+              : nameMap[journalArmy][`name_${language}`] ||
+                nameMap[journalArmy].name_en,
+        });
+      }
+    });
+  }
+
+  return (
+    <>
+      {redirect && <Redirect to={`/editor/${redirect}`} />}
+
+      {isMobile && (
+        <Header to="/" headline={intl.formatMessage({ id: "new.title" })} />
+      )}
+
+      <RulesIndex />
+
+      <MainComponent>
+        {!isMobile && (
+          <Header
+            isSection
+            to="/"
+            headline={intl.formatMessage({ id: "new.title" })}
+          />
+        )}
+        <form onSubmit={handleSubmit} className="new-list">
+          {gameSystems.length > 1 &&
+            gameSystems.map(({ name, id }, index) => (
+              <div
+                className={classNames(
+                  "radio",
+                  "new-list__radio",
+                  index === gameSystems.length - 1 &&
+                    "new-list__radio--last-item",
+                )}
+                key={id}
+              >
+                <input
+                  type="radio"
+                  id={id}
+                  name="new-list"
+                  value={id}
+                  onChange={handleSystemChange}
+                  checked={id === game}
+                  className="radio__input"
+                  aria-label={name}
+                />
+                <label htmlFor={id} className="radio__label">
+                  <span className="new-list__game-name">{name}</span>
+                </label>
+              </div>
+            ))}
+
+          <label htmlFor="army">
+            <FormattedMessage id="new.army" />
+          </label>
+          <Select
+            id="army"
+            options={armies}
+            optionGroups={armyGroups}
+            onChange={handleArmyChange}
+            selected="empire-of-man"
+            spaceBottom
+            required
+          />
+          {armyCompositionOptions ? (
+            <>
+              <label htmlFor="arcane-journal">
+                <FormattedMessage id="new.armyComposition" />
+              </label>
+              <Select
+                id="arcane-journal"
+                options={armyCompositionOptions}
+                onChange={handleArcaneJournalChange}
+                selected={army}
+                spaceBottom
+              />
+            </>
+          ) : null}
+          {version && defaultVersion !== version ? (
+            <p className="unit__notes new-list__unsupported-version">
+              <Icon symbol="error" className="unit__notes-icon" />
+              <FormattedMessage id="new.unsupportedVersion" />
+            </p>
+          ) : null}
+          {version && version.includes("1.5.") ? (
+            <p className="unit__notes new-list__unsupported-version">
+              <Icon symbol="error" className="unit__notes-icon" />
+              <FormattedMessage id="new.draftVersion" />
+            </p>
+          ) : null}
+
+          <label htmlFor="composition-rule">
+            <FormattedMessage id="new.armyCompositionRule" />
+          </label>
+          <Select
+            id="composition-rule"
+            options={compositionRules}
+            onChange={handleCompositionRuleChange}
+            selected={compositionRule}
+            spaceBottom
+          />
+          <Expandable
+            headline={
+              <span className="new-list__composition-info">
+                <FormattedMessage id="new.armyCompositionRuleInfo" />
+              </span>
+            }
+          >
+            <p className="new-list__composition-description">
+              <i>
+                <FormattedMessage
+                  id={`new.armyCompositionRuleDescription.${compositionRule}`}
+                />
+              </i>
+              <RuleWithIcon
+                name={compositionRule}
+                isDark
+                className="game-view__rule-icon"
+              />
+            </p>
+          </Expandable>
+
+          <label htmlFor="points">
+            <FormattedMessage id="misc.points" />
+          </label>
+          <NumberInput
+            id="points"
+            min={0}
+            value={points}
+            onChange={handlePointsChange}
+            required
+            interval={50}
+          />
+          <p className="new-list__quick-actions">
+            <i className="new-list__quick-actions-label">
+              <FormattedMessage id="misc.suggestions" />
+              {": "}
+            </i>
+            {quickActions.map((points, index) => (
+              <Button
+                type="tertiary"
+                size="small"
+                color="dark"
+                className="new-list__quick-action"
+                value={points}
+                onClick={handleQuickActionClick}
+                key={index}
+              >
+                {points}
+              </Button>
+            ))}
+          </p>
+
+          <label htmlFor="name">
+            <FormattedMessage id="misc.name" />
+          </label>
+          <input
+            type="text"
+            id="name"
+            className="input"
+            value={name}
+            onChange={handleNameChange}
+            autoComplete="off"
+            maxLength="100"
+          />
+
+          <label htmlFor="description">
+            <FormattedMessage id="misc.description" />
+          </label>
+          <input
+            type="text"
+            id="description"
+            className="input"
+            value={description}
+            onChange={handleDescriptionChange}
+            autoComplete="off"
+            maxLength="255"
+          />
+
+          <Button
+            centered
+            icon="add-list"
+            submitButton
+            spaceBottom
+            size="large"
+          >
+            <FormattedMessage id="new.create" />
+          </Button>
+        </form>
+      </MainComponent>
+    </>
+  );
+};

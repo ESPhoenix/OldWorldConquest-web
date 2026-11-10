@@ -1,0 +1,150 @@
+@media print {
+  body {
+    background: #fff !important;
+  }
+
+  .hide-for-printing {
+    display: none;
+  }
+}
+
+@media screen {
+  .print {
+    background-color: #fff;
+    margin: 1rem;
+  }
+
+  .hide-for-printing {
+    padding: 5rem 1rem 0 1rem;
+  }
+}
+
+.print {
+  font-size: 14px;
+  padding: 1rem;
+}
+
+.print * {
+  color: #384043 !important;
+  border-color: #384043 !important;
+}
+
+.print--two-columns ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.print--three-columns ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.print h1 {
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.print h2 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.print li {
+  margin-bottom: 2rem;
+  break-inside: avoid;
+  list-style: none;
+}
+
+.print__points {
+  margin-left: 5px;
+  font-weight: normal;
+  font-size: 1rem;
+  font-family: var(--font-family);
+}
+
+.print__strength {
+  font-weight: normal;
+}
+
+.print__subheader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--color-font);
+  padding-bottom: 1rem;
+}
+
+.print-footer {
+  padding-top: 1rem;
+  margin-top: 3rem;
+  border-top: 1px solid var(--color-font);
+}
+
+.print-footer p {
+  text-align: center;
+}
+
+.print__special-rules {
+  margin-top: 5px;
+}
+
+.print__custom-note {
+  margin-top: 5px;
+}
+
+.print__button {
+  margin-left: 0;
+  transform: none;
+}
+
+.print__rules-reference {
+  break-before: page;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--color-font);
+}
+
+.print--two-columns .print__rules-reference,
+.print--three-columns .print__rules-reference {
+  grid-column: 1 / -1;
+}
+
+.print__rules-loading {
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.print__rules-list {
+  margin: 0.5rem 0 0 0;
+  padding: 0;
+  columns: 2;
+  column-gap: 2rem;
+}
+
+.print__rule-entry {
+  break-inside: avoid;
+  margin-bottom: 0.75rem;
+}
+
+.print__rule-entry dt {
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.print__rule-entry dd {
+  margin: 0.1rem 0 0 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.print__rule-pageref {
+  font-style: italic;
+  opacity: 0.7;
+}

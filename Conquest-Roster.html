@@ -1,0 +1,1764 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#241d1a">
+  <title>Old World: Conquest — Campaign Roster</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #29221d;
+      --muted: #74675b;
+      --paper: #f2e8d2;
+      --paper-light: #fbf6e9;
+      --paper-deep: #e4d4b6;
+      --red: #7e2d25;
+      --red-dark: #57211d;
+      --gold: #bd9651;
+      --gold-light: #d7bd7d;
+      --line: #cbb999;
+      --green: #416347;
+      --warning: #8d451f;
+      --shadow: 0 10px 32px #21170f24;
+      font-family: Georgia, "Palatino Linotype", "Book Antiqua", serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 12% 5%, #ba9e6b25 0, transparent 33rem),
+        repeating-linear-gradient(0deg, #46372408 0 1px, transparent 1px 5px),
+        #d8c9aa;
+      min-height: 100vh;
+    }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    .masthead {
+      position: relative;
+      overflow: hidden;
+      color: #f5ead0;
+      padding: 2rem max(1rem, calc((100vw - 1220px) / 2));
+      background:
+        linear-gradient(110deg, #241d1a 0%, #3a2520 55%, #672c24 100%);
+      border-bottom: 5px solid var(--gold);
+    }
+    .masthead::after {
+      content: "✠";
+      position: absolute;
+      right: max(2rem, calc((100vw - 1180px) / 2));
+      top: -2.5rem;
+      font-size: 12rem;
+      color: #d2b36b12;
+      pointer-events: none;
+    }
+    .eyebrow, .section-kicker {
+      margin: 0 0 .35rem;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font: 700 .7rem/1.4 Arial, sans-serif;
+    }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 { position: relative; z-index: 1; margin: 0; font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: .025em; }
+    .masthead p:last-child { position: relative; z-index: 1; margin: .55rem 0 0; color: #e4d5b7; }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+      align-items: center;
+      padding: .8rem max(1rem, calc((100vw - 1220px) / 2));
+      background: #2c2420;
+      border-bottom: 1px solid #aa8c55;
+    }
+    .toolbar .spacer { flex: 1; }
+    .save-status { color: #d8c8a7; font: .8rem Arial, sans-serif; margin: 0 .5rem; }
+    .button {
+      border: 1px solid #9b7841;
+      border-radius: 3px;
+      padding: .58rem .85rem;
+      color: #fff5dd;
+      background: #493027;
+      font: 700 .78rem Arial, sans-serif;
+      letter-spacing: .04em;
+    }
+    .button:hover { background: #63402e; }
+    .button.primary { background: var(--red); border-color: #ba8c53; }
+    .button.primary:hover { background: #963b2c; }
+    .button.ghost { color: #e8d9bb; background: transparent; border-color: #796b5b; }
+    .button.danger { color: #fff0de; background: #672b25; border-color: #9d5b4b; }
+    .button.small { padding: .38rem .6rem; font-size: .72rem; }
+    main { width: min(1220px, calc(100% - 2rem)); margin: 1.5rem auto 3rem; }
+    .notice {
+      padding: .8rem 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--gold);
+      color: #4c4031;
+      background: #f6eddbd9;
+      box-shadow: 0 2px 9px #49391b0d;
+      font: .9rem/1.5 Arial, sans-serif;
+    }
+    .tabs { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1rem; border-bottom: 2px solid var(--red); }
+    .tab {
+      border: 1px solid #b8a17b;
+      border-bottom: 0;
+      border-radius: 4px 4px 0 0;
+      padding: .7rem .95rem;
+      color: #4a3c2d;
+      background: #e7d9bf;
+      font: 700 .8rem Arial, sans-serif;
+    }
+    .tab[aria-selected="true"] { color: #fff4dd; background: var(--red); border-color: var(--red); }
+    .panel[hidden] { display: none; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(270px, .65fr); gap: 1rem; align-items: start; }
+    .stack { display: grid; gap: 1rem; }
+    .card {
+      min-width: 0;
+      padding: 1.15rem;
+      border: 1px solid #bca984;
+      border-top: 4px solid var(--red);
+      border-radius: 4px;
+      background: linear-gradient(145deg, #fbf6e9, #f0e5cf);
+      box-shadow: var(--shadow);
+    }
+    .card h2 { margin: 0 0 .8rem; color: var(--red-dark); font-size: 1.35rem; }
+    .card h3 { margin: 1.15rem 0 .55rem; color: #573b2d; font-size: 1.05rem; }
+    .card h3:first-child { margin-top: 0; }
+    .card p { color: #5e5142; line-height: 1.55; }
+    .section-head { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
+    .section-head p { margin-bottom: .3rem; font: .85rem/1.45 Arial, sans-serif; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .field { display: grid; gap: .3rem; min-width: 0; }
+    .field.full { grid-column: 1 / -1; }
+    label, .field-label { color: #5b4938; font: 700 .72rem/1.35 Arial, sans-serif; letter-spacing: .035em; }
+    input, select, textarea {
+      width: 100%;
+      min-width: 0;
+      padding: .58rem .62rem;
+      border: 1px solid #bba983;
+      border-radius: 3px;
+      color: #302820;
+      background: #fffdf6;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--red); box-shadow: 0 0 0 2px #7e2d2520; }
+    input[type="checkbox"] { width: auto; accent-color: var(--red); }
+    input[type="number"] { font-variant-numeric: tabular-nums; }
+    textarea { resize: vertical; min-height: 5rem; line-height: 1.4; }
+    .hint { color: var(--muted); font: .75rem/1.4 Arial, sans-serif; }
+    .metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .55rem; }
+    .metric { padding: .7rem; border: 1px solid #c9b895; background: #f6eddb; text-align: center; }
+    .metric strong { display: block; color: var(--red-dark); font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+    .metric span { display: block; margin-top: .25rem; color: var(--muted); font: .68rem Arial, sans-serif; text-transform: uppercase; letter-spacing: .08em; }
+    .badge { display: inline-block; padding: .18rem .42rem; border: 1px solid #bca984; border-radius: 99px; color: #584833; background: #eadfc9; font: 700 .68rem Arial, sans-serif; }
+    .badge.good { color: #34543b; border-color: #8ba17e; background: #e2ebdd; }
+    .badge.warn { color: #7d3c1d; border-color: #c69469; background: #f7e4ca; }
+    .limit-list { display: grid; gap: .4rem; margin: .75rem 0 0; padding: 0; list-style: none; }
+    .limit-list li { display: flex; justify-content: space-between; gap: .7rem; padding: .45rem .55rem; border-bottom: 1px solid #d8c9ac; font: .8rem Arial, sans-serif; }
+    .limit-list li.over { color: #8c321e; background: #f7dfcc; font-weight: 700; }
+    .empty { padding: 1rem; border: 1px dashed #baa77f; color: #786a55; text-align: center; font: .85rem/1.5 Arial, sans-serif; }
+    .subtle-rule { height: 1px; margin: 1rem 0; border: 0; background: #d4c3a2; }
+    .list { display: grid; gap: .65rem; }
+    .record {
+      padding: .8rem;
+      border: 1px solid #cbb995;
+      background: #fffaf0;
+    }
+    .record-head { display: flex; justify-content: space-between; align-items: center; gap: .6rem; margin-bottom: .65rem; }
+    .record-head strong { color: #54392c; }
+    .territory-grid { display: grid; grid-template-columns: minmax(130px, 1fr) minmax(130px, 1.2fr) auto auto; gap: .55rem; align-items: end; }
+    .inline-check { display: flex; align-items: center; gap: .4rem; min-height: 2.35rem; color: #594a3b; font: .75rem Arial, sans-serif; }
+    .unit-card { margin-top: .75rem; padding: .9rem; border: 1px solid #bca984; border-left: 4px solid var(--gold); background: #fffaf0; }
+    .unit-card.is-general { border-left-color: var(--red); }
+    .unit-top { display: flex; justify-content: space-between; gap: .8rem; align-items: center; margin-bottom: .75rem; }
+    .unit-title { display: flex; gap: .7rem; align-items: center; min-width: 0; }
+    .unit-number { display: grid; place-items: center; flex: 0 0 1.8rem; width: 1.8rem; height: 1.8rem; border-radius: 50%; color: #fff4df; background: var(--red); font: 700 .75rem Arial, sans-serif; }
+    .unit-top strong { color: #4e3328; overflow-wrap: anywhere; }
+    .unit-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; }
+    .unit-grid .wide { grid-column: span 2; }
+    .unit-grid .full { grid-column: 1 / -1; }
+    .slot-box { display: flex; flex-wrap: wrap; gap: .35rem .7rem; padding: .5rem; border: 1px solid #cbb995; background: #f8f0df; }
+    .slot-box label { display: inline-flex; gap: .3rem; align-items: center; font-weight: 400; letter-spacing: 0; }
+    .rank-line { align-self: end; padding: .6rem .7rem; border: 1px solid #d0bf9c; background: #f3ead7; color: #5d4935; font: .78rem/1.35 Arial, sans-serif; }
+    .ledger-row, .battle-row, .vault-row {
+      display: grid;
+      grid-template-columns: 100px minmax(130px, 1fr) 100px auto;
+      gap: .6rem;
+      align-items: center;
+      padding: .5rem 0;
+      border-bottom: 1px solid #d9c9aa;
+      font: .82rem Arial, sans-serif;
+    }
+    .ledger-row .amount.plus { color: var(--green); font-weight: 700; }
+    .ledger-row .amount.minus { color: var(--red); font-weight: 700; }
+    .vault-row { grid-template-columns: 125px minmax(130px, 1fr) minmax(120px, .8fr) auto; }
+    .battle-row { grid-template-columns: 100px minmax(140px, 1fr) 110px 120px auto; }
+    .row-value { overflow-wrap: anywhere; }
+    .gold-total { display: flex; align-items: baseline; gap: .55rem; padding: .9rem 1rem; border: 1px solid #b99b5c; color: #fff4d8; background: #423028; }
+    .gold-total strong { color: #e6c877; font-size: 2rem; }
+    .gold-total span { font: .72rem Arial, sans-serif; text-transform: uppercase; letter-spacing: .1em; }
+    .warn-box { margin-top: .7rem; padding: .65rem .75rem; border-left: 3px solid var(--warning); color: #713b21; background: #f7e6d1; font: .8rem/1.45 Arial, sans-serif; }
+    .success-box { margin-top: .7rem; padding: .65rem .75rem; border-left: 3px solid var(--green); color: #37533c; background: #e8efe2; font: .8rem/1.45 Arial, sans-serif; }
+    .log-form { display: grid; grid-template-columns: 130px minmax(140px, 1fr) 110px auto; gap: .55rem; align-items: end; }
+    .builder-card { margin-bottom: 1rem; border-top-color: var(--gold); }
+    .builder-controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; align-items: end; }
+    [hidden] { display: none !important; }
+      .builder-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; margin-top: .7rem; }
+      .builder-preview { margin-top: .8rem; }
+    .build-details { grid-column: 1 / -1; padding: .55rem .65rem; border: 1px solid #d4c3a2; background: #f8f0df; }
+    .build-details summary { cursor: pointer; color: #67422d; font: 700 .78rem Arial, sans-serif; }
+    .build-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .4rem .8rem; padding-top: .55rem; }
+    .build-options-title { display: block; margin: .45rem 0 0; color: #67422d; font: 700 .78rem Arial, sans-serif; }
+    .build-options label { display: flex; gap: .4rem; align-items: flex-start; font: .75rem/1.35 Arial, sans-serif; letter-spacing: 0; font-weight: 400; }
+    .build-options input { width: auto; margin: .05rem 0 0; }
+    .build-option-note { display: block; color: var(--muted); font: .68rem Arial, sans-serif; }
+    .build-magic { display: grid; grid-template-columns: minmax(150px, 1fr) 74px auto; gap: .4rem; align-items: end; margin-top: .5rem; }
+    .selected-magic { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .45rem; }
+    .magic-chip { display: inline-flex; gap: .35rem; align-items: center; padding: .25rem .4rem; border: 1px solid #c8b58e; background: #f2e6cf; font: .72rem Arial, sans-serif; }
+    .magic-chip button { border: 0; color: var(--red); background: transparent; font-weight: 700; }
+    .composition-table { width: 100%; margin-top: .7rem; border-collapse: collapse; font: .76rem Arial, sans-serif; }
+    .composition-table th, .composition-table td { padding: .42rem .5rem; border-bottom: 1px solid #d8c9ac; text-align: right; }
+    .composition-table th:first-child, .composition-table td:first-child { text-align: left; }
+    .composition-table tr.over { color: #8c321e; background: #f7dfcc; }
+    .builder-attribution { margin:.8rem 0 0; color:#74675b; font:.72rem/1.45 Arial,sans-serif; }
+    .footer-note { margin: 1rem 0 0; color: #685a47; text-align: center; font: .75rem/1.5 Arial, sans-serif; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @media (max-width: 820px) {
+      .layout { grid-template-columns: 1fr; }
+      .grid.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .unit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .territory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .builder-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 560px) {
+      main { width: min(100% - 1rem, 1220px); margin-top: .75rem; }
+      .masthead { padding: 1.5rem 1rem; }
+      .toolbar { padding: .65rem .5rem; }
+      .toolbar .spacer { display: none; }
+      .save-status { flex: 1 0 100%; order: 2; }
+      .button { padding: .55rem .65rem; }
+      .grid, .grid.three, .grid.four { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .metrics { grid-template-columns: 1fr 1fr 1fr; }
+      .metric { padding: .55rem .25rem; }
+      .metric strong { font-size: 1.2rem; }
+      .tabs { overflow-x: auto; flex-wrap: nowrap; }
+      .tab { flex: 0 0 auto; padding: .65rem; }
+      .unit-grid { grid-template-columns: 1fr 1fr; }
+      .unit-grid .wide { grid-column: 1 / -1; }
+      .builder-controls, .builder-choices, .build-options { grid-template-columns: 1fr; }
+      .ledger-row, .vault-row, .battle-row { grid-template-columns: 1fr auto; gap: .35rem; }
+      .log-form { grid-template-columns: 1fr 1fr; }
+      .log-form .field:nth-child(2) { grid-column: 1 / -1; }
+    }
+    @media print {
+      body { background: #fff; }
+      .masthead { padding: 1rem 0; color: #222; background: #fff; border-bottom: 3px solid #777; }
+      .masthead p:last-child, .eyebrow { color: #444; }
+      .toolbar, .tabs, .notice, .no-print, .footer-note, .button { display: none !important; }
+      main { width: 100%; margin: .5rem 0; }
+      .panel, .panel[hidden] { display: block !important; break-inside: auto; }
+      .card { box-shadow: none; break-inside: avoid; background: #fff; }
+      .layout { grid-template-columns: 1fr 1fr; }
+      input, select, textarea { border: 0; border-bottom: 1px solid #aaa; background: transparent; padding: .15rem; }
+      .unit-card, .record { break-inside: avoid; }
+      .unit-card { border-color: #aaa; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <p class="eyebrow">The Old World · Narrative Campaign Record</p>
+    <h1>Conquest</h1>
+    <p>Campaign roster &nbsp;·&nbsp; A record of your domain, warriors, and renown</p>
+  </header>
+  <div class="toolbar" aria-label="Roster tools">
+    <button class="button primary" id="exportButton" type="button">Export backup</button>
+    <button class="button" id="importButton" type="button">Import backup</button>
+    <input class="visually-hidden" id="importFile" type="file" accept="application/json,.json">
+    <button class="button" id="printButton" type="button">Print roster</button>
+    <span class="spacer"></span>
+    <span class="save-status" id="saveStatus" role="status" aria-live="polite">Saved in this browser</span>
+    <button class="button ghost" id="resetButton" type="button">New roster</button>
+  </div>
+
+  <main>
+    <div class="notice"><strong>Local campaign roster.</strong> Your changes auto-save in this browser on this device. Use <em>Export backup</em> to keep or transfer a JSON copy. The army catalogue is read from the included clone over localhost; direct <code>file://</code> use still supports campaign tracking but not the catalogue. No internet connection is required.</div>
+    <nav class="tabs" aria-label="Roster sections" role="tablist">
+      <button class="tab" id="tab-overview" role="tab" aria-selected="true" aria-controls="panel-overview" data-tab="overview">Campaign</button>
+      <button class="tab" id="tab-army" role="tab" aria-selected="false" aria-controls="panel-army" data-tab="army">Order of Battle</button>
+      <button class="tab" id="tab-domain" role="tab" aria-selected="false" aria-controls="panel-domain" data-tab="domain">Domain &amp; Vault</button>
+      <button class="tab" id="tab-ledger" role="tab" aria-selected="false" aria-controls="panel-ledger" data-tab="ledger">Campaign Log</button>
+    </nav>
+
+    <section class="panel" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
+      <div class="layout">
+        <div class="stack">
+          <section class="card">
+            <p class="section-kicker">Campaign record</p>
+            <h2>Army &amp; domain</h2>
+            <div class="grid">
+              <div class="field"><label for="armyName">Army name</label><input id="armyName" data-scope="campaign" data-field="armyName" placeholder="e.g. The March of Nuln"></div>
+              <div class="field"><label for="faction">Faction</label><input id="faction" data-scope="campaign" data-field="faction" placeholder="e.g. Kingdom of Bretonnia"></div>
+              <div class="field"><label for="location">Place of origin</label><input id="location" data-scope="campaign" data-field="location" placeholder="Nuln, Border Princes…"></div>
+              <div class="field"><label for="generalName">Current general</label><input id="generalName" data-scope="campaign" data-field="generalName" placeholder="General's name"></div>
+              <div class="field"><label for="startingSize">Starting size</label>
+                <select id="startingSize" data-scope="campaign" data-field="startingSize">
+                  <option value="Vanguard">Vanguard</option><option value="Brigade">Brigade</option><option value="Division">Division</option><option value="Army">Army</option>
+                </select>
+              </div>
+              <div class="field"><label for="startingGold">Starting Gold</label><input id="startingGold" type="number" min="0" step="1" data-scope="campaign" data-field="startingGold"></div>
+              <div class="field full"><label for="campaignNotes">Campaign notes</label><textarea id="campaignNotes" data-scope="campaign" data-field="notes" placeholder="A short history, ambitions, allies, grudges…"></textarea></div>
+            </div>
+            <hr class="subtle-rule">
+            <div class="metrics" id="startMetrics"></div>
+            <p class="hint" style="margin:.65rem 0 0">Starting size sets the initial points and unit limits. Barracks increase the unit limit by 2 each (maximum 30). Later recruitment can grow the roster beyond the initial points limit.</p>
+          </section>
+
+          <section class="card">
+            <div class="section-head">
+              <div><p class="section-kicker">Current ambition</p><h2>Quest log</h2></div>
+              <button class="button small no-print" id="completeQuest" type="button">Complete &amp; archive</button>
+            </div>
+            <div class="grid">
+              <div class="field"><label for="quest">Active quest</label>
+                <select id="quest" data-scope="campaign" data-field="quest">
+                  <option value="">Choose a quest…</option>
+                  <option>Search for the Artefact</option><option>Master of Magic</option><option>Defend Your Realm</option><option>Scout Fertile Lands</option><option>Other / Battlepack quest</option>
+                </select>
+              </div>
+              <div class="field"><label for="questReward">Quest reward / target</label><input id="questReward" data-scope="campaign" data-field="questReward" placeholder="Item, lore, or reward"></div>
+              <div class="field"><label for="questProgress">Quest points</label><input id="questProgress" type="number" min="0" step="1" data-scope="campaign" data-field="questProgress"></div>
+              <div class="field"><label for="questGoal">Points to complete</label><input id="questGoal" type="number" min="0" step="1" data-scope="campaign" data-field="questGoal"></div>
+              <div class="field full"><label for="questNotes">Quest notes</label><textarea id="questNotes" data-scope="campaign" data-field="questNotes" placeholder="Progress, conditions, story notes…"></textarea></div>
+            </div>
+            <div id="questProgressBar" class="hint" style="margin-top:.65rem"></div>
+            <h3>Completed quests</h3>
+            <div id="questHistory" class="list"></div>
+          </section>
+        </div>
+
+        <aside class="stack">
+          <section class="card">
+            <p class="section-kicker">Roster limits</p>
+            <h2>Order of battle</h2>
+            <div class="metrics" id="armyMetrics"></div>
+            <ul class="limit-list" id="limitList"></ul>
+            <div id="armyWarnings"></div>
+          </section>
+          <section class="card">
+            <p class="section-kicker">Campaign treasury</p>
+            <h2>Gold crowns</h2>
+            <div class="gold-total"><strong id="goldTotal">0</strong><span>Gold available</span></div>
+            <p class="hint" style="margin:.65rem 0 0">Starting Gold plus the income and expenses recorded in the Campaign Log.</p>
+            <button class="button small no-print" style="margin-top:.8rem" data-open-tab="ledger" type="button">Record a transaction</button>
+          </section>
+          <section class="card">
+            <p class="section-kicker">Stronghold summary</p>
+            <h2 id="strongholdSummaryTitle">Stronghold</h2>
+            <p id="strongholdSummary" style="margin-bottom:0"></p>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-army" role="tabpanel" aria-labelledby="tab-army" hidden>
+      <section class="card builder-card">
+        <div class="section-head">
+          <div><p class="section-kicker">Army list builder</p><h2>Choose from the faction catalogue</h2><p>Pick a faction and composition, add units from its dataset, then configure models, equipment, mounts, options, command, and magic items. Calculated points feed directly into this Conquest roster.</p></div>
+        </div>
+        <div class="builder-controls">
+          <div class="field"><label for="builderArmy">Faction</label><select id="builderArmy" data-scope="builder" data-field="army"><option value="">Loading factions…</option></select></div>
+          <div class="field"><label for="builderComposition">Army composition</label><select id="builderComposition" data-scope="builder" data-field="composition"><option value="">Select a faction first</option></select></div>
+          <div class="field"><label for="compositionRule">Matched-play rule</label><select id="compositionRule" data-scope="builder" data-field="compositionRule"><option value="open-war">Open War / Standard</option><option value="grand-melee">Grand Melee</option><option value="combined-arms">Combined Arms</option><option value="grand-melee-combined-arms">Grand Melee + Combined Arms</option><option value="battle-march">Battle March</option></select></div>
+          <div class="field"><label for="builderCategory">Unit category</label><select id="builderCategory" data-scope="builder" data-field="category"><option value="characters">Characters</option><option value="core">Core</option><option value="special">Special</option><option value="rare">Rare</option><option value="allies">Allies</option><option value="mercenaries">Mercenaries</option></select></div>
+          <div class="field" id="builderForeignArmyField" hidden><label for="builderForeignArmy">Ally / mercenary faction</label><select id="builderForeignArmy" data-scope="builder" data-field="foreignChoice"></select></div>
+          <div class="field" id="builderForeignCategoryField" hidden><label for="builderForeignCategory">Foreign unit category</label><select id="builderForeignCategory" data-scope="builder" data-field="foreignCategory"><option value="characters">Characters</option><option value="core">Core</option><option value="special">Special</option><option value="rare">Rare</option></select></div>
+          <div class="field"><label for="builderPointsLimit">Army points limit</label><input id="builderPointsLimit" type="number" min="1" step="50" data-scope="builder" data-field="pointsLimit"></div>
+          <div class="field" style="grid-column:span 3"><label for="builderUnit">Available unit</label><select id="builderUnit"><option value="">Choose faction and category first</option></select></div>
+          <button class="button primary" id="addCatalogUnit" type="button" disabled>Add configured unit</button>
+        </div>
+        <div id="builderUnitPreview" class="builder-preview"></div>
+        <div id="builderStatus" class="hint" style="margin-top:.7rem" role="status" aria-live="polite">Loading the locally cloned army catalogue…</div>
+        <div id="builderSummary"></div>
+        <div id="compositionChecks"></div>
+        <p class="builder-attribution">Army data and army-building methods adapted from <a href="https://github.com/nthiebes/old-world-builder" target="_blank" rel="noreferrer">Old World Builder</a> by Nico Thiebes, licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>. This local integration uses the cloned catalogue in <code>old-world-builder/</code>.</p>
+      </section>
+      <section class="card">
+        <div class="section-head">
+          <div><p class="section-kicker">The force at your command</p><h2>Order of Battle</h2><p>Track units drawn from the campaign roster. Choose every limit category a unit occupies; for example, Monstrous Cavalry uses both slots.</p></div>
+          <button class="button primary no-print" id="addUnit" type="button">＋ Add unit</button>
+        </div>
+        <div class="metrics" id="armyMetricsPanel"></div>
+        <div id="unitList"></div>
+        <div id="armyWarningsPanel"></div>
+      </section>
+    </section>
+
+    <section class="panel" id="panel-domain" role="tabpanel" aria-labelledby="tab-domain" hidden>
+      <div class="layout">
+        <div class="stack">
+          <section class="card">
+            <div class="section-head">
+              <div><p class="section-kicker">Seat of power</p><h2>Stronghold</h2></div>
+            </div>
+            <div class="grid three">
+              <div class="field"><label for="strongholdName">Stronghold name</label><input id="strongholdName" data-scope="campaign" data-field="strongholdName" placeholder="Name your keep"></div>
+              <div class="field"><label for="strongholdLevel">Stronghold tier</label><select id="strongholdLevel" data-scope="campaign" data-field="strongholdLevel"><option value="Stronghold">Stronghold</option><option value="Imposing Stronghold">Imposing Stronghold</option><option value="Mighty Stronghold">Mighty Stronghold</option></select></div>
+              <div class="field"><label for="barracks">Barracks</label><input id="barracks" type="number" min="0" step="1" data-scope="campaign" data-field="barracks"></div>
+              <div class="field"><label for="outposts">Outposts established</label><input id="outposts" type="number" min="0" step="1" data-scope="campaign" data-field="outposts"></div>
+              <div class="field"><label>Territory capacity</label><div class="rank-line" id="territoryCapacity"></div></div>
+              <div class="field"><label>Maximum barracks / outposts</label><div class="rank-line" id="strongholdCaps"></div></div>
+            </div>
+          </section>
+          <section class="card">
+            <div class="section-head">
+              <div><p class="section-kicker">Lands under your banner</p><h2>Territories</h2><p id="territoryHint"></p></div>
+              <button class="button primary no-print" id="addTerritory" type="button">＋ Add territory</button>
+            </div>
+            <div id="territoryList" class="list"></div>
+          </section>
+        </div>
+        <div class="stack">
+          <section class="card">
+            <div class="section-head">
+              <div><p class="section-kicker">Campaign rewards</p><h2>The Vault</h2><p>Record artifacts, standards, weapons, and spells. The campaign rules allow up to six entries of each vault type.</p></div>
+              <button class="button primary no-print" id="addVault" type="button">＋ Add</button>
+            </div>
+            <div id="vaultList" class="list"></div>
+            <div id="vaultCounts" class="hint" style="margin-top:.75rem"></div>
+          </section>
+          <section class="card">
+            <p class="section-kicker">Field reference</p>
+            <h2>Starting limits</h2>
+            <p class="hint">Default order-of-battle limits before territory bonuses: 2 Characters (including Wizards), 1 Special, 1 Rare, 1 Cavalry, 1 War Machine/Chariot, 1 Allied/Mercenary, 0 Monstrous, 0 War Beast/Behemoth, 1 Magic Item. Wizard level starts at 1.</p>
+            <p class="hint">A named character does not gain renown. The general begins with 5 renown. Veterans gain ranks at 5, 15, and 30 renown; Characters/Wizards use Hero, Rising Hero, Mighty Hero, and Legendary Hero.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-ledger" role="tabpanel" aria-labelledby="tab-ledger" hidden>
+      <div class="layout">
+        <div class="stack">
+          <section class="card">
+            <p class="section-kicker">Aftermath sequence · Step 1</p>
+            <h2>Gold ledger</h2>
+            <div class="gold-total" style="margin-bottom:1rem"><strong id="ledgerGoldTotal">0</strong><span>Current balance</span></div>
+            <form class="log-form no-print" id="goldForm">
+              <div class="field"><label for="goldDate">Date</label><input id="goldDate" type="date" required></div>
+              <div class="field"><label for="goldDescription">Reason</label><input id="goldDescription" placeholder="Battle income, recruitment…" required></div>
+              <div class="field"><label for="goldAmount">Amount</label><input id="goldAmount" type="number" min="1" step="1" placeholder="5" required></div>
+              <div class="field"><label for="goldDirection">Transaction</label><div style="display:flex;gap:.4rem"><select id="goldDirection"><option value="income">Income</option><option value="expense">Expense</option></select><button class="button primary" type="submit">Add</button></div></div>
+            </form>
+            <hr class="subtle-rule">
+            <div id="ledgerList"></div>
+          </section>
+        </div>
+        <div class="stack">
+          <section class="card">
+            <div class="section-head">
+              <div><p class="section-kicker">Campaign chronicle</p><h2>Battle record</h2></div>
+              <button class="button primary no-print" id="addBattle" type="button">＋ Add battle</button>
+            </div>
+            <div id="battleList"></div>
+          </section>
+          <section class="card">
+            <p class="section-kicker">Income reference</p>
+            <h2>Gold after a battle</h2>
+            <p class="hint">The criteria are cumulative. Use the points limit for that battle to choose the correct column.</p>
+            <div style="overflow-x:auto">
+              <table style="width:100%;border-collapse:collapse;font: .78rem Arial,sans-serif">
+                <thead><tr><th style="text-align:left;padding:.45rem;border-bottom:1px solid #bca984">Result</th><th style="padding:.45rem;border-bottom:1px solid #bca984">500–750</th><th style="padding:.45rem;border-bottom:1px solid #bca984">751–1250</th><th style="padding:.45rem;border-bottom:1px solid #bca984">1251–1750</th><th style="padding:.45rem;border-bottom:1px solid #bca984">1751+</th></tr></thead>
+                <tbody>
+                  <tr><td style="padding:.4rem">Fought a Conquest battle</td><td style="text-align:center">+5</td><td style="text-align:center">+8</td><td style="text-align:center">+10</td><td style="text-align:center">+12</td></tr>
+                  <tr><td style="padding:.4rem">Major victory</td><td style="text-align:center">+3</td><td style="text-align:center">+4</td><td style="text-align:center">+5</td><td style="text-align:center">+6</td></tr>
+                  <tr><td style="padding:.4rem">Minor victory</td><td style="text-align:center">+2</td><td style="text-align:center">+2</td><td style="text-align:center">+3</td><td style="text-align:center">+3</td></tr>
+                  <tr><td style="padding:.4rem">General took part and survived</td><td style="text-align:center">+1</td><td style="text-align:center">+1</td><td style="text-align:center">+2</td><td style="text-align:center">+2</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-note">Conquest campaign aid based on the rules recorded in <em>Conquest.md</em>. This is an independent, editable tracker; it does not replace the rules or faction army books.</p>
+  </main>
+
+  <script>
+    (() => {
+      'use strict';
+      const STORAGE_KEY = 'old-world-conquest-roster-v1';
+      const SIZES = {
+        Vanguard: { territories: 1, points: 500, units: 6, gold: 5 },
+        Brigade: { territories: 1, points: 1000, units: 8, gold: 8 },
+        Division: { territories: 2, points: 1500, units: 12, gold: 10 },
+        Army: { territories: 3, points: 2000, units: 16, gold: 12 }
+      };
+      const ROLES = [
+        ['character', 'Character'], ['wizard', 'Wizard'], ['special', 'Special'], ['rare', 'Rare'],
+        ['cavalry', 'Cavalry'], ['war-machine', 'War Machine / Chariot'], ['allied', 'Allied / Mercenary'],
+        ['monstrous', 'Monstrous'], ['behemoth', 'War Beast / Behemoth'], ['other', 'Core / Other']
+      ];
+      const SLOTS = [
+        ['special', 'Special'], ['rare', 'Rare'], ['cavalry', 'Cavalry'], ['war-machine', 'War Machine / Chariot'],
+        ['allied', 'Allied / Mercenary'], ['monstrous', 'Monstrous'], ['behemoth', 'War Beast / Behemoth']
+      ];
+      const TERRITORIES = [
+        ['old-keep', 'Old Keep', 'characters'], ['wild-lands', 'Wild Lands', 'monstrous'], ['stable', 'Stable', 'cavalry'],
+        ['forgotten-mine', 'Forgotten Mine', 'special'], ['wizards-tower', "Wizard's Tower", 'wizard2'],
+        ['small-settlement', 'Small Settlement', 'rare'], ['ancient-road', 'Ancient Road(s)', 'allied'],
+        ['armoury', 'Armoury', 'war-machine'], ['titanic-menagerie', 'Titanic Menagerie', 'behemoth'],
+        ['bazaar', 'Bazaar', 'magic-items'], ['arcane-nexus', 'Arcane Nexus', 'wizard3'],
+        ['settlement', 'Settlement / Guard House', 'rare'], ['wellspring', 'Wellspring / Divination Pool', 'none'],
+        ['large-settlement', 'Large Settlement / City Wall', 'none'], ['diamond-reserve', 'Diamond Reserve / Mine', 'gold'],
+        ['ruins-of-myth', 'Ruins of Myth', 'item'], ['cursed-ruins', 'Cursed Ruins', 'capacity'],
+        ['necropolis', 'Faction-specific territory', 'custom'], ['custom', 'Custom territory', 'custom']
+      ];
+      const LIMITS = [
+        ['characters', 'Characters (incl. Wizards)', 2], ['special', 'Special units', 1], ['rare', 'Rare units', 1],
+        ['cavalry', 'Cavalry units', 1], ['war-machine', 'War Machine / Chariot', 1],
+        ['allied', 'Allied / Mercenary', 1], ['monstrous', 'Monstrous units', 0], ['behemoth', 'War Beast / Behemoth', 0],
+        ['magic-items', 'Magic item slots', 1]
+      ];
+      const VETERAN_RANKS = [[5, 'Veteran Warriors'], [15, 'Elite Veteran Warriors'], [30, 'Legendary Veteran Warriors']];
+      const HERO_RANKS = [[5, 'Rising Hero'], [15, 'Mighty Hero'], [30, 'Legendary Hero']];
+      const blank = () => ({
+        campaign: { armyName: '', faction: '', location: '', generalName: '', startingSize: 'Vanguard', startingGold: 5, notes: '', strongholdName: '', strongholdLevel: 'Stronghold', barracks: 0, outposts: 0, quest: '', questReward: '', questProgress: 0, questGoal: 3, questNotes: '' },
+        builder: { army: '', composition: '', compositionRule: 'open-war', category: 'characters', foreignChoice: '', foreignArmy: '', foreignComposition: '', foreignMagicArmy: '', foreignUnitIds: [], foreignCategory: 'characters', pointsLimit: 500, pending: null },
+        territories: [], units: [], vault: [], ledger: [], battles: [], questHistory: []
+      });
+      let data = loadData();
+      let armyManifest = null, armyCatalog = null, armyRules = null, magicCatalog = null, spellCatalog = null, rulesIndexCatalog = null;
+      const factionCatalogs = new Map();
+      let builderLoadPromise = null;
+      const $ = (s, root = document) => root.querySelector(s);
+      const $$ = (s, root = document) => [...root.querySelectorAll(s)];
+      const safe = value => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+      const uid = () => `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+      const today = () => new Date().toISOString().slice(0, 10);
+      const deepCopy = value => JSON.parse(JSON.stringify(value ?? null));
+      const sourceURL = path => new URL(`old-world-builder/${path}`, window.location.href).href;
+      async function fetchSourceJSON(path) {
+        const response = await fetch(sourceURL(path));
+        if (!response.ok) throw new Error(`Could not load ${path} (${response.status}).`);
+        return response.json();
+      }
+      function displayName(id) { return String(id || '').split('-').map(word => word ? word[0].toUpperCase() + word.slice(1) : '').join(' '); }
+      function datasetUnitName(unit) { return String(unit?.name_en || unit?.id || '').replace(/\s*\{[^}]*\}/g,'').replace(/\s*\(renegade\)/gi,'').trim(); }
+      function availableForComposition(option, composition) {
+        if (!option.armyComposition || !composition) return true;
+        if (Array.isArray(option.armyComposition)) return option.armyComposition.includes(composition);
+        if (typeof option.armyComposition === 'object') return Object.prototype.hasOwnProperty.call(option.armyComposition,composition);
+        return option.armyComposition === composition;
+      }
+      async function loadArmySources() {
+        if (builderLoadPromise) return builderLoadPromise;
+        builderLoadPromise = (async () => {
+          $('#builderStatus').textContent = 'Loading the local Old World Builder catalog and composition rules…';
+          try {
+            [armyManifest, magicCatalog, spellCatalog, rulesIndexCatalog] = await Promise.all([
+              fetchSourceJSON('src/assets/the-old-world.json'),
+              fetchSourceJSON('public/games/the-old-world/magic-items.json'),
+              fetchSourceJSON('src/assets/lores-of-magic-with-spells.json'),
+              fetchSourceJSON('src/components/rules-index/rules-index-export.json')
+            ]);
+            const rulesModule = await import(sourceURL('src/utils/rules.js'));
+            armyRules = rulesModule.rules;
+            const selector = $('#builderArmy');
+            selector.innerHTML = '<option value="">Choose a faction…</option>' + armyManifest.armies.map(army => `<option value="${safe(army.id)}">${safe(army.name_en || displayName(army.id))}</option>`).join('');
+            if (data.builder.army && armyManifest.armies.some(army => army.id === data.builder.army)) {
+              selector.value = data.builder.army;
+              await selectBuilderFaction(data.builder.army, false);
+            }
+            $('#builderPointsLimit').value = data.builder.pointsLimit || startInfo().points;
+            $('#builderCategory').value = data.builder.category || 'characters';
+            $('#compositionRule').value = data.builder.compositionRule || 'open-war';
+            $('#builderStatus').textContent = 'Local catalog ready. Select a unit to configure its options and points before adding it to your roster.';
+            renderBuilderUnitSelect(); renderBuilderPreview(); renderBuilderValidation();
+          } catch (error) {
+            $('#builderStatus').textContent = `Army catalog unavailable: ${error.message} Open this app through the local server so it can read the cloned old-world-builder/ folder.`;
+          }
+        })();
+        return builderLoadPromise;
+      }
+      async function selectBuilderFaction(armyId, updateCampaign = true) {
+        if (!armyId) {
+          armyCatalog = null; data.builder.army = ''; data.builder.composition = '';
+          $('#builderComposition').innerHTML = '<option value="">Select a faction first</option>';
+          renderBuilderUnitSelect(); renderBuilderValidation(); return;
+        }
+        try {
+          if (!factionCatalogs.has(armyId)) factionCatalogs.set(armyId, await fetchSourceJSON(`public/games/the-old-world/${armyId}.json`));
+          armyCatalog = factionCatalogs.get(armyId);
+          data.builder.army = armyId;
+          const armyInfo = armyManifest.armies.find(army => army.id === armyId);
+          const compositions = armyInfo?.armyComposition || [armyId];
+          if (!compositions.includes(data.builder.composition)) data.builder.composition = compositions[0] || armyId;
+            $('#builderComposition').innerHTML = compositions.map(comp => `<option value="${safe(comp)}" ${comp === data.builder.composition ? 'selected' : ''}>${safe(displayName(comp))}</option>`).join('');
+            renderBuilderForeignSelectors();
+          if (updateCampaign && armyInfo) {
+            data.campaign.faction = armyInfo.name_en || displayName(armyId);
+            setInput('faction', data.campaign.faction);
+          }
+          renderBuilderUnitSelect(); renderBuilderValidation(); updateSummaries(); save();
+        } catch (error) {
+          armyCatalog = null;
+          $('#builderStatus').textContent = `Could not load ${displayName(armyId)}: ${error.message}`;
+          renderBuilderUnitSelect(); renderBuilderValidation();
+        }
+      }
+      function catalogUnitsFor(category) {
+        if (category === 'allies' || category === 'mercenaries') {
+          const foreign = factionCatalogs.get(data.builder.foreignArmy);
+          if (!foreign) return [];
+          const allowedIds = category === 'mercenaries' && data.builder.foreignUnitIds?.length ? new Set(data.builder.foreignUnitIds) : null;
+          if (category === 'mercenaries' && Array.isArray(foreign.mercenaries)) {
+            return foreign.mercenaries.filter(unit => !allowedIds || allowedIds.has(unit.id)).map(unit => ({
+              ...unit,
+              _sourceCategory:'mercenaries',
+              _entryCategory:'mercenaries',
+              _sourceArmy:data.builder.foreignArmy,
+              _sourceComposition:data.builder.foreignComposition || data.builder.foreignArmy,
+              _magicItemsArmy:data.builder.foreignMagicArmy || ''
+            })).sort((a,b) => (a.name_en || '').localeCompare(b.name_en || ''));
+          }
+          return catalogUnitsFrom(foreign,data.builder.foreignComposition || data.builder.foreignArmy,data.builder.foreignCategory || 'characters')
+            .filter(unit => !allowedIds || allowedIds.has(unit.id))
+            .map(unit => ({ ...unit, _entryCategory:category, _sourceArmy:data.builder.foreignArmy, _sourceComposition:data.builder.foreignComposition || data.builder.foreignArmy, _magicItemsArmy:data.builder.foreignMagicArmy || '' }));
+        }
+        if (!armyCatalog) return [];
+        return catalogUnitsFrom(armyCatalog,data.builder.composition || data.builder.army,category);
+      }
+      function catalogUnitsFrom(catalog,composition,category) {
+        const list = [];
+        for (const sourceCategory of ['characters','core','special','rare']) {
+          for (const unit of catalog[sourceCategory] || []) {
+            const compositionData = unit.armyComposition?.[composition];
+            if (unit.armyComposition && !compositionData) continue;
+            const finalCategory = compositionData?.category || sourceCategory;
+            if (finalCategory === category) list.push({ ...unit, _sourceCategory: finalCategory });
+          }
+        }
+        return list.sort((a,b) => (a.name_en || '').localeCompare(b.name_en || ''));
+      }
+      function renderBuilderForeignSelectors() {
+        const category = data.builder.category;
+        const external = category === 'allies' || category === 'mercenaries';
+        $('#builderForeignArmyField').hidden = !external;
+        $('#builderForeignCategoryField').hidden = !external;
+        if (!external || !armyManifest || !data.builder.army) return;
+        const armyInfo = armyManifest.armies.find(army => army.id === data.builder.army);
+        let entries = [];
+        if (category === 'allies') {
+          entries = (armyInfo?.allies || []).map(entry => ({ army:entry.army, composition:entry.armyComposition || entry.army, magicArmy:entry.magicItemsArmy || '', unitIds:[] }));
+        } else {
+          entries = (armyInfo?.mercenaries?.[data.builder.composition] || []).map(entry => ({ army:entry.army, composition:entry.army, magicArmy:entry.magicItemsArmy || '', unitIds:entry.units || [] }));
+        }
+        const unique = new Map(entries.map(entry => [JSON.stringify(entry),entry]));
+        entries = [...unique.values()];
+        const select = $('#builderForeignArmy');
+        select.innerHTML = entries.length ? '<option value="">Choose an army…</option>' + entries.map(entry => {
+          const value = JSON.stringify(entry);
+          const name = armyManifest.armies.find(army => army.id === entry.army)?.name_en || displayName(entry.army);
+          const label = entry.composition !== entry.army ? `${name} · ${displayName(entry.composition)}` : name;
+          return `<option value="${safe(value)}">${safe(label)}</option>`;
+        }).join('') : '<option value="">No compatible faction listed</option>';
+        const saved = entries.find(entry => entry.army === data.builder.foreignArmy && entry.composition === data.builder.foreignComposition && JSON.stringify(entry.unitIds) === JSON.stringify(data.builder.foreignUnitIds || []));
+        if (saved) select.value = JSON.stringify(saved);
+        else if (entries.length) select.value = JSON.stringify(entries[0]);
+        if (select.value) selectBuilderForeign(select.value);
+        renderBuilderUnitSelect();
+      }
+      async function selectBuilderForeign(serialized) {
+        let entry;
+        try { entry = JSON.parse(serialized); } catch (_) { entry = null; }
+        if (!entry) {
+          data.builder.foreignChoice = '';
+          data.builder.foreignArmy = ''; data.builder.foreignComposition = ''; data.builder.foreignUnitIds = [];
+          renderBuilderUnitSelect(); return;
+        }
+        data.builder.foreignChoice = serialized;
+        data.builder.foreignArmy = entry.army;
+        data.builder.foreignComposition = entry.composition || entry.army;
+        data.builder.foreignMagicArmy = entry.magicArmy || '';
+        data.builder.foreignUnitIds = entry.unitIds || [];
+        try {
+          if (!factionCatalogs.has(entry.army)) factionCatalogs.set(entry.army,await fetchSourceJSON(`public/games/the-old-world/${entry.army}.json`));
+          $('#builderStatus').textContent = `${displayName(entry.army)} ally/mercenary catalog loaded locally.`;
+        } catch (error) { $('#builderStatus').textContent = `Could not load ${displayName(entry.army)} catalog: ${error.message}`; }
+        renderBuilderUnitSelect(); save();
+      }
+      function renderBuilderUnitSelect() {
+        const select = $('#builderUnit');
+        if (!select) return;
+        const category = $('#builderCategory')?.value || data.builder.category || 'characters';
+        const units = catalogUnitsFor(category);
+        select.innerHTML = units.length ? '<option value="">Choose a unit…</option>' + units.map(unit => `<option value="${safe(unit.id)}">${safe(datasetUnitName(unit))} · ${Number(unit.points || 0)} pts${unit.minimum > 1 ? ` · min ${unit.minimum}` : ''}</option>`).join('') : '<option value="">No units available for this selection</option>';
+        if (data.builder.pending && units.some(unit => unit.id === data.builder.pending.build.id)) select.value = data.builder.pending.build.id;
+        $('#addCatalogUnit').disabled = !data.builder.pending;
+      }
+      function cloneBuildData(raw, category) {
+        const build = deepCopy(raw);
+        for (const key of ['equipment','armor','mounts','options','command']) {
+          if (!Array.isArray(build[key])) continue;
+          build[key] = build[key].map(option => ({ ...option, active: Boolean(option.active), magic: option.magic ? { ...option.magic, selected: option.magic.selected || [] } : option.magic, options: Array.isArray(option.options) ? option.options.map(child => ({ ...child, active: Boolean(child.active) })) : option.options }));
+        }
+        build.items = (build.items || []).map(item => ({ ...item, selected: item.selected || [] }));
+        build.type = raw._sourceCategory || category;
+        build.category = category;
+        build.sourceCategory = raw._sourceCategory || category;
+        build.composition = raw._sourceComposition || data.builder.composition;
+        build.strength = Number(build.minimum || 1);
+        build.army = raw._sourceArmy || data.builder.army;
+        build.magicItemsArmy = raw._magicItemsArmy || build.magicItemsArmy || '';
+        build.generatedSpells = build.generatedSpells || {};
+        build.activeLore = build.armyComposition?.[build.composition]?.lores?.[0] || build.lores?.[0] || '';
+        build.expanded = true;
+        build.spellsExpanded = true;
+        build.detachments = [];
+        return build;
+      }
+      function hasBuilderMagicItem(build, required) {
+        if (!required) return true;
+        const slug = String(required).toLowerCase().replace(/ /g, '-');
+        return [
+          ...(build.items || []).flatMap(group => group.selected || []),
+          ...(build.command || []).flatMap(command => command.magic?.selected || [])
+        ].some(item => String(item.name || item.name_en || '').toLowerCase().replace(/ /g, '-') === slug);
+      }
+      function builderMagicCost(build, item, amount = 1, command = false) {
+        const count = Number(amount || 1), strength = Number(build.strength || 1);
+        if (command) return item.perModelPoints && strength > 1 ? count * Number(item.perModelPoints) * strength : count * Number(item.points || 0);
+        if (build.type !== 'characters' && item.perModel) return strength * count * Number(item.perModelPoints || item.points || 0);
+        if (build.type !== 'characters' && item.perUnitPoints) return count * Number(item.perUnitPoints);
+        return count * Number(item.points || 0);
+      }
+      function builderMagicPointCap(group, composition) { return Number(group.armyComposition?.[composition]?.maxPoints ?? group.maxPoints ?? 0); }
+      function builderMagicTypeCap(group, composition) { return Number(group.armyComposition?.[composition]?.maxItemsPerCategory ?? group.maxItemsPerCategory ?? 0); }
+      function optionPoints(build, group, settings) {
+        let total = 0;
+        (build[group] || []).filter(option => (option.active || option.equippedDefault) && availableForComposition(option, build.composition) && hasBuilderMagicItem(build, option.requiredMagicItem)).forEach(option => {
+          if (option.active && option.perModel) total += Number(build.strength || 1) * Number(option.points || 0);
+          else if (option.active) total += Number(option.points || 0);
+          if (group === 'mounts' && option.active) (option.options || []).forEach(child => { if (child.active) total += child.perModel ? Number(build.strength || 1) * Number(child.points || 0) : Number(child.points || 0); });
+        });
+        return total;
+      }
+      function getBuiltUnitPoints(build) {
+        if (!build) return 0;
+        const strength = Number(build.strength || build.minimum || 1);
+        let points = strength > 1 ? strength * Number(build.points || 0) : Number(build.points || 0);
+        for (const option of build.options || []) {
+          if (option.stackable) points += Number(option.stackableCount || option.minimum || 0) * Number(option.points || 0);
+          else if ((option.active || option.alwaysActive) && option.perModel) points += strength * Number(option.points || 0);
+          else if ((option.active || option.alwaysActive) && option.options?.length) {
+            points += Number(option.points || 0);
+            option.options.forEach(child => { if (child.active) points += child.perModel ? strength * Number(child.points || 0) : Number(child.points || 0); });
+          } else if (option.active || (option.alwaysActive && option.armyComposition === build.army) || (option.alwaysActive && option.armyComposition === build.composition)) points += Number(option.points || 0);
+        }
+        points += optionPoints(build, 'equipment', {}) + optionPoints(build, 'armor', {}) + optionPoints(build, 'mounts', {});
+        const detachmentActive = (build.options || []).some(option => option.name_en === 'Detachment' && option.active);
+        (detachmentActive ? [] : build.command || []).filter(command => command.active).forEach(command => {
+          points += Number(command.points || 0);
+          (command.magic?.selected || []).forEach(item => {
+            const amount = Number(item.amount || 1);
+            points += item.perModelPoints && strength > 1 ? amount * Number(item.perModelPoints) * strength : amount * Number(item.points || 0);
+          });
+          (command.options || []).forEach(option => { if (option.active) points += option.perModel ? strength * Number(option.points || 0) : Number(option.points || 0); });
+        });
+        (build.items || []).forEach(group => (group.selected || []).forEach(item => {
+          const amount = Number(item.amount || 1);
+          if (build.type !== 'characters' && item.perModel) points += strength * (item.perModelPoints ? amount * item.perModelPoints : item.perModelPoints || item.points || 0);
+          else if (build.type !== 'characters' && item.perUnitPoints) points += amount * item.perUnitPoints;
+          else points += amount * Number(item.points || 0);
+        }));
+        (build.detachments || []).forEach(detachment => { points += getBuiltUnitPoints(detachment.build); });
+        return Math.round(points);
+      }
+      function loreIdsForUnit(build) {
+        const result = new Set();
+        const compLores = build.armyComposition?.[build.composition]?.lores;
+        const baseLores = compLores || build.lores || [];
+        for (const lore of baseLores) if (spellCatalog?.[lore]) result.add(lore);
+        const specialRules = build.specialRules?.name_en || '';
+        for (const [, name] of specialRules.matchAll(/Lore of ([^,]+)/gi)) {
+          const loreId = `lore-of-${name.trim().toLowerCase().replace(/\s+/g,'-')}`;
+          if (spellCatalog?.[loreId]) result.add(loreId);
+        }
+        const activeOptions = [];
+        const walk = (items) => (items || []).forEach(item => {
+          if (item.active) { activeOptions.push(item.name_en || ''); walk(item.options); }
+        });
+        walk(build.options); (build.command || []).forEach(command => { if (command.active) walk(command.options); });
+        for (const name of activeOptions) {
+          const match = name.match(/Lore of (Yang|Yin)/i);
+          if (match) { const loreId = `lore-of-${match[1].toLowerCase()}`; if (spellCatalog?.[loreId]) result.add(loreId); }
+        }
+        const selectedItems = [
+          ...(build.items || []).flatMap(group => group.selected || []),
+          ...(build.command || []).flatMap(command => command.magic?.selected || [])
+        ];
+        const hasItem = name => selectedItems.some(item => (item.name_en || '').toLowerCase() === name.toLowerCase());
+        if (hasItem('Wizarding Hat')) ['battle-magic','daemonology','dark-magic','elementalism','high-magic','illusion','necromancy','waaagh-magic','shadowlands'].forEach(id => { if (spellCatalog?.[id]) result.add(id); });
+        if (hasItem('Loremaster')) ['lore-of-saphery','battle-magic','elementalism','high-magic','illusion'].forEach(id => { if (spellCatalog?.[id]) result.add(id); });
+        if (activeOptions.some(name => /^Arise!, Level 1 Wizard/i.test(name)) && spellCatalog?.necromancy) result.add('necromancy');
+        return [...result];
+      }
+      function wizardLevelFor(build) {
+        const selectedItems = [...(build.items || []).flatMap(group => group.selected || []), ...(build.command || []).flatMap(command => command.magic?.selected || [])];
+        if (selectedItems.some(item => (item.name_en || '').toLowerCase() === 'loremaster')) return 1;
+        const masterOfArts = selectedItems.some(item => (item.name_en || '').toLowerCase() === 'master of the black arts');
+        const levels = [];
+        const walk = (items, holderActive = true) => (items || []).forEach(item => {
+          const match = (item.name_en || '').match(/^(?:Arise!, )?Level ([1-4]) Wizard/i);
+          if (match && holderActive) levels.push({ level: Number(match[1]), active: Boolean(item.active) });
+          walk(item.options, holderActive && item.active);
+        });
+        walk(build.options);
+        (build.command || []).forEach(command => walk(command.options, Boolean(command.active)));
+        if (!levels.length) return 0;
+        const active = levels.find(item => item.active);
+        if (active) return Math.min(4,active.level + (masterOfArts ? 1 : 0));
+        let level = 4;
+        for (const item of levels) if (item.level <= level) level = item.level - 1;
+        return Math.min(4,(level === 4 ? 0 : level) + (masterOfArts ? 1 : 0));
+      }
+      function generatedSpellLimit(build) {
+        let count = Number(build.spellCount || wizardLevelFor(build));
+        const selectedItems = [...(build.items || []).flatMap(group => group.selected || []), ...(build.command || []).flatMap(command => command.magic?.selected || [])];
+        if (selectedItems.some(item => (item.name_en || '').toLowerCase() === 'wizarding hat')) count++;
+        if (selectedItems.some(item => ['spell familiar*','twin heads','silvery wand','tome of furion','tome of midnight','scrolls of wei-jin'].includes((item.name_en || '').toLowerCase()))) count++;
+        const fengShiBo = selectedItems.find(item => (item.name_en || '').toLowerCase() === 'learned feng shi bo*');
+        if (fengShiBo) count += Number(fengShiBo.amount || 1);
+        return Math.min(count, 6);
+      }
+      function hasMultipleSpellLores(build, lores) {
+        const items = [...(build.items || []).flatMap(group => group.selected || []), ...(build.command || []).flatMap(command => command.magic?.selected || [])];
+        return Boolean(build.arcaneFamiliar || build.spellCount || items.some(item => ['arcane familiar','wizarding hat','loremaster'].includes((item.name_en || '').toLowerCase()))) && lores.length > 1;
+      }
+      function spellLorePlan(build) {
+        const available = loreIdsForUnit(build);
+        const base = build.armyComposition?.[build.composition]?.lores || build.lores || [];
+        const selectedItems = [...(build.items || []).flatMap(group => group.selected || []), ...(build.command || []).flatMap(command => command.magic?.selected || [])];
+        const multiBase = Boolean(build.arcaneFamiliar || build.spellCount || selectedItems.some(item => ['arcane familiar','wizarding hat','loremaster'].includes((item.name_en || '').toLowerCase()))) && base.length > 1;
+        const activeLore = base.includes(build.activeLore) ? build.activeLore : base[0];
+        const special = available.filter(lore => !base.includes(lore));
+        const chosenBase = multiBase ? base : (activeLore ? [activeLore] : []);
+        return { available, base, selected:[...new Set([...special,...chosenBase])], activeLore, multiBase };
+      }
+      function spellLabel(spellId) { return String(spellId).split(/[- ]+/).map(word => word ? word[0].toUpperCase() + word.slice(1) : '').join(' '); }
+      function spellSelectionText(build) {
+        return Object.entries(build.generatedSpells || {}).flatMap(([lore,spells]) => (spells || []).map(spell => `${displayName(lore)}: ${spellLabel(spell)}`)).join('\n');
+      }
+      function loreSpellEntries(build,lore) {
+        const entries = spellCatalog?.[lore] || {};
+        if (lore !== 'lore-of-chaos') return entries;
+        let mark = 'chaos-undivided';
+        const findMark = items => {
+          for (const option of items || []) {
+            if (option.active && /^Mark of /.test(option.name_en || '')) return option.name_en.slice(8).toLowerCase().replace(/ /g,'-');
+            const nested = findMark(option.options); if (nested) return nested;
+          }
+          return '';
+        };
+        mark = findMark(build.options) || mark;
+        if (mark === 'khorne') return {};
+        return Object.fromEntries(Object.entries(entries).filter(([,spell]) => spell['mark-of-chaos'] === mark));
+      }
+      function renderBuilderSpells(unit) {
+        const build = unit.build, plan = spellLorePlan(build), allLores = plan.available;
+        if (!allLores.length) return '';
+        const shownLores = plan.selected;
+        const generated = build.generatedSpells || {};
+        const selectedCount = Object.values(generated).reduce((sum,spells) => sum + (spells || []).length,0);
+        const signatureCount = Object.entries(generated).reduce((sum,[lore,spells]) => sum + (spells || []).filter(spell => loreSpellEntries(build,lore)[spell]?.index === 'signature').length,0);
+        const maxSpells = generatedSpellLimit(build), maxSignature = Number(build.maxSignatureSpells ?? 1);
+        return `<details class="build-details" data-build-spells ${build.spellsExpanded ? 'open' : ''}><summary>Spells · ${selectedCount}/${maxSpells} generated</summary>${!plan.multiBase && plan.base.length > 1 ? `<div class="field" style="margin:.55rem 0"><label>Selected lore</label><select data-spell-lore data-id="${safe(unit.id)}">${plan.base.map(lore => `<option value="${safe(lore)}" ${lore === plan.activeLore ? 'selected' : ''}>${safe(displayName(lore))}</option>`).join('')}</select></div>` : ''}${shownLores.map(lore => `<div class="spell-lore"><h4>${safe(displayName(lore))}</h4><div class="build-options">${Object.entries(loreSpellEntries(build,lore)).map(([spell,details]) => {
+            const checked = (generated[lore] || []).includes(spell);
+            const isSignature = details.index === 'signature';
+            const disabled = (!checked && selectedCount >= maxSpells) || (!checked && isSignature && signatureCount >= maxSignature);
+            return `<label><input type="checkbox" data-generated-spell data-id="${safe(unit.id)}" data-lore="${safe(lore)}" data-spell="${safe(spell)}" ${checked ? 'checked' : ''} ${disabled ? 'disabled' : ''}><span>${details.index === 'signature' ? 'Signature' : `Spell ${safe(details.index)}`} · ${safe(spellLabel(spell))}</span></label>`;
+          }).join('')}</div></div>`).join('')}<p class="hint">Choose up to ${maxSpells} generated spell${maxSpells === 1 ? '' : 's'}; signature spells allowed: ${maxSignature}. Lore and spell access follow the selected unit options and its faction dataset.</p></details>`;
+      }
+      function roleForCategory(category, raw) {
+        if (category === 'allies' || category === 'mercenaries') return 'allied';
+        const sourceCategory = raw._sourceCategory || category;
+        if (sourceCategory === 'characters') return raw.lores || (raw.command || []).some(command => /level\s*\d+\s*wizard/i.test(JSON.stringify(command))) ? 'wizard' : 'character';
+        return ({ special:'special', rare:'rare' })[category] || 'other';
+      }
+      function addCatalogUnit() {
+        const draft = data.builder.pending;
+        if (!draft) return;
+        const unit = { ...deepCopy(draft), id: uid(), build: deepCopy(draft.build) };
+        unit.build.expanded = false;
+        unit.points = getBuiltUnitPoints(unit.build);
+        data.units.push(unit);
+        if (unit.general) data.campaign.generalName = unit.name;
+        data.builder.pending = null;
+        $('#builderUnit').value = '';
+        $('#builderStatus').textContent = `${unit.name} added with its configured options.`;
+        save(); renderAll();
+        const last = $('#unitList .unit-card:last-child'); if (last) last.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+      function selectCatalogUnit(unitId) {
+        const raw = catalogUnitsFor($('#builderCategory').value).find(unit => unit.id === unitId);
+        if (!raw) {
+          data.builder.pending = null;
+          $('#addCatalogUnit').disabled = true;
+          renderBuilderPreview(); save(); return;
+        }
+        const category = $('#builderCategory').value;
+        const build = cloneBuildData(raw,category);
+        const role = roleForCategory(category,raw);
+        const eligibleGeneral = category === 'characters' && (role === 'character' || role === 'wizard');
+        const isFirstGeneral = !data.units.some(unit => unit.general) && eligibleGeneral && !raw.named && Number(build.strength || 1) === 1;
+        if (isFirstGeneral) (build.command || []).forEach(command => { if (command.name_en === 'General') command.active = true; });
+        const draft = { id:'pending', name:datasetUnitName(raw), role, extra:[], models:build.strength, points:0, renown:isFirstGeneral ? 5 : 0, casualties:0, injury:'None', wizardLevel:1, general:isFirstGeneral, named:Boolean(raw.named), spells:'', magicItems:'', abilities:'', notes:'', build };
+        draft.points = getBuiltUnitPoints(build);
+        data.builder.pending = draft;
+        $('#addCatalogUnit').disabled = false;
+        renderBuilderPreview(); save();
+      }
+      function renderBuilderPreview() {
+        const root = $('#builderUnitPreview');
+        if (!root) return;
+        const unit = data.builder.pending;
+        if (!unit?.build) {
+          root.innerHTML = '<div class="hint">Choose a catalog unit above to configure its size, equipment, options, command, magic items, and spells before adding it.</div>';
+          $('#addCatalogUnit').disabled = true;
+          return;
+        }
+        const build = unit.build;
+        const min = Number(build.minimum || 1);
+        const max = build.maximum ? `max="${Number(build.maximum)}"` : '';
+        root.innerHTML = `<article class="unit-card ${unit.general ? 'is-general' : ''}" data-id="${safe(unit.id)}">
+          <div class="unit-top"><div class="unit-title"><span class="unit-number">＋</span><strong>${safe(unit.name)}</strong><span class="badge">${safe(displayName(build.category))}</span></div><strong>${getBuiltUnitPoints(build)} pts</strong></div>
+          ${build.notes?.name_en || build.specialRules?.name_en ? `<p class="hint">${safe([build.notes?.name_en,build.specialRules?.name_en].filter(Boolean).join(' · '))}</p>` : ''}
+          <div class="unit-grid">
+            <div class="field"><label>Models / strength</label><input type="number" min="${min}" ${max} step="1" value="${safe(unit.models)}" data-pending-field="models"></div>
+            <div class="field"><label>Calculated unit points</label><div class="rank-line" id="pendingPoints">${getBuiltUnitPoints(build)} points</div></div>
+            ${unit.role === 'character' || unit.role === 'wizard' ? `<div class="field"><label class="inline-check"><input type="checkbox" data-pending-field="general" ${unit.general ? 'checked' : ''} ${unit.named || Number(unit.models) !== 1 || (data.units.some(existing => existing.general) && !unit.general) ? 'disabled' : ''}> Campaign general${unit.named ? ' (named characters are ineligible)' : ''}</label>${unit.general ? '<span class="hint">The general begins with 5 renown.</span>' : ''}</div>` : ''}
+            <div class="field"><label>Dataset minimum / maximum</label><div class="rank-line">${min} / ${build.maximum || '—'}</div></div>
+          </div>
+          <details class="build-details" data-pending-main open style="margin-top:.7rem"><summary>Configure this unit before adding</summary><div class="builder-choices">${buildChoiceGroup(unit,'equipment','Weapons & equipment')}${buildChoiceGroup(unit,'armor','Armour')}${buildChoiceGroup(unit,'mounts','Mount')}${renderBuildToggles(unit,'options','Unit options')}${renderBuildToggles(unit,'command','Command options')}${renderBuilderMagic(unit)}${renderBuilderSpells(unit)}${renderBuilderDetachments(unit)}</div></details>
+        </article>`;
+        $('#addCatalogUnit').disabled = false;
+      }
+      function getConfigUnit(id) {
+        if (id === 'pending') return data.builder.pending;
+        const unit = data.units.find(item => item.id === id);
+        if (unit) return unit;
+        const parents = [...data.units, ...(data.builder.pending ? [data.builder.pending] : [])];
+        for (const parent of parents) {
+          const detachment = parent.build?.detachments?.find(item => item.id === id);
+          if (detachment) return { id:detachment.id, name:detachment.build.name_en, build:detachment.build, __parent:parent, __detachment:detachment };
+        }
+        return null;
+      }
+      function refreshConfiguredUnit(unit) {
+        if (!unit?.build) return;
+        if (unit.__parent) {
+          unit.__parent.points = getBuiltUnitPoints(unit.__parent.build);
+          if (unit.__parent.id === 'pending') renderBuilderPreview(); else renderUnits();
+          save(); updateSummaries(); renderBuilderValidation();
+          return;
+        }
+        unit.points = getBuiltUnitPoints(unit.build);
+        unit.spells = spellSelectionText(unit.build);
+        if (unit.id === 'pending') renderBuilderPreview();
+        else renderUnits();
+        save(); updateSummaries(); renderBuilderValidation();
+      }
+      function buildChoiceGroup(unit, field, label) {
+        const options = (unit.build[field] || []).map((option, index) => ({ option, index })).filter(({ option }) => availableForComposition(option, unit.build.composition));
+        if (!options.length) return '';
+        if (field === 'equipment') {
+          const groups = new Map();
+          options.forEach(entry => {
+            const key = String(entry.option.group ?? '');
+            if (!groups.has(key)) groups.set(key, []);
+            groups.get(key).push(entry);
+          });
+          return `<div class="field full"><label>${safe(label)}</label>${[...groups.entries()].map(([group,items]) => `<div style="margin:.35rem 0"><span class="hint">${group ? safe(displayName(group)) : 'Weapon choice'}</span><div class="build-options">${items.map(({option,index}) => `<label><input type="checkbox" data-build-choice="equipment" data-build-group="${safe(group)}" data-id="${safe(unit.id)}" data-index="${index}" ${option.active ? 'checked' : ''}>${safe(option.name_en || 'Equipment')} · ${Number(option.points || 0)} pts${option.perModel ? '/model' : ''}</label>`).join('')}</div></div>`).join('')}</div>`;
+        }
+        if (field === 'armor') {
+          return `<div class="field"><label>${safe(label)}</label><div class="build-options">${options.map(({option,index}) => `<label><input type="${options.length > 1 ? 'radio' : 'checkbox'}" ${options.length > 1 ? `name="armor-${safe(unit.id)}"` : ''} data-build-choice="armor" data-id="${safe(unit.id)}" data-index="${index}" ${option.active ? 'checked' : ''}>${safe(option.name_en || 'Armour')} · ${Number(option.points || 0)} pts${option.perModel ? '/model' : ''}</label>`).join('')}</div></div>`;
+        }
+        if (field === 'mounts') {
+          const activeMount = options.find(({option}) => option.active);
+          const nested = activeMount?.option.options || [];
+          return `<div class="field"><label>${safe(label)}</label><select data-build-choice="mounts" data-id="${safe(unit.id)}"><option value="-1">Choose a mount…</option>${options.map(({option,index}) => `<option value="${index}" ${option.active ? 'selected' : ''}>${safe(option.name_en || 'Mount')} · ${Number(option.points || 0)} pts</option>`).join('')}</select>${activeMount?.option.notes?.name_en ? `<span class="hint">${safe(activeMount.option.notes.name_en)}</span>` : ''}${nested.length ? `<div class="build-options" style="margin-top:.4rem">${nested.map((option,index) => `<label><input type="checkbox" data-build-mount-child data-id="${safe(unit.id)}" data-index="${activeMount.index}" data-child-index="${index}" ${option.active ? 'checked' : ''}>${safe(option.name_en || 'Mount option')} · ${Number(option.points || 0)} pts${option.perModel ? '/model' : ''}</label>`).join('')}</div>` : ''}</div>`;
+        }
+        const active = options.find(({ option }) => option.active)?.index ?? -1;
+        return `<div class="field"><label>${safe(label)}</label><select data-build-choice="${field}" data-id="${safe(unit.id)}"><option value="-1">No selection</option>${options.map(({ option,index }) => `<option value="${index}" ${active === index ? 'selected' : ''}>${safe(option.name_en || 'Option')} · ${Number(option.points || 0)} pts${option.perModel ? '/model' : ''}</option>`).join('')}</select></div>`;
+      }
+      function renderBuildToggles(unit, field, label) {
+        const options = (unit.build[field] || []).map((option,index) => ({ option,index })).filter(({ option }) => availableForComposition(option, unit.build.composition));
+        if (!options.length) return '';
+        return `<div class="field full"><strong class="build-options-title">${safe(label)}</strong><div class="build-options">${options.map(({ option,index }) => {
+          if (field === 'command' && option.name_en === 'General') return '';
+          const exclusiveActive = field === 'command' && option.exclusive === true && (unit.build.command || []).find(other => other !== option && other.active && other.exclusive === true);
+          const disabled = option.alwaysActive || Boolean(exclusiveActive && !option.active);
+          const childExclusive = (option.options || []).find(child => child.active && child.exclusive);
+          return `<div><label><input type="checkbox" data-build-toggle="${field}" data-id="${safe(unit.id)}" data-index="${index}" ${option.active || option.alwaysActive ? 'checked' : ''} ${disabled ? 'disabled' : ''}>${safe(option.name_en || 'Option')} · ${Number(option.points || 0)} pts${option.perModel ? '/model' : ''}</label>${option.notes?.name_en ? `<span class="build-option-note">${safe(option.notes.name_en)}</span>` : ''}${option.stackable ? `<label class="build-option-note">Count <input type="number" min="${Number(option.minimum || 0)}" max="${Number(option.maximum || 99)}" value="${Number(option.stackableCount || option.minimum || 0)}" data-build-stack="${field}" data-id="${safe(unit.id)}" data-index="${index}" style="width:4.2rem;padding:.2rem"></label>` : ''}${(option.active || option.alwaysActive) ? (option.options || []).map((child,childIndex) => `<label style="margin-left:1rem"><input type="checkbox" data-build-child="${field}" data-id="${safe(unit.id)}" data-index="${index}" data-child-index="${childIndex}" ${child.active || child.alwaysActive ? 'checked' : ''} ${child.alwaysActive || (childExclusive && child.exclusive && !child.active) ? 'disabled' : ''}>${safe(child.name_en || 'Sub-option')} · ${Number(child.points || 0)} pts</label>`).join('') : ''}</div>`;
+        }).join('')}</div></div>`;
+      }
+      function builderMagicGroupMarkup(unit, group, index, kind, commandIndex = -1) {
+        const build = unit.build;
+        const sourceItems = magicItemsForGroup(build,group);
+        const cap = builderMagicPointCap(group,build.composition);
+        const typeCap = builderMagicTypeCap(group,build.composition);
+        const selected = group.selected || [];
+        const used = selected.reduce((sum,item) => sum + builderMagicCost(build,item,item.amount || 1,kind === 'command'),0);
+        const allowed = sourceItems.filter(item => group.types?.includes(item.type) && (!cap || Number(item.points || 0) <= cap) && availableForComposition(item,build.composition));
+        const common = `data-id="${safe(unit.id)}" data-magic-kind="${kind}" data-index="${index}" data-command-index="${commandIndex}"`;
+        return `<div style="padding:.45rem 0;border-bottom:1px solid #ddceb0"><strong style="font:700 .75rem Arial,sans-serif">${safe(group.name_en || 'Magic items')}</strong><span class="hint"> · ${cap ? `limit ${cap} pts` : 'no points cap'} · selected ${used} pts${typeCap ? ` · max ${typeCap} per type` : ''}</span><div class="build-magic"><div class="field"><label>Add item</label><select data-magic-select ${common}><option value="">Choose item…</option>${allowed.map((item,itemIndex) => `<option value="${itemIndex}">${safe(item.name_en)} · ${Number(item.points || 0)} pts</option>`).join('')}</select></div><div class="field"><label>Amount</label><input type="number" min="1" max="99" value="1" data-magic-amount ${common}></div><button class="button small no-print" data-action="add-build-magic" ${common} type="button">Add item</button></div><div class="selected-magic">${selected.map((item,itemIndex) => `<span class="magic-chip">${safe(item.name_en)}${Number(item.amount || 1) > 1 ? ` ×${item.amount}` : ''} · ${builderMagicCost(build,item,item.amount || 1,kind === 'command')} pts <button type="button" aria-label="Remove ${safe(item.name_en)}" data-action="remove-build-magic" ${common} data-item-index="${itemIndex}">×</button></span>`).join('') || '<span class="hint">No items selected.</span>'}</div></div>`;
+      }
+      function magicItemsForGroup(build,group) {
+        const sourceKey = group.magicItemsArmy || build.magicItemsArmy || build.army || data.builder.army;
+        const factionItems = magicCatalog?.[sourceKey] || [];
+        const genericItems = magicCatalog?.general || [];
+        const combined = sourceKey === 'general' ? genericItems : [...factionItems,...genericItems];
+        const unique = new Map();
+        for (const item of combined) {
+          const key = `${item.type || ''}:${String(item.name_en || item.name || '').trim().toLowerCase()}`;
+          if (!unique.has(key)) unique.set(key,item);
+        }
+        return [...unique.values()].filter(item => group.types?.includes(item.type) && availableForComposition(item,build.composition));
+      }
+      function renderBuilderMagic(unit) {
+        const itemGroups = unit.build.items || [];
+        const commandGroups = (unit.build.command || []).map((command,index) => ({ command,index })).filter(({command}) => command.active && command.magic?.types?.length && availableForComposition(command,unit.build.composition));
+        if (!itemGroups.length && !commandGroups.length) return '';
+        return `<details class="build-details"><summary>Magic items &amp; powers</summary>${itemGroups.map((group,index) => builderMagicGroupMarkup(unit,group,index,'items')).join('')}${commandGroups.map(({command,index}) => `<h4 style="margin:.8rem 0 .2rem">${safe(command.name_en)} · command magic</h4>${builderMagicGroupMarkup(unit,command.magic,index,'command',index)}`).join('')}</details>`;
+      }
+      function availableDetachments(build) {
+        if (!armyCatalog || !build.regimentalUnit) return [];
+        const options = ['core','special','rare'].flatMap(category => catalogUnitsFor(category));
+        const allowed = Array.isArray(build.allowedDetachments) && build.allowedDetachments.length ? build.allowedDetachments : null;
+        return options.filter(unit => allowed ? allowed.includes(unit.id) : Boolean(unit.detachment));
+      }
+      function renderBuilderDetachments(unit) {
+        const build = unit.build;
+        if (!build.regimentalUnit) return '';
+        const choices = availableDetachments(build);
+        const detachments = build.detachments || [];
+        const maximum = Number(build.maxDetachments || 0);
+        return `<details class="build-details"><summary>Detachments · ${detachments.length}${maximum ? `/${maximum}` : ''}</summary><div class="build-magic"><div class="field"><label>Available detachment</label><select data-detachment-select data-id="${safe(unit.id)}"><option value="">Choose detachment…</option>${choices.map(option => `<option value="${safe(option.id)}">${safe(option.name_en)} · ${Number(option.points || 0)} pts/model</option>`).join('')}</select></div><button class="button small no-print" data-action="add-detachment" data-id="${safe(unit.id)}" type="button" ${!choices.length || (maximum && detachments.length >= maximum) ? 'disabled' : ''}>Add detachment</button></div>${!choices.length ? '<p class="hint">No detachments are available for this unit in the selected composition.</p>' : ''}${detachments.map(detachment => {
+          const editorUnit = { id:detachment.id, name:detachment.build.name_en, build:detachment.build };
+          const parentModels = Number(unit.models || 1);
+          const min = detachment.scaleWithUnit ? Number(detachment.minDetachmentSize || 5) * parentModels : Number(detachment.minDetachmentSize || 5);
+          const max = (detachment.scaleWithUnit && detachment.maxDetachmentSize ? Number(detachment.maxDetachmentSize) * parentModels : Number(detachment.maxDetachmentSize || 0)) || Math.floor(parentModels / 2);
+          return `<article class="record" style="margin-top:.55rem"><div class="record-head"><strong>${safe(detachment.build.name_en)} · ${getBuiltUnitPoints(detachment.build)} pts</strong><button class="button danger small no-print" data-action="remove-detachment" data-id="${safe(unit.id)}" data-detachment-id="${safe(detachment.id)}" type="button">Remove</button></div><div class="field" style="max-width:220px"><label>Detachment models</label><input type="number" min="${min}" ${max ? `max="${max}"` : ''} value="${safe(detachment.build.strength)}" data-detachment-strength data-id="${safe(unit.id)}" data-detachment-id="${safe(detachment.id)}"></div><details class="build-details" data-detachment-editor><summary>Configure detachment options</summary><div class="builder-choices">${buildChoiceGroup(editorUnit,'equipment','Weapons & equipment')}${buildChoiceGroup(editorUnit,'armor','Armour')}${buildChoiceGroup(editorUnit,'mounts','Mount')}${renderBuildToggles(editorUnit,'options','Unit options')}</div></details></article>`;
+        }).join('')}</details>`;
+      }
+      function builtUnits() { return data.units.filter(unit => unit.build); }
+      function getArmyCompositionRules(composition) { return armyRules?.[composition] || armyRules?.['grand-army'] || null; }
+      function normalizeRuleName(value) {
+        return String(value || '').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/ *\([^)]*\) */g,'').replace(/[{}*\[\]]/g,'').replace(/^[0-9]+x /g,'').replace(/[“”]/g,'"').trim();
+      }
+      function troopTypeFor(unit) {
+        const names = [normalizeRuleName(unit.build.name_en), normalizeRuleName(unit.build.id).replace(/-/g,' ')];
+        for (const name of names) if (rulesIndexCatalog?.[name]?.troopType) return rulesIndexCatalog[name].troopType;
+        return null;
+      }
+      function matchedCompositionIssues(built, points) {
+        const compositionRule = data.builder.compositionRule || 'open-war';
+        const grandMelee = compositionRule.includes('grand-melee');
+        const combinedArms = compositionRule.includes('combined-arms');
+        const battleMarch = compositionRule === 'battle-march';
+        const issues = [];
+        if (!battleMarch) {
+          const qualifying = built.filter(unit => unit.build.category !== 'characters' && !['WM','WB','Sw'].includes(troopTypeFor(unit)));
+          if (qualifying.length < 3) issues.push(`Open War/standard composition requires at least 3 non-Character units other than War Machines, War Beasts, and Swarms (currently ${qualifying.length}).`);
+        }
+        if (battleMarch) {
+          const qualifying = built.filter(unit => unit.build.category !== 'characters' && !['WB','Sw'].includes(troopTypeFor(unit)));
+          if (qualifying.length < 2) issues.push(`Battle March requires at least 2 qualifying non-Character units (currently ${qualifying.length}).`);
+        }
+        const maxPercents = battleMarch
+          ? { characters:25, core:35, special:30, rare:25, mercenaries:25 }
+          : grandMelee ? { characters:25, core:25, special:25, rare:25, mercenaries:25 } : {};
+        for (const [category,percent] of Object.entries(maxPercents)) {
+          for (const unit of built.filter(entry => entry.build.category === category && !(grandMelee && !battleMarch && entry.named))) {
+            const cost = unitPoints(unit), limit = Math.floor(points * percent / 100);
+            if (cost > limit) issues.push(`${unit.name} (${cost} pts) exceeds the ${displayName(category)} single-unit ${percent}% cap (${limit} pts) for ${displayName(compositionRule)}.`);
+          }
+        }
+        if (combinedArms) {
+          const additional = Math.max(Math.floor((points - 2000) / 1000),0);
+          const repeats = { characters:3, core:4, special:3, rare:2, mercenaries:2 };
+          for (const [category,base] of Object.entries(repeats)) {
+            const counts = new Map();
+            for (const unit of built.filter(entry => entry.build.category === category)) counts.set(unit.build.id,(counts.get(unit.build.id)||0)+1);
+            for (const [id,count] of counts) if (count > base + additional) {
+              const name = built.find(unit => unit.build.id === id)?.name || displayName(id);
+              issues.push(`${name} is selected ${count} times; Combined Arms permits ${base + additional} at ${points} points.`);
+            }
+          }
+        }
+        if (grandMelee) {
+          const modelEntries = built.flatMap(unit => [
+            {name:unit.name,models:Number(unit.models || 1)},
+            ...(unit.build.detachments || []).map(det => ({name:det.build.name_en,models:Number(det.build.strength || 1)}))
+          ]);
+          const totalModels = modelEntries.reduce((sum,entry) => sum + entry.models,0);
+          if (totalModels) for (const entry of modelEntries) if (entry.models > totalModels / 2) issues.push(`${entry.name} contains more than half the army's models, against the Grand Melee 50% limit.`);
+          const wizardLevels = built.filter(unit => !unit.named && ['characters','special','rare'].includes(unit.build.category)).map(unit => ({unit,level:wizardLevelFor(unit.build)}));
+          const maxThree = Math.floor(points / 1000), maxFour = Math.floor(points / 2000);
+          if (wizardLevels.filter(entry => entry.level === 3).length > maxThree) issues.push(`Grand Melee allows ${maxThree} level-3 Wizards at ${points} points.`);
+          if (wizardLevels.filter(entry => entry.level === 4).length > maxFour) issues.push(`Grand Melee allows ${maxFour} level-4 Wizards at ${points} points.`);
+        }
+        return issues;
+      }
+      function renderBuilderValidation() {
+        const summary = $('#builderSummary'), root = $('#compositionChecks');
+        if (!summary || !root) return;
+        const built = builtUnits();
+        const points = built.reduce((sum,unit) => sum + getBuiltUnitPoints(unit.build),0);
+        const cap = Number(data.builder.pointsLimit || startInfo().points);
+        summary.innerHTML = `<div class="metrics" style="margin-top:.8rem"><div class="metric"><strong>${points.toLocaleString()} / ${cap.toLocaleString()}</strong><span>Built army points</span></div><div class="metric"><strong>${built.length}</strong><span>Catalog units</span></div><div class="metric"><strong>${built.filter(unit => unit.general).length}</strong><span>Selected generals</span></div></div>`;
+        if (!armyRules || !data.builder.composition) { root.innerHTML = '<div class="hint" style="margin-top:.6rem">Choose a faction/composition to see its army-building checks.</div>'; return; }
+        if (!built.length) { root.innerHTML = '<div class="hint" style="margin-top:.6rem">Add catalog units to see category percentages and composition validation.</div>'; return; }
+        const compositionRules = getArmyCompositionRules(data.builder.composition) || {};
+        const categories = ['characters','core','special','rare','mercenaries','allies'];
+        const categoryData = Object.fromEntries(categories.map(category => [category, {
+          units: built.filter(unit => unit.build.category === category),
+          points: built.filter(unit => unit.build.category === category).reduce((sum,unit) => sum + getBuiltUnitPoints(unit.build),0)
+        }]));
+        const issues = [];
+        const generals = built.filter(unit => unit.general);
+        if (generals.length !== 1) issues.push(`Select exactly one general (currently ${generals.length}).`);
+        if (generals.length === 1 && (generals[0].build.category !== 'characters' || generals[0].named || Number(generals[0].models || 1) !== 1)) issues.push('The general must be an eligible single-model Character and cannot be a named special character.');
+        const activeCommand = (unit,name) => (unit.build.command || []).some(command => command.active && command.name_en === name);
+        const battleStandardBearers = built.filter(unit => unit.build.category === 'characters' && activeCommand(unit,'Battle Standard Bearer'));
+        if (battleStandardBearers.length > 1) issues.push(`Only one Battle Standard Bearer is allowed (currently ${battleStandardBearers.length}).`);
+        if (data.builder.army === 'vampire-counts' && generals.length === 1 && wizardLevelFor(generals[0].build) < 1) issues.push('Vampire Counts requires its General to be a Wizard.');
+        if (data.builder.army === 'tomb-kings-of-khemri') {
+          const eligiblePriests = built.filter(unit => unit.build.category === 'characters' && (unit.build.command || []).some(command => command.name_en === 'The Hierophant'));
+          const hierophants = eligiblePriests.filter(unit => activeCommand(unit,'The Hierophant'));
+          if (hierophants.length !== 1) issues.push(`Tomb Kings requires exactly one Hierophant (currently ${hierophants.length}).`);
+          else {
+            const highestWizardLevel = Math.max(0,...eligiblePriests.map(unit => wizardLevelFor(unit.build)));
+            if (wizardLevelFor(hierophants[0].build) < highestWizardLevel) issues.push('The Hierophant must be one of the army’s highest-level eligible Wizards.');
+            if (data.builder.composition === 'mortuary-cults' && !generals.some(unit => unit.id === hierophants[0].id)) issues.push('In a Mortuary Cults army, the General must be the Hierophant.');
+          }
+        }
+        if (points > cap) issues.push(`Army is ${points - cap} points over its ${cap}-point limit.`);
+        issues.push(...matchedCompositionIssues(built,cap));
+        for (const unit of built) {
+          const spellCount = Object.values(unit.build.generatedSpells || {}).reduce((sum,spells) => sum + (spells || []).length,0);
+          const signatureCount = Object.entries(unit.build.generatedSpells || {}).reduce((sum,[lore,spells]) => sum + (spells || []).filter(spell => loreSpellEntries(unit.build,lore)[spell]?.index === 'signature').length,0);
+          const generatedLimit = generatedSpellLimit(unit.build);
+          const signatureLimit = Number(unit.build.maxSignatureSpells ?? 1);
+          if (spellCount > generatedLimit) issues.push(`${unit.name} has ${spellCount} selected spells but can generate ${generatedLimit}.`);
+          if (signatureCount > signatureLimit) issues.push(`${unit.name} has ${signatureCount} signature spells but may generate ${signatureLimit}.`);
+        }
+        const rows = [];
+        for (const category of categories) {
+          const rule = compositionRules[category];
+          if (!rule) continue;
+          const current = categoryData[category];
+          const maxPoints = typeof rule.maxPercent === 'number' ? Math.floor(cap * rule.maxPercent / 100) : null;
+          const minPoints = typeof rule.minPercent === 'number' ? Math.floor(cap * rule.minPercent / 100) : null;
+          if (maxPoints !== null && current.points > maxPoints) issues.push(`${displayName(category)} uses ${current.points} points; the ${rule.maxPercent}% cap is ${maxPoints}.`);
+          if (minPoints !== null && current.points < minPoints) issues.push(`${displayName(category)} needs at least ${minPoints} points (${rule.minPercent}% of the army); currently ${current.points}.`);
+          rows.push(`<tr class="${(maxPoints !== null && current.points > maxPoints) || (minPoints !== null && current.points < minPoints) ? 'over' : ''}"><td>${safe(displayName(category))}</td><td>${current.points}</td><td>${minPoints === null ? '—' : `≥ ${minPoints}`}</td><td>${maxPoints === null ? '—' : `≤ ${maxPoints}`}</td><td>${current.units.length}</td></tr>`);
+          for (const unitRule of rule.units || []) {
+            const selected = current.units.filter(unit => unitRule.ids?.includes(unit.build.id));
+            const scale = unitRule.points ? Math.floor(points / unitRule.points) : 1;
+            const minimum = Number(unitRule.min || 0) * scale;
+            const maximum = unitRule.max === undefined ? null : Number(unitRule.max) * scale;
+            if (selected.length < minimum) issues.push(`${displayName(category)} requires at least ${minimum} ${unitRule.ids.map(displayName).join(' / ')}; roster has ${selected.length}.`);
+            if (maximum !== null && selected.length > maximum) issues.push(`${displayName(category)} allows at most ${maximum} ${unitRule.ids.map(displayName).join(' / ')}; roster has ${selected.length}.`);
+            if (unitRule.requires?.length && selected.length && !unitRule.requiresGeneral) {
+              const requiredType = unitRule.requiresType || category;
+              const requiredUnits = built.filter(unit => (requiredType === 'all' || unit.build.category === requiredType) && unitRule.requires.includes(unit.build.id));
+              if (!requiredUnits.length) issues.push(`${selected.map(unit => unit.name).join(', ')} requires ${unitRule.requires.map(displayName).join(' or ')} in ${requiredType === 'all' ? 'the army' : displayName(requiredType)}.`);
+            }
+            if (unitRule.requiresGeneral && selected.length && !generals.some(unit => unitRule.requires?.includes(unit.build.id))) issues.push(`${selected.map(unit => unit.name).join(', ')} requires an eligible general (${(unitRule.requires || []).map(displayName).join(' or ')}).`);
+            if (unitRule.requiresMounted && selected.some(unit => !(unit.build.mounts || []).some(mount => mount.active && mount.name_en !== 'On foot'))) issues.push(`${selected.filter(unit => !(unit.build.mounts || []).some(mount => mount.active && mount.name_en !== 'On foot')).map(unit => unit.name).join(', ')} must be mounted.`);
+          }
+        }
+        const uniqueNames = new Map();
+        for (const unit of built) {
+          const groups = [
+            ...(unit.build.items || []).map(group => ({ group, command:false })),
+            ...(unit.build.command || []).filter(command => command.active && command.magic).map(command => ({ group:command.magic, command:true }))
+          ];
+          for (const {group,command} of groups) {
+            const selected = group.selected || [];
+            for (const item of selected) if (item.onePerArmy) {
+              const owner = uniqueNames.get(item.name_en);
+              if (owner) issues.push(`${item.name_en} is marked one-per-army but is selected on multiple units.`);
+              else uniqueNames.set(item.name_en, unit.name);
+            }
+            const used = selected.reduce((sum,item) => sum + builderMagicCost(unit.build,item,item.amount || 1,command),0);
+            const maxPoints = builderMagicPointCap(group,unit.build.composition);
+            if (maxPoints && used > maxPoints) issues.push(`${unit.name}: ${group.name_en || 'Command magic'} exceeds its ${maxPoints}-point allowance.`);
+            const maxPerType = builderMagicTypeCap(group,unit.build.composition);
+            if (maxPerType) for (const type of new Set(selected.map(item => item.type))) {
+              const count = selected.filter(item => item.type === type).reduce((sum,item) => sum + Number(item.amount || 1),0);
+              if (count > maxPerType) issues.push(`${unit.name}: ${displayName(type)} is limited to ${maxPerType} magic item${maxPerType === 1 ? '' : 's'} in this category.`);
+            }
+          }
+        }
+        const rulesRows = rows.length ? `<div style="overflow-x:auto"><table class="composition-table"><thead><tr><th>Category</th><th>Points</th><th>Minimum</th><th>Maximum</th><th>Units</th></tr></thead><tbody>${rows.join('')}</tbody></table></div>` : '';
+        root.innerHTML = `${rulesRows}${issues.length ? `<div class="warn-box"><strong>Army-list checks · ${issues.length}</strong><br>${issues.map(safe).join('<br>')}</div>` : '<div class="success-box">No composition issues detected by the integrated checks.</div>'}<p class="hint" style="margin:.55rem 0 0">Checks include faction unit limits and points, matched-play composition, required units, mounted restrictions, general, magic-item, and basic wizard limits. Specialized faction checks may still require the full Old World Builder.</p>`;
+      }
+      function loadData() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+          if (saved && saved.campaign && Array.isArray(saved.units)) return { ...blank(), ...saved, campaign: { ...blank().campaign, ...saved.campaign }, builder: { ...blank().builder, ...saved.builder } };
+        } catch (_) {}
+        return blank();
+      }
+      function save() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+          $('#saveStatus').textContent = `Saved locally · ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+        } catch (_) { $('#saveStatus').textContent = 'Could not save locally — export a backup'; }
+      }
+      function startInfo() { return SIZES[data.campaign.startingSize] || SIZES.Vanguard; }
+      function goldBalance() { return Number(data.campaign.startingGold || 0) + data.ledger.reduce((sum, row) => sum + Number(row.delta || 0), 0); }
+      function strongholdCaps() {
+        const level = data.campaign.strongholdLevel;
+        return level === 'Mighty Stronghold' ? { territories: 9, barracks: 12, outposts: 3 } : level === 'Imposing Stronghold' ? { territories: 6, barracks: 5, outposts: 2 } : { territories: 3, barracks: 3, outposts: 1 };
+      }
+      function territoryEffect(t) {
+        const match = TERRITORIES.find(x => x[0] === t.type);
+        const effect = t.type === 'custom' || t.type === 'necropolis' ? (t.effect || 'none') : (match ? match[2] : 'none');
+        const value = t.upgraded ? 3 : 1;
+        const result = {};
+        if (['characters','special','rare','cavalry','war-machine','allied','monstrous','behemoth','magic-items'].includes(effect)) result[effect] = value;
+        if (effect === 'wizard2') result.wizardLevel = 2;
+        if (effect === 'wizard3') result.wizardLevel = t.upgraded ? 4 : 3;
+        if (effect === 'capacity') result.territoryCapacity = 1;
+        return result;
+      }
+      function unitSlots(unit) {
+        if (unit.build && ['allies','mercenaries'].includes(unit.build.category)) return new Set(['allied']);
+        const set = new Set(unit.extra || []);
+        if (unit.role === 'character' || unit.role === 'wizard') set.add('characters');
+        else if (unit.role && unit.role !== 'other') set.add(unit.role);
+        return set;
+      }
+      function rankFor(unit) {
+        if (unit.named) return 'Named character';
+        const renown = Number(unit.renown || 0);
+        const character = unit.role === 'character' || unit.role === 'wizard';
+        const ranks = character ? HERO_RANKS : VETERAN_RANKS;
+        let rank = character ? 'Hero' : 'Untested Warriors';
+        for (const [threshold, title] of ranks) if (renown >= threshold) rank = title;
+        const tier = renown >= 30 ? 3 : renown >= 15 ? 2 : renown >= 5 ? 1 : 0;
+        return character ? `${rank} · ${tier} item slot${tier === 1 ? '' : 's'}` : `${rank} · ${tier} veteran abil${tier === 1 ? 'ity' : 'ities'}`;
+      }
+      function computedLimits() {
+        const limits = Object.fromEntries(LIMITS.map(([key, , base]) => [key, base]));
+        let wizardLevel = 1, territoryCapacityBonus = 0;
+        for (const t of data.territories) {
+          const effects = territoryEffect(t);
+          for (const [key, value] of Object.entries(effects)) {
+            if (key === 'wizardLevel') wizardLevel = Math.max(wizardLevel, value);
+            else if (key === 'territoryCapacity') territoryCapacityBonus += value;
+            else limits[key] = (limits[key] || 0) + value;
+          }
+        }
+        return { limits, wizardLevel, territoryCapacityBonus };
+      }
+      function unitCountBySlot() {
+        const counts = Object.fromEntries(LIMITS.map(([key]) => [key, 0]));
+        for (const unit of data.units) for (const slot of unitSlots(unit)) if (slot in counts) counts[slot]++;
+        return counts;
+      }
+      function unitPoints(unit) { return unit.build ? getBuiltUnitPoints(unit.build) : Number(unit.points || 0); }
+      function totalPoints() { return data.units.reduce((sum, unit) => sum + unitPoints(unit), 0); }
+      function totalUnitLimit() { return Math.min(30, startInfo().units + Math.max(0, Number(data.campaign.barracks || 0)) * 2); }
+      function setInput(id, value) { const el = document.getElementById(id); if (el && document.activeElement !== el) el.value = value ?? ''; }
+      function populateFields() {
+        $$('#panel-overview [data-field], #panel-domain [data-field]').forEach(el => {
+          const scope = el.dataset.scope;
+          const value = scope === 'campaign' ? data.campaign[el.dataset.field] : '';
+          if (document.activeElement !== el) el.value = value ?? '';
+        });
+        renderAll();
+      }
+      function updateSummaries() {
+        const start = startInfo(), caps = strongholdCaps(), { limits, wizardLevel, territoryCapacityBonus } = computedLimits();
+        const totalLimit = totalUnitLimit(), count = unitCountBySlot();
+        $('#startMetrics').innerHTML = `<div class="metric"><strong>${start.points.toLocaleString()}</strong><span>Starting points</span></div><div class="metric"><strong>${totalLimit}</strong><span>Unit limit</span></div><div class="metric"><strong>${start.territories}</strong><span>Starting territories</span></div>`;
+        const armyMetrics = `<div class="metric"><strong>${data.units.length}/${totalLimit}</strong><span>Order units</span></div><div class="metric"><strong>${totalPoints().toLocaleString()}</strong><span>Roster points</span></div><div class="metric"><strong>${goldBalance()}</strong><span>Gold</span></div>`;
+        $('#armyMetrics').innerHTML = armyMetrics;
+        $('#armyMetricsPanel').innerHTML = armyMetrics;
+        $('#goldTotal').textContent = goldBalance();
+        $('#ledgerGoldTotal').textContent = goldBalance();
+        $('#territoryCapacity').textContent = `${caps.territories + territoryCapacityBonus} territories`;
+        $('#strongholdCaps').textContent = `${caps.barracks} barracks · ${caps.outposts} outposts`;
+        $('#territoryHint').textContent = `${data.territories.length} held · ${start.territories} starting territory${start.territories === 1 ? '' : 'ies'} recommended · capacity ${caps.territories + territoryCapacityBonus}`;
+        $('#strongholdSummaryTitle').textContent = data.campaign.strongholdName || data.campaign.strongholdLevel || 'Stronghold';
+        $('#strongholdSummary').textContent = `${data.campaign.strongholdLevel}; ${data.territories.length} territories, ${data.campaign.barracks || 0} barracks, ${data.campaign.outposts || 0} outposts.`;
+        const list = $('#limitList');
+        list.innerHTML = LIMITS.map(([key, label]) => {
+          const used = count[key] || 0, cap = limits[key] || 0;
+          return `<li class="${used > cap ? 'over' : ''}"><span>${label}</span><strong>${used} / ${cap}</strong></li>`;
+        }).join('') + `<li><span>Wizard territory level access</span><strong>Level ${wizardLevel}</strong></li>`;
+        const warnings = [];
+        if (data.units.length > totalLimit) warnings.push(`Unit count exceeds the current limit of ${totalLimit}.`);
+        for (const [key, label] of LIMITS) if ((count[key] || 0) > (limits[key] || 0)) warnings.push(`${label} exceeds its limit (${count[key]} / ${limits[key] || 0}).`);
+        if (totalPoints() > start.points) warnings.push(`Roster points exceed the ${start.points.toLocaleString()}-point starting size. Later recruitment may take a campaign roster above its initial points allowance.`);
+        if (data.territories.length > caps.territories + territoryCapacityBonus) warnings.push(`Territory count exceeds current capacity (${caps.territories + territoryCapacityBonus}).`);
+        if (Number(data.campaign.barracks || 0) > caps.barracks) warnings.push(`Barracks exceed the ${caps.barracks} maximum for this stronghold.`);
+        if (Number(data.campaign.outposts || 0) > caps.outposts) warnings.push(`Outposts exceed the ${caps.outposts} maximum for this stronghold.`);
+        const html = warnings.length ? `<div class="warn-box"><strong>Roster checks</strong><br>${warnings.map(safe).join('<br>')}</div>` : '<div class="success-box">No order-of-battle limit issues detected.</div>';
+        $('#armyWarnings').innerHTML = html;
+        $('#armyWarningsPanel').innerHTML = html;
+        const goal = Number(data.campaign.questGoal || 0), progress = Number(data.campaign.questProgress || 0);
+        $('#questProgressBar').textContent = data.campaign.quest ? `Progress: ${progress}${goal ? ` / ${goal}` : ''} quest points${goal && progress >= goal ? ' · Goal reached' : ''}` : 'Choose an active quest to begin tracking progress.';
+      }
+      function renderTerritories() {
+        const root = $('#territoryList');
+        if (!data.territories.length) { root.innerHTML = '<div class="empty">No territories recorded yet. Add your starting lands and expand your domain as the campaign grows.</div>'; return; }
+        root.innerHTML = data.territories.map((t, i) => `<article class="record" data-id="${safe(t.id)}">
+          <div class="record-head"><strong>Territory ${i + 1}</strong><button class="button danger small no-print" data-action="remove-territory" data-id="${safe(t.id)}" type="button">Remove</button></div>
+          <div class="territory-grid">
+            <div class="field"><label>Territory type</label><select data-collection="territories" data-id="${safe(t.id)}" data-field="type">${TERRITORIES.map(([v, label]) => `<option value="${v}" ${t.type === v ? 'selected' : ''}>${safe(label)}</option>`).join('')}</select></div>
+            <div class="field"><label>Name / local name</label><input data-collection="territories" data-id="${safe(t.id)}" data-field="name" value="${safe(t.name)}" placeholder="Name this land"></div>
+            <label class="inline-check"><input type="checkbox" data-collection="territories" data-id="${safe(t.id)}" data-field="upgraded" ${t.upgraded ? 'checked' : ''}> Upgraded</label>
+            <button class="button danger small no-print" data-action="remove-territory" data-id="${safe(t.id)}" type="button">×</button>
+            ${(t.type === 'custom' || t.type === 'necropolis') ? `<div class="field"><label>Order limit bonus</label><select data-collection="territories" data-id="${safe(t.id)}" data-field="effect"><option value="none">No automatic bonus</option>${LIMITS.map(([k, label]) => `<option value="${k}" ${t.effect === k ? 'selected' : ''}>${safe(label)}</option>`).join('')}<option value="wizard2" ${t.effect === 'wizard2' ? 'selected' : ''}>Wizard level 2</option><option value="wizard3" ${t.effect === 'wizard3' ? 'selected' : ''}>Wizard level 3 (4 upgraded)</option></select></div>` : ''}
+            <div class="field ${t.type === 'custom' || t.type === 'necropolis' ? '' : 'full'}"><label>Notes / territory effect</label><input data-collection="territories" data-id="${safe(t.id)}" data-field="notes" value="${safe(t.notes)}" placeholder="Upgrade, special rule, or story note"></div>
+          </div>
+        </article>`).join('');
+      }
+      function renderUnits() {
+        const root = $('#unitList');
+        if (!data.units.length) { root.innerHTML = '<div class="empty" style="margin-top:1rem">Your order of battle is empty. Add your general first, then record the rest of your starting force.</div>'; return; }
+        const expandedBuildCards = new Set($$('.unit-card').filter(card => card.querySelector('[data-build-main][open]')).map(card => card.dataset.id));
+        root.innerHTML = data.units.map((u, i) => `<article class="unit-card ${u.general ? 'is-general' : ''}" data-id="${safe(u.id)}">
+          <div class="unit-top"><div class="unit-title"><span class="unit-number">${i + 1}</span><strong>${safe(u.name || 'Unnamed unit')}</strong><span class="badge">${safe(rankFor(u))}</span></div><button class="button danger small no-print" data-action="remove-unit" data-id="${safe(u.id)}" type="button">Remove</button></div>
+          ${u.build && (u.build.notes?.name_en || u.build.specialRules?.name_en) ? `<p class="hint">${safe([u.build.notes?.name_en,u.build.specialRules?.name_en].filter(Boolean).join(' · '))}</p>` : ''}
+          <div class="unit-grid">
+            <div class="field wide"><label>Unit / character name</label><input data-collection="units" data-id="${safe(u.id)}" data-field="name" value="${safe(u.name)}" placeholder="Unit name"></div>
+            <div class="field"><label>Primary role / slot</label><select data-collection="units" data-id="${safe(u.id)}" data-field="role">${ROLES.map(([v, label]) => `<option value="${v}" ${u.role === v ? 'selected' : ''}>${safe(label)}</option>`).join('')}</select></div>
+            <div class="field"><label>${u.build ? 'Calculated points' : 'Points value'}</label><input type="number" min="0" step="1" data-collection="units" data-id="${safe(u.id)}" data-field="points" value="${safe(u.build ? getBuiltUnitPoints(u.build) : u.points)}" ${u.build ? 'readonly title="Calculated from the selected unit and options"' : ''}></div>
+            <div class="field"><label>Models</label><input type="number" min="${Number(u.build?.minimum || 1)}" ${u.build?.maximum ? `max="${Number(u.build.maximum)}"` : ''} step="1" data-collection="units" data-id="${safe(u.id)}" data-field="models" value="${safe(u.models)}"></div>
+            <div class="field"><label>Renown</label><input type="number" min="0" step="1" data-collection="units" data-id="${safe(u.id)}" data-field="renown" value="${safe(u.renown)}" ${u.named ? 'disabled title="Named characters do not gain renown"' : ''}></div>
+            <div class="field"><label>Casualty score</label><input type="number" min="0" step="1" data-collection="units" data-id="${safe(u.id)}" data-field="casualties" value="${safe(u.casualties)}"></div>
+            <div class="field"><label>Injury status</label><select data-collection="units" data-id="${safe(u.id)}" data-field="injury"><option value="None" ${u.injury === 'None' ? 'selected' : ''}>None</option><option value="Minor Injury" ${u.injury === 'Minor Injury' ? 'selected' : ''}>Minor injury</option><option value="Major Injury" ${u.injury === 'Major Injury' ? 'selected' : ''}>Major injury</option><option value="Critical Injury" ${u.injury === 'Critical Injury' ? 'selected' : ''}>Critical injury</option></select></div>
+            <div class="field"><label>Wizard level</label><input type="number" min="0" max="4" step="1" data-collection="units" data-id="${safe(u.id)}" data-field="wizardLevel" value="${safe(u.wizardLevel)}" ${u.role !== 'wizard' ? 'disabled' : ''}></div>
+            <div class="field"><label>Additional slots</label><div class="slot-box">${SLOTS.map(([key, label]) => `<label><input type="checkbox" data-collection="units" data-id="${safe(u.id)}" data-field="extra" value="${key}" ${(u.extra || []).includes(key) ? 'checked' : ''}>${safe(label)}</label>`).join('')}</div></div>
+            <div class="field"><label class="inline-check"><input type="checkbox" data-collection="units" data-id="${safe(u.id)}" data-field="general" ${u.general ? 'checked' : ''} ${u.named ? 'disabled title="Named characters cannot be campaign generals"' : ''}> General</label><label class="inline-check"><input type="checkbox" data-collection="units" data-id="${safe(u.id)}" data-field="named" ${u.named ? 'checked' : ''}> Named character</label></div>
+            <div class="field"><label>Magic items</label><textarea data-collection="units" data-id="${safe(u.id)}" data-field="magicItems" placeholder="Equipped items">${safe(u.magicItems)}</textarea></div>
+            <div class="field"><label>Spells</label><textarea data-collection="units" data-id="${safe(u.id)}" data-field="spells" placeholder="Known / selected spells" ${u.build ? 'readonly title="Select generated spells in the Army Builder options below"' : ''}>${safe(u.build ? spellSelectionText(u.build) : u.spells)}</textarea></div>
+            <div class="field"><label>Veteran abilities</label><textarea data-collection="units" data-id="${safe(u.id)}" data-field="abilities" placeholder="Record abilities earned">${safe(u.abilities)}</textarea></div>
+            <div class="field"><label>Notes</label><textarea data-collection="units" data-id="${safe(u.id)}" data-field="notes" placeholder="Equipment, upgrades, injury details…">${safe(u.notes)}</textarea></div>
+          </div>
+          ${u.build ? `<details class="build-details" data-build-main style="margin-top:.7rem" ${(u.build.expanded || expandedBuildCards.has(u.id)) ? 'open' : ''}><summary>Configure unit · ${safe(displayName(u.build.category))} · ${safe(displayName(u.build.composition))}</summary><div class="builder-choices">${buildChoiceGroup(u,'equipment','Weapons & equipment')}${buildChoiceGroup(u,'armor','Armour')}${buildChoiceGroup(u,'mounts','Mount')}${renderBuildToggles(u,'options','Unit options')}${renderBuildToggles(u,'command','Command options')}${renderBuilderMagic(u)}${renderBuilderSpells(u)}${renderBuilderDetachments(u)}</div></details>` : ''}
+        </article>`).join('');
+        $$('.unit-card').forEach(card => {
+          const unit = data.units.find(item => item.id === card.dataset.id);
+          const mainDetails = card.querySelector('[data-build-main]');
+          if (mainDetails && (expandedBuildCards.has(card.dataset.id) || unit?.build?.expanded)) mainDetails.setAttribute('open','');
+          const spellDetails = card.querySelector('[data-build-spells]');
+          if (spellDetails && unit?.build?.spellsExpanded) spellDetails.setAttribute('open','');
+        });
+      }
+      function renderVault() {
+        const root = $('#vaultList');
+        if (!data.vault.length) root.innerHTML = '<div class="empty">Your vault is empty. Add rewards as you earn them.</div>';
+        else root.innerHTML = data.vault.map((v, i) => `<article class="record vault-row" data-id="${safe(v.id)}">
+          <div class="field"><label>Type</label><select data-collection="vault" data-id="${safe(v.id)}" data-field="kind">${['Magic Standard','Magic Weapon','Magic Item','Spell','Other'].map(x => `<option ${v.kind === x ? 'selected' : ''}>${x}</option>`).join('')}</select></div>
+          <div class="field"><label>Vault entry</label><input data-collection="vault" data-id="${safe(v.id)}" data-field="name" value="${safe(v.name)}" placeholder="Name / lore"></div>
+          <div class="field"><label>Assigned to (optional)</label><select data-collection="vault" data-id="${safe(v.id)}" data-field="assigned"><option value="">In the vault</option>${data.units.map(u => `<option value="${safe(u.id)}" ${v.assigned === u.id ? 'selected' : ''}>${safe(u.name || 'Unnamed unit')}</option>`).join('')}</select></div>
+          <button class="button danger small no-print" data-action="remove-vault" data-id="${safe(v.id)}" type="button" aria-label="Remove vault entry ${i + 1}">Remove</button>
+        </article>`).join('');
+        const counts = Object.fromEntries(['Magic Standard','Magic Weapon','Magic Item','Spell','Other'].map(k => [k, data.vault.filter(v => v.kind === k).length]));
+        $('#vaultCounts').textContent = `Vault entries: ${counts['Magic Standard']}/6 standards · ${counts['Magic Weapon']}/6 weapons · ${counts['Magic Item']}/6 items · ${counts.Spell}/6 spells · ${counts.Other}/6 other.`;
+      }
+      function renderLedger() {
+        const root = $('#ledgerList');
+        if (!data.ledger.length) { root.innerHTML = '<div class="empty">No Gold transactions yet. Record the starting campaign Gold above, then log battle income and expenses here.</div>'; return; }
+        root.innerHTML = data.ledger.slice().reverse().map(row => `<div class="ledger-row"><span>${safe(row.date || '')}</span><span class="row-value">${safe(row.description)}</span><strong class="amount ${row.delta >= 0 ? 'plus' : 'minus'}">${row.delta >= 0 ? '+' : ''}${row.delta} G</strong><button class="button danger small no-print" data-action="remove-ledger" data-id="${safe(row.id)}" type="button">Remove</button></div>`).join('');
+      }
+      function renderBattles() {
+        const root = $('#battleList');
+        if (!data.battles.length) { root.innerHTML = '<div class="empty">No battles recorded. Add a short chronicle entry after each game.</div>'; return; }
+        root.innerHTML = data.battles.slice().reverse().map((b, i) => `<article class="record" style="margin-top:.65rem"><div class="record-head"><strong>${safe(b.date)} · ${safe(b.opponent || 'Battle')}</strong><button class="button danger small no-print" data-action="remove-battle" data-id="${safe(b.id)}" type="button">Remove</button></div><div class="hint">${safe(b.points || '—')} points · ${safe(b.result || 'Result unrecorded')} · ${safe(b.plan || 'No battleplan')}</div>${b.notes ? `<p style="margin:.5rem 0 0;font-size:.85rem">${safe(b.notes)}</p>` : ''}</article>`).join('');
+      }
+      function renderQuestHistory() {
+        const root = $('#questHistory');
+        if (!data.questHistory.length) { root.innerHTML = '<div class="hint">Completed quests will be listed here.</div>'; return; }
+        root.innerHTML = data.questHistory.map((q, i) => `<div class="record"><div class="record-head"><strong>${safe(q.name)}</strong><button class="button danger small no-print" data-action="remove-quest" data-index="${i}" type="button">Remove</button></div>${q.reward ? `<div class="hint">Reward: ${safe(q.reward)}</div>` : ''}</div>`).join('');
+      }
+      function renderAll() {
+        renderTerritories(); renderUnits(); renderBuilderPreview(); renderVault(); renderLedger(); renderBattles(); renderQuestHistory(); updateSummaries(); renderBuilderValidation();
+      }
+      function setTab(name) {
+        $$('.tab').forEach(tab => tab.setAttribute('aria-selected', String(tab.dataset.tab === name)));
+        $$('.panel').forEach(panel => { panel.hidden = panel.id !== `panel-${name}`; });
+      }
+      function updateField(el) {
+        const { scope, collection, field, id } = el.dataset;
+        let entry = null;
+        if (scope === 'builder') {
+          data.builder[field] = el.type === 'number' ? Number(el.value || 0) : el.value;
+          if (field === 'army') {
+            data.builder.pending = null;
+            $('#builderUnit').value = '';
+            renderBuilderPreview();
+            selectBuilderFaction(el.value);
+            return;
+          }
+          if (field === 'foreignChoice') {
+            selectBuilderForeign(el.value);
+            return;
+          }
+          if (field === 'category' || field === 'composition' || field === 'foreignCategory') {
+            data.builder.pending = null;
+            $('#builderUnit').value = '';
+            if (field === 'category' || field === 'composition') renderBuilderForeignSelectors();
+            renderBuilderUnitSelect(); renderBuilderPreview();
+          }
+          save(); updateSummaries(); renderBuilderValidation();
+          return;
+        } else if (scope === 'campaign') {
+          data.campaign[field] = el.value;
+          if (field === 'startingSize') data.campaign.startingGold = startInfo().gold;
+        } else if (collection) {
+          const list = data[collection];
+          entry = list && list.find(item => item.id === id);
+          if (!entry) return;
+          if (field === 'extra') {
+            const values = [...$$(`[data-collection="units"][data-id="${CSS.escape(id)}"][data-field="extra"]:checked`)].map(box => box.value);
+            entry.extra = values;
+          } else if (el.type === 'checkbox') entry[field] = el.checked;
+          else if (el.type === 'number') entry[field] = Number(el.value || 0);
+          else entry[field] = el.value;
+          if (collection === 'units' && field === 'models' && entry.build) entry.build.strength = Math.max(1, Number(entry.models || 1));
+          if (collection === 'units' && field === 'general' && el.checked) {
+            if (!entry.named) entry.renown = Math.max(Number(entry.renown || 0), 5);
+            data.units.forEach(other => { if (other.id !== id) other.general = false; });
+            data.campaign.generalName = entry.name || data.campaign.generalName;
+            if (entry.build) {
+              const generalCommand = (entry.build.command || []).find(command => command.name_en === 'General');
+              if (generalCommand) {
+                generalCommand.active = true;
+                if (generalCommand.exclusive === true) (entry.build.command || []).forEach(command => { if (command !== generalCommand && command.exclusive === true) command.active = false; });
+              }
+            }
+          }
+          if (collection === 'units' && field === 'named' && el.checked && entry.general) {
+            entry.general = false;
+            data.campaign.generalName = '';
+            if (entry.build) (entry.build.command || []).forEach(command => { if (command.name_en === 'General') command.active = false; });
+          }
+          if (collection === 'units' && field === 'general' && !el.checked && entry.build) (entry.build.command || []).forEach(command => { if (command.name_en === 'General') command.active = false; });
+        if (collection === 'units' && field === 'name') {
+          if (entry.general) {
+            data.campaign.generalName = el.value;
+            setInput('generalName', el.value);
+          }
+          const title = el.closest('.unit-card')?.querySelector('.unit-title strong');
+          if (title) title.textContent = el.value || 'Unnamed unit';
+        }
+        }
+        if (scope === 'campaign' && field === 'startingSize') setInput('startingGold', data.campaign.startingGold);
+        save(); updateSummaries(); renderBuilderValidation();
+        if (collection === 'units' && ['role','renown','named','general'].includes(field)) renderUnits();
+        if (collection === 'units' && field === 'models' && entry?.build) {
+          const pointsField = document.querySelector(`.unit-card[data-id="${CSS.escape(id)}"] input[data-field="points"]`);
+          if (pointsField) pointsField.value = getBuiltUnitPoints(entry.build);
+        }
+        if (collection === 'vault' && field === 'kind') renderVault();
+      }
+      document.addEventListener('input', event => {
+        const el = event.target;
+        if (el.matches('[data-field]')) updateField(el);
+        if (el.hasAttribute('data-pending-field')) {
+          const unit = data.builder.pending;
+          if (unit) {
+            if (el.dataset.pendingField === 'models') {
+              unit.models = Math.max(Number(el.min || 1),Number(el.value || 1));
+              if (el.max) unit.models = Math.min(unit.models,Number(el.max));
+              unit.build.strength = unit.models;
+              unit.points = getBuiltUnitPoints(unit.build);
+              $('#pendingPoints').textContent = `${unit.points} points`;
+            } else if (el.dataset.pendingField === 'general') {
+              if (el.checked && data.units.some(existing => existing.general)) { el.checked = false; alert('This roster already has a general.'); return; }
+              unit.general = el.checked;
+              if (unit.general) {
+                unit.renown = 5;
+                (unit.build.command || []).forEach(command => { if (command.name_en === 'General') command.active = true; });
+              } else {
+                unit.renown = 0;
+                (unit.build.command || []).forEach(command => { if (command.name_en === 'General') command.active = false; });
+              }
+              renderBuilderPreview();
+            }
+            save();
+          }
+        }
+        if (el.hasAttribute('data-detachment-strength')) {
+          const parent = getConfigUnit(el.dataset.id);
+          const detachment = parent?.build?.detachments?.find(item => item.id === el.dataset.detachmentId);
+          if (detachment) {
+            const value = Math.max(Number(el.min || 1),Number(el.value || 1));
+            detachment.build.strength = el.max ? Math.min(value,Number(el.max)) : value;
+            parent.points = getBuiltUnitPoints(parent.build);
+            const pointsNode = parent.id === 'pending' ? $('#pendingPoints') : document.querySelector(`.unit-card[data-id="${CSS.escape(parent.id)}"] input[data-field="points"]`);
+            if (pointsNode) parent.id === 'pending' ? pointsNode.textContent = `${parent.points} points` : pointsNode.value = parent.points;
+            save(); updateSummaries(); renderBuilderValidation();
+          }
+        }
+        if (el.matches('[data-build-stack]')) {
+          const unit = getConfigUnit(el.dataset.id);
+          const option = unit?.build?.[el.dataset.buildStack]?.[Number(el.dataset.index)];
+          if (option) option.stackableCount = Number(el.value || 0);
+          if (unit?.__parent) { refreshConfiguredUnit(unit); return; }
+          save(); updateSummaries(); renderBuilderValidation();
+          const pointsField = unit && document.querySelector(`.unit-card[data-id="${CSS.escape(unit.id)}"] input[data-field="points"]`);
+          if (pointsField) pointsField.value = getBuiltUnitPoints(unit.build);
+        }
+      });
+      document.addEventListener('change', event => {
+        const el = event.target;
+        if (el.id === 'builderUnit') { selectCatalogUnit(el.value); return; }
+        if (el.hasAttribute('data-detachment-strength')) { refreshConfiguredUnit(getConfigUnit(el.dataset.id)); return; }
+        if (el.hasAttribute('data-pending-field')) {
+          const pending = data.builder.pending;
+          if (pending && el.dataset.pendingField === 'models') {
+            if (Number(pending.models) !== 1 && pending.general) {
+              pending.general = false;
+              (pending.build.command || []).forEach(command => { if (command.name_en === 'General') command.active = false; });
+              pending.renown = 0;
+            }
+            renderBuilderPreview(); save();
+          }
+          return;
+        }
+        const unit = getConfigUnit(el.dataset.id);
+        if (!unit?.build) return;
+        if (el.dataset.buildChoice) {
+          const field = el.dataset.buildChoice;
+          if (field === 'equipment') {
+            const group = el.dataset.buildGroup || '';
+            (unit.build.equipment || []).forEach((option,index) => {
+              if (String(option.group ?? '') === group) option.active = index === Number(el.dataset.index) ? el.checked : false;
+            });
+          } else if (field === 'armor') {
+            const options = unit.build.armor || [];
+            if (options.length === 1) options.forEach((option,index) => { if (index === Number(el.dataset.index)) option.active = el.checked; });
+            else options.forEach((option,index) => { option.active = index === Number(el.dataset.index) && el.checked; });
+          } else (unit.build[field] || []).forEach((option,index) => { option.active = Number(el.value) === index; });
+        } else if (el.dataset.buildToggle) {
+          const option = unit.build[el.dataset.buildToggle]?.[Number(el.dataset.index)];
+          if (option) {
+            option.active = el.checked;
+            if (el.checked && option.group !== undefined) (unit.build[el.dataset.buildToggle] || []).forEach(other => { if (other !== option && other.group === option.group) other.active = false; });
+            if (el.dataset.buildToggle === 'command' && el.checked && option.exclusive === true) (unit.build.command || []).forEach(other => { if (other !== option && other.exclusive === true) other.active = false; });
+            if (el.dataset.buildToggle === 'command') {
+              const generalCommand = (unit.build.command || []).find(command => command.name_en === 'General');
+              if (generalCommand && unit.general !== Boolean(generalCommand.active)) {
+                unit.general = Boolean(generalCommand.active);
+                data.units.forEach(other => { if (other.id !== unit.id && unit.general) other.general = false; });
+                data.campaign.generalName = unit.general ? unit.name : '';
+                if (unit.general && !unit.named) unit.renown = Math.max(Number(unit.renown || 0),5);
+              }
+            }
+          }
+        } else if (el.dataset.buildChild) {
+          const option = unit.build[el.dataset.buildChild]?.[Number(el.dataset.index)]?.options?.[Number(el.dataset.childIndex)];
+          if (option) {
+            option.active = el.checked;
+            if (el.checked && option.exclusive) (unit.build[el.dataset.buildChild]?.[Number(el.dataset.index)]?.options || []).forEach(other => { if (other !== option && other.exclusive) other.active = false; });
+          }
+        } else if (el.hasAttribute('data-build-mount-child')) {
+          const option = unit.build.mounts?.[Number(el.dataset.index)]?.options?.[Number(el.dataset.childIndex)];
+          if (option) option.active = el.checked;
+        } else if (el.hasAttribute('data-spell-lore')) {
+          unit.build.activeLore = el.value;
+          unit.build.generatedSpells = {};
+          unit.spells = '';
+        } else if (el.hasAttribute('data-generated-spell')) {
+          const lore = el.dataset.lore, spell = el.dataset.spell;
+          unit.build.generatedSpells ||= {};
+          const selected = unit.build.generatedSpells[lore] || [];
+          if (el.checked && !selected.includes(spell)) selected.push(spell);
+          if (!el.checked) unit.build.generatedSpells[lore] = selected.filter(id => id !== spell);
+          else unit.build.generatedSpells[lore] = selected;
+          for (const [loreId, spells] of Object.entries(unit.build.generatedSpells)) {
+            spells.sort((a,b) => {
+              const ai = spellCatalog?.[loreId]?.[a]?.index, bi = spellCatalog?.[loreId]?.[b]?.index;
+              if (ai === 'signature') return -1; if (bi === 'signature') return 1;
+              return Number(ai || 0) - Number(bi || 0);
+            });
+          }
+          unit.spells = spellSelectionText(unit.build);
+        } else return;
+        refreshConfiguredUnit(unit);
+      });
+      document.addEventListener('toggle', event => {
+        const details = event.target;
+        if (!(details instanceof HTMLDetailsElement)) return;
+        const card = details.closest('.unit-card');
+        const unit = card && getConfigUnit(card.dataset.id);
+        if (!unit?.build) return;
+        if (details.hasAttribute('data-build-main')) unit.build.expanded = details.open;
+        if (details.hasAttribute('data-build-spells')) unit.build.spellsExpanded = details.open;
+        save();
+      }, true);
+      document.addEventListener('click', event => {
+        const tab = event.target.closest('[data-tab]');
+        if (tab) setTab(tab.dataset.tab);
+        const open = event.target.closest('[data-open-tab]');
+        if (open) setTab(open.dataset.openTab);
+        const action = event.target.closest('[data-action]');
+        if (!action) return;
+        const { action: name, id, index } = action.dataset;
+        if (name === 'add-detachment') {
+          const parent = getConfigUnit(id);
+          const select = document.querySelector(`select[data-detachment-select][data-id="${CSS.escape(id)}"]`);
+          const raw = parent && availableDetachments(parent.build).find(option => option.id === select?.value);
+          if (!parent?.build || !raw) return;
+          const detachmentBuild = cloneBuildData(raw,raw._sourceCategory || 'core');
+          detachmentBuild.strength = Number(raw.minDetachmentSize || 5);
+          detachmentBuild.minimum = Number(raw.minDetachmentSize || 5);
+          detachmentBuild.maximum = raw.maxDetachmentSize;
+          const detachment = { id:`det-${uid()}`, sourceId:raw.id, build:detachmentBuild, minDetachmentSize:raw.minDetachmentSize || 5, maxDetachmentSize:raw.maxDetachmentSize, scaleWithUnit:Boolean(raw.scaleWithUnit) };
+          parent.build.detachments ||= [];
+          if (parent.build.maxDetachments && parent.build.detachments.length >= parent.build.maxDetachments) { alert(`This unit can only take ${parent.build.maxDetachments} detachments.`); return; }
+          parent.build.detachments.push(detachment);
+          refreshConfiguredUnit(parent);
+          return;
+        }
+        if (name === 'remove-detachment') {
+          const parent = getConfigUnit(id);
+          if (parent?.build) parent.build.detachments = (parent.build.detachments || []).filter(detachment => detachment.id !== action.dataset.detachmentId);
+          refreshConfiguredUnit(parent);
+          return;
+        }
+        if (name === 'add-build-magic') {
+          const unit = getConfigUnit(id), groupIndex = Number(index);
+          const kind = action.dataset.magicKind || 'items', commandIndex = Number(action.dataset.commandIndex);
+          const group = kind === 'command' ? unit?.build?.command?.[commandIndex]?.magic : unit?.build?.items?.[groupIndex];
+          const selector = `select[data-magic-select][data-magic-kind="${kind}"][data-index="${groupIndex}"][data-command-index="${commandIndex}"][data-id="${CSS.escape(id)}"]`;
+          const amountSelector = `input[data-magic-amount][data-magic-kind="${kind}"][data-index="${groupIndex}"][data-command-index="${commandIndex}"][data-id="${CSS.escape(id)}"]`;
+          const select = document.querySelector(selector), amountInput = document.querySelector(amountSelector);
+           const items = group ? magicItemsForGroup(unit.build,group) : [];
+           const cap = group && builderMagicPointCap(group,unit.build.composition);
+           const available = group && items.filter(candidate => !cap || Number(candidate.points || 0) <= cap);
+          const item = group && select?.value !== '' && available[Number(select?.value)];
+          if (group && item) {
+            const selected = group.selected || (group.selected = []);
+            const existing = selected.find(entry => entry.name_en === item.name_en);
+            const amount = Math.max(1,Number(amountInput?.value || 1));
+            const newAmount = Number(existing?.amount || 0) + amount;
+            const maximum = Number(item.maximum || (!item.stackable ? 1 : 99));
+            const typeCap = builderMagicTypeCap(group,unit.build.composition);
+            const typeTotal = selected.filter(entry => entry.type === item.type).reduce((sum,entry) => sum + Number(entry.amount || 1),0);
+            const typeAlreadyUsed = selected.some(entry => entry.type === item.type && entry.name_en !== item.name_en && !entry.stackable && !item.stackable && !entry.nonExclusive && !item.nonExclusive);
+            const groupCost = selected.reduce((sum,entry) => sum + builderMagicCost(unit.build,entry,entry.amount || 1,kind === 'command'),0);
+            const additionCost = builderMagicCost(unit.build,item,amount,kind === 'command');
+            const armyHasUnique = [...builtUnits(), ...(unit.id === 'pending' ? [unit] : [])].some(other => [
+              ...(other.build.items || []).flatMap(group => group.selected || []),
+              ...(other.build.command || []).flatMap(command => command.magic?.selected || [])
+            ].some(entry => entry.name_en === item.name_en));
+            if (item.onePerArmy && armyHasUnique) alert(`${item.name_en} may only be taken once per army.`);
+            else if (newAmount > maximum) alert(`${item.name_en} is limited to ${maximum} per unit.`);
+            else if (typeCap && typeTotal + amount > typeCap) alert(`${displayName(item.type)} is limited to ${typeCap} item${typeCap === 1 ? '' : 's'} in this category.`);
+            else if (!typeCap && typeAlreadyUsed) alert(`Only one non-stackable ${displayName(item.type)} may be selected in this item group.`);
+            else if (cap && groupCost + additionCost > cap) alert(`This selection would exceed the ${cap}-point magic-item allowance.`);
+            else {
+              if (existing) existing.amount = newAmount;
+              else selected.push({ ...deepCopy(item), amount });
+              refreshConfiguredUnit(unit);
+            }
+          }
+          return;
+        }
+        if (name === 'remove-build-magic') {
+          const unit = getConfigUnit(id), kind = action.dataset.magicKind || 'items';
+          const group = kind === 'command' ? unit?.build?.command?.[Number(action.dataset.commandIndex)]?.magic : unit?.build?.items?.[Number(index)];
+          group?.selected?.splice(Number(action.dataset.itemIndex),1);
+          refreshConfiguredUnit(unit); return;
+        }
+        const mapping = { 'remove-territory':'territories', 'remove-unit':'units', 'remove-vault':'vault', 'remove-ledger':'ledger', 'remove-battle':'battles' };
+        if (name === 'remove-unit') {
+          const removed = data.units.find(item => item.id === id);
+          if (removed && removed.general) data.campaign.generalName = '';
+          data.vault.forEach(item => { if (item.assigned === id) item.assigned = ''; });
+        }
+        if (mapping[name]) data[mapping[name]] = data[mapping[name]].filter(item => item.id !== id);
+        if (name === 'remove-quest') data.questHistory.splice(Number(index), 1);
+        save(); renderAll();
+      });
+      $('#addUnit').addEventListener('click', () => {
+        data.units.push({ id: uid(), name: '', role: data.units.length === 0 ? 'character' : 'other', extra: [], models: 1, points: 0, renown: data.units.length ? 0 : 5, casualties: 0, injury: 'None', wizardLevel: 1, general: data.units.length === 0, named: false, spells: '', magicItems: '', abilities: '', notes: '' });
+        if (data.units.length === 1) data.campaign.generalName = '';
+        save(); renderAll();
+        const last = $('#unitList .unit-card:last-child input[data-field="name"]'); if (last) last.focus();
+      });
+      $('#addCatalogUnit').addEventListener('click', addCatalogUnit);
+      $('#addTerritory').addEventListener('click', () => { data.territories.push({ id: uid(), type: 'old-keep', name: '', upgraded: false, notes: '' }); save(); renderAll(); });
+      $('#addVault').addEventListener('click', () => { data.vault.push({ id: uid(), kind: 'Magic Item', name: '', assigned: '' }); save(); renderVault(); });
+      $('#completeQuest').addEventListener('click', () => {
+        if (!data.campaign.quest) { alert('Choose an active quest first.'); return; }
+        data.questHistory.unshift({ name: data.campaign.quest, reward: data.campaign.questReward });
+        data.campaign.quest = ''; data.campaign.questReward = ''; data.campaign.questProgress = 0; data.campaign.questGoal = 3; data.campaign.questNotes = '';
+        populateFields(); save();
+      });
+      $('#goldDate').value = today();
+      $('#goldForm').addEventListener('submit', event => {
+        event.preventDefault();
+        const amount = Math.abs(Number($('#goldAmount').value || 0));
+        if (!amount) return;
+        data.ledger.push({ id: uid(), date: $('#goldDate').value || today(), description: $('#goldDescription').value.trim(), delta: $('#goldDirection').value === 'expense' ? -amount : amount });
+        $('#goldDescription').value = ''; $('#goldAmount').value = '';
+        save(); renderAll();
+      });
+      $('#addBattle').addEventListener('click', () => {
+        const date = prompt('Battle date (YYYY-MM-DD):', today()); if (date === null) return;
+        const opponent = prompt('Opponent / army:') || '';
+        const points = prompt('Points limit:') || '';
+        const result = prompt('Result (major victory, minor victory, defeat, draw):') || '';
+        const plan = prompt('Battleplan:') || '';
+        const notes = prompt('Battle notes (optional):') || '';
+        data.battles.push({ id: uid(), date, opponent, points, result, plan, notes }); save(); renderBattles();
+      });
+      $('#exportButton').addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify({ format: 'Old World Conquest Roster', version: 1, exportedAt: new Date().toISOString(), ...data }, null, 2)], { type: 'application/json' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `${(data.campaign.armyName || 'conquest-roster').toLowerCase().replace(/[^a-z0-9]+/g, '-')}.json`;
+        link.click(); URL.revokeObjectURL(link.href);
+      });
+      $('#importButton').addEventListener('click', () => $('#importFile').click());
+      $('#importFile').addEventListener('change', async event => {
+        const file = event.target.files[0]; if (!file) return;
+        try {
+          const parsed = JSON.parse(await file.text());
+          const imported = parsed.campaign ? parsed : parsed.data;
+          if (!imported || !imported.campaign || !Array.isArray(imported.units)) throw new Error('That file does not look like a Conquest roster backup.');
+          data = { ...blank(), ...imported, campaign: { ...blank().campaign, ...imported.campaign }, builder: { ...blank().builder, ...imported.builder } };
+          for (const key of ['territories','units','vault','ledger','battles','questHistory']) if (!Array.isArray(data[key])) data[key] = [];
+          save(); populateFields();
+        } catch (error) { alert(`Could not import roster: ${error.message}`); }
+        event.target.value = '';
+      });
+      $('#printButton').addEventListener('click', () => window.print());
+      $('#resetButton').addEventListener('click', () => {
+        if (!confirm('Start a new roster? This replaces the roster saved in this browser. Export a backup first if you need it.')) return;
+        data = blank(); localStorage.removeItem(STORAGE_KEY); populateFields(); save(); setTab('overview');
+      });
+      populateFields();
+      if (!$('#goldDate').value) $('#goldDate').value = today();
+      loadArmySources();
+    })();
+  </script>
+</body>
+</html>
