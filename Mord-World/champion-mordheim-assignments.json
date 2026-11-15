@@ -1,0 +1,1636 @@
+{
+  "format": "old-world-mordheim-champion-assignments",
+  "version": 1,
+  "exportedAt": "2026-11-15T11:19:50.504Z",
+  "assignments": {
+    "Beastmen Brayherds": {
+      "Bestigor Herd — Gouge-horn": {
+        "profileId": "beastmen-raiders-0-2-bestigors",
+        "choiceId": "profile:beastmen-raiders-0-2-bestigors",
+        "model": "Bestigors — Beastmen Raiders · Hero",
+        "warband": "Beastmen Raiders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Centigor Herd — Gorehoof": {
+        "profileId": "beastmen-raiders-0-1-centigors",
+        "choiceId": "profile:beastmen-raiders-0-1-centigors",
+        "model": "Centigors — Beastmen Raiders · Hero",
+        "warband": "Beastmen Raiders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Chaos Ogres — Champion": {
+        "profileId": "ostlander-mercenaries-0-1-ogre",
+        "choiceId": "profile:ostlander-mercenaries-0-1-ogre",
+        "model": "Ogre — Ostlander Mercenaries · Henchman",
+        "warband": "Ostlanders",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Gor Herd — True-horn": {
+        "profileId": "beastmen-raiders-0-5-gor",
+        "choiceId": "profile:beastmen-raiders-0-5-gor",
+        "model": "Gor — Beastmen Raiders · Henchman",
+        "warband": "Beastmen Raiders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Minotaur Herd — Bloodkine": {
+        "profileId": "beastmen-raiders-0-1-minotaur",
+        "choiceId": "profile:beastmen-raiders-0-1-minotaur",
+        "model": "Minotaur — Beastmen Raiders · Henchman",
+        "warband": "Beastmen Raiders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Primal Warherd — Foe-render": {
+        "profileId": "beastmen-raiders-0-2-bestigors",
+        "choiceId": "profile:beastmen-raiders-0-2-bestigors",
+        "model": "Bestigors — Beastmen Raiders · Hero",
+        "warband": "Beastmen Raiders",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Ungor Herd — Half-horn": {
+        "profileId": "beastmen-raiders-ungors",
+        "choiceId": "profile:beastmen-raiders-ungors",
+        "model": "Ungor — Beastmen Raiders · Henchman",
+        "warband": "Beastmen Raiders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Warped Gors — Splice-horn": {
+        "profileId": "beastmen-raiders-0-5-gor",
+        "choiceId": "profile:beastmen-raiders-0-5-gor",
+        "model": "Gor — Beastmen Raiders · Henchman",
+        "warband": "Beastmen Raiders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      }
+    },
+    "Chaos Dwarfs": {
+      "Blunderbuss Decimators — Veteran Warrior": {
+        "profileId": "the-sons-of-hashut-0-3-blunderbuss-chaos-dwarfs",
+        "choiceId": "profile:the-sons-of-hashut-0-3-blunderbuss-chaos-dwarfs",
+        "model": "Blunderbuss Chaos Dwarfs — The Sons of Hashut · Henchman",
+        "warband": "Sons of Hashut",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Bull Centaur Renders — Ba'hal": {
+        "profileId": "the-sons-of-hashut-0-1-bull-centaur",
+        "choiceId": "profile:the-sons-of-hashut-0-1-bull-centaur",
+        "model": "Bull Centaur — The Sons of Hashut · Hero",
+        "warband": "Sons of Hashut",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Chaos Dwarf Warriors — Veteran Warrior": {
+        "profileId": "the-sons-of-hashut-0-6-chaos-dwarf-warriors",
+        "choiceId": "profile:the-sons-of-hashut-0-6-chaos-dwarf-warriors",
+        "model": "Chaos Dwarf Warriors — The Sons of Hashut · Henchman",
+        "warband": "Sons of Hashut",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Hobgoblin Cutthroats — Boss": {
+        "profileId": "the-sons-of-hashut-4-hobgoblins",
+        "choiceId": "profile:the-sons-of-hashut-4-hobgoblins",
+        "model": "+ Hobgoblins — The Sons of Hashut · Henchman",
+        "warband": "Sons of Hashut",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Hobgoblin Wolf Riders — Boss": {
+        "profileId": "the-sons-of-hashut-4-hobgoblins",
+        "choiceId": "profile:the-sons-of-hashut-4-hobgoblins",
+        "model": "+ Hobgoblins — The Sons of Hashut · Henchman",
+        "warband": "Sons of Hashut",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Infernal Guard — Deathmask": {
+        "profileId": "the-sons-of-hashut-0-2-chaos-dwarf-champions",
+        "choiceId": "profile:the-sons-of-hashut-0-2-chaos-dwarf-champions",
+        "model": "Chaos Dwarf Champions — The Sons of Hashut · Hero",
+        "warband": "Sons of Hashut",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Infernal Ironsworn — Overseer": {
+        "profileId": "the-sons-of-hashut-0-2-chaos-dwarf-champions",
+        "choiceId": "profile:the-sons-of-hashut-0-2-chaos-dwarf-champions",
+        "model": "Chaos Dwarf Champions — The Sons of Hashut · Hero",
+        "warband": "Sons of Hashut",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "K'daai Fireborn — Manburner": {
+        "profileId": "marauders-of-chaos-0-1-spawn-of-chaos",
+        "choiceId": "profile:marauders-of-chaos-0-1-spawn-of-chaos",
+        "model": "Spawn of Chaos — Marauders of Chaos · Henchman",
+        "warband": "Marauders of Chaos",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Sneaky Gits — Murder Boss": {
+        "profileId": "the-sons-of-hashut-4-hobgoblins",
+        "choiceId": "profile:the-sons-of-hashut-4-hobgoblins",
+        "model": "+ Hobgoblins — The Sons of Hashut · Henchman",
+        "warband": "Sons of Hashut",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      }
+    },
+    "Daemons of Chaos": {
+      "Bloodcrushers of Khorne — Bloodreaper": {
+        "profileId": "marauders-of-chaos-chaos-marauders",
+        "choiceId": "profile:marauders-of-chaos-chaos-marauders",
+        "model": "Chaos Marauders — Marauders of Chaos · Henchman",
+        "warband": "Marauders of Chaos",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Bloodletters of Khorne — Bloodreaper": {
+        "profileId": "marauders-of-chaos-chaos-marauders",
+        "choiceId": "profile:marauders-of-chaos-chaos-marauders",
+        "model": "Chaos Marauders — Marauders of Chaos · Henchman",
+        "warband": "Marauders of Chaos",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Blue Horrors of Tzeentch — Ectoplasmic Horror": {
+        "profileId": "marauders-of-chaos-0-1-seer",
+        "choiceId": "profile:marauders-of-chaos-0-1-seer",
+        "model": "Seer — Marauders of Chaos · Hero",
+        "warband": "Marauders of Chaos",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Daemonettes of Slaanesh — Alluress": {
+        "profileId": "court-of-the-profane-pleasures-0-1-slaaneshi-devout",
+        "choiceId": "profile:court-of-the-profane-pleasures-0-1-slaaneshi-devout",
+        "model": "Slaaneshi Devout — Court of the Profane Pleasures · Hero",
+        "warband": "Court of the Profane Pleasures",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Flamers of Tzeentch — Pyroclaster": {
+        "profileId": "marauders-of-chaos-0-1-seer",
+        "choiceId": "profile:marauders-of-chaos-0-1-seer",
+        "model": "Seer — Marauders of Chaos · Hero",
+        "warband": "Marauders of Chaos",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Pink Horrors of Tzeentch — Iridescent Horror": {
+        "profileId": "marauders-of-chaos-0-1-seer",
+        "choiceId": "profile:marauders-of-chaos-0-1-seer",
+        "model": "Seer — Marauders of Chaos · Hero",
+        "warband": "Marauders of Chaos",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Plague Drones of Nurgle — Plagueridden": {
+        "profileId": "carnival-of-chaos-0-2-plague-bearers",
+        "choiceId": "profile:carnival-of-chaos-0-2-plague-bearers",
+        "model": "Plague Bearers — Carnival of Chaos · Henchman",
+        "warband": "Carnival of Chaos",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Plaguebearers of Nurgle — Plagueridden": {
+        "profileId": "carnival-of-chaos-0-2-plague-bearers",
+        "choiceId": "profile:carnival-of-chaos-0-2-plague-bearers",
+        "model": "Plague Bearers — Carnival of Chaos · Henchman",
+        "warband": "Carnival of Chaos",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Seekers of Slaanesh — Heartseeker": {
+        "profileId": "court-of-the-profane-pleasures-0-1-slaaneshi-devout",
+        "choiceId": "profile:court-of-the-profane-pleasures-0-1-slaaneshi-devout",
+        "model": "Slaaneshi Devout — Court of the Profane Pleasures · Hero",
+        "warband": "Court of the Profane Pleasures",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      }
+    },
+    "Dark Elves": {
+      "Black Ark Corsairs — Reaver": {
+        "profileId": "dark-elves-0-2-fellblades",
+        "choiceId": "profile:dark-elves-0-2-fellblades",
+        "model": "Fellblades — Dark Elves · Hero",
+        "warband": "Dark Elves",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Black Guard of Naggarond — Tower Master": {
+        "profileId": "dark-elves-0-2-fellblades",
+        "choiceId": "profile:dark-elves-0-2-fellblades",
+        "model": "Fellblades — Dark Elves · Hero",
+        "warband": "Dark Elves",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Cold One Knights — Dread Knight": {
+        "profileId": "dark-elves-0-2-fellblades",
+        "choiceId": "profile:dark-elves-0-2-fellblades",
+        "model": "Fellblades — Dark Elves · Hero",
+        "warband": "Dark Elves",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Dark Elf Shades — Bloodshade": {
+        "profileId": "dark-elves-0-5-shades",
+        "choiceId": "profile:dark-elves-0-5-shades",
+        "model": "Shades — Dark Elves · Henchman",
+        "warband": "Dark Elves",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Dark Elf Warriors — Lordling": {
+        "profileId": "dark-elves-0-2-fellblades",
+        "choiceId": "profile:dark-elves-0-2-fellblades",
+        "model": "Fellblades — Dark Elves · Hero",
+        "warband": "Dark Elves",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Dark Riders — Herald": {
+        "profileId": "dark-elves-0-5-shades",
+        "choiceId": "profile:dark-elves-0-5-shades",
+        "model": "Shades — Dark Elves · Henchman",
+        "warband": "Dark Elves",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Doomfire Warlocks — Master": {
+        "profileId": "dark-elves-0-1-dark-elf-sorceress",
+        "choiceId": "profile:dark-elves-0-1-dark-elf-sorceress",
+        "model": "Dark Elf Sorceress — Dark Elves · Hero",
+        "warband": "Dark Elves",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Har Ganeth Executioners — Draich Master": {
+        "profileId": "dark-elves-0-2-fellblades",
+        "choiceId": "profile:dark-elves-0-2-fellblades",
+        "model": "Fellblades — Dark Elves · Hero",
+        "warband": "Dark Elves",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Repeater Crossbowmen — Lordling": {
+        "profileId": "dark-elves-0-5-shades",
+        "choiceId": "profile:dark-elves-0-5-shades",
+        "model": "Shades — Dark Elves · Henchman",
+        "warband": "Dark Elves",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Sisters of Slaughter — Hag": {
+        "profileId": "dark-elves-0-2-fellblades",
+        "choiceId": "profile:dark-elves-0-2-fellblades",
+        "model": "Fellblades — Dark Elves · Hero",
+        "warband": "Dark Elves",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Sisters of Slaughter — Handmaiden of Shards": {
+        "profileId": "dark-elves-0-2-fellblades",
+        "choiceId": "profile:dark-elves-0-2-fellblades",
+        "model": "Fellblades — Dark Elves · Hero",
+        "warband": "Dark Elves",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Witch Elves — Hag": {
+        "profileId": "dark-elves-0-2-fellblades",
+        "choiceId": "profile:dark-elves-0-2-fellblades",
+        "model": "Fellblades — Dark Elves · Hero",
+        "warband": "Dark Elves",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      }
+    },
+    "Dwarfen Mountain Holds": {
+      "Brotherhood of Grimnir — Shrine Keeper": {
+        "profileId": "dwarf-treasure-hunters-0-2-dwarf-troll-slayers",
+        "choiceId": "profile:dwarf-treasure-hunters-0-2-dwarf-troll-slayers",
+        "model": "Dwarf Troll Slayers — Dwarf Treasure Hunters · Hero",
+        "warband": "Dwarf Treasure Hunters",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Dwarf Warriors — Veteran": {
+        "profileId": "dwarf-treasure-hunters-dwarf-clansmen",
+        "choiceId": "profile:dwarf-treasure-hunters-dwarf-clansmen",
+        "model": "Dwarf Clansmen — Dwarf Treasure Hunters · Henchman",
+        "warband": "Dwarf Treasure Hunters",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Hammerers — Royal Champion": {
+        "profileId": "dwarf-rangers-0-5-dwarf-longbeards",
+        "choiceId": "profile:dwarf-rangers-0-5-dwarf-longbeards",
+        "model": "Dwarf Longbeards — Dwarf Rangers · Henchman",
+        "warband": "Dwarf Rangers",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Imperial Dwarf Mercenaries — Veteran": {
+        "profileId": "dwarf-treasure-hunters-dwarf-clansmen",
+        "choiceId": "profile:dwarf-treasure-hunters-dwarf-clansmen",
+        "model": "Dwarf Clansmen — Dwarf Treasure Hunters · Henchman",
+        "warband": "Dwarf Treasure Hunters",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Ironbreakers — Ironbeard": {
+        "profileId": "dwarf-treasure-hunters-dwarf-clansmen",
+        "choiceId": "profile:dwarf-treasure-hunters-dwarf-clansmen",
+        "model": "Dwarf Clansmen — Dwarf Treasure Hunters · Henchman",
+        "warband": "Dwarf Treasure Hunters",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Irondrakes — Ironwarden": {
+        "profileId": "dwarf-treasure-hunters-0-5-dwarf-thunderers",
+        "choiceId": "profile:dwarf-treasure-hunters-0-5-dwarf-thunderers",
+        "model": "Dwarf Thunderers — Dwarf Treasure Hunters · Henchman",
+        "warband": "Dwarf Treasure Hunters",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Longbeards — Elder": {
+        "profileId": "dwarf-rangers-0-5-dwarf-longbeards",
+        "choiceId": "profile:dwarf-rangers-0-5-dwarf-longbeards",
+        "model": "Dwarf Longbeards — Dwarf Rangers · Henchman",
+        "warband": "Dwarf Rangers",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Miners — Prospector": {
+        "profileId": "dwarf-treasure-hunters-dwarf-clansmen",
+        "choiceId": "profile:dwarf-treasure-hunters-dwarf-clansmen",
+        "model": "Dwarf Clansmen — Dwarf Treasure Hunters · Henchman",
+        "warband": "Dwarf Treasure Hunters",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Prince Ulther's Dragon Company — Borri Forkbeard": {
+        "profileId": "dwarf-treasure-hunters-1-dwarf-noble",
+        "choiceId": "profile:dwarf-treasure-hunters-1-dwarf-noble",
+        "model": "Dwarf Noble — Dwarf Treasure Hunters · Hero",
+        "warband": "Dwarf Treasure Hunters",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Quarrellers — Veteran": {
+        "profileId": "dwarf-rangers-0-5-dwarf-crossbowmen",
+        "choiceId": "profile:dwarf-rangers-0-5-dwarf-crossbowmen",
+        "model": "Dwarf Crossbowmen — Dwarf Rangers · Henchman",
+        "warband": "Dwarf Rangers",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Rangers — Ol' Deadeye": {
+        "profileId": "dwarf-rangers-0-5-dwarf-longbeards",
+        "choiceId": "profile:dwarf-rangers-0-5-dwarf-longbeards",
+        "model": "Dwarf Longbeards — Dwarf Rangers · Henchman",
+        "warband": "Dwarf Rangers",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Thunderers — Veteran": {
+        "profileId": "dwarf-treasure-hunters-0-5-dwarf-thunderers",
+        "choiceId": "profile:dwarf-treasure-hunters-0-5-dwarf-thunderers",
+        "model": "Dwarf Thunderers — Dwarf Treasure Hunters · Henchman",
+        "warband": "Dwarf Treasure Hunters",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      }
+    },
+    "Empire of Man": {
+      "Demigryph Knights — Demigryph Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Demigryph Knights of Morr — Demigryph Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Demigryph Knights of the Blazing Sun — Demigryph Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Demigryph Knights of the Fiery Heart — Demigryph Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Demigryph Knights of the White Wolf — Demigryph Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Demigryph Knights Panther — Demigryph Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Empire Archers — Marksman": {
+        "profileId": "gunnery-school-of-nuln-0-7-marksmen",
+        "choiceId": "profile:gunnery-school-of-nuln-0-7-marksmen",
+        "model": "Marksmen — Gunnery School of Nuln · Henchman",
+        "warband": "Gunnery School of Nuln",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Empire Greatswords — Count's Champion": {
+        "profileId": "averlander-mercenaries-0-1-sergeant",
+        "choiceId": "profile:averlander-mercenaries-0-1-sergeant",
+        "model": "Sergeant — Averlander Mercenaries · Hero",
+        "warband": "Averlander Mercenaries",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Empire Knights — Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Empire Knights of Morr — Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Empire Knights of the Blazing Sun — Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Empire Knights of the Fiery Heart — Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Empire Knights of the White Wolf — Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Empire Knights Panther — Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Empire Road Wardens — Captain": {
+        "profileId": "imperial-outriders-0-2-outriders",
+        "choiceId": "profile:imperial-outriders-0-2-outriders",
+        "model": "Outriders — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Flagellants — Prophet of Doom": {
+        "profileId": "witch-hunters-0-5-flagellants",
+        "choiceId": "profile:witch-hunters-0-5-flagellants",
+        "model": "Flagellants — Witch Hunters · Henchman",
+        "warband": "Witch Hunters",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Free Company Militia — Militia leader": {
+        "profileId": "hochland-bandits-0-4-looters",
+        "choiceId": "profile:hochland-bandits-0-4-looters",
+        "model": "Looters — Hochland Bandits · Henchman",
+        "warband": "Hochland Bandits",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Imperial Ogres — Captain": {
+        "profileId": "ostlander-mercenaries-0-1-ogre",
+        "choiceId": "profile:ostlander-mercenaries-0-1-ogre",
+        "model": "Ogre — Ostlander Mercenaries · Henchman",
+        "warband": "Ostlanders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Inner Circle Knights — Inner Circle Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Inner Circle Knights of Morr — Inner Circle Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Inner Circle Knights of the Blazing Sun — Inner Circle Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Inner Circle Knights of the Fiery Heart — Inner Circle Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Inner Circle Knights of the White Wolf — Inner Circle Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Inner Circle Knights Panther — Inner Circle Preceptor": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Nuln State Troops — Sergeant": {
+        "profileId": "averlander-mercenaries-0-1-sergeant",
+        "choiceId": "profile:averlander-mercenaries-0-1-sergeant",
+        "model": "Sergeant — Averlander Mercenaries · Hero",
+        "warband": "Averlander Mercenaries",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Nuln Veteran State Troops — Veteran Sergeant": {
+        "profileId": "averlander-mercenaries-0-1-sergeant",
+        "choiceId": "profile:averlander-mercenaries-0-1-sergeant",
+        "model": "Sergeant — Averlander Mercenaries · Hero",
+        "warband": "Averlander Mercenaries",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Outriders — Sharpshooter": {
+        "profileId": "imperial-outriders-0-2-outriders",
+        "choiceId": "profile:imperial-outriders-0-2-outriders",
+        "model": "Outriders — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Pistoliers — Veteran": {
+        "profileId": "gunnery-school-of-nuln-0-5-pistoliers",
+        "choiceId": "profile:gunnery-school-of-nuln-0-5-pistoliers",
+        "model": "Pistoliers — Gunnery School of Nuln · Henchman",
+        "warband": "Gunnery School of Nuln",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "State Missile Troops — Sergeant": {
+        "profileId": "gunnery-school-of-nuln-0-7-marksmen",
+        "choiceId": "profile:gunnery-school-of-nuln-0-7-marksmen",
+        "model": "Marksmen — Gunnery School of Nuln · Henchman",
+        "warband": "Gunnery School of Nuln",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "State Troops — Sergeant": {
+        "profileId": "averlander-mercenaries-0-1-sergeant",
+        "choiceId": "profile:averlander-mercenaries-0-1-sergeant",
+        "model": "Sergeant — Averlander Mercenaries · Hero",
+        "warband": "Averlander Mercenaries",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Teutogen Guard — First Knight": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Veteran State Troops — Veteran Sergeant": {
+        "profileId": "averlander-mercenaries-0-1-sergeant",
+        "choiceId": "profile:averlander-mercenaries-0-1-sergeant",
+        "model": "Sergeant — Averlander Mercenaries · Hero",
+        "warband": "Averlander Mercenaries",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      }
+    },
+    "Grand Cathay": {
+      "Iron Hail Gunners — Marksman": {
+        "profileId": "merchant-caravans-0-5-marksmen",
+        "choiceId": "profile:merchant-caravans-0-5-marksmen",
+        "model": "Marksmen — Merchant Caravans · Henchman",
+        "warband": "Merchant Caravans",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Jade Lancers — Jade Lancer Officer": {
+        "profileId": "merchant-caravans-0-2-knights-vanguard",
+        "choiceId": "profile:merchant-caravans-0-2-knights-vanguard",
+        "model": "Knights Vanguard — Merchant Caravans · Hero",
+        "warband": "Merchant Caravans",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Jade Warriors — Jade Officer": {
+        "profileId": "battle-monks-of-cathay-0-5-warrior-monks",
+        "choiceId": "profile:battle-monks-of-cathay-0-5-warrior-monks",
+        "model": "Warrior Monks — Battle Monks of Cathay · Henchman",
+        "warband": "Battle Monks of Cathay",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Peasant Levy — Peasant Elder": {
+        "profileId": "battle-monks-of-cathay-0-5-raging-peasants",
+        "choiceId": "profile:battle-monks-of-cathay-0-5-raging-peasants",
+        "model": "Raging Peasants — Battle Monks of Cathay · Henchman",
+        "warband": "Battle Monks of Cathay",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      }
+    },
+    "High Elf Realms": {
+      "Chracian Woodsmen — Chracian Captain": {
+        "profileId": "shadow-warriors-shadow-warrior",
+        "choiceId": "profile:shadow-warriors-shadow-warrior",
+        "model": "Shadow Warrior — Shadow Warriors · Henchman",
+        "warband": "Shadow Warriors",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Ellyrian Reavers — Harbinger": {
+        "profileId": "shadow-warriors-shadow-warrior",
+        "choiceId": "profile:shadow-warriors-shadow-warrior",
+        "model": "Shadow Warrior — Shadow Warriors · Henchman",
+        "warband": "Shadow Warriors",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Elven Archers — Sentinel": {
+        "profileId": "shadow-warriors-shadow-warrior",
+        "choiceId": "profile:shadow-warriors-shadow-warrior",
+        "model": "Shadow Warrior — Shadow Warriors · Henchman",
+        "warband": "Shadow Warriors",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Elven Spearmen — Sentinel": {
+        "profileId": "shadow-warriors-shadow-warrior",
+        "choiceId": "profile:shadow-warriors-shadow-warrior",
+        "model": "Shadow Warrior — Shadow Warriors · Henchman",
+        "warband": "Shadow Warriors",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Lion Guard — Lion Guard Captain": {
+        "profileId": "shadow-warriors-0-3-shadow-walker",
+        "choiceId": "profile:shadow-warriors-0-3-shadow-walker",
+        "model": "Shadow Walker — Shadow Warriors · Hero",
+        "warband": "Shadow Warriors",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Lothern Sea Guard — Sea Master": {
+        "profileId": "shadow-warriors-shadow-warrior",
+        "choiceId": "profile:shadow-warriors-shadow-warrior",
+        "model": "Shadow Warrior — Shadow Warriors · Henchman",
+        "warband": "Shadow Warriors",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Ship's Company — Champion": {
+        "profileId": "shadow-warriors-shadow-warrior",
+        "choiceId": "profile:shadow-warriors-shadow-warrior",
+        "model": "Shadow Warrior — Shadow Warriors · Henchman",
+        "warband": "Shadow Warriors",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Silver Helms — High Helm": {
+        "profileId": "shadow-warriors-shadow-warrior",
+        "choiceId": "profile:shadow-warriors-shadow-warrior",
+        "model": "Shadow Warrior — Shadow Warriors · Henchman",
+        "warband": "Shadow Warriors",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      }
+    },
+    "Kingdom of Bretonnia": {
+      "Border Princes Brigands — Desperado": {
+        "profileId": "hochland-bandits-0-4-looters",
+        "choiceId": "profile:hochland-bandits-0-4-looters",
+        "model": "Looters — Hochland Bandits · Henchman",
+        "warband": "Hochland Bandits",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Grail Knights — Grail Guardian": {
+        "profileId": "bretonnians-1-questing-knight",
+        "choiceId": "profile:bretonnians-1-questing-knight",
+        "model": "Questing Knight — Bretonnians · Hero",
+        "warband": "Bretonnian Warband",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Knights Errant — Gallant": {
+        "profileId": "bretonnians-0-2-knights-errant",
+        "choiceId": "profile:bretonnians-0-2-knights-errant",
+        "model": "Knights Errant — Bretonnians · Hero",
+        "warband": "Bretonnian Warband",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Knights of the Realm on Foot — First Knight": {
+        "profileId": "bretonnians-1-questing-knight",
+        "choiceId": "profile:bretonnians-1-questing-knight",
+        "model": "Questing Knight — Bretonnians · Hero",
+        "warband": "Bretonnian Warband",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Men-at-Arms — Yeoman": {
+        "profileId": "bretonnians-0-8-men-at-arms",
+        "choiceId": "profile:bretonnians-0-8-men-at-arms",
+        "model": "Men-at-Arms — Bretonnians · Henchman",
+        "warband": "Bretonnian Warband",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Mounted Knights of the Realm — First Knight": {
+        "profileId": "bretonnians-1-questing-knight",
+        "choiceId": "profile:bretonnians-1-questing-knight",
+        "model": "Questing Knight — Bretonnians · Hero",
+        "warband": "Bretonnian Warband",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Mounted Yeomen — Warden": {
+        "profileId": "bretonnians-0-3-squires",
+        "choiceId": "profile:bretonnians-0-3-squires",
+        "model": "Squires — Bretonnians · Hero",
+        "warband": "Bretonnian Warband",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Peasant Bowmen — Villein": {
+        "profileId": "bretonnian-chapel-guard-0-7-bowmen",
+        "choiceId": "profile:bretonnian-chapel-guard-0-7-bowmen",
+        "model": "Bowmen — Bretonnian Chapel Guard · Henchman",
+        "warband": "Bretonnian Chapel Guard",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Pegasus Knights — First Knight": {
+        "profileId": "bretonnians-1-questing-knight",
+        "choiceId": "profile:bretonnians-1-questing-knight",
+        "model": "Questing Knight — Bretonnians · Hero",
+        "warband": "Bretonnian Warband",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Questing Knights — Paragon": {
+        "profileId": "bretonnians-1-questing-knight",
+        "choiceId": "profile:bretonnians-1-questing-knight",
+        "model": "Questing Knight — Bretonnians · Hero",
+        "warband": "Bretonnian Warband",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Squires — Esquire": {
+        "profileId": "bretonnians-0-3-squires",
+        "choiceId": "profile:bretonnians-0-3-squires",
+        "model": "Squires — Bretonnians · Hero",
+        "warband": "Bretonnian Warband",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Yeomen Guard — Warden": {
+        "profileId": "bretonnians-0-8-men-at-arms",
+        "choiceId": "profile:bretonnians-0-8-men-at-arms",
+        "model": "Men-at-Arms — Bretonnians · Henchman",
+        "warband": "Bretonnian Warband",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      }
+    },
+    "Lizardmen": {
+      "Chameleon Skinks — Patrol Leader": {
+        "profileId": "lizardmen-0-2-skink-great-crests",
+        "choiceId": "profile:lizardmen-0-2-skink-great-crests",
+        "model": "Skink Great Crests — Lizardmen · Hero",
+        "warband": "Lizardmen",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Cold One Riders — Pack Leader": {
+        "profileId": "lizardmen-0-1-saurus-totem-warrior",
+        "choiceId": "profile:lizardmen-0-1-saurus-totem-warrior",
+        "model": "Saurus Totem Warrior — Lizardmen · Hero",
+        "warband": "Lizardmen",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Kroxigors — Ancient": {
+        "profileId": "lizardmen-0-1-kroxigor",
+        "choiceId": "profile:lizardmen-0-1-kroxigor",
+        "model": "Kroxigor — Lizardmen · Henchman",
+        "warband": "Lizardmen",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Ripperdactyl Riders — Ripperdactyl Champion": {
+        "profileId": "lizardmen-0-2-skink-great-crests",
+        "choiceId": "profile:lizardmen-0-2-skink-great-crests",
+        "model": "Skink Great Crests — Lizardmen · Hero",
+        "warband": "Lizardmen",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Saurus Warriors — Spawn Leader": {
+        "profileId": "lizardmen-0-4-saurus-braves",
+        "choiceId": "profile:lizardmen-0-4-saurus-braves",
+        "model": "Saurus Braves — Lizardmen · Henchman",
+        "warband": "Lizardmen",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Skink Cohort — Skink Brave": {
+        "profileId": "lizardmen-skink-braves",
+        "choiceId": "profile:lizardmen-skink-braves",
+        "model": "Skink Braves — Lizardmen · Henchman",
+        "warband": "Lizardmen",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Skink Skirmishers — Patrol Leader": {
+        "profileId": "lizardmen-0-2-skink-great-crests",
+        "choiceId": "profile:lizardmen-0-2-skink-great-crests",
+        "model": "Skink Great Crests — Lizardmen · Hero",
+        "warband": "Lizardmen",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Temple Guard — Revered Guardian": {
+        "profileId": "lizardmen-0-1-saurus-totem-warrior",
+        "choiceId": "profile:lizardmen-0-1-saurus-totem-warrior",
+        "model": "Saurus Totem Warrior — Lizardmen · Hero",
+        "warband": "Lizardmen",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Terradon Riders — Sky Leader": {
+        "profileId": "lizardmen-0-2-skink-great-crests",
+        "choiceId": "profile:lizardmen-0-2-skink-great-crests",
+        "model": "Skink Great Crests — Lizardmen · Hero",
+        "warband": "Lizardmen",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      }
+    },
+    "Ogre Kingdoms": {
+      "Gnoblar Fighters — Groinbiter": {
+        "profileId": "orc-mob-goblin-warriors",
+        "choiceId": "profile:orc-mob-goblin-warriors",
+        "model": "Goblin Warriors — Orc Mob · Henchman",
+        "warband": "Orc Mob",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Gnoblar Trappers — Snarefinger": {
+        "profileId": "orc-mob-goblin-warriors",
+        "choiceId": "profile:orc-mob-goblin-warriors",
+        "model": "Goblin Warriors — Orc Mob · Henchman",
+        "warband": "Orc Mob",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Ironguts — Gutlord": {
+        "profileId": "maneaters-0-2-bulls",
+        "choiceId": "profile:maneaters-0-2-bulls",
+        "model": "Bulls — Maneaters · Henchman",
+        "warband": "Maneaters",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Leadbelchers — Thunderfist": {
+        "profileId": "maneaters-0-2-bulls",
+        "choiceId": "profile:maneaters-0-2-bulls",
+        "model": "Bulls — Maneaters · Henchman",
+        "warband": "Maneaters",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Maneaters — Maneater Captain": {
+        "profileId": "maneaters-0-3-youngbloods",
+        "choiceId": "profile:maneaters-0-3-youngbloods",
+        "model": "Youngbloods — Maneaters · Hero",
+        "warband": "Maneaters",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Mournfang Cavalry — Crusher": {
+        "profileId": "maneaters-0-2-bulls",
+        "choiceId": "profile:maneaters-0-2-bulls",
+        "model": "Bulls — Maneaters · Henchman",
+        "warband": "Maneaters",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Ogre Bulls — Crusher": {
+        "profileId": "maneaters-0-2-bulls",
+        "choiceId": "profile:maneaters-0-2-bulls",
+        "model": "Bulls — Maneaters · Henchman",
+        "warband": "Maneaters",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      }
+    },
+    "Orc and Goblin Tribes": {
+      "Badlands Ogre Bulls — Crusher": {
+        "profileId": "ostlander-mercenaries-0-1-ogre",
+        "choiceId": "profile:ostlander-mercenaries-0-1-ogre",
+        "model": "Ogre — Ostlander Mercenaries · Henchman",
+        "warband": "Ostlanders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Black Orc Mob — Boss": {
+        "profileId": "black-orcs-0-2-black-orcs",
+        "choiceId": "profile:black-orcs-0-2-black-orcs",
+        "model": "Black Orcs — Black Orcs · Hero",
+        "warband": "Black Orcs",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Goblin Mob — Boss": {
+        "profileId": "orc-mob-goblin-warriors",
+        "choiceId": "profile:orc-mob-goblin-warriors",
+        "model": "Goblin Warriors — Orc Mob · Henchman",
+        "warband": "Orc Mob",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Goblin Spider Rider Mob — Boss": {
+        "profileId": "forest-goblins-forest-goblins",
+        "choiceId": "profile:forest-goblins-forest-goblins",
+        "model": "Forest Goblins — Forest Goblins · Henchman",
+        "warband": "Forest Goblins",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Goblin Wolf Rider Mob — Boss": {
+        "profileId": "orc-mob-goblin-warriors",
+        "choiceId": "profile:orc-mob-goblin-warriors",
+        "model": "Goblin Warriors — Orc Mob · Henchman",
+        "warband": "Orc Mob",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Night Goblin Mob — Boss": {
+        "profileId": "night-goblins-night-goblins",
+        "choiceId": "profile:night-goblins-night-goblins",
+        "model": "Night Goblins — Night Goblins · Henchman",
+        "warband": "Night Goblins",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Night Goblin Squig Hopper Mob — Boss": {
+        "profileId": "night-goblins-0-5-cave-squigs",
+        "choiceId": "profile:night-goblins-0-5-cave-squigs",
+        "model": "Cave Squigs — Night Goblins · Henchman",
+        "warband": "Night Goblins",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Orc Boar Boy Mob — Boss": {
+        "profileId": "orc-mob-orc-boyz",
+        "choiceId": "profile:orc-mob-orc-boyz",
+        "model": "Orc Boyz — Orc Mob · Henchman",
+        "warband": "Orc Mob",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Orc Mob — Boss": {
+        "profileId": "orc-mob-0-2-orc-big-uns",
+        "choiceId": "profile:orc-mob-0-2-orc-big-uns",
+        "model": "Orc Big ‘Uns — Orc Mob · Hero",
+        "warband": "Orc Mob",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      }
+    },
+    "Renegade Crowns": {
+      "Border Princes Brigands — Desperado": {
+        "profileId": "hochland-bandits-0-4-looters",
+        "choiceId": "profile:hochland-bandits-0-4-looters",
+        "model": "Looters — Hochland Bandits · Henchman",
+        "warband": "Hochland Bandits",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Empire Archers — Marksman": {
+        "profileId": "gunnery-school-of-nuln-0-7-marksmen",
+        "choiceId": "profile:gunnery-school-of-nuln-0-7-marksmen",
+        "model": "Marksmen — Gunnery School of Nuln · Henchman",
+        "warband": "Gunnery School of Nuln",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Free Company Militia — Militia leader": {
+        "profileId": "hochland-bandits-0-4-looters",
+        "choiceId": "profile:hochland-bandits-0-4-looters",
+        "model": "Looters — Hochland Bandits · Henchman",
+        "warband": "Hochland Bandits",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Freeblade Knights — Commander": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Sellsword Infantry — Officer": {
+        "profileId": "tileans-warriors",
+        "choiceId": "profile:tileans-warriors",
+        "model": "Warriors — Tileans · Henchman",
+        "warband": "Tileans",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Veteran Freeblades — Veteran Commander": {
+        "profileId": "imperial-outriders-1-knight",
+        "choiceId": "profile:imperial-outriders-1-knight",
+        "model": "Knight — Imperial Outriders · Hero",
+        "warband": "Imperial Outriders",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Veteran Sellswords — Veteran Officer": {
+        "profileId": "tileans-warriors",
+        "choiceId": "profile:tileans-warriors",
+        "model": "Warriors — Tileans · Henchman",
+        "warband": "Tileans",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      }
+    },
+    "Skaven": {
+      "Clanrats — Clawleader": {
+        "profileId": "skaven-of-clan-pestilens-0-2-plague-monks",
+        "choiceId": "profile:skaven-of-clan-pestilens-0-2-plague-monks",
+        "model": "Plague Monks — Skaven of Clan Pestilens · Hero",
+        "warband": "Skaven of Clan Pestilens",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Giant Rats — Master Moulder": {
+        "profileId": "skaven-of-clan-pestilens-0-2-plague-monks",
+        "choiceId": "profile:skaven-of-clan-pestilens-0-2-plague-monks",
+        "model": "Plague Monks — Skaven of Clan Pestilens · Hero",
+        "warband": "Skaven of Clan Pestilens",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Night Runners — Nightleader": {
+        "profileId": "skaven-of-clan-pestilens-0-2-monk-initiates",
+        "choiceId": "profile:skaven-of-clan-pestilens-0-2-monk-initiates",
+        "model": "Monk Initiates — Skaven of Clan Pestilens · Hero",
+        "warband": "Skaven of Clan Pestilens",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Rat Ogres — Master Moulder": {
+        "profileId": "skaven-of-clan-pestilens-0-2-plague-monks",
+        "choiceId": "profile:skaven-of-clan-pestilens-0-2-plague-monks",
+        "model": "Plague Monks — Skaven of Clan Pestilens · Hero",
+        "warband": "Skaven of Clan Pestilens",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Skaven Dregs — Packmaster": {
+        "profileId": "skaven-of-clan-pestilens-0-2-plague-monks",
+        "choiceId": "profile:skaven-of-clan-pestilens-0-2-plague-monks",
+        "model": "Plague Monks — Skaven of Clan Pestilens · Hero",
+        "warband": "Skaven of Clan Pestilens",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Stormvermin — Fangleader": {
+        "profileId": "skaven-of-clan-pestilens-0-2-plague-monks",
+        "choiceId": "profile:skaven-of-clan-pestilens-0-2-plague-monks",
+        "model": "Plague Monks — Skaven of Clan Pestilens · Hero",
+        "warband": "Skaven of Clan Pestilens",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      }
+    },
+    "Tomb Kings of Khemri": {
+      "Necropolis Knights — Necropolis Captain": {
+        "profileId": "tomb-guardians-0-2-tomb-guardians",
+        "choiceId": "profile:tomb-guardians-0-2-tomb-guardians",
+        "model": "Tomb Guardians — Tomb Guardians · Henchman",
+        "warband": "Tomb Guardians",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Skeleton Archers — Master of Arrows": {
+        "profileId": "tomb-guardians-skeleton-warriors",
+        "choiceId": "profile:tomb-guardians-skeleton-warriors",
+        "model": "Skeleton warriors — Tomb Guardians · Henchman",
+        "warband": "Tomb Guardians",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Skeleton Cavalry Cohort — Master of Horse": {
+        "profileId": "tomb-guardians-skeleton-warriors",
+        "choiceId": "profile:tomb-guardians-skeleton-warriors",
+        "model": "Skeleton warriors — Tomb Guardians · Henchman",
+        "warband": "Tomb Guardians",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Skeleton Chariots — Master Charioteer": {
+        "profileId": "tomb-guardians-0-1-skeleton-chariot",
+        "choiceId": "profile:tomb-guardians-0-1-skeleton-chariot",
+        "model": "Skeleton Chariot — Tomb Guardians · Henchman",
+        "warband": "Tomb Guardians",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Skeleton Horse Archers — Master of Horse": {
+        "profileId": "tomb-guardians-skeleton-warriors",
+        "choiceId": "profile:tomb-guardians-skeleton-warriors",
+        "model": "Skeleton warriors — Tomb Guardians · Henchman",
+        "warband": "Tomb Guardians",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Skeleton Horsemen — Master of Horse": {
+        "profileId": "tomb-guardians-skeleton-warriors",
+        "choiceId": "profile:tomb-guardians-skeleton-warriors",
+        "model": "Skeleton warriors — Tomb Guardians · Henchman",
+        "warband": "Tomb Guardians",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Skeleton Infantry Cohort — Master of Arms": {
+        "profileId": "tomb-guardians-skeleton-warriors",
+        "choiceId": "profile:tomb-guardians-skeleton-warriors",
+        "model": "Skeleton warriors — Tomb Guardians · Henchman",
+        "warband": "Tomb Guardians",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Skeleton Warriors — Master of Arms": {
+        "profileId": "tomb-guardians-skeleton-warriors",
+        "choiceId": "profile:tomb-guardians-skeleton-warriors",
+        "model": "Skeleton warriors — Tomb Guardians · Henchman",
+        "warband": "Tomb Guardians",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Tomb Guard — Tomb Captain": {
+        "profileId": "tomb-guardians-0-2-tomb-guardians",
+        "choiceId": "profile:tomb-guardians-0-2-tomb-guardians",
+        "model": "Tomb Guardians — Tomb Guardians · Henchman",
+        "warband": "Tomb Guardians",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Tomb Guard Chariots — Tomb Captain": {
+        "profileId": "tomb-guardians-0-2-tomb-guardians",
+        "choiceId": "profile:tomb-guardians-0-2-tomb-guardians",
+        "model": "Tomb Guardians — Tomb Guardians · Henchman",
+        "warband": "Tomb Guardians",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Ushabti — Ancient": {
+        "profileId": "tomb-guardians-0-3-tomb-scorpions",
+        "choiceId": "profile:tomb-guardians-0-3-tomb-scorpions",
+        "model": "Tomb Scorpions — Tomb Guardians · Henchman",
+        "warband": "Tomb Guardians",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      }
+    },
+    "Vampire Counts": {
+      "Blood Knights — Kastellan": {
+        "profileId": "the-cursed-cavalcade-0-2-companions",
+        "choiceId": "profile:the-cursed-cavalcade-0-2-companions",
+        "model": "Companions — The Cursed Cavalcade · Hero",
+        "warband": "Cursed Cavalcade",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Crypt Ghouls — Crypt Ghast": {
+        "profileId": "the-restless-dead-0-3-wights",
+        "choiceId": "profile:the-restless-dead-0-3-wights",
+        "model": "Wights — The Restless Dead · Henchman",
+        "warband": "Restless Dead",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Crypt Horrors — Crypt Haunter": {
+        "profileId": "the-restless-dead-0-3-wights",
+        "choiceId": "profile:the-restless-dead-0-3-wights",
+        "model": "Wights — The Restless Dead · Henchman",
+        "warband": "Restless Dead",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Skeleton Warriors — Skeleton Champion": {
+        "profileId": "the-restless-dead-0-8-skeletons",
+        "choiceId": "profile:the-restless-dead-0-8-skeletons",
+        "model": "Skeletons — The Restless Dead · Henchman",
+        "warband": "Restless Dead",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Vargheists — Vargoyle": {
+        "profileId": "the-restless-dead-0-2-scarecrows",
+        "choiceId": "profile:the-restless-dead-0-2-scarecrows",
+        "model": "Scarecrows — The Restless Dead · Henchman",
+        "warband": "Restless Dead",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      }
+    },
+    "Warriors of Chaos": {
+      "Bestigor Herd — Gouge-horn": {
+        "profileId": "beastmen-raiders-0-2-bestigors",
+        "choiceId": "profile:beastmen-raiders-0-2-bestigors",
+        "model": "Bestigors — Beastmen Raiders · Hero",
+        "warband": "Beastmen Raiders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Chaos Cultists — Apostle": {
+        "profileId": "court-of-the-profane-pleasures-0-5-cultists",
+        "choiceId": "profile:court-of-the-profane-pleasures-0-5-cultists",
+        "model": "Cultists — Court of the Profane Pleasures · Henchman",
+        "warband": "Court of the Profane Pleasures",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Chaos Knights — Champion": {
+        "profileId": "marauders-of-chaos-chaos-marauders",
+        "choiceId": "profile:marauders-of-chaos-chaos-marauders",
+        "model": "Chaos Marauders — Marauders of Chaos · Henchman",
+        "warband": "Marauders of Chaos",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Chaos Marauders — Marauder Headman": {
+        "profileId": "marauders-of-chaos-chaos-marauders",
+        "choiceId": "profile:marauders-of-chaos-chaos-marauders",
+        "model": "Chaos Marauders — Marauders of Chaos · Henchman",
+        "warband": "Marauders of Chaos",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Chaos Ogres — Champion": {
+        "profileId": "ostlander-mercenaries-0-1-ogre",
+        "choiceId": "profile:ostlander-mercenaries-0-1-ogre",
+        "model": "Ogre — Ostlander Mercenaries · Henchman",
+        "warband": "Ostlanders",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Chaos Warriors — Champion": {
+        "profileId": "marauders-of-chaos-chaos-marauders",
+        "choiceId": "profile:marauders-of-chaos-chaos-marauders",
+        "model": "Chaos Marauders — Marauders of Chaos · Henchman",
+        "warband": "Marauders of Chaos",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Chosen Chaos Knights — Champion": {
+        "profileId": "marauders-of-chaos-chaos-marauders",
+        "choiceId": "profile:marauders-of-chaos-chaos-marauders",
+        "model": "Chaos Marauders — Marauders of Chaos · Henchman",
+        "warband": "Marauders of Chaos",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Chosen Chaos Warriors — Champion": {
+        "profileId": "marauders-of-chaos-chaos-marauders",
+        "choiceId": "profile:marauders-of-chaos-chaos-marauders",
+        "model": "Chaos Marauders — Marauders of Chaos · Henchman",
+        "warband": "Marauders of Chaos",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Gor Herd — True-horn": {
+        "profileId": "beastmen-raiders-0-5-gor",
+        "choiceId": "profile:beastmen-raiders-0-5-gor",
+        "model": "Gor — Beastmen Raiders · Henchman",
+        "warband": "Beastmen Raiders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Marauder Horsemen — Marauder Horsemaster": {
+        "profileId": "norse-explorers-marauders",
+        "choiceId": "profile:norse-explorers-marauders",
+        "model": "Marauders — Norse Explorers · Henchman",
+        "warband": "Norse Explorers",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Marauder Tribe Berserkers — Headtaker": {
+        "profileId": "norse-explorers-0-2-beserkers",
+        "choiceId": "profile:norse-explorers-0-2-beserkers",
+        "model": "Beserkers — Norse Explorers · Hero",
+        "warband": "Norse Explorers",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Marauder Tribe Huscarls — First Sword": {
+        "profileId": "norse-explorers-marauders",
+        "choiceId": "profile:norse-explorers-marauders",
+        "model": "Marauders — Norse Explorers · Henchman",
+        "warband": "Norse Explorers",
+        "customWarband": false,
+        "likelihood": "approximate",
+        "note": ""
+      },
+      "Minotaur Herd — Bloodkine": {
+        "profileId": "beastmen-raiders-0-1-minotaur",
+        "choiceId": "profile:beastmen-raiders-0-1-minotaur",
+        "model": "Minotaur — Beastmen Raiders · Henchman",
+        "warband": "Beastmen Raiders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Skin Wolves — Skin Wolf Jarl": {
+        "profileId": "norse-explorers-0-1-wulfen",
+        "choiceId": "profile:norse-explorers-0-1-wulfen",
+        "model": "Wulfen — Norse Explorers · Hero",
+        "warband": "Norse Explorers",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      },
+      "Ungor Herd — Half-horn": {
+        "profileId": "beastmen-raiders-ungors",
+        "choiceId": "profile:beastmen-raiders-ungors",
+        "model": "Ungor — Beastmen Raiders · Henchman",
+        "warband": "Beastmen Raiders",
+        "customWarband": false,
+        "likelihood": "strong",
+        "note": ""
+      }
+    },
+    "Wood Elf Realms": {
+      "Eternal Guard — Eternal Warden": {
+        "profileId": "shadow-warriors-0-3-shadow-walker",
+        "choiceId": "profile:shadow-warriors-0-3-shadow-walker",
+        "model": "Shadow Walker — Shadow Warriors · Hero",
+        "warband": "Shadow Warriors",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      },
+      "Guardians of Talsyn — Watchmaster": {
+        "profileId": "shadow-warriors-shadow-warrior",
+        "choiceId": "profile:shadow-warriors-shadow-warrior",
+        "model": "Shadow Warrior — Shadow Warriors · Henchman",
+        "warband": "Shadow Warriors",
+        "customWarband": false,
+        "likelihood": "weak",
+        "note": ""
+      }
+    }
+  }
+}

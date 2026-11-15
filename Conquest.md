@@ -332,7 +332,7 @@ If you are unsure of which quest to begin with, you can’t go far wrong with �
 
 [Back to contents](#contents)
 
-SEARCH FOR THE ARTEFACT
+##### SEARCH FOR THE ARTEFACT
 You send your scouts far and wide in search of a powerful relic of war.
 
 Pick 1 magic item that your faction has access to and that is not already on your Conquest roster. Write it down in the Quest Reward section of your quest log.
@@ -342,7 +342,7 @@ At the end of each Conquest battle, add 1 quest point to the progress section of
 In addition, at the end of each Conquest battle, you can spend 1 Gold to gain 1 additional quest point.
 
 Once you have gained 3 or more quest points, you complete this quest. When you complete this quest, you can add the magic item that you picked to your vault.
-MASTER OF MAGIC
+##### MASTER OF MAGIC
 A wizard in your army seeks to master a mighty spell to aid you in battle.
 
 Pick 1 spell lore that a wizard in your faction has access. Write it down in the Quest Reward section of your quest log.
@@ -352,7 +352,7 @@ In each Conquest battle, add 1 quest point to the progress section of your quest
 In addition, at the end of each Conquest battle, you can spend 1 Gold to gain 1 additional quest point.
 
 Once you have gained 3 or more quest points, you complete this quest. When you complete this quest, you may roll for a spell at random from the spell lore that you picked to your vault. If you roll a spell that you already have in your vault or equipped on your Wizard, then roll again.
-DEFEND YOUR REALM
+##### DEFEND YOUR REALM
 You seek to bolster your resources and protect your domain.
 
 At the end of each Conquest battle, add 1 quest point to the progress section of your quest log for each friendly unit wholly within your territory.
@@ -360,7 +360,8 @@ At the end of each Conquest battle, add 1 quest point to the progress section of
 In addition, at the end of each Conquest battle, you can spend 1 Gold to gain 1 additional quest point.
 
 Once you have gained 3 or more quest points, you complete this quest. When you complete this quest, you gain 10 Gold.
-SCOUT FERTILE LANDS
+
+##### SCOUT FERTILE LANDS
 You send your warriors far and wide in search of lands that yield plentiful resources.
 
 At the end of a Conquest battle, you complete this quest if any friendly units are wholly within 4″ of a battlefield edge and wholly outside of your territory.
@@ -375,7 +376,7 @@ When you complete this quest, make 2 exploration rolls in the aftermath sequence
 
 Once you have completed your Conquest roster, you are ready to begin fighting Conquest battles. A Conquest battle is one where you draw your army from your Conquest roster and follow the rules in this section. To fight a Conquest battle, first pick a battlepack to use. The rules here are used in addition to the rules in that battlepack. Conquest battles can be fought using any Conquest battlepack and against any opponent, even those using an army that is not on a Conquest campaign.
 
-Orc and Goblin Truves face off against the High Elf Realms
+Orc and Goblin Tribes face off against the High Elf Realms
 
 ### PICKING YOUR ARMY
 

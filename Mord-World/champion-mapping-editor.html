@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171915">
+  <title>Champion ↔ Mordheim Model Mapper</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #171915;
+      --panel: #20221c;
+      --panel-2: #292b23;
+      --line: #454638;
+      --text: #eee9da;
+      --muted: #aaa58f;
+      --accent: #d5bb78;
+      --green: #a8bb8b;
+      --red: #e3a092;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button, input, select { font: inherit; }
+    button, .button {
+      min-height: 40px;
+      padding: .55rem .85rem;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--panel-2);
+      color: var(--text);
+      cursor: pointer;
+    }
+    button:hover, .button:hover { border-color: var(--accent); }
+    button.primary { background: #554a2d; border-color: #887747; }
+    button.danger { color: #f1b0a2; }
+    input, select {
+      width: 100%;
+      min-height: 40px;
+      padding: .5rem .6rem;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #151611;
+      color: var(--text);
+    }
+    input:focus, select:focus, button:focus-visible, a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    a { color: var(--accent); }
+    .page { max-width: 1500px; margin: auto; padding: 1.25rem; }
+    header { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; }
+    h1 { margin: 0; color: var(--accent); font: 700 clamp(1.4rem, 3vw, 2rem)/1.2 Georgia, serif; }
+    h2 { margin: 0; font-size: 1rem; }
+    p { margin: .45rem 0; }
+    .intro { max-width: 850px; color: var(--muted); }
+    .toolbar { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .status { min-height: 1.4rem; color: var(--green); font-size: .85rem; }
+    .status.error { color: var(--red); }
+    .notice {
+      margin: 1rem 0;
+      padding: .8rem 1rem;
+      border: 1px solid #766b45;
+      border-radius: 5px;
+      background: #29261b;
+      color: #e8ddbc;
+    }
+    .notice.error { border-color: #8d5249; background: #2b1e1c; color: #f0b3a5; }
+    .notice[hidden] { display: none; }
+    .summary {
+      display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; align-items: center;
+      margin: 1rem 0; padding: .8rem 1rem; border: 1px solid var(--line); border-radius: 5px; background: var(--panel);
+    }
+    .summary strong { color: var(--accent); }
+    .filters { display: grid; grid-template-columns: minmax(200px, 1fr) minmax(180px, 260px) auto; gap: .6rem; flex: 1; }
+    .check { display: flex; align-items: center; gap: .45rem; white-space: nowrap; color: var(--muted); }
+    .check input { width: auto; min-height: 0; accent-color: var(--accent); }
+    .table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: 5px; background: var(--panel); }
+    table { width: 100%; border-collapse: collapse; min-width: 980px; }
+    th, td { padding: .65rem .7rem; border-bottom: 1px solid #37382f; text-align: left; vertical-align: top; }
+    th { position: sticky; top: 0; z-index: 1; background: #303127; color: var(--accent); font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: #25271f; }
+    td.faction { width: 145px; color: #d4c796; font-weight: 650; }
+    td.champion { width: 250px; font-weight: 650; }
+    td.suggestion { width: 240px; color: var(--muted); font-size: .87rem; }
+    td.assign { min-width: 390px; }
+    td.likelihood { width: 165px; }
+    td.note { width: 220px; }
+    .assign-controls { display: grid; grid-template-columns: minmax(130px, 1fr) minmax(180px, 1.4fr); gap: .4rem; }
+    .row-meta { margin-top: .35rem; color: var(--muted); font-size: .78rem; }
+    .hint { color: var(--muted); font-size: .82rem; }
+    .empty { padding: 2rem; color: var(--muted); text-align: center; }
+    footer { margin: 1rem 0; color: var(--muted); font-size: .82rem; }
+    @media (max-width: 760px) {
+      .page { padding: .8rem; }
+      header { display: block; }
+      .toolbar { margin-top: .8rem; }
+      .filters { grid-template-columns: 1fr; }
+      .summary { align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <h1>Champion ↔ Mordheim Model Mapper</h1>
+        <p class="intro">Review the suggested Mordheim equivalent for each Old World champion. First choose a race-grouped warband, then choose one of that warband’s Hero or Henchman unit types, or enter a custom option. Rate the match Strong, Good, Approximate, Weak, or No direct match. Your edits save in this browser; export a JSON file to carry them to another browser or resume later.</p>
+      </div>
+      <div class="toolbar" aria-label="Mapping file actions">
+        <button class="primary" id="importButton" type="button">Import JSON</button>
+        <input id="importFile" type="file" accept=".json,application/json" hidden>
+        <button class="primary" id="exportButton" type="button">Export JSON</button>
+        <button id="restoreButton" type="button" title="Restore the original catalog suggestions">Restore suggestions</button>
+      </div>
+    </header>
+
+    <div class="status" id="saveStatus" role="status" aria-live="polite">Loading champion and Mordheim model lists…</div>
+    <div class="notice" id="notice" role="status" hidden></div>
+
+    <section class="summary" aria-label="Mapping progress">
+      <div><strong id="shownCount">—</strong> champions shown</div>
+      <div><strong id="assignedCount">—</strong> assignments</div>
+      <div class="filters">
+        <input id="search" type="search" placeholder="Search faction, unit, champion, or model…" aria-label="Search mappings">
+        <select id="factionFilter" aria-label="Filter by faction"><option value="">All factions</option></select>
+        <label class="check"><input id="unassignedOnly" type="checkbox"> Unassigned only</label>
+      </div>
+    </section>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th scope="col">Faction</th>
+          <th scope="col">Old World champion</th>
+          <th scope="col">Current suggestion</th>
+          <th scope="col">Mordheim warband &amp; unit type</th>
+          <th scope="col">Match likelihood</th>
+          <th scope="col">Your note (optional)</th>
+        </tr></thead>
+        <tbody id="mappingRows"><tr><td colspan="6" class="empty">Loading…</td></tr></tbody>
+      </table>
+    </div>
+    <footer>
+      Suggestions and models with Mordheim characteristic data come from <code>champion-mordheim-stats.json</code>; additional hero and henchman types come from <code>mordheim-roster-catalog.json</code> and remain selectable even when no characteristic data is available. Import or export this editor’s assignment JSON to save your selections. Use the site’s local server if opening this file directly prevents the catalogs from loading.
+    </footer>
+  </main>
+
+  <script>
+    (() => {
+      'use strict';
+      const STORAGE_KEY = 'old-world-mordheim-champion-assignments-v1';
+      const EXPORT_FORMAT = 'old-world-mordheim-champion-assignments';
+      const $ = (selector) => document.querySelector(selector);
+      const rowsRoot = $('#mappingRows');
+      const assignments = new Map();
+      let catalog = null;
+      let rosterCatalog = null;
+      let rows = [];
+      let profileLabels = new Map();
+      let profileIdByLabel = new Map();
+      let warbandRaceByName = new Map();
+      let warbandGroups = [];
+      let modelChoiceById = new Map();
+      let modelChoiceIdByLabel = new Map();
+      const LIKELIHOODS = [
+        ['strong', 'Strong'], ['good', 'Good'], ['approximate', 'Approximate'], ['weak', 'Weak'], ['none', 'No direct match'],
+      ];
+      const CUSTOM_PROFILE = '__custom__';
+      const CUSTOM_WARBAND = '__custom_warband__';
+
+      function stableKey(faction, champion) { return `${faction}\u0000${champion}`; }
+      function profileLabel(profileId) {
+        const profile = catalog?.profiles?.[profileId];
+        return profile ? `${profile.matchedModel} — ${profile.warband}` : '';
+      }
+      function modelChoiceLabel(choiceId) {
+        return modelChoiceById.get(choiceId)?.label || '';
+      }
+      function sourceEquivalent(entry) {
+        return entry.equivalent || 'No suggested equivalent';
+      }
+      function normalizeModelName(value) {
+        let name = String(value || '').toLocaleLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
+        name = name.replace(/[^a-z0-9]+/g, ' ').trim().replace(/\bthe\s+/g, ' ');
+        return name.replace(/ies\b/g, 'y').replace(/s\b/g, '').replace(/\s+/g, ' ').trim();
+      }
+      function normalizeWarband(value) {
+        return normalizeModelName(value).replace(/\bmercenary\b/g, '').replace(/\bmercenaries\b/g, '').replace(/\bwarband\b/g, '').replace(/\s+/g, ' ').trim();
+      }
+      function canonicalWarband(value) {
+        const key = normalizeWarband(value);
+        return rosterCatalog?.rosters?.find((roster) => normalizeWarband(roster.warband) === key)?.warband || value;
+      }
+      function inferredLikelihood(entry) {
+        const note = String(entry.mappingNote || '').toLocaleLowerCase();
+        if (!note) return 'strong';
+        if (/weak|wrong|not a |not an |no direct|no .*profile|not represented|unlike|poor fit|only a .*proxy/.test(note)) return 'weak';
+        return 'approximate';
+      }
+      function raceForProfile(profile) {
+        const model = `${profile.matchedModel} ${profile.warband}`.toLocaleLowerCase();
+        if (/beastmen|bestigor|\bungor\b|\bgor\b|centigor|minotaur/.test(model)) return 'Beastmen';
+        if (/chaos dwarf|sons of hashut/.test(model) && !/hobgoblin/.test(model)) return 'Chaos Dwarfs';
+        if (/dark elf/.test(model)) return 'Dark Elves';
+        if (/shadow warrior/.test(model)) return 'High Elves';
+        if (/dwarf|longbeard|troll slayer/.test(model)) return 'Dwarfs';
+        if (/skaven|rat ogre|giant rat|plague monk|monk initiate/.test(model)) return 'Skaven';
+        if (/lizardmen|skink|saurus|kroxigor/.test(model)) return 'Lizardmen';
+        if (/orc|goblin|squig|black orc/.test(model)) return 'Greenskins';
+        if (/ogre|maneater|bull \(/.test(model)) return 'Ogres';
+        if (/tomb scorpion/.test(model)) return 'Other creatures';
+        if (/tomb guardian|restless dead|skeleton|wight|scarecrow|cursed cavalcade/.test(model)) return 'Undead';
+        if (/plague bearer|spawn of chaos|wulfen|daemon|horror/.test(model)) return 'Chaos Creatures';
+        if (/norse|marauder|chaos|slaaneshi|court of the profane/.test(model)) return 'Humans · Chaos-aligned';
+        return 'Humans';
+      }
+      function esc(value) {
+        return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+        }[char]));
+      }
+      function setStatus(message, error = false) {
+        const node = $('#saveStatus');
+        node.textContent = message;
+        node.classList.toggle('error', error);
+      }
+      function showNotice(message, error = false) {
+        const node = $('#notice');
+        node.textContent = message;
+        node.classList.toggle('error', error);
+        node.hidden = !message;
+      }
+      function saveAssignments() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(Object.fromEntries(assignments)));
+          setStatus('Saved in this browser. Export JSON for a portable backup.');
+        } catch (error) {
+          setStatus(`Could not save in this browser: ${error.message}`, true);
+        }
+        updateSummary();
+      }
+      function loadLocalAssignments() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+          for (const [key, value] of Object.entries(stored)) {
+            if (value && typeof value === 'object') assignments.set(key, normalizeAssignment(value));
+          }
+        } catch {
+          localStorage.removeItem(STORAGE_KEY);
+        }
+      }
+      function normalizeAssignment(value) {
+        const profileId = typeof value.profileId === 'string' && catalog.profiles[value.profileId] ? value.profileId : '';
+        let choiceId = modelChoiceById.has(value.choiceId) ? value.choiceId : (profileId ? `profile:${profileId}` : '');
+        if (!choiceId && value.model) choiceId = modelChoiceIdByLabel.get(String(value.model).trim().toLocaleLowerCase()) || '';
+        const choice = modelChoiceById.get(choiceId);
+        const assignedProfileId = choice ? choice.profileId : profileId;
+        const model = choice ? choice.label : String(value.model || '').trim();
+        const warband = choice?.warband || String(value.warband || '').trim();
+        const customWarband = choice ? false : Boolean(value.customWarband || (warband && !warbandRaceByName.has(warband)));
+        const allowed = LIKELIHOODS.some(([id]) => id === value.likelihood) ? value.likelihood : '';
+        return { choiceId, profileId: assignedProfileId, model, warband, customWarband, likelihood: allowed, note: String(value.note || '').trim() };
+      }
+      function defaultAssignment(entry) {
+        const profileId = catalog.profiles[entry.profileId] ? entry.profileId : '';
+        const choiceId = profileId ? `profile:${profileId}` : '';
+        return { choiceId, profileId, model: profileId ? modelChoiceLabel(choiceId) : sourceEquivalent(entry), warband: modelChoiceById.get(choiceId)?.warband || '', customWarband: false, likelihood: inferredLikelihood(entry), note: '' };
+      }
+      function getAssignment(row) {
+        const key = stableKey(row.faction, row.champion);
+        const saved = assignments.get(key);
+        if (!saved) return defaultAssignment(row.entry);
+        return saved.likelihood ? saved : { ...saved, likelihood: inferredLikelihood(row.entry) };
+      }
+      function buildRows() {
+        rows = [];
+        for (const [faction, entries] of Object.entries(catalog.armies || {})) {
+          for (const [champion, entry] of Object.entries(entries)) rows.push({ faction, champion, entry });
+        }
+        rows.sort((a, b) => a.faction.localeCompare(b.faction) || a.champion.localeCompare(b.champion));
+
+        const factions = [...new Set(rows.map((row) => row.faction))];
+        $('#factionFilter').innerHTML = '<option value="">All factions</option>' + factions.map((faction) => `<option value="${esc(faction)}">${esc(faction)}</option>`).join('');
+        const rosterRoles = new Map();
+        const rosterChoices = (rosterCatalog?.rosters || []).flatMap((roster) => [
+          ...(roster.heroTypes || []).map((name) => ({ name, role: 'Hero' })),
+          ...(roster.henchmenTypes || []).map((name) => ({ name, role: 'Henchman' })),
+        ].map(({ name, role }) => {
+          const key = `${normalizeModelName(name)}|${normalizeWarband(roster.warband)}`;
+          if (!rosterRoles.has(key)) rosterRoles.set(key, role);
+          return {
+            choiceId: `${role === 'Hero' ? 'hero' : 'henchman'}:${roster.warband.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '-')}:${name.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+            profileId: '', name, warband: roster.warband, label: `${name} — ${roster.warband} · ${role}`,
+            race: roster.race, role, kind: 'roster',
+          };
+        }));
+        function rosterRoleForProfile(profile) {
+          const key = `${normalizeModelName(profile.matchedModel)}|${normalizeWarband(profile.warband)}`;
+          if (rosterRoles.has(key)) return rosterRoles.get(key);
+          const sameNameRoles = new Set([...rosterRoles.entries()].filter(([rosterKey]) => rosterKey.startsWith(`${normalizeModelName(profile.matchedModel)}|`)).map(([, role]) => role));
+          return sameNameRoles.size === 1 ? [...sameNameRoles][0] : 'Henchman';
+        }
+        const profiles = Object.entries(catalog.profiles || {}).map(([id, profile]) => ({
+          choiceId: `profile:${id}`, profileId: id, name: profile.matchedModel, warband: canonicalWarband(profile.warband),
+          role: rosterRoleForProfile(profile),
+          label: `${profile.matchedModel} — ${profile.warband} · ${rosterRoleForProfile(profile)}`,
+          race: raceForProfile(profile), kind: 'profile',
+        }));
+        const profileKeys = new Set(profiles.map((choice) => `${normalizeModelName(choice.name)}|${normalizeWarband(choice.warband)}`));
+        const extraRosterChoices = rosterChoices.filter((choice) => !profileKeys.has(`${normalizeModelName(choice.name)}|${normalizeWarband(choice.warband)}`));
+        const choices = [...profiles, ...extraRosterChoices];
+        choices.sort((a, b) => a.race.localeCompare(b.race) || a.warband.localeCompare(b.warband) || a.name.localeCompare(b.name) || a.kind.localeCompare(b.kind));
+        modelChoiceById = new Map(choices.map((choice) => [choice.choiceId, choice]));
+        modelChoiceIdByLabel = new Map(choices.map((choice) => [choice.label.toLocaleLowerCase(), choice.choiceId]));
+        profileLabels = new Map(profiles.map((choice) => [choice.profileId, choice.label]));
+        profileIdByLabel = new Map();
+        for (const choice of profiles) {
+          profileIdByLabel.set(choice.label.toLocaleLowerCase(), choice.profileId);
+          profileIdByLabel.set(profileLabel(choice.profileId).toLocaleLowerCase(), choice.profileId);
+        }
+        const groups = new Map();
+        for (const item of choices) {
+          if (!groups.has(item.race)) groups.set(item.race, []);
+          groups.get(item.race).push(item);
+        }
+        const warbands = new Map();
+        for (const roster of rosterCatalog.rosters) if (!warbands.has(roster.warband)) warbands.set(roster.warband, roster.race);
+        for (const choice of choices) if (!warbands.has(choice.warband)) warbands.set(choice.warband, choice.race);
+        warbandRaceByName = warbands;
+        const warbandGroupsMap = new Map();
+        for (const [warband, race] of warbands) {
+          if (!warbandGroupsMap.has(race)) warbandGroupsMap.set(race, []);
+          warbandGroupsMap.get(race).push(warband);
+        }
+        warbandGroups = [...warbandGroupsMap.entries()].map(([race, names]) => [race, names.sort((a, b) => a.localeCompare(b))]).sort(([a], [b]) => a.localeCompare(b));
+
+        loadLocalAssignments();
+        renderRows();
+        const heroCount = (rosterCatalog?.rosters || []).reduce((total, roster) => total + roster.heroTypes.length, 0);
+        const henchmanCount = (rosterCatalog?.rosters || []).reduce((total, roster) => total + roster.henchmenTypes.length, 0);
+        setStatus(`${rows.length} champions, ${heroCount} roster hero types, ${henchmanCount} henchman types, and ${catalogProfilesCount()} models with characteristic data loaded. Changes save automatically in this browser.`);
+      }
+      function catalogProfilesCount() { return Object.keys(catalog.profiles || {}).length; }
+      function renderRows() {
+        const search = $('#search').value.trim().toLocaleLowerCase();
+        const factionFilter = $('#factionFilter').value;
+        const onlyUnassigned = $('#unassignedOnly').checked;
+        const visible = rows.filter((row) => {
+          if (factionFilter && row.faction !== factionFilter) return false;
+          const assignment = getAssignment(row);
+          if (onlyUnassigned && assignment.model) return false;
+          const searchable = [row.faction, row.champion, sourceEquivalent(row.entry), row.entry.mappingNote, assignment.warband, assignment.model, assignment.likelihood, assignment.note].join(' ').toLocaleLowerCase();
+          return !search || searchable.includes(search);
+        });
+
+        if (!visible.length) {
+          rowsRoot.innerHTML = '<tr><td colspan="6" class="empty">No champion mappings match these filters.</td></tr>';
+        } else {
+          rowsRoot.innerHTML = visible.map((row) => {
+            const key = stableKey(row.faction, row.champion);
+            const assignment = getAssignment(row);
+            const source = `${sourceEquivalent(row.entry)}${row.entry.profileId && catalog.profiles[row.entry.profileId] ? ` · ${catalog.profiles[row.entry.profileId].warband}` : ''}`;
+            const sourceNote = row.entry.mappingNote ? `<div class="row-meta">${esc(row.entry.mappingNote)}</div>` : '';
+            const selectedWarband = assignment.warband || modelChoiceById.get(assignment.choiceId)?.warband || '';
+            const customWarband = assignment.customWarband || Boolean(selectedWarband && !warbandRaceByName.has(selectedWarband));
+            const warbandValue = customWarband ? CUSTOM_WARBAND : selectedWarband;
+            const warbandOptions = `<option value="">— Choose warband —</option>${warbandGroups.map(([race, names]) => `<optgroup label="${esc(race)}">${names.map((name) => `<option value="${esc(name)}" ${warbandValue === name ? 'selected' : ''}>${esc(name)}</option>`).join('')}</optgroup>`).join('')}<option value="${CUSTOM_WARBAND}" ${customWarband ? 'selected' : ''}>Custom / not listed</option>`;
+            const selectedModel = assignment.choiceId || (assignment.model ? CUSTOM_PROFILE : '');
+            const unitChoices = selectedWarband ? [...modelChoiceById.values()].filter((choice) => choice.warband === selectedWarband).sort((a, b) => a.role === b.role ? a.name.localeCompare(b.name) : (a.role === 'Hero' ? -1 : 1)) : [];
+            const modelOptions = `<option value="">— Choose unit type —</option>${unitChoices.map((choice) => `<option value="${esc(choice.choiceId)}" ${selectedModel === choice.choiceId ? 'selected' : ''}>${esc(choice.name)} · ${choice.role}</option>`).join('')}<option value="${CUSTOM_PROFILE}" ${selectedModel === CUSTOM_PROFILE ? 'selected' : ''}>Custom / not listed</option>`;
+            const likelihoodOptions = LIKELIHOODS.map(([id, label]) => `<option value="${id}" ${assignment.likelihood === id ? 'selected' : ''}>${label}</option>`).join('');
+            return `<tr data-key="${esc(key)}">
+              <td class="faction">${esc(row.faction)}</td>
+              <td class="champion">${esc(row.champion)}</td>
+              <td class="suggestion">${esc(source)}${sourceNote}</td>
+              <td class="assign"><div class="assign-controls"><select data-warband aria-label="Mordheim warband for ${esc(row.champion)}">${warbandOptions}</select><input type="text" data-custom-warband value="${esc(customWarband ? selectedWarband : '')}" aria-label="Custom Mordheim warband for ${esc(row.champion)}" placeholder="Enter a warband" ${customWarband ? '' : 'hidden'}><select data-model aria-label="Mordheim unit type for ${esc(row.champion)}">${modelOptions}</select><input type="text" data-custom-model value="${esc(selectedModel === CUSTOM_PROFILE ? assignment.model : '')}" aria-label="Custom Mordheim unit type for ${esc(row.champion)}" placeholder="Enter a unit type" ${selectedModel === CUSTOM_PROFILE ? '' : 'hidden'}></div><div class="row-meta" data-profile-hint>${assignment.choiceId ? `${esc(modelChoiceById.get(assignment.choiceId)?.role || 'Hero')} · ${assignment.profileId ? 'stats available' : 'roster option'}` : (assignment.model ? 'Custom model' : 'Unassigned')}</div></td>
+              <td class="likelihood"><select data-likelihood aria-label="Match likelihood for ${esc(row.champion)}">${likelihoodOptions}</select></td>
+              <td class="note"><input type="text" data-note value="${esc(assignment.note)}" aria-label="Note for ${esc(row.champion)}" placeholder="Optional reason or caveat"></td>
+            </tr>`;
+          }).join('');
+        }
+        updateSummary(visible.length);
+      }
+      function updateSummary(shown = rows.length) {
+        $('#shownCount').textContent = String(shown);
+        const assigned = rows.reduce((count, row) => count + (getAssignment(row).model ? 1 : 0), 0);
+        $('#assignedCount').textContent = `${assigned} / ${rows.length}`;
+      }
+      function refreshUnitTypes(tr) {
+        const warbandSelect = tr.querySelector('[data-warband]');
+        const customWarbandInput = tr.querySelector('[data-custom-warband]');
+        const modelSelect = tr.querySelector('[data-model]');
+        const customModelInput = tr.querySelector('[data-custom-model]');
+        const warband = warbandSelect.value === CUSTOM_WARBAND ? customWarbandInput.value.trim() : warbandSelect.value;
+        const unitChoices = warband ? [...modelChoiceById.values()].filter((choice) => choice.warband === warband).sort((a, b) => a.role === b.role ? a.name.localeCompare(b.name) : (a.role === 'Hero' ? -1 : 1)) : [];
+        modelSelect.innerHTML = `<option value="">— Choose unit type —</option>${unitChoices.map((choice) => `<option value="${esc(choice.choiceId)}">${esc(choice.name)} · ${choice.role}</option>`).join('')}<option value="${CUSTOM_PROFILE}">Custom / not listed</option>`;
+        customModelInput.value = '';
+        customModelInput.hidden = true;
+      }
+      function syncRow(input) {
+        const tr = input.closest('tr');
+        const row = rows.find((item) => stableKey(item.faction, item.champion) === tr.dataset.key);
+        if (!row) return;
+        const warbandSelect = tr.querySelector('[data-warband]');
+        const customWarbandInput = tr.querySelector('[data-custom-warband]');
+        const modelSelect = tr.querySelector('[data-model]');
+        const customInput = tr.querySelector('[data-custom-model]');
+        const warband = warbandSelect.value === CUSTOM_WARBAND ? customWarbandInput.value.trim() : warbandSelect.value;
+        const selected = modelSelect.value;
+        const candidate = modelChoiceById.get(selected);
+        const choice = candidate?.warband === warband ? candidate : null;
+        const choiceId = choice?.choiceId || '';
+        const profileId = choice?.profileId || '';
+        const model = choice ? choice.label : (selected === CUSTOM_PROFILE ? customInput.value.trim() : '');
+        customWarbandInput.hidden = warbandSelect.value !== CUSTOM_WARBAND;
+        customInput.hidden = selected !== CUSTOM_PROFILE;
+        assignments.set(tr.dataset.key, {
+          choiceId,
+          profileId,
+          model,
+          warband,
+          customWarband: warbandSelect.value === CUSTOM_WARBAND,
+          likelihood: tr.querySelector('[data-likelihood]').value,
+          note: tr.querySelector('[data-note]').value.trim(),
+        });
+        const hint = tr.querySelector('[data-profile-hint]');
+        hint.textContent = choiceId ? `${choice.role} · ${profileId ? 'stats available' : 'roster option'}` : (model ? 'Custom model' : 'Unassigned');
+        saveAssignments();
+      }
+      function exportJson() {
+        const result = { format: EXPORT_FORMAT, version: 1, exportedAt: new Date().toISOString(), assignments: {} };
+        for (const row of rows) {
+          const key = stableKey(row.faction, row.champion);
+          const value = getAssignment(row);
+          (result.assignments[row.faction] ||= {})[row.champion] = {
+            profileId: value.profileId || null,
+            choiceId: value.choiceId || null,
+            model: value.model,
+            warband: value.warband,
+            customWarband: value.customWarband,
+            likelihood: value.likelihood,
+            note: value.note,
+          };
+        }
+        const blob = new Blob([JSON.stringify(result, null, 2) + '\n'], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'champion-mordheim-assignments.json';
+        link.click();
+        URL.revokeObjectURL(url);
+        setStatus('Assignment JSON exported.');
+      }
+      function normalizeFaction(name) {
+        const target = String(name).toLocaleLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+        return rows.find((row) => row.faction.toLocaleLowerCase().replace(/[^a-z0-9]+/g, ' ').trim() === target)?.faction || name;
+      }
+      function findProfileId(value, suppliedId = '') {
+        if (suppliedId && catalog.profiles[suppliedId]) return suppliedId;
+        const label = String(value || '').trim().toLocaleLowerCase();
+        if (!label) return '';
+        if (profileIdByLabel.has(label)) return profileIdByLabel.get(label);
+        const bare = label.split(' (')[0].split(' — ')[0].trim();
+        const candidates = Object.entries(catalog.profiles || {}).filter(([, profile]) =>
+          profile.matchedModel.toLocaleLowerCase() === bare || profile.matchedModel.toLocaleLowerCase().replace(/s$/, '') === bare.replace(/s$/, ''),
+        );
+        return candidates.length === 1 ? candidates[0][0] : '';
+      }
+      function findChoiceId(value, suppliedChoiceId = '') {
+        if (suppliedChoiceId && modelChoiceById.has(suppliedChoiceId)) return suppliedChoiceId;
+        const label = String(value || '').trim().toLocaleLowerCase();
+        if (modelChoiceIdByLabel.has(label)) return modelChoiceIdByLabel.get(label);
+        const profileId = findProfileId(value);
+        return profileId ? `profile:${profileId}` : '';
+      }
+      function importJsonData(data) {
+        let incoming = data?.assignments || data?.armies || data;
+        if (!incoming || typeof incoming !== 'object' || Array.isArray(incoming)) throw new Error('Expected a JSON object with faction/champion assignments.');
+        let imported = 0;
+        for (const [rawFaction, championEntries] of Object.entries(incoming)) {
+          if (!championEntries || typeof championEntries !== 'object' || Array.isArray(championEntries)) continue;
+          const faction = normalizeFaction(rawFaction);
+          for (const [champion, rawValue] of Object.entries(championEntries)) {
+            const row = rows.find((item) => item.faction === faction && item.champion === champion);
+            if (!row) continue;
+            let value;
+            if (typeof rawValue === 'string') {
+              const choiceId = findChoiceId(rawValue);
+              value = { choiceId, model: rawValue, warband: modelChoiceById.get(choiceId)?.warband || '', profileId: findProfileId(rawValue), likelihood: inferredLikelihood(row.entry), note: '' };
+            }
+            else if (rawValue && typeof rawValue === 'object') {
+              const model = String(rawValue.model || rawValue.customModel || rawValue.equivalent || '');
+              const choiceId = findChoiceId(model, rawValue.choiceId || '');
+              const profileId = findProfileId(model, rawValue.profileId || '');
+              value = { choiceId, model: model || modelChoiceLabel(choiceId) || (profileId ? profileLabel(profileId) : ''), warband: String(rawValue.warband || modelChoiceById.get(choiceId)?.warband || ''), customWarband: Boolean(rawValue.customWarband), profileId, likelihood: rawValue.likelihood || inferredLikelihood(row.entry), note: String(rawValue.note || rawValue.mappingNote || '') };
+            } else continue;
+            assignments.set(stableKey(faction, champion), normalizeAssignment(value));
+            imported++;
+          }
+        }
+        if (!imported) throw new Error('No matching champion assignments were found in that JSON file.');
+        saveAssignments();
+        renderRows();
+        showNotice(`Imported ${imported} champion assignment${imported === 1 ? '' : 's'}. Unmatched entries were left unchanged.`);
+      }
+      async function initialize() {
+        try {
+          const [profilesResponse, rosterResponse] = await Promise.all([
+            fetch(new URL('champion-mordheim-stats.json', location.href)),
+            fetch(new URL('mordheim-roster-catalog.json', location.href)),
+          ]);
+          if (!profilesResponse.ok) throw new Error(`Mordheim model catalog request failed (${profilesResponse.status}).`);
+          if (!rosterResponse.ok) throw new Error(`Mordheim roster catalog request failed (${rosterResponse.status}).`);
+          [catalog, rosterCatalog] = await Promise.all([profilesResponse.json(), rosterResponse.json()]);
+          if (!catalog.armies || !catalog.profiles) throw new Error('Catalog is missing its armies or profiles.');
+          if (!Array.isArray(rosterCatalog.rosters) || rosterCatalog.rosters.some((roster) => !Array.isArray(roster.heroTypes) || !Array.isArray(roster.henchmenTypes))) throw new Error('Roster catalog is missing hero or henchman options.');
+          buildRows();
+        } catch (error) {
+          rowsRoot.innerHTML = `<tr><td colspan="6" class="empty">Could not load Mordheim model data: ${esc(error.message)} Open this editor through the local site server and try again.</td></tr>`;
+          setStatus('Catalog could not be loaded.', true);
+        }
+      }
+
+      $('#importButton').addEventListener('click', () => $('#importFile').click());
+      $('#importFile').addEventListener('change', async (event) => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+        try {
+          importJsonData(JSON.parse(await file.text()));
+        } catch (error) {
+          showNotice(`Import failed: ${error.message}`, true);
+        } finally {
+          event.target.value = '';
+        }
+      });
+      $('#exportButton').addEventListener('click', exportJson);
+      $('#restoreButton').addEventListener('click', () => {
+        if (!confirm('Restore every champion to the catalog suggestion? Your current edits will be replaced in this browser.')) return;
+        assignments.clear();
+        try { localStorage.removeItem(STORAGE_KEY); } catch {}
+        renderRows();
+        setStatus('Catalog suggestions restored.');
+        showNotice('Restored the original suggested assignments.');
+      });
+      $('#search').addEventListener('input', renderRows);
+      $('#factionFilter').addEventListener('change', renderRows);
+      $('#unassignedOnly').addEventListener('change', renderRows);
+      rowsRoot.addEventListener('input', (event) => {
+        if (event.target.matches('[data-custom-warband], [data-custom-model], [data-note]')) syncRow(event.target);
+      });
+      rowsRoot.addEventListener('change', (event) => {
+        if (event.target.matches('[data-warband]')) {
+          const tr = event.target.closest('tr');
+          const customWarbandInput = tr.querySelector('[data-custom-warband]');
+          customWarbandInput.hidden = event.target.value !== CUSTOM_WARBAND;
+          refreshUnitTypes(tr);
+          syncRow(event.target);
+        } else if (event.target.matches('[data-model], [data-likelihood]')) syncRow(event.target);
+      });
+
+      initialize();
+    })();
+  </script>
+</body>
+</html>

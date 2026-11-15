@@ -1,0 +1,15 @@
+# Grade 1C warbands — offline index
+
+- [Battle Monks of Cathay](battle-monks-of-cathay.md) ([source](<https://mordheimer.net/docs/warbands/grade-1c-warbands/battle-monks-of-cathay>))
+- [Black Dwarfs](black-dwarfs.md) ([source](<https://mordheimer.net/docs/warbands/grade-1c-warbands/black-dwarfs>))
+- [Bretonnian Chapel Guard](bretonnian-chapel-guard.md) ([source](<https://mordheimer.net/docs/warbands/grade-1c-warbands/bretonnian-chapel-guard>))
+- [Court of the Profane Pleasures](court-of-the-profane-pleasures.md) ([source](<https://mordheimer.net/docs/warbands/grade-1c-warbands/court-of-the-profane-pleasures>))
+- [The Cursed Cavalcade](cursed-cavalcade.md) ([source](<https://mordheimer.net/docs/warbands/grade-1c-warbands/cursed-cavalcade>))
+- [Lustrian Reavers](lustrian-reavers.md) ([source](<https://mordheimer.net/docs/warbands/grade-1c-warbands/lustrian-reavers>))
+- [Maneaters](maneaters.md) ([source](<https://mordheimer.net/docs/warbands/grade-1c-warbands/maneaters>))
+- [Marauders of Chaos](marauders-of-chaos.md) ([source](<https://mordheimer.net/docs/warbands/grade-1c-warbands/marauders-of-chaos>))
+- [Merchant Caravans](merchant-caravans.md) ([source](<https://mordheimer.net/docs/warbands/grade-1c-warbands/merchant-caravans>))
+- [Night Goblins (web)](night-goblins-web.md) ([source](<https://mordheimer.net/docs/warbands/grade-1c-warbands/night-goblins-web>))
+- [Night Goblins](night-goblins.md) ([source](<https://mordheimer.net/docs/warbands/grade-1c-warbands/night-goblins>))
+- [The Restless Dead](restless-dead.md) ([source](<https://mordheimer.net/docs/warbands/grade-1c-warbands/restless-dead>))
+- [The Sons of Hashut](sons-of-hashut.md) ([source](<https://mordheimer.net/docs/warbands/grade-1c-warbands/sons-of-hashut>))

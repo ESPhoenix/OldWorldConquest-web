@@ -1,0 +1,6085 @@
+{
+  "description": "Closest-item crosswalk from the repository’s current Warhammer: The Old World catalogue to Mordheim. Equivalents are item-type analogies, not rules conversions; null means no direct Mordheim equipment equivalent. Faction equipment names include creature attack profiles and war machines as represented in the source catalogue. mordheimEquipmentCostValues gives fixed prices or min/max ranges in gold crowns for the mapped Mordheim equipment.",
+  "sources": {
+    "oldWorldFactionFiles": [
+      "old-world-builder/public/games/the-old-world/1.5/chaos-dwarfs.json",
+      "old-world-builder/public/games/the-old-world/1.5/daemons-of-chaos.json",
+      "old-world-builder/public/games/the-old-world/1.5/dark-elves.json",
+      "old-world-builder/public/games/the-old-world/1.5/lizardmen.json",
+      "old-world-builder/public/games/the-old-world/1.5/ogre-kingdoms.json",
+      "old-world-builder/public/games/the-old-world/1.5/skaven.json",
+      "old-world-builder/public/games/the-old-world/1.5/vampire-counts.json",
+      "old-world-builder/public/games/the-old-world/beastmen-brayherds.json",
+      "old-world-builder/public/games/the-old-world/chaos-dwarfs.json",
+      "old-world-builder/public/games/the-old-world/daemons-of-chaos.json",
+      "old-world-builder/public/games/the-old-world/dark-elves.json",
+      "old-world-builder/public/games/the-old-world/dwarfen-mountain-holds.json",
+      "old-world-builder/public/games/the-old-world/empire-of-man.json",
+      "old-world-builder/public/games/the-old-world/grand-cathay.json",
+      "old-world-builder/public/games/the-old-world/high-elf-realms.json",
+      "old-world-builder/public/games/the-old-world/kingdom-of-bretonnia.json",
+      "old-world-builder/public/games/the-old-world/lizardmen.json",
+      "old-world-builder/public/games/the-old-world/ogre-kingdoms.json",
+      "old-world-builder/public/games/the-old-world/orc-and-goblin-tribes.json",
+      "old-world-builder/public/games/the-old-world/renegade-crowns.json",
+      "old-world-builder/public/games/the-old-world/skaven.json",
+      "old-world-builder/public/games/the-old-world/tomb-kings-of-khemri.json",
+      "old-world-builder/public/games/the-old-world/vampire-counts.json",
+      "old-world-builder/public/games/the-old-world/warriors-of-chaos.json",
+      "old-world-builder/public/games/the-old-world/wood-elf-realms.json"
+    ],
+    "oldWorldMagicItems": [
+      "old-world-builder/public/games/the-old-world/magic-items.json",
+      "old-world-builder/public/games/the-old-world/1.5/magic-items.json"
+    ],
+    "mordheimWeaponRules": [
+      "Mordheimer_Scraped/weapons-armour/close-combat.md",
+      "Mordheimer_Scraped/weapons-armour/missile.md",
+      "Mordheimer_Scraped/weapons-armour/blackpowder.md"
+    ],
+    "mordheimArmourRules": "Mordheimer_Scraped/weapons-armour/armour.md",
+    "mordheimEquipmentStats": [
+      "Mordheimer_Scraped/weapons-armour/close-combat.md",
+      "Mordheimer_Scraped/weapons-armour/missile.md",
+      "Mordheimer_Scraped/weapons-armour/blackpowder.md",
+      "Mordheimer_Scraped/weapons-armour/armour.md",
+      "Mordheimer_Scraped/core-rules/rules/close-combat.md"
+    ]
+  },
+  "weaponMappings": [
+    {
+      "oldWorldName": "Additional hand weapon",
+      "mordheimEquivalent": "Additional close-combat weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "chaos-dwarfs",
+        "dark-elves",
+        "dwarfen-mountain-holds",
+        "empire-of-man",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "lizardmen",
+        "ogre-kingdoms",
+        "orc-and-goblin-tribes",
+        "skaven",
+        "tomb-kings-of-khemri",
+        "vampire-counts",
+        "warriors-of-chaos",
+        "wood-elf-realms"
+      ],
+      "note": "Choose the Mordheim type used for the extra close-combat attack; two one-handed weapons grant +1 Attack with the additional weapon.",
+      "mordheimEquivalentOptions": [
+        "Axe",
+        "Sword",
+        "Hammer, Staff, Mace or Club"
+      ],
+      "defaultMordheimEquivalent": "Sword",
+      "mordheimAdditionalAttack": true
+    },
+    {
+      "oldWorldName": "Additional hand weapons",
+      "mordheimEquivalent": "Additional close-combat weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "dark-elves",
+        "empire-of-man",
+        "ogre-kingdoms",
+        "orc-and-goblin-tribes",
+        "renegade-crowns",
+        "skaven",
+        "warriors-of-chaos"
+      ],
+      "note": "Choose the Mordheim type used for the extra close-combat attack; two one-handed weapons grant +1 Attack with the additional weapon.",
+      "mordheimEquivalentOptions": [
+        "Axe",
+        "Sword",
+        "Hammer, Staff, Mace or Club"
+      ],
+      "defaultMordheimEquivalent": "Sword",
+      "mordheimAdditionalAttack": true
+    },
+    {
+      "oldWorldName": "Asrai longbow",
+      "mordheimEquivalent": "Elf Bow",
+      "match": "approximate",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest elven bow; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Asrai longbows",
+      "mordheimEquivalent": "Elf Bow",
+      "match": "approximate",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest elven bow; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Asrai spear",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Asrai spears",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Assorted weapons",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Balefire Brazier",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Ball & chain",
+      "mordheimEquivalent": "Flail",
+      "match": "close",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Closest chained/heavy weapon."
+    },
+    {
+      "oldWorldName": "Beast Reaver",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Blackbriar javelins",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Bloodflail",
+      "mordheimEquivalent": "Flail",
+      "match": "close",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Closest chained/heavy weapon."
+    },
+    {
+      "oldWorldName": "Blunderbuss",
+      "mordheimEquivalent": "Blunderbuss",
+      "match": "close",
+      "sourceFactions": [
+        "empire-of-man"
+      ]
+    },
+    {
+      "oldWorldName": "Bog-wood staff",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceFactions": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Bolt thrower",
+      "mordheimEquivalent": "Crossbow",
+      "match": "approximate",
+      "sourceFactions": [
+        "chaos-dwarfs",
+        "dwarfen-mountain-holds",
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Repeating/large bolt weapons have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Bombard",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "kingdom-of-bretonnia",
+        "renegade-crowns"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Bonegrinder Giant's club",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceFactions": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Bow of Avelorn",
+      "mordheimEquivalent": "Elf Bow",
+      "match": "approximate",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "Closest elven bow; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Bows of Avelorn",
+      "mordheimEquivalent": "Elf Bow",
+      "match": "approximate",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "Closest elven bow; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Brace of pistols",
+      "mordheimEquivalent": "Pistol",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds",
+        "empire-of-man",
+        "renegade-crowns"
+      ],
+      "note": "Brace and faction-specific pistol rules differ."
+    },
+    {
+      "oldWorldName": "Brass bound hooves",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Braystaff",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "warriors-of-chaos"
+      ],
+      "note": "Closest staff-type hand weapon; its Old World rules differ."
+    },
+    {
+      "oldWorldName": "Brimstone gun",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest Mordheim firearm; its special firing rules differ."
+    },
+    {
+      "oldWorldName": "Brimstone guns",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest Mordheim firearm; its special firing rules differ."
+    },
+    {
+      "oldWorldName": "Briny breath",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dark-elves",
+        "high-elf-realms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Cannon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Cannon of Khorne",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Cannon of Khorne {renegade}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Cannon of the Sky-titans {renegade}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Cathayan lance",
+      "mordheimEquivalent": "Lance",
+      "match": "close",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Use only with mounted-model rules; Old World lance rules differ."
+    },
+    {
+      "oldWorldName": "Cathayan lance (if appropriately mounted)",
+      "mordheimEquivalent": "Lance",
+      "match": "close",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Use only with mounted-model rules; Old World lance rules differ."
+    },
+    {
+      "oldWorldName": "Cathayan lances",
+      "mordheimEquivalent": "Lance",
+      "match": "close",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Use only with mounted-model rules; Old World lance rules differ."
+    },
+    {
+      "oldWorldName": "Cavalry spear",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "chaos-dwarfs",
+        "dark-elves",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "lizardmen",
+        "orc-and-goblin-tribes",
+        "renegade-crowns",
+        "tomb-kings-of-khemri",
+        "warriors-of-chaos",
+        "wood-elf-realms"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Cavalry spears",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "dark-elves",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "lizardmen",
+        "orc-and-goblin-tribes",
+        "tomb-kings-of-khemri",
+        "warriors-of-chaos",
+        "wood-elf-realms"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Cavalry spears (Gor Crew)",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "beastmen-brayherds"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Cavalry spears (Horsemen)",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Cavalry spears (Shrinekeepers)",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Cavalry spears (Tomb Guard Crew only)",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Cavernous maw",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Celestial blade",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Ceremonial halberd",
+      "mordheimEquivalent": "Halberd",
+      "match": "close",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "Closest polearm entry in Mordheim."
+    },
+    {
+      "oldWorldName": "Ceremonial halberds",
+      "mordheimEquivalent": "Halberd",
+      "match": "close",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "Closest polearm entry in Mordheim."
+    },
+    {
+      "oldWorldName": "Chayal",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Chill breath (Thundertusk)",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Chracian great blade",
+      "mordheimEquivalent": "Double-handed weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "Closest two-handed melee weapon; Old World weapon-specific rules differ."
+    },
+    {
+      "oldWorldName": "Chracian great blades",
+      "mordheimEquivalent": "Double-handed weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "Closest two-handed melee weapon; Old World weapon-specific rules differ."
+    },
+    {
+      "oldWorldName": "Clattergun",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest Mordheim firearm; its special firing rules differ."
+    },
+    {
+      "oldWorldName": "Clatterguns",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest Mordheim firearm; its special firing rules differ."
+    },
+    {
+      "oldWorldName": "Claws and fangs (Hand weapon)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "warriors-of-chaos"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Claws and fangs (Hand weapons)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "vampire-counts",
+        "warriors-of-chaos"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Cleaver-limbs",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "warriors-of-chaos"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Cleaving blades",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Colossal fang-filled gob",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Crane guns",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Crossbow",
+      "mordheimEquivalent": "Crossbow",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds",
+        "empire-of-man"
+      ],
+      "note": "Repeating/large bolt weapons have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Crossbows",
+      "mordheimEquivalent": "Crossbow",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds",
+        "empire-of-man",
+        "renegade-crowns"
+      ],
+      "note": "Repeating/large bolt weapons have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Da Skull Smasha",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Daemonic talons",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Darkforged weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "chaos-dwarfs"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Decapitating claws",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Decapitating strike",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Demolition Rockets",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "chaos-dwarfs"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Doom-flayer",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Doomrocket",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Dragon fire bombs",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Dragonblade (Prince Ulther)",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Drakeguns",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest Mordheim firearm; its special firing rules differ."
+    },
+    {
+      "oldWorldName": "Dread halberds",
+      "mordheimEquivalent": "Halberd",
+      "match": "close",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Closest polearm entry in Mordheim."
+    },
+    {
+      "oldWorldName": "Dreadquake Mortar {weapon}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "chaos-dwarfs"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Engine of the Gods",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Engine of the Gods {renegade}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Ensorcelled weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Envenomed sting",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Fanatic ball & chain",
+      "mordheimEquivalent": "Flail",
+      "match": "close",
+      "sourceFactions": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Closest chained/heavy weapon."
+    },
+    {
+      "oldWorldName": "Fiery breath {dark elves}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Fiery breath {lizardmen}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Fiery breath {renegade}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Filth-encrusted claws",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Filth-encrusted talons",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Fire rain rocket",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Fire thrower",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "chaos-dwarfs",
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Fireglaive",
+      "mordheimEquivalent": "Halberd",
+      "match": "close",
+      "sourceFactions": [
+        "chaos-dwarfs"
+      ],
+      "note": "Closest polearm entry in Mordheim."
+    },
+    {
+      "oldWorldName": "Fireglaives",
+      "mordheimEquivalent": "Halberd",
+      "match": "close",
+      "sourceFactions": [
+        "chaos-dwarfs"
+      ],
+      "note": "Closest polearm entry in Mordheim."
+    },
+    {
+      "oldWorldName": "Fireleech bolas",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Flail",
+      "mordheimEquivalent": "Flail",
+      "match": "close",
+      "sourceFactions": [
+        "empire-of-man",
+        "tomb-kings-of-khemri",
+        "warriors-of-chaos"
+      ],
+      "note": "Closest chained/heavy weapon."
+    },
+    {
+      "oldWorldName": "Flailing appendages (Hand weapons)",
+      "mordheimEquivalent": "Flail",
+      "match": "close",
+      "sourceFactions": [
+        "warriors-of-chaos"
+      ],
+      "note": "Closest chained/heavy weapon."
+    },
+    {
+      "oldWorldName": "Flails",
+      "mordheimEquivalent": "Flail",
+      "match": "close",
+      "sourceFactions": [
+        "empire-of-man",
+        "warriors-of-chaos"
+      ],
+      "note": "Closest chained/heavy weapon."
+    },
+    {
+      "oldWorldName": "Flames of Tzeentch",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Flaming breath {ogre kingdoms}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Furnace hammer",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Giant bow",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Closest standard bow; range and special rules differ."
+    },
+    {
+      "oldWorldName": "Giant's club",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "chaos-dwarfs",
+        "ogre-kingdoms",
+        "orc-and-goblin-tribes",
+        "warriors-of-chaos"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Gnashing maws",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "warriors-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Goblin-hewer",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Grand cannon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Great axe",
+      "mordheimEquivalent": "Double-handed weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Closest two-handed melee weapon; Old World weapon-specific rules differ."
+    },
+    {
+      "oldWorldName": "Great blade",
+      "mordheimEquivalent": "Double-handed weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Closest two-handed melee weapon; Old World weapon-specific rules differ."
+    },
+    {
+      "oldWorldName": "Great cannon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Great hammers",
+      "mordheimEquivalent": "Double-handed weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest two-handed melee weapon; Old World weapon-specific rules differ."
+    },
+    {
+      "oldWorldName": "Great horns",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Great throwing spear",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Great weapon",
+      "mordheimEquivalent": "Double-handed weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "chaos-dwarfs",
+        "dark-elves",
+        "dwarfen-mountain-holds",
+        "empire-of-man",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "lizardmen",
+        "ogre-kingdoms",
+        "orc-and-goblin-tribes",
+        "renegade-crowns",
+        "skaven",
+        "tomb-kings-of-khemri",
+        "vampire-counts",
+        "warriors-of-chaos",
+        "wood-elf-realms"
+      ],
+      "note": "Closest two-handed melee weapon; Old World weapon-specific rules differ."
+    },
+    {
+      "oldWorldName": "Great weapon (Borri Forkbeard)",
+      "mordheimEquivalent": "Double-handed weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest two-handed melee weapon; Old World weapon-specific rules differ."
+    },
+    {
+      "oldWorldName": "Great weapon (Staff of Tzeentch)",
+      "mordheimEquivalent": "Double-handed weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Closest two-handed melee weapon; Old World weapon-specific rules differ."
+    },
+    {
+      "oldWorldName": "Great weapons",
+      "mordheimEquivalent": "Double-handed weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "chaos-dwarfs",
+        "dark-elves",
+        "dwarfen-mountain-holds",
+        "empire-of-man",
+        "kingdom-of-bretonnia",
+        "lizardmen",
+        "ogre-kingdoms",
+        "renegade-crowns",
+        "tomb-kings-of-khemri",
+        "vampire-counts",
+        "warriors-of-chaos"
+      ],
+      "note": "Closest two-handed melee weapon; Old World weapon-specific rules differ."
+    },
+    {
+      "oldWorldName": "Great weapons (Bestigor Crew)",
+      "mordheimEquivalent": "Double-handed weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds"
+      ],
+      "note": "Closest two-handed melee weapon; Old World weapon-specific rules differ."
+    },
+    {
+      "oldWorldName": "Great weapons (replace shields)",
+      "mordheimEquivalent": "Double-handed weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "Old World equipment field lists this as a weapon option; closest Mordheim two-handed melee weapon."
+    },
+    {
+      "oldWorldName": "Greatbows",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest Mordheim bow; Old World greatbow range and strength differ."
+    },
+    {
+      "oldWorldName": "Grenade launching blunderbuss",
+      "mordheimEquivalent": "Blunderbuss",
+      "match": "close",
+      "sourceFactions": [
+        "empire-of-man"
+      ]
+    },
+    {
+      "oldWorldName": "Grimfrost weapons",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Gromril great axes",
+      "mordheimEquivalent": "Double-handed weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest two-handed melee weapon; Old World weapon-specific rules differ."
+    },
+    {
+      "oldWorldName": "Gunpowder bombs",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Hailshot blunderbuss",
+      "mordheimEquivalent": "Blunderbuss",
+      "match": "close",
+      "sourceFactions": [
+        "chaos-dwarfs"
+      ]
+    },
+    {
+      "oldWorldName": "Halberd",
+      "mordheimEquivalent": "Halberd",
+      "match": "close",
+      "sourceFactions": [
+        "dark-elves",
+        "empire-of-man",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "lizardmen",
+        "renegade-crowns",
+        "skaven",
+        "tomb-kings-of-khemri",
+        "warriors-of-chaos"
+      ],
+      "note": "Closest polearm entry in Mordheim."
+    },
+    {
+      "oldWorldName": "Halberd (Medusa)",
+      "mordheimEquivalent": "Halberd",
+      "match": "close",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Closest polearm entry in Mordheim."
+    },
+    {
+      "oldWorldName": "Halberds",
+      "mordheimEquivalent": "Halberd",
+      "match": "close",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "chaos-dwarfs",
+        "empire-of-man",
+        "grand-cathay",
+        "kingdom-of-bretonnia",
+        "lizardmen",
+        "renegade-crowns",
+        "skaven",
+        "tomb-kings-of-khemri",
+        "warriors-of-chaos"
+      ],
+      "note": "Closest polearm entry in Mordheim."
+    },
+    {
+      "oldWorldName": "Hand weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "chaos-dwarfs",
+        "daemons-of-chaos",
+        "dark-elves",
+        "dwarfen-mountain-holds",
+        "empire-of-man",
+        "grand-cathay",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "lizardmen",
+        "ogre-kingdoms",
+        "orc-and-goblin-tribes",
+        "renegade-crowns",
+        "skaven",
+        "tomb-kings-of-khemri",
+        "vampire-counts",
+        "warriors-of-chaos",
+        "wood-elf-realms"
+      ],
+      "note": "Choose the closest Mordheim form for this generic Old World hand weapon; Dagger (free) is selected when another melee weapon is present.",
+      "defaultMordheimEquivalent": "Sword",
+      "mordheimEquivalentOptions": [
+        "Axe",
+        "Sword",
+        "Hammer, Staff, Mace or Club",
+        "Dagger (free)"
+      ]
+    },
+    {
+      "oldWorldName": "Hand weapon (claws)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "warriors-of-chaos"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapon (flailing appendages)",
+      "mordheimEquivalent": "Flail",
+      "match": "close",
+      "sourceFactions": [
+        "beastmen-brayherds"
+      ],
+      "note": "Closest chained/heavy weapon."
+    },
+    {
+      "oldWorldName": "Hand weapon (Gnarled stump)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapon (Hound)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapon (poisonous fangs)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapon (scything blades)",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Hand weapons",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "chaos-dwarfs",
+        "daemons-of-chaos",
+        "dark-elves",
+        "dwarfen-mountain-holds",
+        "empire-of-man",
+        "grand-cathay",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "lizardmen",
+        "ogre-kingdoms",
+        "orc-and-goblin-tribes",
+        "renegade-crowns",
+        "skaven",
+        "tomb-kings-of-khemri",
+        "vampire-counts",
+        "warriors-of-chaos",
+        "wood-elf-realms"
+      ],
+      "note": "Choose the closest Mordheim form for this generic Old World hand weapon; Dagger (free) is selected when another melee weapon is present.",
+      "defaultMordheimEquivalent": "Sword",
+      "mordheimEquivalentOptions": [
+        "Axe",
+        "Sword",
+        "Hammer, Staff, Mace or Club",
+        "Dagger (free)"
+      ]
+    },
+    {
+      "oldWorldName": "Hand weapons (Beaks and talons)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapons (both)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapons (Claws and fangs)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "daemons-of-chaos",
+        "high-elf-realms",
+        "ogre-kingdoms",
+        "skaven",
+        "vampire-counts",
+        "warriors-of-chaos"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapons (Claws and teeth)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapons (claws)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapons (Claws)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapons (Claws, fangs, tusks, teeth)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapons (filth-encrusted claws)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapons (Hooves)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapons (Iron-shod hooves)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapons (Lashing tails)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapons (Tomb Guard Crew only)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapons (tusks)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Hand weapons (Venomous bites and stings)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Handgun",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds",
+        "empire-of-man"
+      ],
+      "note": "Closest blackpowder firearm; repeating/long-rifle variants differ."
+    },
+    {
+      "oldWorldName": "Handguns",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds",
+        "empire-of-man",
+        "renegade-crowns"
+      ],
+      "note": "Closest blackpowder firearm; repeating/long-rifle variants differ."
+    },
+    {
+      "oldWorldName": "Handmaiden's spear",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Har Ganeth greatswords",
+      "mordheimEquivalent": "Double-handed weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Closest two-handed melee weapon; Old World weapon-specific rules differ."
+    },
+    {
+      "oldWorldName": "Harpoon launcher (Ogre Beast Rider)",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Harpoon launcher (Ogre Crew)",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Harvester cannon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Hawk's Talon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Helblaster Volley Gun {weapon}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Hellblade",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Hellblades",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Helstorm Rocket Battery {weapon}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Hochland long rifle",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Closest blackpowder firearm; repeating/long-rifle variants differ."
+    },
+    {
+      "oldWorldName": "Hooked halberd",
+      "mordheimEquivalent": "Halberd",
+      "match": "close",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Closest polearm entry in Mordheim."
+    },
+    {
+      "oldWorldName": "Horn of the Wild Hunt",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Horns of stone (Stonehorn)",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Huge gobs (Squigs only)",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Huge oaken fists",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Hunting spear",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Impaling claws",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Iron claw",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Iron hail guns",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Closest Mordheim firearm; its special firing rules differ."
+    },
+    {
+      "oldWorldName": "Iron talons",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Iron-shod hooves",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Iron-shod hooves (Hand weapons)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Ironfist",
+      "mordheimEquivalent": "Spiked Gauntlet",
+      "match": "approximate",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Closest combined weapon-and-defence item; Mordheim’s spiked gauntlet is Pit Fighter-only."
+    },
+    {
+      "oldWorldName": "Ironfist {renegade}",
+      "mordheimEquivalent": "Spiked Gauntlet",
+      "match": "approximate",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Closest combined weapon-and-defence item; Mordheim’s spiked gauntlet is Pit Fighter-only."
+    },
+    {
+      "oldWorldName": "Ironfists",
+      "mordheimEquivalent": "Spiked Gauntlet",
+      "match": "approximate",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Closest combined weapon-and-defence item; Mordheim’s spiked gauntlet is Pit Fighter-only."
+    },
+    {
+      "oldWorldName": "Ironfists {renegade}",
+      "mordheimEquivalent": "Spiked Gauntlet",
+      "match": "approximate",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Closest combined weapon-and-defence item; Mordheim’s spiked gauntlet is Pit Fighter-only."
+    },
+    {
+      "oldWorldName": "Javelin",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Javelins",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Judgement",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Lamprey's bite",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Lance",
+      "mordheimEquivalent": "Lance",
+      "match": "close",
+      "sourceFactions": [
+        "dark-elves",
+        "empire-of-man",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "renegade-crowns",
+        "warriors-of-chaos"
+      ],
+      "note": "Use only with mounted-model rules; Old World lance rules differ."
+    },
+    {
+      "oldWorldName": "Lance (when mounted)",
+      "mordheimEquivalent": "Lance",
+      "match": "close",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "Use only with mounted-model rules; Old World lance rules differ."
+    },
+    {
+      "oldWorldName": "Lances",
+      "mordheimEquivalent": "Lance",
+      "match": "close",
+      "sourceFactions": [
+        "dark-elves",
+        "empire-of-man",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "renegade-crowns",
+        "vampire-counts",
+        "warriors-of-chaos"
+      ],
+      "note": "Use only with mounted-model rules; Old World lance rules differ."
+    },
+    {
+      "oldWorldName": "Lash of Khorne",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Lashing tails and venomous fangs (Hand weapons)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Lashing talons",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dark-elves",
+        "high-elf-realms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Leadbelcher guns {renegade}",
+      "mordheimEquivalent": "Blunderbuss",
+      "match": "approximate",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Closest Mordheim scatter-fire firearm; its range and special rules differ."
+    },
+    {
+      "oldWorldName": "Long rifle",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Closest blackpowder firearm; repeating/long-rifle variants differ."
+    },
+    {
+      "oldWorldName": "Long spears",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Longbow",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceFactions": [
+        "empire-of-man",
+        "high-elf-realms"
+      ],
+      "note": "Closest standard bow; range and special rules differ."
+    },
+    {
+      "oldWorldName": "Longbows",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceFactions": [
+        "high-elf-realms",
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Closest standard bow; range and special rules differ."
+    },
+    {
+      "oldWorldName": "Mansmasher",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "beastmen-brayherds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Monstrous tusks (Mournfang)",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Morning star",
+      "mordheimEquivalent": "Morning Star",
+      "match": "close",
+      "sourceFactions": [
+        "kingdom-of-bretonnia",
+        "renegade-crowns"
+      ]
+    },
+    {
+      "oldWorldName": "Mortar",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "empire-of-man",
+        "renegade-crowns"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Mutated weapons (Hand weapons)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "warriors-of-chaos"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Oaken fists",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Ogre pistols",
+      "mordheimEquivalent": "Pistol",
+      "match": "approximate",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Brace and faction-specific pistol rules differ."
+    },
+    {
+      "oldWorldName": "Organ gun {weapon}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dwarfen-mountain-holds",
+        "renegade-crowns"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Paired great khopeshes",
+      "mordheimEquivalent": "Double-handed weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest two-handed melee weapon; Old World weapon-specific rules differ."
+    },
+    {
+      "oldWorldName": "Petrifying gaze",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "dark-elves",
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Petrifying gaze (Medusa)",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Phlegm Bombardment",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Piercing claws",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Pistol",
+      "mordheimEquivalent": "Pistol",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds",
+        "empire-of-man"
+      ],
+      "note": "Brace and faction-specific pistol rules differ."
+    },
+    {
+      "oldWorldName": "Pistols",
+      "mordheimEquivalent": "Pistol",
+      "match": "approximate",
+      "sourceFactions": [
+        "empire-of-man",
+        "renegade-crowns"
+      ],
+      "note": "Brace and faction-specific pistol rules differ."
+    },
+    {
+      "oldWorldName": "Plague censer",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Plague censers",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Plagueclaw Catapult",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Plaguesword",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Plagueswords",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Poisoned Wind Mortar",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Polearms",
+      "mordheimEquivalent": "Halberd",
+      "match": "close",
+      "sourceFactions": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Closest polearm entry in Mordheim."
+    },
+    {
+      "oldWorldName": "Rancid maw",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Ranger's glaive",
+      "mordheimEquivalent": "Halberd",
+      "match": "close",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest polearm entry in Mordheim."
+    },
+    {
+      "oldWorldName": "Ratling Gun",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Ravager harpoon*",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Repeater bolt thrower",
+      "mordheimEquivalent": "Crossbow",
+      "match": "approximate",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Repeating/large bolt weapons have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Repeater Bolt Thrower",
+      "mordheimEquivalent": "Crossbow",
+      "match": "approximate",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "Repeating/large bolt weapons have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Repeater crossbows",
+      "mordheimEquivalent": "Crossbow",
+      "match": "approximate",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Repeating/large bolt weapons have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Repeater handbow",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Closest standard bow; range and special rules differ."
+    },
+    {
+      "oldWorldName": "Repeater handbows",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Closest standard bow; range and special rules differ."
+    },
+    {
+      "oldWorldName": "Repeater handgun",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Closest blackpowder firearm; repeating/long-rifle variants differ."
+    },
+    {
+      "oldWorldName": "Repeater handguns",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Closest blackpowder firearm; repeating/long-rifle variants differ."
+    },
+    {
+      "oldWorldName": "Repeater pistol",
+      "mordheimEquivalent": "Pistol",
+      "match": "approximate",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Brace and faction-specific pistol rules differ."
+    },
+    {
+      "oldWorldName": "Repeating rifle",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Closest blackpowder firearm; repeating/long-rifle variants differ."
+    },
+    {
+      "oldWorldName": "Ritual blades",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Rivet gun",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Root eruption",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "sacrificial dagger",
+      "mordheimEquivalent": "Dagger",
+      "match": "close",
+      "sourceFactions": [
+        "warriors-of-chaos"
+      ]
+    },
+    {
+      "oldWorldName": "Scraplauncher catapult",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Screaming skull catapult {weapon}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Serpentine tail",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dark-elves",
+        "high-elf-realms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Serrated maw",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "high-elf-realms",
+        "wood-elf-realms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Serrated maws {renegade}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Shortbows",
+      "mordheimEquivalent": "Short Bow",
+      "match": "close",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "chaos-dwarfs",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "lizardmen",
+        "orc-and-goblin-tribes",
+        "renegade-crowns",
+        "warriors-of-chaos"
+      ]
+    },
+    {
+      "oldWorldName": "Shortbows (Tomb Guard Crew only)",
+      "mordheimEquivalent": "Short Bow",
+      "match": "close",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ]
+    },
+    {
+      "oldWorldName": "Skeletal hooves",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Skeletal hooves (Hand weapons)",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "Generic hand weapon; Mordheim has no directly equivalent category beyond a warrior’s free dagger."
+    },
+    {
+      "oldWorldName": "Sky Lantern Crane Guns",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Slashing talons {warriors of chaos}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "warriors-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Sling",
+      "mordheimEquivalent": "Sling",
+      "match": "close",
+      "sourceFactions": [
+        "skaven"
+      ]
+    },
+    {
+      "oldWorldName": "Slings",
+      "mordheimEquivalent": "Sling",
+      "match": "close",
+      "sourceFactions": [
+        "skaven"
+      ]
+    },
+    {
+      "oldWorldName": "Solar Engine",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Sorrow's End",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Spear of Kurnous",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Spear of Loec",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Spear of Talsyn",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Spectral scythe {black coach}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Spectral scythe {cairn wraith}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Steam Cannon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Steam Cannonade",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "chaos-dwarfs"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Steam gun {dwarfs}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Steam gun {empire}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Stone thrower",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dwarfen-mountain-holds",
+        "orc-and-goblin-tribes"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Strangleroots",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Swamp breath",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Sword of Hoeth",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Swords of Hoeth",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Talons of the Storm",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "The Axe of Dargo",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Blessed Blade of Ptra",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Dolorous Blade",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Flail of Conquered Kings",
+      "mordheimEquivalent": "Flail",
+      "match": "close",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest chained/heavy weapon."
+    },
+    {
+      "oldWorldName": "The Staff of the Elements",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceFactions": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Throwing axes",
+      "mordheimEquivalent": "Throwing Knives/Stars",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest Mordheim thrown weapon; Old World throwing-weapon types differ."
+    },
+    {
+      "oldWorldName": "Throwing spears",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "orc-and-goblin-tribes",
+        "warriors-of-chaos"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Throwing weapons",
+      "mordheimEquivalent": "Throwing Knives/Stars",
+      "match": "approximate",
+      "sourceFactions": [
+        "chaos-dwarfs",
+        "dark-elves",
+        "orc-and-goblin-tribes",
+        "skaven",
+        "warriors-of-chaos"
+      ],
+      "note": "Closest Mordheim thrown weapon; Old World throwing-weapon types differ."
+    },
+    {
+      "oldWorldName": "Throwing weapons (mixed weapons)",
+      "mordheimEquivalent": "Throwing Knives/Stars",
+      "match": "approximate",
+      "sourceFactions": [
+        "empire-of-man",
+        "renegade-crowns"
+      ],
+      "note": "Closest Mordheim thrown weapon; Old World throwing-weapon types differ."
+    },
+    {
+      "oldWorldName": "Throwing weapons (Sharp stuff)",
+      "mordheimEquivalent": "Throwing Knives/Stars",
+      "match": "approximate",
+      "sourceFactions": [
+        "ogre-kingdoms"
+      ],
+      "note": "Closest Mordheim thrown weapon; Old World throwing-weapon types differ."
+    },
+    {
+      "oldWorldName": "Thrusting spear",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Thrusting spears",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "dark-elves",
+        "dwarfen-mountain-holds",
+        "empire-of-man",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "lizardmen",
+        "orc-and-goblin-tribes",
+        "renegade-crowns",
+        "tomb-kings-of-khemri",
+        "vampire-counts",
+        "warriors-of-chaos"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Thrusting spears (Warriors)",
+      "mordheimEquivalent": "Spear",
+      "match": "close",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Trickster's Blades",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Troll vomit",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "orc-and-goblin-tribes",
+        "warriors-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Two hand weapons",
+      "mordheimEquivalent": "Additional close-combat weapon",
+      "match": "approximate",
+      "sourceFactions": [
+        "chaos-dwarfs",
+        "dark-elves",
+        "skaven"
+      ],
+      "note": "Mordheim has weapon-pair bonuses rather than an item named additional hand weapon."
+    },
+    {
+      "oldWorldName": "Venom spray",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Venom surge",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Venomous tail",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Venomous talons",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Warbow",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "Closest standard bow; range and special rules differ."
+    },
+    {
+      "oldWorldName": "Warbows",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceFactions": [
+        "empire-of-man",
+        "grand-cathay",
+        "high-elf-realms",
+        "orc-and-goblin-tribes",
+        "renegade-crowns",
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest standard bow; range and special rules differ."
+    },
+    {
+      "oldWorldName": "Warbows (Archers)",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest standard bow; range and special rules differ."
+    },
+    {
+      "oldWorldName": "Warbows (Horse Archers)",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest standard bow; range and special rules differ."
+    },
+    {
+      "oldWorldName": "Warp gaze",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Warp Grinder",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Warp Lightning Cannon {renegade}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Warped Tintinnabulation",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Warpfire Blast",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "warriors-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Warpfire Thrower",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Warpflame",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Warplock jezzails {skaven}",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Closest Mordheim firearm; its range and special rules differ."
+    },
+    {
+      "oldWorldName": "Warplock musket",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Closest blackpowder firearm; repeating/long-rifle variants differ."
+    },
+    {
+      "oldWorldName": "Warplock pistol",
+      "mordheimEquivalent": "Warplock Pistol",
+      "match": "close",
+      "sourceFactions": [
+        "skaven"
+      ]
+    },
+    {
+      "oldWorldName": "Warpstone claws",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Warpstone Tokens (D3)",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Whip",
+      "mordheimEquivalent": "Steel Whip",
+      "match": "approximate",
+      "sourceFactions": [
+        "dark-elves",
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest whip; Mordheim whip availability and rules are faction-specific."
+    },
+    {
+      "oldWorldName": "Whips",
+      "mordheimEquivalent": "Steel Whip",
+      "match": "approximate",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Closest whip; Mordheim whip availability and rules are faction-specific."
+    },
+    {
+      "oldWorldName": "Wicked claws",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "dark-elves",
+        "high-elf-realms",
+        "lizardmen",
+        "ogre-kingdoms",
+        "tomb-kings-of-khemri",
+        "vampire-counts",
+        "wood-elf-realms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Wicked Claws",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "warriors-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Wicked claws (Ripperdactyl only)",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Wicked claws (Swiftfeather Roc)",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Wicked claws (Warhawk)",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Wicked claws (Warsphinx)",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Wolf hammer",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Wolf hammers",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Writhing tails",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Writhing tentacles {daemons of chaos}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Writhing tentacles {dark elves}",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "dark-elves"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    }
+  ],
+  "armourMappings": [
+    {
+      "oldWorldName": "Barding",
+      "mordheimEquivalent": "Barding",
+      "match": "close",
+      "sourceFactions": [
+        "empire-of-man",
+        "grand-cathay",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "vampire-counts",
+        "warriors-of-chaos"
+      ]
+    },
+    {
+      "oldWorldName": "Barding (brazen hide)",
+      "mordheimEquivalent": "Barding",
+      "match": "close",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ]
+    },
+    {
+      "oldWorldName": "Barding (Brazen hide)",
+      "mordheimEquivalent": "Barding",
+      "match": "close",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ]
+    },
+    {
+      "oldWorldName": "Blackshard armour",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "chaos-dwarfs"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Calloused hide (light armour)",
+      "mordheimEquivalent": "Light Armour",
+      "match": "close",
+      "sourceFactions": [
+        "vampire-counts"
+      ],
+      "note": "Natural-hide variants are treated as the closest light armour."
+    },
+    {
+      "oldWorldName": "Calloused hides (Light armour)",
+      "mordheimEquivalent": "Light Armour",
+      "match": "close",
+      "sourceFactions": [
+        "warriors-of-chaos"
+      ],
+      "note": "Natural-hide variants are treated as the closest light armour."
+    },
+    {
+      "oldWorldName": "Cloak of Isha",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Natural protection or magical garment; Mordheim has no equivalent armour entry."
+    },
+    {
+      "oldWorldName": "Dragonhide Cloak",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Natural protection or magical garment; Mordheim has no equivalent armour entry."
+    },
+    {
+      "oldWorldName": "Full plate armour",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "chaos-dwarfs",
+        "daemons-of-chaos",
+        "dark-elves",
+        "dwarfen-mountain-holds",
+        "empire-of-man",
+        "high-elf-realms",
+        "orc-and-goblin-tribes",
+        "renegade-crowns",
+        "vampire-counts",
+        "warriors-of-chaos"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Full plate armour (Arboreal armour)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Full plate armour (Daemonic flesh)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Full plate armour (Daemonic Flesh)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Full plate armour (Draconic scales)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "warriors-of-chaos"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Full plate armour (Dragon Form)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Full plate armour (Plated carapace)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Full plate armour (Salamanders)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Heavy armour",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "chaos-dwarfs",
+        "daemons-of-chaos",
+        "dark-elves",
+        "dwarfen-mountain-holds",
+        "empire-of-man",
+        "grand-cathay",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "ogre-kingdoms",
+        "orc-and-goblin-tribes",
+        "renegade-crowns",
+        "skaven",
+        "tomb-kings-of-khemri",
+        "vampire-counts",
+        "warriors-of-chaos",
+        "wood-elf-realms"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Heavy armour (Bone carapace)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Heavy armour (Brazen scales)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Heavy armour (Daemonic flesh)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Heavy armour (Hardwood flesh)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Heavy armour (Iridescent scales)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "dark-elves",
+        "high-elf-realms"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Heavy armour (Mutated hide)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Heavy armour (mutated hides)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Heavy armour (scaly skin)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "chaos-dwarfs"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Heavy armour (Scaly skin)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "lizardmen",
+        "vampire-counts",
+        "warriors-of-chaos"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Heavy armour (Terracotta armour)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Light armour",
+      "mordheimEquivalent": "Light Armour",
+      "match": "close",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "chaos-dwarfs",
+        "daemons-of-chaos",
+        "dark-elves",
+        "dwarfen-mountain-holds",
+        "empire-of-man",
+        "grand-cathay",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "lizardmen",
+        "ogre-kingdoms",
+        "orc-and-goblin-tribes",
+        "renegade-crowns",
+        "skaven",
+        "tomb-kings-of-khemri",
+        "vampire-counts",
+        "warriors-of-chaos",
+        "wood-elf-realms"
+      ],
+      "note": "Natural-hide variants are treated as the closest light armour."
+    },
+    {
+      "oldWorldName": "Light armour (both)",
+      "mordheimEquivalent": "Light Armour",
+      "match": "close",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Natural-hide variants are treated as the closest light armour."
+    },
+    {
+      "oldWorldName": "Light armour (calloused hide)",
+      "mordheimEquivalent": "Light Armour",
+      "match": "close",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "chaos-dwarfs",
+        "warriors-of-chaos"
+      ],
+      "note": "Natural-hide variants are treated as the closest light armour."
+    },
+    {
+      "oldWorldName": "Light armour (Calloused hide)",
+      "mordheimEquivalent": "Light Armour",
+      "match": "close",
+      "sourceFactions": [
+        "lizardmen",
+        "ogre-kingdoms",
+        "vampire-counts",
+        "warriors-of-chaos"
+      ],
+      "note": "Natural-hide variants are treated as the closest light armour."
+    },
+    {
+      "oldWorldName": "Light armour (Calloused hide)*",
+      "mordheimEquivalent": "Light Armour",
+      "match": "close",
+      "sourceFactions": [
+        "1.5/lizardmen"
+      ],
+      "note": "Natural-hide variant treated as the closest light armour."
+    },
+    {
+      "oldWorldName": "Light armour (calloused hides)",
+      "mordheimEquivalent": "Light Armour",
+      "match": "close",
+      "sourceFactions": [
+        "daemons-of-chaos"
+      ],
+      "note": "Natural-hide variants are treated as the closest light armour."
+    },
+    {
+      "oldWorldName": "Light armour (Calloused hides)",
+      "mordheimEquivalent": "Light Armour",
+      "match": "close",
+      "sourceFactions": [
+        "lizardmen"
+      ],
+      "note": "Natural-hide variants are treated as the closest light armour."
+    },
+    {
+      "oldWorldName": "Light armour (Sapwood flesh)",
+      "mordheimEquivalent": "Light Armour",
+      "match": "close",
+      "sourceFactions": [
+        "wood-elf-realms"
+      ],
+      "note": "Natural-hide variants are treated as the closest light armour."
+    },
+    {
+      "oldWorldName": "Pavise",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceFactions": [
+        "skaven"
+      ],
+      "note": "Tower shields, pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Scaly skin (Heavy armour)",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "warriors-of-chaos"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Shield",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceFactions": [
+        "chaos-dwarfs",
+        "dwarfen-mountain-holds",
+        "grand-cathay",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "orc-and-goblin-tribes",
+        "warriors-of-chaos",
+        "wood-elf-realms"
+      ],
+      "note": "Tower shields, pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Shields",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceFactions": [
+        "beastmen-brayherds",
+        "chaos-dwarfs",
+        "dark-elves",
+        "dwarfen-mountain-holds",
+        "empire-of-man",
+        "grand-cathay",
+        "high-elf-realms",
+        "kingdom-of-bretonnia",
+        "lizardmen",
+        "orc-and-goblin-tribes",
+        "tomb-kings-of-khemri",
+        "vampire-counts",
+        "warriors-of-chaos"
+      ],
+      "note": "Tower shields, pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Shields (Horsemen)",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Tower shields, pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Shields (Warriors)",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Tower shields, pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "The Armour of Skaldour",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "The Crown of Nehekhara",
+      "mordheimEquivalent": "Helmet",
+      "match": "approximate",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest head-protection item; special and magical effects are not represented."
+    },
+    {
+      "oldWorldName": "The Griffon Helm",
+      "mordheimEquivalent": "Helmet",
+      "match": "approximate",
+      "sourceFactions": [
+        "empire-of-man"
+      ],
+      "note": "Closest head-protection item; special and magical effects are not represented."
+    },
+    {
+      "oldWorldName": "The Pelt of Charandis",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "high-elf-realms"
+      ],
+      "note": "Natural protection or magical garment; Mordheim has no equivalent armour entry."
+    },
+    {
+      "oldWorldName": "The Scarab Brooch of Usirian",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Listed in an armour selection field in the source catalogue, but this is a magical brooch rather than Mordheim armour."
+    },
+    {
+      "oldWorldName": "The Slayer Crown",
+      "mordheimEquivalent": "Helmet",
+      "match": "approximate",
+      "sourceFactions": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest head-protection item; special and magical effects are not represented."
+    },
+    {
+      "oldWorldName": "Tower shields",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceFactions": [
+        "grand-cathay"
+      ],
+      "note": "Tower shields, pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Trollhide shawl",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceFactions": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Natural protection or magical garment; Mordheim has no equivalent armour entry."
+    }
+  ],
+  "magicWeaponMappings": [
+    {
+      "oldWorldName": "Asyendi's Bane",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "wood-elf-realms"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Axe of Men",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "beastmen-brayherds"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Backstabber's Blade*",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Battleaxe of the last big Waaagh!",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Berserker Blade",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Bigger Choppier Axe",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Biting Blade",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Black Hammer of Hashut",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceGroups": [
+        "chaos-dwarfs"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Blade of Antarhak",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Blade of Nurglitch",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "skaven"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Blade of Nurglitch {renegade}",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "skaven"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Blade of Revered Tzunki",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "lizardmen"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Blade of Sea Gold",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "high-elf-realms"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Blade of Silvered Steel",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "empire-of-man"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Blades of Endless Flame",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Blades of Loec",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Blood Drinker",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "vampire-counts"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Bloodcleaver",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "ogre-kingdoms"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Bow of Loren",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceGroups": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest standard bow; range and special rules differ."
+    },
+    {
+      "oldWorldName": "Bow of the Seafarer",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceGroups": [
+        "high-elf-realms"
+      ],
+      "note": "Closest standard bow; range and special rules differ."
+    },
+    {
+      "oldWorldName": "Burning Blade*",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Cackling Blade",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Chaos Runesword",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "warriors-of-chaos"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Chieftain's Blade",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "warriors-of-chaos"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Crook & Flail of Radiance",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Flail",
+      "match": "approximate",
+      "sourceGroups": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest chained/heavy weapon."
+    },
+    {
+      "oldWorldName": "Crusader's Lance",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Lance",
+      "match": "approximate",
+      "sourceGroups": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Use only with mounted-model rules; Old World lance rules differ."
+    },
+    {
+      "oldWorldName": "Da Akrit Axe",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Da Choppiest Choppa",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Daemonsword",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "warriors-of-chaos"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Dagger of Malice",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceGroups": [
+        "chaos-dwarfs"
+      ],
+      "note": "Magic-item effects have no Mordheim equivalent; this is only the closest mundane weapon type."
+    },
+    {
+      "oldWorldName": "Dagger of the Dark Pantheon",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceGroups": [
+        "warriors-of-chaos"
+      ],
+      "note": "Magic-item effects have no Mordheim equivalent; this is only the closest mundane weapon type."
+    },
+    {
+      "oldWorldName": "Daith's Reaper",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "wood-elf-realms"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Dark Maul",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceGroups": [
+        "chaos-dwarfs"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Death Globe*",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "1.5/skaven"
+      ],
+      "note": "Special magical thrown weapon; Mordheim has no equivalent item or rules."
+    },
+    {
+      "oldWorldName": "Death Globe* {renegade}",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "skaven"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Destroyer of Eternities",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Diestro's Blade",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Dragon Bow",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceGroups": [
+        "empire-of-man"
+      ],
+      "note": "Closest standard bow; range and special rules differ."
+    },
+    {
+      "oldWorldName": "Dragon Slaying Sword",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Dreadlance",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Lance",
+      "match": "approximate",
+      "sourceGroups": [
+        "vampire-counts"
+      ],
+      "note": "Use only with mounted-model rules; Old World lance rules differ."
+    },
+    {
+      "oldWorldName": "Duellist's Blades",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Executioner's Axe",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "dark-elves"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Filth Mace",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceGroups": [
+        "warriors-of-chaos"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Flail of Skulls",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Flail",
+      "match": "approximate",
+      "sourceGroups": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest chained/heavy weapon."
+    },
+    {
+      "oldWorldName": "Flail of Wrecks",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Flail",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest chained/heavy weapon."
+    },
+    {
+      "oldWorldName": "Foe Bane",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "high-elf-realms"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Foebreaker",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Frontier Axe",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Frostblade",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "vampire-counts"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Giant Blade",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Grim Verdict",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Grudge Rune*",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Hammer of Righteousness",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceGroups": [
+        "empire-of-man"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Headsman's Axe",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Heartwood Lance",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Lance",
+      "match": "approximate",
+      "sourceGroups": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Use only with mounted-model rules; Old World lance rules differ."
+    },
+    {
+      "oldWorldName": "Hell-Forged Axe",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Helmcutter",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Hunt Master's Pride",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "wood-elf-realms"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Hunter's Scorn",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Hunter's Spear",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Spear",
+      "match": "approximate",
+      "sourceGroups": [
+        "beastmen-brayherds"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Jade Blade of the Great Fleet",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "grand-cathay"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Lifetaker",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dark-elves"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Mace of Helsturm",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceGroups": [
+        "empire-of-man"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Mangelder",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "beastmen-brayherds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Martog's Best Basha",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Master Rune of Alaric the Mad",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Master Rune of Breaking",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Master Rune of Dragon Slaying",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Master Rune of Flight",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Master Rune of Skalf Blackhammer",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Master Rune of Smiting",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Master Rune of Swiftness",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Meteor Hammer",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Morning Star of Fracasse",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Morning Star",
+      "match": "approximate",
+      "sourceGroups": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Magic-item effects have no Mordheim equivalent; this is only the closest mundane weapon type."
+    },
+    {
+      "oldWorldName": "Obsidian Dread-Glaive",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Halberd",
+      "match": "approximate",
+      "sourceGroups": [
+        "warriors-of-chaos"
+      ],
+      "note": "Closest polearm entry in Mordheim."
+    },
+    {
+      "oldWorldName": "Ogre Blade",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Pearl Daggers",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Dagger",
+      "match": "approximate",
+      "sourceGroups": [
+        "empire-of-man"
+      ],
+      "note": "Magic-item effects have no Mordheim equivalent; this is only the closest mundane weapon type."
+    },
+    {
+      "oldWorldName": "Phakth's Blades of Justice",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Piranha Blade",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "lizardmen"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Porko's Pigstikka",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Primeval Club",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceGroups": [
+        "beastmen-brayherds"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Reaver Bow",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceGroups": [
+        "high-elf-realms"
+      ],
+      "note": "Closest standard bow; range and special rules differ."
+    },
+    {
+      "oldWorldName": "Rune of Banishment",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Rune of Cleaving*",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Rune of Fire",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Rune of Fury*",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Rune of Might*",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Rune of Parrying",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Rune of Speed*",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Rune of Striking*",
+      "oldWorldType": "weapon-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Runefang",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "empire-of-man"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Scimitar of Skultar",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "beastmen-brayherds"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Scimitar of the Sun Resplendent",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "lizardmen"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Serpent Staff",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceGroups": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Skirmisher's Blade",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Skullplucker",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "ogre-kingdoms"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Spear of Twilight",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Spear",
+      "match": "approximate",
+      "sourceGroups": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Spelleater Axe",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Spellthieving Sword",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "warriors-of-chaos"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Spirit Longma Spear",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Spear",
+      "match": "approximate",
+      "sourceGroups": [
+        "grand-cathay"
+      ],
+      "note": "Closest spear-type weapon; thrown/mounted variants differ."
+    },
+    {
+      "oldWorldName": "Staff of Aeons",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceGroups": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Staff of the Lost Sun",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceGroups": [
+        "lizardmen"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Star Lance",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Lance",
+      "match": "approximate",
+      "sourceGroups": [
+        "high-elf-realms"
+      ],
+      "note": "Use only with mounted-model rules; Old World lance rules differ."
+    },
+    {
+      "oldWorldName": "Sun & Moon Blades",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "grand-cathay"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Sword of Battle",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Sword of Heroes",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Sword of Justice",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "empire-of-man"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Sword of Kings",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "vampire-counts"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Sword of Might*",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Sword of Reaving",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Sword of Ruin",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "dark-elves"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Sword of Sorrow",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Sword of Striking*",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Sword of Swiftness",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Sword of the Quest",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Sword of the Stout Hearted",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Taskmaster's Scourge",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Steel Whip",
+      "match": "approximate",
+      "sourceGroups": [
+        "warriors-of-chaos"
+      ],
+      "note": "Closest whip; Mordheim whip availability and rules are faction-specific."
+    },
+    {
+      "oldWorldName": "Tenderiser",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "ogre-kingdoms"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "The Axe of Abandon",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Axes of Khorgor",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "beastmen-brayherds"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Black Maul",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceGroups": [
+        "beastmen-brayherds"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Blade of Leaping Gold",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "high-elf-realms"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Brass Cleaver",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "beastmen-brayherds"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Brazen Blade",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "grand-cathay"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Briar-bow",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Long Bow",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest standard bow; range and special rules differ."
+    },
+    {
+      "oldWorldName": "The Conqueror's Blade",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Fellblade",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "1.5/skaven"
+      ],
+      "note": "Closest mundane blade type; magic-item effects have no Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "The Fellblade {renegade}",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "skaven"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Flaming Sword",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Graven Sceptre",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceGroups": [
+        "chaos-dwarfs"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Monkey King's Wisdom",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "grand-cathay"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "The Sword of Nan-Gau",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "grand-cathay"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Sword of Reason",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "grand-cathay"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The White Sword",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "high-elf-realms"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "The Wrath of Xen Yang",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "grand-cathay"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Thornspitter Stave",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Creature attack, special attack, war machine, or non-standard weapon profile; Mordheim has no comparable purchasable weapon entry."
+    },
+    {
+      "oldWorldName": "Thundermace",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Hammer, Staff, Mace or Club",
+      "match": "approximate",
+      "sourceGroups": [
+        "ogre-kingdoms"
+      ],
+      "note": "Closest bludgeoning weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Trailblazer's Hatchet",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Vaul's Wrath",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "wood-elf-realms"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Von Trickschotte's Wondrous Arquebus",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Handgun",
+      "match": "approximate",
+      "sourceGroups": [
+        "empire-of-man"
+      ],
+      "note": "Closest blackpowder firearm; repeating/long-rifle variants differ."
+    },
+    {
+      "oldWorldName": "Weeping Blade",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "skaven"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Weeping Blade {renegade}",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Sword",
+      "match": "approximate",
+      "sourceGroups": [
+        "skaven"
+      ],
+      "note": "Closest one-handed blade; magical/special rules are not represented."
+    },
+    {
+      "oldWorldName": "Whip of Agony",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Steel Whip",
+      "match": "approximate",
+      "sourceGroups": [
+        "dark-elves"
+      ],
+      "note": "Closest whip; Mordheim whip availability and rules are faction-specific."
+    },
+    {
+      "oldWorldName": "Wollopa's One Hit Wunda",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim equipment rules."
+    },
+    {
+      "oldWorldName": "Woodsman's Axe",
+      "oldWorldType": "weapon",
+      "mordheimEquivalent": "Axe",
+      "match": "approximate",
+      "sourceGroups": [
+        "high-elf-realms"
+      ],
+      "note": "Closest one-handed cutting weapon; magical/special rules are not represented."
+    }
+  ],
+  "magicArmourMappings": [
+    {
+      "oldWorldName": "Anointed Armour",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Armour of Bazherak the Cruel",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "chaos-dwarfs"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Armour of Caledor",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "high-elf-realms"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Armour of Dark Faith",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Armour of Destiny",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Armour of Fortune",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "empire-of-man"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Armour of Meteoric Iron",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Armour of Mork",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Armour of Silvered Steel",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Armour of Stars",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "high-elf-realms"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Armour of the Ages",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Armour of the Damned",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "warriors-of-chaos"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Bedazzling Helm",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Helmet",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest head-protection item; magic and armour-save effects differ."
+    },
+    {
+      "oldWorldName": "Blood Armour",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "dark-elves"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Cautious Shield",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "skaven"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Charmed Shield*",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Cloak of Tumbling Leaves",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "wood-elf-realms"
+      ],
+      "note": "Natural protection or magical garment; Mordheim has no equivalent armour entry."
+    },
+    {
+      "oldWorldName": "Crimson Armour of Dargan",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "warriors-of-chaos"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Daemonic Platemail",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "warriors-of-chaos"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Dead 'Ard Armour",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Dragon Helm",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Helmet",
+      "match": "approximate",
+      "sourceGroups": [
+        "high-elf-realms"
+      ],
+      "note": "Closest head-protection item; magic and armour-save effects differ."
+    },
+    {
+      "oldWorldName": "Enchanted Shield*",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Full Plate Chaos Armour*",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "beastmen-brayherds"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Gilded Cuirass",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Glittering Scales",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Gromril Great Helm",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Helmet",
+      "match": "approximate",
+      "sourceGroups": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Closest head-protection item; magic and armour-save effects differ."
+    },
+    {
+      "oldWorldName": "Gut Maw",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "ogre-kingdoms"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim armour rules."
+    },
+    {
+      "oldWorldName": "Heavy Chaos Armour*",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "beastmen-brayherds"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Helm of Courage",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Helmet",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest head-protection item; magic and armour-save effects differ."
+    },
+    {
+      "oldWorldName": "Helm of the Hunt",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Helmet",
+      "match": "approximate",
+      "sourceGroups": [
+        "wood-elf-realms"
+      ],
+      "note": "Closest head-protection item; magic and armour-save effects differ."
+    },
+    {
+      "oldWorldName": "Hide of the Cold Ones",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "lizardmen"
+      ],
+      "note": "Natural protection or magical garment; Mordheim has no equivalent armour entry."
+    },
+    {
+      "oldWorldName": "Iron-rimmed Shield",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Ironspike Shield",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "kingdom-of-bretonnia"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Jade Armour of Beichai",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "grand-cathay"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Levitating Shield",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Mantle of Drifting Shadow",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Natural protection or magical garment; Mordheim has no equivalent armour entry."
+    },
+    {
+      "oldWorldName": "Mantle of Rebirth",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "wood-elf-realms"
+      ],
+      "note": "Natural protection or magical garment; Mordheim has no equivalent armour entry."
+    },
+    {
+      "oldWorldName": "Master Rune of Adamant",
+      "oldWorldType": "armor-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim armour rules."
+    },
+    {
+      "oldWorldName": "Master Rune of Gromril",
+      "oldWorldType": "armor-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim armour rules."
+    },
+    {
+      "oldWorldName": "Mastodon Armour",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "ogre-kingdoms"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Mighty Serpent's Scalemail",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "warriors-of-chaos"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Padded Hauberk",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Pelt of the Dark Young",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "beastmen-brayherds"
+      ],
+      "note": "Natural protection or magical garment; Mordheim has no equivalent armour entry."
+    },
+    {
+      "oldWorldName": "Railarian's Mantle",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "wood-elf-realms"
+      ],
+      "note": "Natural protection or magical garment; Mordheim has no equivalent armour entry."
+    },
+    {
+      "oldWorldName": "Royal Mantle",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Natural protection or magical garment; Mordheim has no equivalent armour entry."
+    },
+    {
+      "oldWorldName": "Rune of Fortitude*",
+      "oldWorldType": "armor-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim armour rules."
+    },
+    {
+      "oldWorldName": "Rune of Iron",
+      "oldWorldType": "armor-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim armour rules."
+    },
+    {
+      "oldWorldName": "Rune of Preservation",
+      "oldWorldType": "armor-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim armour rules."
+    },
+    {
+      "oldWorldName": "Rune of Shielding*",
+      "oldWorldType": "armor-runes",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Rune of Stone*",
+      "oldWorldType": "armor-runes",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "dwarfen-mountain-holds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim armour rules."
+    },
+    {
+      "oldWorldName": "Scale of False Promise",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Shadowed Mantle",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Natural protection or magical garment; Mordheim has no equivalent armour entry."
+    },
+    {
+      "oldWorldName": "Shield of Ghrond",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "dark-elves"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Shield of Nan-Gau",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "grand-cathay"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Shield of Ptra",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Shield of the Gorgon",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "empire-of-man"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Shield of the Mirror Pool",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "lizardmen"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Shield of the Warrior True",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Spellshield*",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "Spiteful Shield",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "The Accursed Armour",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "vampire-counts"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "The Armour of Dust",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "The Armour of Fate",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "The Armour of the Warbird",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "grand-cathay"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "The Blackened Plate",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "beastmen-brayherds"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "The Bronze Shield",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "The Flayed Hauberk",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "vampire-counts"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "The Fur of Sharggu",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "beastmen-brayherds"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim armour rules."
+    },
+    {
+      "oldWorldName": "The Golden Shield",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Shield",
+      "match": "approximate",
+      "sourceGroups": [
+        "high-elf-realms"
+      ],
+      "note": "Tower shields/pavises and magical shield effects have no exact Mordheim equivalent."
+    },
+    {
+      "oldWorldName": "The Mantle of Heaven",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "grand-cathay"
+      ],
+      "note": "Natural protection or magical garment; Mordheim has no equivalent armour entry."
+    },
+    {
+      "oldWorldName": "The Mask of the Furnace",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "chaos-dwarfs"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim armour rules."
+    },
+    {
+      "oldWorldName": "Trailblazer's Hauberk",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "general"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Trollhide Trousers",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "orc-and-goblin-tribes"
+      ],
+      "note": "Natural protection or magical garment; Mordheim has no equivalent armour entry."
+    },
+    {
+      "oldWorldName": "Twice-Blessed Armour",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "empire-of-man"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Warding Splint",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": null,
+      "match": "no_direct_equivalent",
+      "sourceGroups": [
+        "tomb-kings-of-khemri"
+      ],
+      "note": "No direct counterpart identified in the repository’s Mordheim armour rules."
+    },
+    {
+      "oldWorldName": "Warpstone Armour*",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "skaven"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    },
+    {
+      "oldWorldName": "Warpstone Armour* {renegade}",
+      "oldWorldType": "armor",
+      "mordheimEquivalent": "Heavy Armour",
+      "match": "approximate",
+      "sourceGroups": [
+        "skaven"
+      ],
+      "note": "Closest armour tier; Old World armour saves and special properties differ."
+    }
+  ],
+  "mordheimEquipmentStats": {
+    "Additional close-combat weapon": {
+      "kind": "weapon",
+      "range": "Close Combat",
+      "strength": "Uses the profile of the chosen one-handed weapon",
+      "specialRules": [
+        "Two one-handed weapons grant 1 extra Attack with the additional weapon. If the weapons differ, choose which weapon makes each attack."
+      ],
+      "sourceFile": "Mordheimer_Scraped/core-rules/rules/close-combat.md"
+    },
+    "Axe": {
+      "kind": "weapon",
+      "range": "Close Combat",
+      "strength": "As user",
+      "cost": "5 gc",
+      "availability": "Common",
+      "specialRules": [
+        "Cutting Edge: extra -1 save modifier."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/close-combat.md"
+    },
+    "Blunderbuss": {
+      "kind": "weapon",
+      "range": "Special (16-inch line, 1 inch wide)",
+      "strength": "3",
+      "cost": "30 gc",
+      "availability": "Rare 9",
+      "specialRules": [
+        "Shot: models in the line are automatically hit.",
+        "Fire Once: may be fired once per battle."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/blackpowder.md"
+    },
+    "Crossbow": {
+      "kind": "weapon",
+      "range": "30 inches",
+      "strength": "4",
+      "cost": "25 gc",
+      "availability": "Common",
+      "specialRules": [
+        "Move or Fire."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/missile.md"
+    },
+    "Dagger": {
+      "kind": "weapon",
+      "range": "Close Combat",
+      "strength": "As user",
+      "cost": "First free; additional 2 gc",
+      "availability": "Common",
+      "specialRules": [
+        "Enemy wounded by a dagger gains +1 to its armour save (or a 6+ save if it had none)."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/close-combat.md"
+    },
+    "Dagger (free)": {
+      "kind": "weapon",
+      "range": "Close Combat",
+      "strength": "As user",
+      "cost": "Free (one per warrior)",
+      "availability": "Common",
+      "specialRules": [
+        "Enemy wounded by a dagger gains +1 to its armour save (or a 6+ save if it had none)."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/close-combat.md"
+    },
+    "Double-handed weapon": {
+      "kind": "weapon",
+      "range": "Close Combat",
+      "strength": "As user +2",
+      "cost": "15 gc",
+      "availability": "Common",
+      "specialRules": [
+        "Two-handed: cannot use a shield, buckler or additional weapon in close combat.",
+        "Strike Last, even when charging."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/close-combat.md"
+    },
+    "Elf Bow": {
+      "kind": "weapon",
+      "range": "36 inches",
+      "strength": "3",
+      "cost": "35 + 3D6 gc",
+      "availability": "Rare 12",
+      "saveModifier": "-1",
+      "specialRules": [
+        "-1 save modifier."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/missile.md"
+    },
+    "Flail": {
+      "kind": "weapon",
+      "range": "Close Combat",
+      "strength": "As user +2 in the first round of each combat",
+      "cost": "15 gc",
+      "availability": "Common",
+      "specialRules": [
+        "Heavy: +2 Strength bonus applies only in the first round of combat.",
+        "Two-handed: cannot use a shield, buckler or additional weapon in close combat."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/close-combat.md"
+    },
+    "Halberd": {
+      "kind": "weapon",
+      "range": "Close Combat",
+      "strength": "As user +1",
+      "cost": "10 gc",
+      "availability": "Common",
+      "specialRules": [
+        "Two-handed: cannot use a shield, buckler or additional weapon in close combat."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/close-combat.md"
+    },
+    "Hammer, Staff, Mace or Club": {
+      "kind": "weapon",
+      "range": "Close Combat",
+      "strength": "As user",
+      "cost": "3 gc",
+      "availability": "Common",
+      "specialRules": [
+        "Concussion: injury rolls of 2–4 count as stunned."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/close-combat.md"
+    },
+    "Handgun": {
+      "kind": "weapon",
+      "range": "24 inches",
+      "strength": "4",
+      "cost": "35 gc",
+      "availability": "Rare 8",
+      "saveModifier": "-2",
+      "specialRules": [
+        "Prepare Shot: fires every other turn.",
+        "Move or Fire.",
+        "-2 save modifier."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/blackpowder.md"
+    },
+    "Lance": {
+      "kind": "weapon",
+      "range": "Close Combat (mounted only)",
+      "strength": "As user +2 when charging on horseback",
+      "cost": "40 gc",
+      "availability": "Rare 8",
+      "specialRules": [
+        "Cavalry weapon: requires a warhorse and can only be used mounted.",
+        "With optional mounted-model rules, +2 Strength when charging for that turn."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/close-combat.md"
+    },
+    "Long Bow": {
+      "kind": "weapon",
+      "range": "30 inches",
+      "strength": "3",
+      "cost": "15 gc",
+      "availability": "Common",
+      "specialRules": [],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/missile.md"
+    },
+    "Morning Star": {
+      "kind": "weapon",
+      "range": "Close Combat",
+      "strength": "As user +1 in the first round of each combat",
+      "cost": "15 gc",
+      "availability": "Common",
+      "specialRules": [
+        "Heavy: +1 Strength bonus applies only in the first round of combat.",
+        "Cannot use a second weapon or buckler; may use a shield."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/close-combat.md"
+    },
+    "Pistol": {
+      "kind": "weapon",
+      "range": "6 inches",
+      "strength": "4",
+      "cost": "15 gc (30 gc for a brace)",
+      "availability": "Rare 8",
+      "saveModifier": "-2",
+      "specialRules": [
+        "Prepare Shot: fires every other turn; a brace may fire every turn.",
+        "-2 save modifier.",
+        "May be used in close combat for a once-per-combat bonus attack."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/blackpowder.md"
+    },
+    "Short Bow": {
+      "kind": "weapon",
+      "range": "16 inches",
+      "strength": "3",
+      "cost": "5 gc",
+      "availability": "Common",
+      "specialRules": [],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/missile.md"
+    },
+    "Sling": {
+      "kind": "weapon",
+      "range": "18 inches",
+      "strength": "3",
+      "cost": "2 gc",
+      "availability": "Common",
+      "specialRules": [
+        "May fire twice at half range if the model did not move; both shots suffer -1 to hit."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/missile.md"
+    },
+    "Spear": {
+      "kind": "weapon",
+      "range": "Close Combat",
+      "strength": "As user",
+      "cost": "10 gc",
+      "availability": "Common",
+      "specialRules": [
+        "Strike First in the first round of close combat.",
+        "Unwieldy: may use a shield or buckler in the other hand, but not a second weapon.",
+        "Mounted charge bonus: +1 Strength for that turn."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/close-combat.md"
+    },
+    "Spiked Gauntlet": {
+      "kind": "weapon",
+      "range": "Close Combat",
+      "strength": "As user",
+      "cost": "15 gc",
+      "availability": "Common (Pit Fighters only)",
+      "specialRules": [
+        "Counts as an additional hand weapon and a buckler.",
+        "Parry."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/close-combat.md"
+    },
+    "Steel Whip": {
+      "kind": "weapon",
+      "range": "Close Combat",
+      "strength": "As user",
+      "cost": "10 gc",
+      "availability": "Common (Sisters of Sigmar and Chaos Dwarfs only)",
+      "specialRules": [
+        "Cannot be parried.",
+        "Whipcrack: +1 Attack when charging; when charged, +1 Attack against the charger that strikes first."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/close-combat.md"
+    },
+    "Sword": {
+      "kind": "weapon",
+      "range": "Close Combat",
+      "strength": "As user",
+      "cost": "10 gc",
+      "availability": "Common",
+      "specialRules": [
+        "Parry."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/close-combat.md"
+    },
+    "Throwing Knives/Stars": {
+      "kind": "weapon",
+      "range": "6 inches",
+      "strength": "As user",
+      "cost": "15 gc",
+      "availability": "Rare 5",
+      "specialRules": [
+        "Thrown Weapon: no penalties for range or moving.",
+        "Cannot be used in close combat."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/missile.md"
+    },
+    "Warplock Pistol": {
+      "kind": "weapon",
+      "range": "8 inches",
+      "strength": "5",
+      "cost": "35 gc (70 gc for a brace)",
+      "availability": "Rare 11 (Skaven only)",
+      "saveModifier": "-3",
+      "specialRules": [
+        "Prepare Shot: fires every other turn; a brace may fire every turn.",
+        "-3 save modifier.",
+        "May be used in close combat for a once-per-combat bonus attack."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/blackpowder.md"
+    },
+    "Barding": {
+      "kind": "armour",
+      "save": "Adds +1 to existing armour save",
+      "cost": "80 gc",
+      "availability": "Rare 8 (warhorses only)",
+      "specialRules": [
+        "Reduces Movement by 1.",
+        "A barded warhorse is only killed on a serious injury roll of 1."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/armour.md"
+    },
+    "Heavy Armour": {
+      "kind": "armour",
+      "save": "5+",
+      "cost": "50 gc",
+      "availability": "Common",
+      "specialRules": [
+        "Wearing heavy armour and a shield reduces Movement by 1."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/armour.md"
+    },
+    "Helmet": {
+      "kind": "armour",
+      "save": "4+ against being stunned",
+      "cost": "10 gc",
+      "availability": "Common",
+      "specialRules": [
+        "A successful save turns a stunned result into knocked down; this save is not modified by Strength."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/armour.md"
+    },
+    "Light Armour": {
+      "kind": "armour",
+      "save": "6+",
+      "cost": "20 gc",
+      "availability": "Common",
+      "specialRules": [
+        "No Movement penalty, including when worn with a shield."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/armour.md"
+    },
+    "Shield": {
+      "kind": "armour",
+      "save": "6+",
+      "cost": "5 gc",
+      "availability": "Common",
+      "specialRules": [
+        "Combines with armour for +1 to the armour save.",
+        "No Movement penalty."
+      ],
+      "sourceFile": "Mordheimer_Scraped/weapons-armour/armour.md"
+    }
+  },
+  "mordheimEquipmentCostValues": {
+    "Axe": 5,
+    "Blunderbuss": 30,
+    "Crossbow": 25,
+    "Dagger": { "cost": 0, "additionalCost": 2, "label": "First free; additional 2 gc" },
+    "Dagger (free)": 0,
+    "Double-handed weapon": 15,
+    "Elf Bow": { "min": 38, "max": 53, "label": "35 + 3D6 gc" },
+    "Flail": 15,
+    "Halberd": 10,
+    "Hammer, Staff, Mace or Club": 3,
+    "Handgun": 35,
+    "Lance": 40,
+    "Long Bow": 15,
+    "Morning Star": 15,
+    "Pistol": { "cost": 15, "braceCost": 30, "label": "15 gc (30 gc for a brace)" },
+    "Short Bow": 5,
+    "Sling": 2,
+    "Spear": 10,
+    "Spiked Gauntlet": 15,
+    "Steel Whip": 10,
+    "Sword": 10,
+    "Throwing Knives/Stars": 15,
+    "Warplock Pistol": { "cost": 35, "braceCost": 70, "label": "35 gc (70 gc for a brace)" },
+    "Barding": 80,
+    "Heavy Armour": 50,
+    "Helmet": 10,
+    "Light Armour": 20,
+    "Shield": 5
+  }
+}

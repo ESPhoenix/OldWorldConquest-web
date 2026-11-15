@@ -1,0 +1,1316 @@
+{
+  "description": "Standard skill access for each Mordheim profile in champion-mordheim-stats.json. availableSkills contains the mapped standard-skill IDs allowed by that profile’s skill-table categories. Warband-specific skill lists are not represented by the standard-skill catalogue; unmapped or unpublished access is explicitly empty.",
+  "source": "Mordheimer_Scraped/warbands/* skill tables and Mord-World/skill-condition-mapping.json",
+  "units": {
+    "beastmen-raiders-0-2-bestigors": {
+      "unit": "Bestigors",
+      "warband": "Beastmen Raiders",
+      "sourceFile": "grade-1a/beastmen-raiders.md",
+      "categories": [
+        "Combat",
+        "Strength"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge"
+      ],
+      "status": "mapped"
+    },
+    "beastmen-raiders-0-1-centigors": {
+      "unit": "Centigors",
+      "warband": "Beastmen Raiders",
+      "sourceFile": "grade-1a/beastmen-raiders.md",
+      "categories": [
+        "Combat",
+        "Strength"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge"
+      ],
+      "status": "mapped"
+    },
+    "beastmen-raiders-0-1-minotaur": {
+      "unit": "Minotaur",
+      "warband": "Beastmen Raiders",
+      "sourceFile": "grade-1a/beastmen-raiders.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "beastmen-raiders-0-5-gor": {
+      "unit": "Gor",
+      "warband": "Beastmen Raiders",
+      "sourceFile": "grade-1a/beastmen-raiders.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "beastmen-raiders-ungors": {
+      "unit": "Ungor",
+      "warband": "Beastmen Raiders",
+      "sourceFile": "grade-1a/beastmen-raiders.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "the-sons-of-hashut-0-3-blunderbuss-chaos-dwarfs": {
+      "unit": "Blunderbuss Chaos Dwarfs",
+      "warband": "The Sons of Hashut",
+      "sourceFile": "grade-1c/sons-of-hashut.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "the-sons-of-hashut-0-1-bull-centaur": {
+      "unit": "Bull Centaur",
+      "warband": "The Sons of Hashut",
+      "sourceFile": "grade-1c/sons-of-hashut.md",
+      "categories": [
+        "Combat",
+        "Strength"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge"
+      ],
+      "status": "mapped"
+    },
+    "the-sons-of-hashut-0-6-chaos-dwarf-warriors": {
+      "unit": "Chaos Dwarf Warriors",
+      "warband": "The Sons of Hashut",
+      "sourceFile": "grade-1c/sons-of-hashut.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "the-sons-of-hashut-4-hobgoblins": {
+      "unit": "+ Hobgoblins",
+      "warband": "The Sons of Hashut",
+      "sourceFile": "grade-1c/sons-of-hashut.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "the-sons-of-hashut-0-2-chaos-dwarf-champions": {
+      "unit": "Chaos Dwarf Champions",
+      "warband": "The Sons of Hashut",
+      "sourceFile": "grade-1c/sons-of-hashut.md",
+      "categories": [
+        "Combat",
+        "Shooting",
+        "Strength"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "quick-shot",
+        "pistolier",
+        "eagle-eyes",
+        "weapons-expert",
+        "nimble",
+        "trick-shooter",
+        "hunter",
+        "knife-fighter",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge"
+      ],
+      "status": "mapped"
+    },
+    "marauders-of-chaos-0-1-spawn-of-chaos": {
+      "unit": "Spawn of Chaos",
+      "warband": "Marauders of Chaos",
+      "sourceFile": "grade-1c/marauders-of-chaos.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "marauders-of-chaos-chaos-marauders": {
+      "unit": "Chaos Marauders",
+      "warband": "Marauders of Chaos",
+      "sourceFile": "grade-1c/marauders-of-chaos.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "marauders-of-chaos-0-1-seer": {
+      "unit": "Seer",
+      "warband": "Marauders of Chaos",
+      "sourceFile": "grade-1c/marauders-of-chaos.md",
+      "categories": [
+        "Combat",
+        "Academic"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "battle-tongue",
+        "sorcery",
+        "streetwise",
+        "haggle",
+        "arcane-lore",
+        "wyrdstone-hunter",
+        "warrior-wizard"
+      ],
+      "status": "mapped"
+    },
+    "court-of-the-profane-pleasures-0-1-slaaneshi-devout": {
+      "unit": "Slaaneshi Devout",
+      "warband": "Court of the Profane Pleasures",
+      "sourceFile": "grade-1c/court-of-the-profane-pleasures.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unpublished"
+    },
+    "carnival-of-chaos-0-2-plague-bearers": {
+      "unit": "Plague Bearers",
+      "warband": "Carnival of Chaos",
+      "sourceFile": "grade-1a/carnival-of-chaos.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "dark-elves-0-2-fellblades": {
+      "unit": "Fellblades",
+      "warband": "Dark Elves",
+      "sourceFile": "grade-1b/dark-elves.md",
+      "categories": [
+        "Combat",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "dark-elves-0-1-beastmaster": {
+      "unit": "Beastmaster",
+      "warband": "Dark Elves",
+      "sourceFile": "grade-1b/dark-elves.md",
+      "categories": [
+        "Combat",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "dark-elves-0-5-shades": {
+      "unit": "Shades",
+      "warband": "Dark Elves",
+      "sourceFile": "grade-1b/dark-elves.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "dark-elves-0-1-dark-elf-sorceress": {
+      "unit": "Dark Elf Sorceress",
+      "warband": "Dark Elves",
+      "sourceFile": "grade-1b/dark-elves.md",
+      "categories": [
+        "Academic",
+        "Speed"
+      ],
+      "availableSkills": [
+        "battle-tongue",
+        "sorcery",
+        "streetwise",
+        "haggle",
+        "arcane-lore",
+        "wyrdstone-hunter",
+        "warrior-wizard",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "dwarf-treasure-hunters-0-2-dwarf-troll-slayers": {
+      "unit": "Dwarf Troll Slayers",
+      "warband": "Dwarf Treasure Hunters",
+      "sourceFile": "grade-1a/dwarf-treasure-hunters.md",
+      "categories": [
+        "Combat",
+        "Strength"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge"
+      ],
+      "status": "mapped"
+    },
+    "dwarf-treasure-hunters-dwarf-clansmen": {
+      "unit": "Dwarf Clansmen",
+      "warband": "Dwarf Treasure Hunters",
+      "sourceFile": "grade-1a/dwarf-treasure-hunters.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "dwarf-rangers-0-5-dwarf-longbeards": {
+      "unit": "Dwarf Longbeards",
+      "warband": "Dwarf Rangers",
+      "sourceFile": "grade-1b/dwarf-rangers.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "dwarf-treasure-hunters-0-5-dwarf-thunderers": {
+      "unit": "Dwarf Thunderers",
+      "warband": "Dwarf Treasure Hunters",
+      "sourceFile": "grade-1a/dwarf-treasure-hunters.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "dwarf-treasure-hunters-1-dwarf-noble": {
+      "unit": "Dwarf Noble",
+      "warband": "Dwarf Treasure Hunters",
+      "sourceFile": "grade-1a/dwarf-treasure-hunters.md",
+      "categories": [
+        "Combat",
+        "Shooting",
+        "Strength"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "quick-shot",
+        "pistolier",
+        "eagle-eyes",
+        "weapons-expert",
+        "nimble",
+        "trick-shooter",
+        "hunter",
+        "knife-fighter",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge"
+      ],
+      "status": "mapped"
+    },
+    "dwarf-rangers-0-5-dwarf-crossbowmen": {
+      "unit": "Dwarf Crossbowmen",
+      "warband": "Dwarf Rangers",
+      "sourceFile": "grade-1b/dwarf-rangers.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "imperial-outriders-1-knight": {
+      "unit": "Knight",
+      "warband": "Imperial Outriders",
+      "sourceFile": "grade-1b/imperial-outriders.md",
+      "categories": [
+        "Combat",
+        "Shooting",
+        "Academic",
+        "Strength",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "quick-shot",
+        "pistolier",
+        "eagle-eyes",
+        "weapons-expert",
+        "nimble",
+        "trick-shooter",
+        "hunter",
+        "knife-fighter",
+        "battle-tongue",
+        "sorcery",
+        "streetwise",
+        "haggle",
+        "arcane-lore",
+        "wyrdstone-hunter",
+        "warrior-wizard",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "gunnery-school-of-nuln-0-7-marksmen": {
+      "unit": "Marksmen",
+      "warband": "Gunnery School of Nuln",
+      "sourceFile": "grade-1b/gunnery-school-of-nuln.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "averlander-mercenaries-0-1-sergeant": {
+      "unit": "Sergeant",
+      "warband": "Averlander Mercenaries",
+      "sourceFile": "grade-1a/averlander.md",
+      "categories": [
+        "Combat",
+        "Strength",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "outlaws-of-stirwood-forest-1-bandit-leader": {
+      "unit": "Bandit Leader",
+      "warband": "Outlaws of Stirwood Forest",
+      "sourceFile": "grade-1b/outlaws-of-stirwood-forest.md",
+      "categories": [
+        "Combat",
+        "Shooting",
+        "Academic",
+        "Strength",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "quick-shot",
+        "pistolier",
+        "eagle-eyes",
+        "weapons-expert",
+        "nimble",
+        "trick-shooter",
+        "hunter",
+        "knife-fighter",
+        "battle-tongue",
+        "sorcery",
+        "streetwise",
+        "haggle",
+        "arcane-lore",
+        "wyrdstone-hunter",
+        "warrior-wizard",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "ostlander-mercenaries-0-1-priest-of-taal": {
+      "unit": "Priest of Taal",
+      "warband": "Ostlander Mercenaries",
+      "sourceFile": "grade-1a/ostlander.md",
+      "categories": [
+        "Combat",
+        "Academic",
+        "Strength",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "battle-tongue",
+        "sorcery",
+        "streetwise",
+        "haggle",
+        "arcane-lore",
+        "wyrdstone-hunter",
+        "warrior-wizard",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "hochland-bandits-0-4-looters": {
+      "unit": "Looters",
+      "warband": "Hochland Bandits",
+      "sourceFile": "grade-1b/hochland-bandits.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "ostlander-mercenaries-0-1-ogre": {
+      "unit": "Ogre",
+      "warband": "Ostlander Mercenaries",
+      "sourceFile": "grade-1a/ostlander.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "imperial-outriders-0-2-outriders": {
+      "unit": "Outriders",
+      "warband": "Imperial Outriders",
+      "sourceFile": "grade-1b/imperial-outriders.md",
+      "categories": [
+        "Combat",
+        "Shooting",
+        "Strength"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "quick-shot",
+        "pistolier",
+        "eagle-eyes",
+        "weapons-expert",
+        "nimble",
+        "trick-shooter",
+        "hunter",
+        "knife-fighter",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge"
+      ],
+      "status": "mapped"
+    },
+    "gunnery-school-of-nuln-0-5-pistoliers": {
+      "unit": "Pistoliers",
+      "warband": "Gunnery School of Nuln",
+      "sourceFile": "grade-1b/gunnery-school-of-nuln.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "merchant-caravans-0-5-marksmen": {
+      "unit": "Marksmen",
+      "warband": "Merchant Caravans",
+      "sourceFile": "grade-1c/merchant-caravans.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "merchant-caravans-0-2-knights-vanguard": {
+      "unit": "Knights Vanguard",
+      "warband": "Merchant Caravans",
+      "sourceFile": "grade-1c/merchant-caravans.md",
+      "categories": [
+        "Combat",
+        "Strength",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "battle-monks-of-cathay-0-5-warrior-monks": {
+      "unit": "Warrior Monks",
+      "warband": "Battle Monks of Cathay",
+      "sourceFile": "grade-1c/battle-monks-of-cathay.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "battle-monks-of-cathay-0-5-raging-peasants": {
+      "unit": "Raging Peasants",
+      "warband": "Battle Monks of Cathay",
+      "sourceFile": "grade-1c/battle-monks-of-cathay.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "shadow-warriors-shadow-warrior": {
+      "unit": "Shadow Warrior",
+      "warband": "Shadow Warriors",
+      "sourceFile": "grade-1b/shadow-warriors.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "shadow-warriors-0-3-shadow-walker": {
+      "unit": "Shadow Walker",
+      "warband": "Shadow Warriors",
+      "sourceFile": "grade-1b/shadow-warriors.md",
+      "categories": [
+        "Combat",
+        "Shooting",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "quick-shot",
+        "pistolier",
+        "eagle-eyes",
+        "weapons-expert",
+        "nimble",
+        "trick-shooter",
+        "hunter",
+        "knife-fighter",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "bretonnians-1-questing-knight": {
+      "unit": "Questing Knight",
+      "warband": "Bretonnians",
+      "sourceFile": "grade-1b/bretonnian.md",
+      "categories": [
+        "Combat",
+        "Strength",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "bretonnians-0-2-knights-errant": {
+      "unit": "Knights Errant",
+      "warband": "Bretonnians",
+      "sourceFile": "grade-1b/bretonnian.md",
+      "categories": [
+        "Combat",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "bretonnians-0-8-men-at-arms": {
+      "unit": "Men-at-Arms",
+      "warband": "Bretonnians",
+      "sourceFile": "grade-1b/bretonnian.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "bretonnians-0-3-squires": {
+      "unit": "Squires",
+      "warband": "Bretonnians",
+      "sourceFile": "grade-1b/bretonnian.md",
+      "categories": [
+        "Combat",
+        "Strength"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge"
+      ],
+      "status": "mapped"
+    },
+    "bretonnian-chapel-guard-0-7-bowmen": {
+      "unit": "Bowmen",
+      "warband": "Bretonnian Chapel Guard",
+      "sourceFile": "grade-1c/bretonnian-chapel-guard.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "lizardmen-0-2-skink-great-crests": {
+      "unit": "Skink Great Crests",
+      "warband": "Lizardmen",
+      "sourceFile": "grade-1b/lizardmen.md",
+      "categories": [
+        "Shooting",
+        "Speed"
+      ],
+      "availableSkills": [
+        "quick-shot",
+        "pistolier",
+        "eagle-eyes",
+        "weapons-expert",
+        "nimble",
+        "trick-shooter",
+        "hunter",
+        "knife-fighter",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "lizardmen-0-1-saurus-totem-warrior": {
+      "unit": "Saurus Totem Warrior",
+      "warband": "Lizardmen",
+      "sourceFile": "grade-1b/lizardmen.md",
+      "categories": [
+        "Combat",
+        "Strength"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge"
+      ],
+      "status": "mapped"
+    },
+    "lizardmen-0-1-kroxigor": {
+      "unit": "Kroxigor",
+      "warband": "Lizardmen",
+      "sourceFile": "grade-1b/lizardmen.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "lizardmen-0-4-saurus-braves": {
+      "unit": "Saurus Braves",
+      "warband": "Lizardmen",
+      "sourceFile": "grade-1b/lizardmen.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "lizardmen-skink-braves": {
+      "unit": "Skink Braves",
+      "warband": "Lizardmen",
+      "sourceFile": "grade-1b/lizardmen.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "maneaters-0-2-bulls": {
+      "unit": "Bulls",
+      "warband": "Maneaters",
+      "sourceFile": "grade-1c/maneaters.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "maneaters-0-3-youngbloods": {
+      "unit": "Youngbloods",
+      "warband": "Maneaters",
+      "sourceFile": "grade-1c/maneaters.md",
+      "categories": [
+        "Combat",
+        "Strength"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge"
+      ],
+      "status": "mapped"
+    },
+    "black-orcs-0-2-black-orcs": {
+      "unit": "Black Orcs",
+      "warband": "Black Orcs",
+      "sourceFile": "grade-1b/black-orcs.md",
+      "categories": [
+        "Combat",
+        "Shooting",
+        "Strength",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "quick-shot",
+        "pistolier",
+        "eagle-eyes",
+        "weapons-expert",
+        "nimble",
+        "trick-shooter",
+        "hunter",
+        "knife-fighter",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "orc-mob-goblin-warriors": {
+      "unit": "Goblin Warriors",
+      "warband": "Orc Mob",
+      "sourceFile": "grade-1a/orc-mob.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "forest-goblins-forest-goblins": {
+      "unit": "Forest Goblins",
+      "warband": "Forest Goblins",
+      "sourceFile": "grade-1b/forest-goblins.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "night-goblins-night-goblins": {
+      "unit": "Night Goblins",
+      "warband": "Night Goblins",
+      "sourceFile": "grade-1c/night-goblins.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "night-goblins-0-5-cave-squigs": {
+      "unit": "Cave Squigs",
+      "warband": "Night Goblins",
+      "sourceFile": "grade-1c/night-goblins.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "orc-mob-orc-boyz": {
+      "unit": "Orc Boyz",
+      "warband": "Orc Mob",
+      "sourceFile": "grade-1a/orc-mob.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "orc-mob-0-2-orc-big-uns": {
+      "unit": "Orc Big ‘Uns",
+      "warband": "Orc Mob",
+      "sourceFile": "grade-1a/orc-mob.md",
+      "categories": [
+        "Combat",
+        "Shooting",
+        "Strength"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "quick-shot",
+        "pistolier",
+        "eagle-eyes",
+        "weapons-expert",
+        "nimble",
+        "trick-shooter",
+        "hunter",
+        "knife-fighter",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge"
+      ],
+      "status": "mapped"
+    },
+    "tileans-warriors": {
+      "unit": "Warriors",
+      "warband": "Tileans",
+      "sourceFile": "grade-1b/tileans.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "skaven-of-clan-pestilens-0-2-plague-monks": {
+      "unit": "Plague Monks",
+      "warband": "Skaven of Clan Pestilens",
+      "sourceFile": "grade-1b/skaven-pestilens.md",
+      "categories": [
+        "Combat",
+        "Shooting",
+        "Strength",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "quick-shot",
+        "pistolier",
+        "eagle-eyes",
+        "weapons-expert",
+        "nimble",
+        "trick-shooter",
+        "hunter",
+        "knife-fighter",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "skaven-of-clan-pestilens-giant-rats": {
+      "unit": "Giant rats",
+      "warband": "Skaven of Clan Pestilens",
+      "sourceFile": "grade-1b/skaven-pestilens.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "skaven-of-clan-pestilens-0-2-monk-initiates": {
+      "unit": "Monk Initiates",
+      "warband": "Skaven of Clan Pestilens",
+      "sourceFile": "grade-1b/skaven-pestilens.md",
+      "categories": [
+        "Combat",
+        "Shooting",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "quick-shot",
+        "pistolier",
+        "eagle-eyes",
+        "weapons-expert",
+        "nimble",
+        "trick-shooter",
+        "hunter",
+        "knife-fighter",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "skaven-of-clan-pestilens-0-1-rat-ogre": {
+      "unit": "Rat ogre",
+      "warband": "Skaven of Clan Pestilens",
+      "sourceFile": "grade-1b/skaven-pestilens.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "tomb-guardians-0-2-tomb-guardians": {
+      "unit": "Tomb Guardians",
+      "warband": "Tomb Guardians",
+      "sourceFile": "grade-1b/tomb-guardians.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "tomb-guardians-skeleton-warriors": {
+      "unit": "Skeleton warriors",
+      "warband": "Tomb Guardians",
+      "sourceFile": "grade-1b/tomb-guardians.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "tomb-guardians-0-1-skeleton-chariot": {
+      "unit": "Skeleton Chariot",
+      "warband": "Tomb Guardians",
+      "sourceFile": "grade-1b/tomb-guardians.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "tomb-guardians-0-3-tomb-scorpions": {
+      "unit": "Tomb Scorpions",
+      "warband": "Tomb Guardians",
+      "sourceFile": "grade-1b/tomb-guardians.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "the-cursed-cavalcade-0-2-companions": {
+      "unit": "Companions",
+      "warband": "The Cursed Cavalcade",
+      "sourceFile": "grade-1c/cursed-cavalcade.md",
+      "categories": [
+        "Combat",
+        "Shooting",
+        "Strength",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "quick-shot",
+        "pistolier",
+        "eagle-eyes",
+        "weapons-expert",
+        "nimble",
+        "trick-shooter",
+        "hunter",
+        "knife-fighter",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "the-restless-dead-0-2-scarecrows": {
+      "unit": "Scarecrows",
+      "warband": "The Restless Dead",
+      "sourceFile": "grade-1c/restless-dead.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "the-restless-dead-0-3-wights": {
+      "unit": "Wights",
+      "warband": "The Restless Dead",
+      "sourceFile": "grade-1c/restless-dead.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "the-restless-dead-0-8-skeletons": {
+      "unit": "Skeletons",
+      "warband": "The Restless Dead",
+      "sourceFile": "grade-1c/restless-dead.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "court-of-the-profane-pleasures-0-5-cultists": {
+      "unit": "Cultists",
+      "warband": "Court of the Profane Pleasures",
+      "sourceFile": "grade-1c/court-of-the-profane-pleasures.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unpublished"
+    },
+    "norse-explorers-marauders": {
+      "unit": "Marauders",
+      "warband": "Norse Explorers",
+      "sourceFile": "grade-1b/norse.md",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    },
+    "norse-explorers-0-2-beserkers": {
+      "unit": "Beserkers",
+      "warband": "Norse Explorers",
+      "sourceFile": "grade-1b/norse.md",
+      "categories": [
+        "Combat",
+        "Strength"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge"
+      ],
+      "status": "mapped"
+    },
+    "norse-explorers-0-1-wulfen": {
+      "unit": "Wulfen",
+      "warband": "Norse Explorers",
+      "sourceFile": "grade-1b/norse.md",
+      "categories": [
+        "Combat",
+        "Strength",
+        "Speed"
+      ],
+      "availableSkills": [
+        "strike-to-injure",
+        "combat-master",
+        "weapons-training",
+        "web-of-steel",
+        "expert-swordsman",
+        "step-aside",
+        "mighty-blow",
+        "pit-fighter",
+        "resilient",
+        "fearsome",
+        "strongman",
+        "unstoppable-charge",
+        "leap",
+        "sprint",
+        "acrobat",
+        "lightning-reflexes",
+        "jump-up",
+        "dodge",
+        "scale-sheer-surfaces"
+      ],
+      "status": "mapped"
+    },
+    "witch-hunters-0-5-flagellants": {
+      "unit": "Flagellants",
+      "warband": "Witch Hunters",
+      "sourceFile": "Mordheim Core Warbands / Witch Hunters",
+      "categories": [],
+      "availableSkills": [],
+      "status": "unmapped"
+    }
+  }
+}

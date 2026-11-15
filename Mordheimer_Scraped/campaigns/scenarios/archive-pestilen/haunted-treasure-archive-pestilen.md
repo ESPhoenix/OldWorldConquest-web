@@ -1,0 +1,71 @@
+---
+title: "95. Haunted Treasure"
+source_url: "https://mordheimer.net/docs/campaigns/scenarios/archive-pestilen/haunted-treasure-archive-pestilen"
+fetched_at: "2026-11-10T19:59:10+00:00"
+section: "campaigns"
+---
+
+# 95. Haunted Treasure
+
+**Author:** Michael Reuvers<br> **Source:** Archive Pestilen<br> **Setting:** Mordheim<br> **Notes:** There is a rumor that a treasure of unimaginable wealth lies in the ruins of a old house. Unfortunately, it is also rumored that [the treasure](../town-cryer/the-gauntlet.md#the-treasure) is guarded by evil spirit who’s howl is so terrible it will make you go mad. Two rival warbands have heard about this house and have come to loot [the treasure](../town-cryer/the-gauntlet.md#the-treasure), if they can.
+
+## Terrain
+
+Each player takes it in turn to place a piece of terrain, either a ruined building, tower, or other similar item. We suggest that the terrain is [set up](../town-cryer/the-hunters-become-the-hunted.md#set-up) within an area roughly 4’ x 4’. The first building should be placed in the center of the table, and the objective of [the scenario](the-forbidden-square.md#the-scenario) is within this building.
+
+## Set-Up
+
+Both players roll a D6 and whoever rolls highest chooses which warband sets up first. This warband is deployed within 8" of any table edge the player chooses. His opponent sets up within 8" of the opposite side.
+
+## Special Rules
+
+All the warriors (not animals!) in each warband know roughly what they are looking for. In the building in the center is a treasure chest guarded by a Banshee. At the beginning of the game, the Banshee will stay right beside [the treasure](../town-cryer/the-gauntlet.md#the-treasure) chest until a model moves within 2’ of her position, at which time she will begin her turn as if she was a third player. Her actions are dictated as follows and may be controlled by an opponent or a third party. She must always move her maximum move toward the closest model, as she is drawn by their life force (or undead life force in the case of Undead Warbands). She will always ignore models [knocked down](../../../core-rules/rules/wounds-and-injuries.md#warriors-knocked-down) or [stunned](../../../core-rules/rules/wounds-and-injuries.md#warriors-stunned). She must always charge the closest standing model if able to do so—measure first. She must always howl at the closest model if able to do so.
+
+After retrieving the chest from the center building, the warrior must then take it to safety via his own table edge. Carrying [the treasure](../town-cryer/the-gauntlet.md#the-treasure) chest will slow the warrior carrying it to half speed. Two or more models may carry the chest without penalty. You may use [the treasure](../town-cryer/the-gauntlet.md#the-treasure) chest model to represent the chest. Any man-sized model may pick it up by moving into base contact with it. Models carrying the chest may not run.
+
+Whoever recovers the chest may roll on the following chart after the game to see what the chest contains. Note that you roll for each item separately, apart from the gold crowns, which are always automatically found.
+
+| **Items** | **[D6 Result](../../campaign-settings/border-town-burning/scenarios/last-orders.md#d6-result) Needed** |
+| --- | --- |
+| D3 Pieces of wyrdstone | 4+ |
+| 5D6 x 5 gc | Auto |
+| Holy relic | 5+ |
+| Suit of [heavy armour](../../../weapons-armour/armour.md#heavy-armour) | 5+ |
+| D3 Gems worth 10 gc each | 4+ |
+| [Elven Cloak](../../../weapons-armour/miscellaneous-equipment.md#elven-cloak) | 5+ |
+| [Holy tome](../../../weapons-armour/miscellaneous-equipment.md#holy-tome) | 5+ |
+| Magical artefact | 5+ |
+
+| Profile | M | WS | BS | S | T | W | I | A | Ld |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Banshee | 8 | 3 | 0 | 3 | 4 | 2 | 3 | 2 | 8 |
+
+**Ethereal:** Banshees are insubstantial creatures whose bodies are ethereal. They can move through solid objects and therefore suffer no [movement](../../../core-rules/rules/movement.md#movement) penalties for moving over difficult terrain or obstacles. They can move through buildings, but not living creatures.
+
+Because they are insubstantial creatures, they cannot be harmed in combat except by attacks from magical weapons or Daemons (The Possessed) and are affected by spells as normal. They can still be beaten back in [hand-to-hand combat](../../../core-rules/rules/close-combat.md#who-can-fight) as they cannot bear the touch of iron weapons. If hit by an iron weapon, the Banshee will flee 3D6 inches in the direction chosen by the attacker, as to represent the direction his blow has driven her to. During the Banshee’s next turn, she may move normally. If the Banshee is driven off the table, she is considered vanquished.
+
+**Ghostly Howl:** A Banshee is capable of emitting an eerie howl that brings death to mortals. Even the distant shriek of a Banshee is enough to strike horror into the hearts of the bravest men, but anyone hearing the constant wail of a Banshee will almost certainly die of sheer fright.
+
+The Ghostly Howl of a Banshee is used in the [shooting phase](../../../core-rules/rules/shooting.md#who-can-shoot). A Banshee may use it even if engaged in [hand-to-hand combat](../../../core-rules/rules/close-combat.md#who-can-fight), but only against the unit it is fighting. The attack has a range of 8". The Banshee can target any unit within this range and does not need [line of sight](../../campaign-settings/lustria.md#line-of-sight) to the model. Roll 2D6 + 2 and deduct the Leadership value of the model. For each point by which the roll beats the target’s Leadership, the target suffers 1 wound.
+
+**Cause [Fear](../../../core-rules/rules/leadership-psychology.md#fear):** Banshees are terrifying Undead creatures and therefore cause [fear](../../../core-rules/rules/leadership-psychology.md#fear).
+
+**May not run:** Banshees are slow Undead creatures and may not run (but may charge normally).
+
+**Immune to Psychology:** Banshees are not affected by psychology.
+
+**Immune to Poison:** Banshees are not affected by any poison.
+
+**No body:** Once the Banshee’s wound is reduced to zero is automatically out of action.
+
+## Starting the Game
+
+Roll a D6. The player rolling highest has the first turn.
+
+## ending the game
+
+When one warband gets [the treasure](../town-cryer/the-gauntlet.md#the-treasure) to safety, or when both warbands have failed a [Rout test](../../../core-rules/rules/leadership-psychology.md#the-rout-test), the game ends. If the warband that has [the treasure](../town-cryer/the-gauntlet.md#the-treasure) chest fails a [Rout test](../../../core-rules/rules/leadership-psychology.md#the-rout-test) then [the treasure](../town-cryer/the-gauntlet.md#the-treasure) chest is dropped where it is.
+
+## experience
+
+**+1 Survives.** If a Hero or Henchman group survives the battle they gain +1 [Experience](../../experience.md#experience).<br> **+1 Winning Leader.** The leader of the winning warband gains +1 extra [Experience](../../experience.md#experience).<br> **+1 Per Enemy Out of Action.** Any Hero earns +1 [Experience](../../experience.md#experience) for each enemy model he puts out of action.<br> **+2 For retrieving the chest.** Any warrior earns +2 [Experience](../../experience.md#experience) for retrieving the chest to safety. If more than one warrior is carrying the chest than each warrior is only gain +1 [Experience](../../experience.md#experience). Note if one or more of a henchman group is carrying the chest the group will only the [experience](../../experience.md#experience) bonus once.<br> **+3 For vanquishing the Banshee.** Any warrior earns +3 [Experience](../../experience.md#experience) for vanquishing the banshee. This mean either killing it or driving it off the table.

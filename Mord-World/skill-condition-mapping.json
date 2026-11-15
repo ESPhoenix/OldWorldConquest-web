@@ -1,0 +1,354 @@
+{
+  "description": "Suggested Mordheim-to-Old World crosswalk. Entries are keyed by Mordheim skill or condition ID. Partial matches and suggestions are not rules-as-written conversions; characteristic suggestions and thematic substitutions are optional house rules.",
+  "sources": {
+    "skills": "Mordheimer_Scraped/skills/standard-skills.md",
+    "conditions": [
+      "Mordheimer_Scraped/core-rules/rules/wounds-and-injuries.md",
+      "Mordheimer_Scraped/core-rules/rules/leadership-psychology.md"
+    ],
+    "oldWorldRules": "old-world-builder/src/components/rules-index/rules-index-export.json",
+    "oldWorldDatasets": "old-world-builder/public/games/the-old-world/"
+  },
+  "skills": {
+    "strike-to-injure": {
+      "category": "Combat",
+      "effect": "+1 to injury rolls caused in hand-to-hand combat.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Strength: A simple way to represent more forceful, more damaging blows.",
+      "note": "The Old World does not use Mordheim's post-wound injury roll. Killing Blow is not equivalent: it has a different trigger and effect."
+    },
+    "combat-master": {
+      "category": "Combat",
+      "effect": "An extra Attack when fighting at least two enemies, and immunity to All Alone tests.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Attacks: Represents improved ability to handle several opponents; it loses the original outnumbered-only trigger and All Alone immunity.",
+      "note": "No general Old World rule combines a situational extra Attack with immunity to Mordheim's All Alone test."
+    },
+    "weapons-training": {
+      "category": "Combat",
+      "effect": "May use hand-to-hand weapons outside the warrior's normal equipment options.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Weapon Skill: A generic combat-training benefit; it does not grant access to otherwise unavailable weapons.",
+      "note": "Old World weapon access is determined by unit equipment options; there is no general weapon-proficiency rule equivalent."
+    },
+    "web-of-steel": {
+      "category": "Combat",
+      "effect": "+1 on hand-to-hand Critical Hit table rolls.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Weapon Skill: Represents more precise and controlled close-combat technique.",
+      "note": "Mordheim's Critical Hit table has no general Old World counterpart."
+    },
+    "expert-swordsman": {
+      "category": "Combat",
+      "effect": "May re-roll missed attacks with a qualifying sword in the turn the warrior charges.",
+      "match": "partial",
+      "oldWorldRules": [
+        "Hatred (special-rules/hatred)"
+      ],
+      "note": "Hatred allows re-rolls to hit in the first round of combat, but is not limited to swords and is not restricted to charging."
+    },
+    "step-aside": {
+      "category": "Combat",
+      "effect": "An unmodifiable 5+ extra save against close-combat wounds, after armour saves.",
+      "match": "partial",
+      "oldWorldRules": [],
+      "suggestion": "Ward Save (5+) against close-combat wounds: use as a campaign-only defensive rule; it is not a general Old World special rule.",
+      "note": "The defensive role resembles a save made after armour, but Old World ward-save values/effects are not a general skill and Mordheim's save is close-combat-only."
+    },
+    "quick-shot": {
+      "category": "Shooting",
+      "effect": "May shoot twice per turn with a bow or crossbow, excluding a crossbow pistol.",
+      "match": "partial",
+      "oldWorldRules": [
+        "Multiple Shots (special-rules/multiple-shots)"
+      ],
+      "note": "Multiple Shots is a closer analogue for firing more than once; its weapon restrictions and procedures differ, so do not treat it as the same upgrade."
+    },
+    "pistolier": {
+      "category": "Shooting",
+      "effect": "A brace of pistols may fire twice in the Shooting phase; a single pistol may fire in the turn it is reloaded.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "Multiple Shots (special-rules/multiple-shots): Thematically closest for firing more than once; adapt it to pistols and do not assume its normal weapon limits match Mordheim.",
+      "note": "No general Old World rule matches the brace-of-pistols and reload benefits together."
+    },
+    "eagle-eyes": {
+      "category": "Shooting",
+      "effect": "Adds 6 inches to the range of any missile weapon used.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Ballistic Skill: Improves ranged accuracy as a practical substitute, but does not extend weapon range.",
+      "note": "No general Old World special rule grants this flat range increase across missile weapons."
+    },
+    "weapons-expert": {
+      "category": "Shooting",
+      "effect": "May use missile weapons outside the warrior's normal warband equipment list.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Ballistic Skill: A generic ranged-weapon training benefit; it does not grant access to otherwise unavailable weapons.",
+      "note": "Old World weapon access is determined by unit equipment options; there is no general ranged-weapon proficiency rule equivalent."
+    },
+    "nimble": {
+      "category": "Shooting",
+      "effect": "May move and fire weapons that normally require the firer not to have moved; cannot combine with Quick Shot.",
+      "match": "partial",
+      "oldWorldRules": [
+        "Move & Shoot (special-rules/move-and-shoot)"
+      ],
+      "note": "Move & Shoot is a related movement/shooting interaction, but does not reproduce Mordheim's weapon-specific restriction or its interaction with Quick Shot."
+    },
+    "trick-shooter": {
+      "category": "Shooting",
+      "effect": "Ignores cover modifiers when shooting missile weapons.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Ballistic Skill: Improves accuracy as a simple substitute for shooting through cover; it does not ignore cover.",
+      "note": "No general Old World special rule removes cover effects from shooting."
+    },
+    "hunter": {
+      "category": "Shooting",
+      "effect": "May fire a handgun or Hochland long rifle every turn.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Ballistic Skill: a simple shooting benefit; this does not remove any Old World weapon reload restriction.",
+      "note": "The Old World Slow Reload rule penalizes firing and therefore is not a suitable equivalent to Hunter's benefit."
+    },
+    "knife-fighter": {
+      "category": "Shooting",
+      "effect": "May throw up to three throwing knives or stars, dividing shots among targets; cannot combine with Quick Shot.",
+      "match": "partial",
+      "oldWorldRules": [
+        "Multiple Shots (special-rules/multiple-shots)"
+      ],
+      "note": "Multiple Shots is a broad analogue for extra ranged attacks, but does not match the throwing-weapon, target-splitting, or limit details."
+    },
+    "battle-tongue": {
+      "category": "Academic",
+      "effect": "Increases the leader's ability range by 6 inches.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Leadership: Represents a more effective leader, but does not increase command range.",
+      "note": "No general Old World rule in the catalogue grants this Mordheim leader-range bonus."
+    },
+    "sorcery": {
+      "category": "Academic",
+      "effect": "+1 to rolls to determine whether a spell is cast successfully.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Wizard Level: A suitable caster progression benefit that improves magical capability, but is broader than Mordheim's casting-success bonus.",
+      "note": "Old World casting uses different procedures; Wizard levels or casting modifiers are not a direct equivalent to this skill."
+    },
+    "streetwise": {
+      "category": "Academic",
+      "effect": "+2 to the roll for finding rare items during campaign trading.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Initiative [campaign-adaptation]: Flavor-only campaign substitute for alertness and knowing where to look; it does not improve rare-item availability.",
+      "note": "Campaign trading and rare-item availability have no general Old World Builder rule counterpart."
+    },
+    "haggle": {
+      "category": "Academic",
+      "effect": "Once per post-battle sequence, deduct 2D6 gold crowns from one item's price, to a minimum of 1 crown.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Leadership [campaign-adaptation]: Flavor-only campaign substitute for persuasive bargaining; it does not reduce item prices.",
+      "note": "This is a campaign economy benefit, not a battlefield rule represented in the Old World catalogue."
+    },
+    "arcane-lore": {
+      "category": "Academic",
+      "effect": "A qualifying warrior with a Tome of Magic may learn Lesser Magic.",
+      "match": "partial",
+      "oldWorldRules": [],
+      "suggestion": "+1 Wizard Level: campaign adaptation for greater magical learning; apply only to an eligible Wizard and respect the normal level cap.",
+      "note": "The nearest broad analogue is access to a lore of magic, but Old World lores/spells and Mordheim's Lesser Magic/Tome progression are different systems."
+    },
+    "wyrdstone-hunter": {
+      "category": "Academic",
+      "effect": "May re-roll one die on the post-battle Exploration chart when searching ruins.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Initiative [campaign-adaptation]: Flavor-only campaign substitute for alert searching; it does not grant an Exploration-chart re-roll.",
+      "note": "Exploration and wyrdstone income are campaign mechanics without a general Old World Builder counterpart."
+    },
+    "warrior-wizard": {
+      "category": "Academic",
+      "effect": "Allows a spellcaster to wear armour and cast spells.",
+      "match": "partial",
+      "oldWorldRules": [],
+      "suggestion": "Armoured Wizard: campaign-only rule allowing this model to cast spells while wearing armour; use only if the model is a Wizard.",
+      "note": "Some Old World wizards can wear armour or have army-specific casting provisions, but no universal rule reproduces this skill."
+    },
+    "mighty-blow": {
+      "category": "Strength",
+      "effect": "+1 Strength in close combat, excluding pistols.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Strength: The closest simple stat-based translation of the skill's increased striking power.",
+      "note": "A Strength characteristic increase is the closest conceptual description, but it is not a general Old World special rule and should not be substituted with a charge-only bonus."
+    },
+    "pit-fighter": {
+      "category": "Strength",
+      "effect": "While fighting inside buildings or ruins, gains +1 Weapon Skill and +1 Attack.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Weapon Skill: Captures the combat-training aspect, but not the building/ruin restriction or additional Attack.",
+      "note": "No general Old World rule grants this terrain-dependent combination of characteristic bonuses."
+    },
+    "resilient": {
+      "category": "Strength",
+      "effect": "Reduces the Strength of close-combat hits against the warrior by 1; does not affect armour modifiers.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Toughness: The closest general stat-based way to represent resistance to injury; it is not the original Strength reduction.",
+      "note": "This modifies incoming hit Strength. Armour, Regeneration, and saves in Old World work differently and are not equivalent."
+    },
+    "fearsome": {
+      "category": "Strength",
+      "effect": "The warrior causes Fear.",
+      "match": "partial",
+      "oldWorldRules": [
+        "Fear (special-rules/fear)"
+      ],
+      "note": "The named rule exists in both systems, but the tests and consequences differ."
+    },
+    "strongman": {
+      "category": "Strength",
+      "effect": "May use a double-handed weapon without its usual Always Strikes Last penalty.",
+      "match": "partial",
+      "oldWorldRules": [
+        "Strike First (special-rules/strike-first)"
+      ],
+      "note": "Strike First can affect attack order against a strikes-last weapon, but it is not the same as removing that weapon's penalty and may interact differently with other rules."
+    },
+    "unstoppable-charge": {
+      "category": "Strength",
+      "effect": "+1 Weapon Skill when charging.",
+      "match": "partial",
+      "oldWorldRules": [
+        "Furious Charge (special-rules/furious-charge)"
+      ],
+      "note": "Furious Charge is a charge-triggered combat bonus, but its effect is not a Weapon Skill increase."
+    },
+    "leap": {
+      "category": "Speed",
+      "effect": "May leap D6 inches once per turn in addition to normal movement, including over models and obstacles.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Movement: Represents greater mobility, but does not grant a separate leap or obstacle-crossing ability.",
+      "note": "Swiftstride affects charge/movement distance but does not grant this separate jump action or obstacle-crossing effect."
+    },
+    "sprint": {
+      "category": "Speed",
+      "effect": "May triple Movement when running or charging instead of doubling it.",
+      "match": "partial",
+      "oldWorldRules": [
+        "Swiftstride (special-rules/swiftstride)"
+      ],
+      "note": "Swiftstride affects charge distance, but does not provide Mordheim's triple movement when running or charging."
+    },
+    "acrobat": {
+      "category": "Speed",
+      "effect": "Can safely fall or jump from up to 12 inches after an Initiative test and re-roll failed Diving Charge rolls.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Initiative: Represents agility and quick reactions, but does not reproduce safe falling or Diving Charge re-rolls.",
+      "note": "No general Old World rule combines safe falling with a diving-charge re-roll."
+    },
+    "lightning-reflexes": {
+      "category": "Speed",
+      "effect": "When charged, strikes first against the chargers; compare Initiative if they also strike first.",
+      "match": "partial",
+      "oldWorldRules": [
+        "Strike First (special-rules/strike-first)"
+      ],
+      "note": "Strike First is the closest attack-order rule, but this skill only applies when charged and has its own interaction with chargers."
+    },
+    "jump-up": {
+      "category": "Speed",
+      "effect": "Immediately stands after being knocked down and can ignore most knocked-down injury results.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Initiative: Represents quick recovery and reactions, but does not let the model stand from a Mordheim Knocked Down state.",
+      "note": "Old World does not use Mordheim's Knocked Down injury state."
+    },
+    "dodge": {
+      "category": "Speed",
+      "effect": "May avoid a missile hit on a 5+ roll made before wounding.",
+      "match": "partial",
+      "oldWorldRules": [],
+      "suggestion": "Ward Save (5+) against shooting: campaign-only defensive rule; this is a post-hit save, not Mordheim's pre-wound dodge roll.",
+      "note": "A Ward Save can be a conceptually similar post-hit defence, but Dodge is a pre-wound avoidance roll against missile weapons only and is not a named general skill in Old World Builder."
+    },
+    "scale-sheer-surfaces": {
+      "category": "Speed",
+      "effect": "Can climb up or down twice normal Movement without Initiative tests.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "+1 Initiative: Represents agility while climbing, but does not provide a special climbing rule.",
+      "note": "Move Through Cover does not reproduce climbing distance or the removal of Initiative tests."
+    }
+  },
+  "conditions": {
+    "knocked-down": {
+      "source": "Mordheimer_Scraped/core-rules/rules/wounds-and-injuries.md#warriors-knocked-down",
+      "effect": "A temporary injury state that prevents fighting, shooting, and spellcasting until recovery; vulnerable to attacks in close combat.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "Stupidity (special-rules/stupidity): A loose thematic stand-in for impaired actions only; do not apply the normal Stupidity test or movement effects as if they were the Mordheim condition.",
+      "note": "No direct Old World status exists in the rules index. Falling/prone models are not automatically equivalent to this injury state."
+    },
+    "stunned": {
+      "source": "Mordheimer_Scraped/core-rules/rules/wounds-and-injuries.md#warriors-stunned",
+      "effect": "The warrior does nothing until recovery; an enemy able to attack in close combat takes the warrior out of action automatically.",
+      "match": "none",
+      "oldWorldRules": [],
+      "suggestion": "Stupidity (special-rules/stupidity): A loose thematic stand-in for temporary inability to act; it does not reproduce automatic removal when attacked.",
+      "note": "No direct Old World injury status exists. Failed Stupidity tests can limit actions, but are not a stun effect."
+    },
+    "out-of-action": {
+      "source": "Mordheimer_Scraped/core-rules/rules/wounds-and-injuries.md",
+      "effect": "Removed from the battle; campaign survival and serious injuries are determined after the game.",
+      "match": "partial",
+      "oldWorldRules": [],
+      "note": "Removal as a casualty is broadly comparable to a model being slain/removed, but Old World has no matching post-battle survival and serious-injury roll."
+    },
+    "fleeing-from-combat": {
+      "source": "Mordheimer_Scraped/core-rules/rules/leadership-psychology.md#all-alone",
+      "effect": "A warrior who fails an All Alone test breaks from combat and runs, then tests to recover on later turns.",
+      "match": "partial",
+      "oldWorldRules": [],
+      "note": "Old World units can flee or become broken, but the unit-level break and pursuit rules differ from Mordheim's individual All Alone flight and recovery."
+    },
+    "affected-by-fear": {
+      "source": "Mordheimer_Scraped/core-rules/rules/leadership-psychology.md#fear",
+      "effect": "A Fear test can restrict charging or require 6s to hit for a round of combat.",
+      "match": "partial",
+      "oldWorldRules": [
+        "Fear (special-rules/fear)"
+      ],
+      "note": "The named rule exists in both systems, but the test timing and effects are different."
+    },
+    "frenzied": {
+      "source": "Mordheimer_Scraped/core-rules/rules/leadership-psychology.md#frenzy",
+      "effect": "Must charge nearby enemies, doubles Attacks in close combat, and is immune to other psychology while in charge range.",
+      "match": "partial",
+      "oldWorldRules": [
+        "Frenzy (special-rules/frenzy)"
+      ],
+      "note": "Frenzy exists in both systems, but its attack bonus, charge obligations, and psychology interactions differ."
+    },
+    "affected-by-stupidity": {
+      "source": "Mordheimer_Scraped/core-rules/rules/leadership-psychology.md#stupidity",
+      "effect": "A failed test can prevent fighting or casting and may restrict movement and shooting for the turn.",
+      "match": "partial",
+      "oldWorldRules": [
+        "Stupidity (special-rules/stupidity)"
+      ],
+      "note": "The named rule exists in both systems, but its test and consequences differ."
+    }
+  }
+}

@@ -26,6 +26,7 @@ await copyFile(
   'old-world-builder/src/components/rules-index/rules-index-export.json',
 );
 await copyFile('old-world-builder/src/utils/rules.js', 'old-world-builder/src/utils/rules.js');
+await copyDirectory('Mord-World', 'Mord-World');
 await copyDirectory(
   'old-world-builder/public/games/the-old-world',
   'old-world-builder/public/games/the-old-world',

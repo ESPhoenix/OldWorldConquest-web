@@ -172,11 +172,46 @@
     .territory-grid { display: grid; grid-template-columns: minmax(130px, 1fr) minmax(130px, 1.2fr) auto auto; gap: .55rem; align-items: end; }
     .inline-check { display: flex; align-items: center; gap: .4rem; min-height: 2.35rem; color: #594a3b; font: .75rem Arial, sans-serif; }
     .unit-card { margin-top: .75rem; padding: .9rem; border: 1px solid #bca984; border-left: 4px solid var(--gold); background: #fffaf0; }
+    .unit-card.is-hero:not(.is-general) { border-left-color:#76528c; background:linear-gradient(145deg,#fbf6ff,#f1e8f4); }
+    .unit-card.is-troop { border-left-color:#416347; background:linear-gradient(145deg,#f7fbf2,#eaf0e4); }
     .unit-card.is-general { border-left-color: var(--red); }
-    .unit-top { display: flex; justify-content: space-between; gap: .8rem; align-items: center; margin-bottom: .75rem; }
+    .unit-top { display: flex; justify-content: space-between; gap: .8rem; align-items: flex-start; margin-bottom: .65rem; }
+    .unit-summary { display: grid; gap: .45rem; min-width: 0; flex: 1; }
     .unit-title { display: flex; gap: .7rem; align-items: center; min-width: 0; }
     .unit-number { display: grid; place-items: center; flex: 0 0 1.8rem; width: 1.8rem; height: 1.8rem; border-radius: 50%; color: #fff4df; background: var(--red); font: 700 .75rem Arial, sans-serif; }
+    .unit-title strong { min-width:0; flex:1; }
+    .unit-drag-grip, .scout-drag-grip { display:inline-grid; place-items:center; flex:0 0 1.15rem; width:1.15rem; height:1.8rem; color:#81745f; cursor:grab; font:700 1rem/1 Arial,sans-serif; letter-spacing:-.12em; touch-action:none; user-select:none; }
+    .unit-drag-grip:active, .scout-drag-grip:active { cursor:grabbing; }
+    .unit-card.is-dragging, .scout-unit-card.is-dragging { opacity:.45; }
+    .unit-card.drag-over-before { box-shadow:inset 0 4px 0 var(--gold); }
+    .unit-card.drag-over-after { box-shadow:inset 0 -4px 0 var(--gold); }
+    .unit-type-tag { padding:.18rem .38rem; border:1px solid; border-radius:99px; font:700 .58rem Arial,sans-serif; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
+    .unit-type-tag.hero { border-color:#a58bb5; color:#624477; background:#eee5f3; }
+    .unit-type-tag.troop { border-color:#8aa180; color:#38533a; background:#e4eddf; }
     .unit-top strong { color: #4e3328; overflow-wrap: anywhere; }
+    .unit-cost { display: grid; flex: 0 0 3.55rem; width: 3.55rem; height: 3.55rem; place-content: center; border: 2px solid #bd7969; border-radius: 50%; color: #fff4df; background: var(--red); text-align: center; font: 700 .78rem/1.05 Arial,sans-serif; font-variant-numeric: tabular-nums; }
+    .unit-cost small { margin-top: .15rem; color: #f2d8c5; font: 700 .55rem Arial,sans-serif; text-transform: uppercase; letter-spacing: .05em; }
+    .unit-equipment { display: flex; gap: .35rem; align-items: baseline; color: #65533d; font: .76rem/1.4 Arial,sans-serif; overflow-wrap: anywhere; }
+    .unit-equipment span, .renown-label { flex: 0 0 auto; color: #79674f; font: 700 .62rem Arial,sans-serif; letter-spacing: .07em; text-transform: uppercase; }
+    .unit-equipment strong { color: #49382c; font: 400 .76rem/1.4 Arial,sans-serif; }
+    .unit-champion-name { display:flex; gap:.35rem; align-items:baseline; color:#4e684d; font:.76rem/1.4 Arial,sans-serif; overflow-wrap:anywhere; }
+    .unit-champion-name span { color:#79674f; font:700 .62rem Arial,sans-serif; letter-spacing:.07em; text-transform:uppercase; }
+    .unit-renown { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .5rem; }
+    .renown-track { display: inline-flex; flex-wrap: wrap; gap: 2px; }
+    .renown-box { display: block; width: .52rem; height: .62rem; border: 1px solid #9d8b70; background: #fffaf0; }
+    .renown-box.earned { border-color: var(--red); background: var(--red); }
+    .unit-editor-content { padding-top: .65rem; }
+    .unit-cards-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.8rem; margin-top:.75rem; }
+    .unit-cards-grid > .unit-card { margin-top:0; }
+    .unit-cards-grid > .empty { grid-column:1 / -1; }
+    .unit-details-button { padding:.38rem .55rem; border:1px solid #bca984; color:#67422d; background:#f3ead7; font:700 .7rem Arial,sans-serif; }
+    .unit-details-button:hover { border-color:var(--red); color:var(--red); }
+    .unit-details-dialog { width:min(1100px,calc(100% - 1.5rem)); max-width:none; max-height:92vh; padding:0; border:1px solid #bca984; border-top:5px solid var(--red); color:var(--ink); background:#f2e8d2; box-shadow:var(--shadow); }
+    .unit-details-dialog::backdrop { background:#1b1510b8; }
+    .unit-details-head { position:sticky; top:0; z-index:1; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.9rem 1.1rem; border-bottom:1px solid #bca984; background:#fbf6e9; }
+    .unit-details-head h2 { margin:0; color:var(--red-dark); }
+    .unit-details-content { max-height:calc(92vh - 4rem); overflow:auto; padding:1rem; }
+    .unit-details-content .unit-editor-content { padding-top:0; }
     .unit-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; }
     .unit-grid .wide { grid-column: span 2; }
     .unit-grid .full { grid-column: 1 / -1; }
@@ -234,6 +269,14 @@
     .profile-table th,.profile-table td { padding:.35rem .3rem; border:1px solid #d8c9ac; }
     .profile-table th:first-child,.profile-table td:first-child { text-align:left; }
     .profile-table th { color:#67422d; background:#efe2c9; }
+    .profile-table .stat-increased { color:#2f7040; font-weight:700; }
+    .profile-table .stat-decreased { color:#a33225; font-weight:700; }
+    .characteristic-editor { display:flex; flex-wrap:wrap; gap:.4rem; align-items:center; margin:.4rem 0; }
+    .characteristic-input { width:3.2rem; min-width:3.2rem; padding:.25rem .2rem; text-align:center; }
+    .model-campaign-rules { display:flex; flex-wrap:wrap; gap:.35rem; align-items:center; margin:.45rem 0; font: .73rem Arial,sans-serif; }
+    .model-campaign-rules strong { margin-right:.2rem; color:#67422d; }
+    .campaign-rule { display:inline-flex; gap:.35rem; align-items:center; padding:.3rem .45rem; border:1px solid #cf8748; border-radius:3px; color:#7a3c13; background:#ffead1; }
+    .campaign-rule button { padding:0; border:0; color:#8c321e; background:transparent; font-weight:700; }
     .rule-list { display:flex; flex-wrap:wrap; gap:.35rem; margin:.4rem 0 0; }
     .rule-link { padding:.3rem .45rem; border:1px solid #bca984; border-radius:3px; color:#55392a; background:#fffaf0; font: .73rem Arial,sans-serif; text-align:left; }
     .rule-link:hover { border-color:var(--red); color:var(--red); }
@@ -251,13 +294,177 @@
     .battle-mode-unit { padding:.75rem; border:1px solid #bca984; background:#fbf6e9; }
     .battle-mode-unit h3 { margin:0 0 .2rem; color:#573b2d; }
     .battle-mode-unit .unit-reference { margin-top:.35rem; }
+    #battleModeContent { max-height:calc(92vh - 4.5rem); overflow:auto; align-content:start; }
+    .mordheim-battle-card { scroll-margin-top:5.5rem; }
+    .mordheim-battle-card h3 { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:.3rem .7rem; }
+    .mordheim-battle-subtitle { margin:.15rem 0 .45rem; color:#74675b; font:.75rem/1.4 Arial,sans-serif; }
+    .mordheim-battle-card .scout-table-wrap { margin:.35rem 0; }
+    .mordheim-battle-card .scout-stats { color:#29221d; font-size:.7rem; }
+    .mordheim-battle-card .scout-stats th,.mordheim-battle-card .scout-stats td { padding:.28rem .32rem; border-color:#cbb999; }
+    .mordheim-battle-card .scout-stats th { color:#573b2d; background:#e9dec7; }
+    .mordheim-battle-card .scout-stats .stat-increased { color:#416347; }
+    .mordheim-battle-equipment,.mordheim-battle-rules { margin:.35rem 0 0; color:#514438; font:.76rem/1.45 Arial,sans-serif; }
+    .mordheim-battle-rule-links { display:flex; flex-wrap:wrap; gap:.3rem; margin-top:.3rem; }
+    .mordheim-battle-rule-links a,.mordheim-rule-backlinks a { color:#7e2d25; font:700 .7rem/1.35 Arial,sans-serif; }
+    .mordheim-battle-rule-links a { padding:.18rem .35rem; border:1px solid #cbb999; border-radius:2px; background:#f2e8d2; }
+    .mordheim-battle-rule-links a:hover,.mordheim-rule-backlinks a:hover { color:#a33a2b; }
+    .mordheim-rule-reference { grid-column:1 / -1; margin-top:.4rem; padding:.85rem; border:2px solid #8c744d; background:#f8f0df; scroll-margin-top:5.5rem; }
+    .mordheim-rule-reference h3 { margin:0 0 .6rem; color:#573b2d; }
+    .mordheim-rule-entry { padding:.55rem 0; border-top:1px solid #d4c3a2; scroll-margin-top:5.5rem; }
+    .mordheim-rule-entry h4 { margin:0 0 .2rem; color:#573b2d; font-size:.9rem; }
+    .mordheim-rule-entry p { margin:.2rem 0; color:#44392f; font:.78rem/1.5 Arial,sans-serif; white-space:pre-wrap; }
+    .mordheim-rule-backlinks { display:flex; flex-wrap:wrap; gap:.25rem .6rem; margin-top:.25rem; }
     .rules-dialog-body p { color:var(--ink); }
+    .scouting-tab { color:#d4d0c7; background:#303638; border-color:#1d2325; }
+    .scouting-tab:hover { color:#fff; background:#3e4749; }
+    .scouting-tab[aria-selected="true"] { color:#f2dfb5; background:#20282a; border-color:#20282a; }
+    .scouting-panel {
+      padding:1rem;
+      border:1px solid #262d30;
+      border-radius:4px;
+      color:#e3e1d8;
+      background:radial-gradient(ellipse at 85% 0%,#3b353025,transparent 36rem),#171c1e;
+      box-shadow:0 12px 36px #11171955;
+    }
+    .scouting-panel .scout-intro { margin:0; color:#b9c0bc; font: .86rem/1.5 Arial,sans-serif; }
+    .scouting-panel .scout-summary { margin:.6rem 0 0; color:#c4a86e; font:700 .75rem Arial,sans-serif; letter-spacing:.08em; text-transform:uppercase; }
+    .scout-heroes { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.8rem; margin-top:1rem; }
+    .scout-heroes > .scout-warband-cost, .scout-heroes > .empty { grid-column:1 / -1; }
+    .scout-hero-card { padding:.8rem 1rem; border:1px solid #465052; border-left:4px solid #8d744c; background:linear-gradient(140deg,#252d2f,#1e2426); }
+    .scout-warband-cost { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:.5rem 1rem; margin:.8rem 0 0; padding:.8rem 1rem; border:1px solid #8c744d; background:#302d25; color:#e1e3dd; }
+    .scout-warband-cost strong { color:#e0c17b; }
+    .scout-mooks-controls { display:flex; flex-wrap:wrap; align-items:end; gap:.65rem; margin-top:.8rem; padding:.8rem; border:1px solid #465052; background:#202729; }
+    .scout-mooks-controls .field { min-width:180px; margin:0; }
+    .scout-mooks-controls .dice-field { min-width:82px; }
+    .scout-manual-rolls { flex:1 1 100%; }
+    .scout-manual-rolls summary { color:#e0c17b; cursor:pointer; font:.75rem/1.45 Arial,sans-serif; }
+    .scout-manual-rolls-fields { display:flex; flex-wrap:wrap; align-items:end; gap:.65rem; margin-top:.65rem; }
+    .scout-dice-roll { display:grid; flex:1 1 100%; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.35rem; width:100%; max-width:560px; }
+    .scout-dice-pair { display:grid; justify-items:center; gap:.1rem; min-width:0; padding:.2rem; border:1px solid #3c4749; background:#1a2022; }
+    .scout-dice-faces { display:flex; align-items:center; justify-content:center; gap:.25rem; }
+    .scout-dice-result { max-width:100%; color:#e0c17b; text-align:center; font:700 .58rem/1.2 Arial,sans-serif; overflow-wrap:anywhere; }
+    .scout-die-wrap { display:grid; justify-items:center; gap:.15rem; color:#b9c0bc; font:700 .62rem Arial,sans-serif; letter-spacing:.05em; text-transform:uppercase; }
+    .scout-die { display:block; width:48px; height:48px; filter:drop-shadow(0 2px 2px #0008); }
+    .scout-dice-guide { flex:1 1 100%; color:#c4c9c3; font:.75rem/1.45 Arial,sans-serif; }
+    .scout-dice-guide summary { color:#e0c17b; cursor:pointer; }
+    .scout-dice-guide ol { columns:2; margin:.5rem 0 0; padding-left:1.5rem; }
+    .scout-dice-guide li { break-inside:avoid; }
+    .scout-mooks-status { flex:1 1 100%; margin:0; color:#c4a86e; font:.75rem/1.4 Arial,sans-serif; }
+    .scout-henchman-card { padding:.8rem 1rem; border:1px solid #465052; border-left:4px solid #657f69; background:linear-gradient(140deg,#252d2f,#1e2426); }
+    .scout-card-top { display:flex; justify-content:space-between; align-items:flex-start; gap:.8rem; }
+    .scout-card-title { min-width:0; }
+    .scout-card-title h3 { margin:0 0 .2rem; color:#efdfbd; font-size:1.08rem; overflow-wrap:anywhere; }
+    .scout-card-name-row { display:flex; align-items:flex-start; gap:.3rem; }
+    .scout-card-name-row h3 { min-width:0; flex:1; }
+    .scout-hero-name-field { display:grid; gap:.2rem; margin:.55rem 0; color:#bfc8c3; font:700 .65rem Arial,sans-serif; letter-spacing:.04em; }
+    .scout-hero-name-field input { width:100%; min-width:0; padding:.4rem .5rem; border:1px solid #536062; color:#e3e1d8; background:#171c1e; font: .8rem Arial,sans-serif; }
+    .scout-model-mapping { display:flex; flex-wrap:wrap; align-items:center; gap:.35rem; margin:.4rem 0 0; }
+    .scout-model-mapping-box { display:grid; gap:.12rem; min-width:0; padding:.28rem .42rem; border:1px solid #c9b98f; border-radius:3px; color:#44362b; background:#f4ecd9; }
+    .scout-model-mapping-box span { color:#79674f; font:700 .52rem Arial,sans-serif; letter-spacing:.06em; text-transform:uppercase; }
+    .scout-model-mapping-box strong { color:#44362b; font:700 .72rem/1.25 Arial,sans-serif; overflow-wrap:anywhere; }
+    .scout-model-mapping-box.mordheim { border-color:#6c7a7c; color:#e3e1d8; background:#171c1e; }
+    .scout-model-mapping-box.mordheim span { color:#aeb8b3; }
+    .scout-model-mapping-box.mordheim strong { color:#efdfbd; }
+    .scout-model-mapping-arrow { color:#d8bd81; font:700 1rem Arial,sans-serif; }
+    .scout-hero-card .scout-drag-grip { color:#cfb77f; }
+    .scout-henchman-card .scout-drag-grip { color:#98b395; }
+    .scout-type-tag { align-self:center; margin:0 0 .2rem .15rem; padding:.16rem .35rem; border:1px solid; border-radius:99px; font:700 .55rem Arial,sans-serif; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
+    .scout-type-tag.hero { border-color:#8c744d; color:#e4c888; background:#443c2e; }
+    .scout-type-tag.henchman { border-color:#657f69; color:#c2d5bd; background:#2c3a30; }
+    .scout-card-title p { margin:0; color:#adb8b4; font:.74rem/1.4 Arial,sans-serif; }
+    .scout-card-equipment { display:flex; gap:.35rem; align-items:baseline; margin:.4rem 0; color:#d0d5d1; font:.74rem/1.45 Arial,sans-serif; overflow-wrap:anywhere; }
+    .scout-card-equipment span { flex:0 0 auto; color:#aeb8b3; font:700 .62rem Arial,sans-serif; letter-spacing:.07em; text-transform:uppercase; }
+    .scout-card-equipment strong { color:#e2dfd5; font:400 .74rem/1.45 Arial,sans-serif; }
+    .scout-cost-badge { display:grid; flex:0 0 3.7rem; width:3.7rem; height:3.7rem; place-content:center; border:2px solid #bb766a; border-radius:50%; color:#fff1e4; background:#8e302a; text-align:center; font:700 .64rem/1.05 Arial,sans-serif; font-variant-numeric:tabular-nums; }
+    .scout-cost-badge small { margin-top:.15rem; color:#f0cfc0; font:700 .54rem Arial,sans-serif; text-transform:uppercase; letter-spacing:.06em; }
+    .scout-card-details { margin-top:.4rem; border-top:1px solid #465052; padding-top:.4rem; }
+    .scout-card-details > summary { width:fit-content; cursor:pointer; color:#d8bd81; font:700 .72rem Arial,sans-serif; }
+    .scout-card-detail-content { padding-top:.55rem; }
+    .scout-card-actions { display:flex; justify-content:flex-end; margin-bottom:.4rem; }
+    .scout-unit-card.drag-over-before { box-shadow:inset 0 4px 0 #d7bd7d; }
+    .scout-unit-card.drag-over-after { box-shadow:inset 0 -4px 0 #d7bd7d; }
+    .scout-details-button { margin-top:.1rem; padding:.35rem .5rem; border:1px solid #6d624c; color:#e3d2aa; background:#303638; font:700 .68rem Arial,sans-serif; }
+    .scout-details-button:hover { border-color:#ad8c54; background:#3e4749; }
+    .scout-details-dialog { width:min(900px,calc(100% - 1.5rem)); max-width:none; max-height:90vh; padding:0; border:1px solid #536062; border-top:4px solid #8e302a; color:#e3e1d8; background:#171c1e; box-shadow:0 14px 44px #0009; }
+    .scout-details-dialog::backdrop { background:#080b0cbb; }
+    .scout-details-head { position:sticky; top:0; z-index:1; display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:.8rem 1rem; border-bottom:1px solid #465052; background:#202729; }
+    .scout-details-head h2 { margin:0; color:#efdfbd; font-size:1.15rem; }
+    .scout-details-content { max-height:calc(90vh - 4rem); overflow:auto; padding:1rem; }
+    .scout-details-content .scout-card-detail-content { padding-top:0; }
+    .scout-xp-tracker { margin-top:.8rem; padding:.75rem; border:1px solid #65706b; border-left:3px solid #c4a86e; background:#202729; }
+    .scout-xp-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:.4rem; }
+    .scout-xp-head h4 { margin:0; color:#efdfbd; font-size:.9rem; }
+    .scout-xp-boxes { display:grid; grid-template-columns:repeat(12,minmax(1.2rem,1fr)); gap:.22rem; margin-top:.65rem; }
+    .scout-xp-box { min-width:0; aspect-ratio:1.15; padding:0; border:1px solid #7c8177; color:#d4d0c7; background:#171c1e; font:700 .58rem Arial,sans-serif; }
+    .scout-xp-box:hover { border-color:#e0c17b; }
+    .scout-xp-box.earned { border-color:#a34b3e; color:#fff1e4; background:#8e302a; }
+    .scout-xp-box.advance-marker { border-width:2px; border-color:#c4a86e; }
+    .scout-xp-box.advance-marker.earned { border-color:#f0cf87; }
+    .scout-xp-progress { margin:.55rem 0 0; color:#c4c9c3; font:.72rem/1.45 Arial,sans-serif; }
+    .scout-xp-progress.ready { color:#f0cf87; font-weight:700; }
+    .scout-xp-actions { display:flex; flex-wrap:wrap; gap:.4rem; align-items:center; margin-top:.55rem; }
+    .scout-xp-prompt { margin-top:.65rem; padding:.7rem; border:1px solid #a7864f; border-left:4px solid #e0c17b; color:#eee3cc; background:#302d25; }
+    .scout-xp-prompt h5 { margin:0 0 .3rem; color:#f0cf87; font:700 .8rem Arial,sans-serif; }
+    .scout-xp-prompt p { margin:.25rem 0; color:#d1c8b5; font:.75rem/1.45 Arial,sans-serif; }
+    .scout-advance-choice-label { display:grid; gap:.3rem; max-width:28rem; margin:.65rem 0; color:#eadbb8; font:700 .72rem Arial,sans-serif; }
+    .scout-advance-choice-label select { width:100%; padding:.45rem; border:1px solid #66604f; color:#eee3cc; background:#1e2221; }
+    .scout-skill-detail { margin:.35rem 0; padding:.45rem .55rem; border-left:2px solid #8d784f; background:#171d1e; color:#c8d0cb; font:.72rem/1.5 Arial,sans-serif; }
+    .scout-skill-detail strong { color:#e5d39f; }
+    .scout-skill-detail p { margin:.25rem 0; }
+    .scout-skill-detail a { color:#d8bd81; }
+    .scout-advance-history { margin-top:.65rem; padding-top:.55rem; border-top:1px solid #4b5351; }
+    .scout-advance-history h4 { margin:0 0 .4rem; color:#d9c38d; font:700 .72rem Arial,sans-serif; text-transform:uppercase; }
+    .scout-advance-entry { margin:.35rem 0; padding:.45rem .55rem; border-left:2px solid #708d74; background:#202728; color:#e4e1d8; font:.74rem Arial,sans-serif; }
+    .scout-advance-entry > small { display:block; margin-top:.2rem; color:#aeb8b3; font-size:.65rem; }
+    .scout-xp-note { margin:.5rem 0 0; color:#9ea9a3; font:.66rem/1.4 Arial,sans-serif; }
+    .scout-xp-ready { color:#34543b; border-color:#8ba17e; background:#e2ebdd; }
+    .scout-henchman-equipment { margin:.45rem 0 0; color:#adb8b4; font:.74rem/1.5 Arial,sans-serif; }
+    .scout-cost-value { margin:.4rem 0 0; color:#e0c17b; font:700 .76rem Arial,sans-serif; }
+    .scout-hero-head { display:flex; justify-content:space-between; align-items:start; gap:1rem; margin-bottom:.8rem; }
+    .scout-hero-head h3 { margin:0 0 .25rem; color:#efdfbd; font-size:1.2rem; }
+    .scout-hero-head p { margin:0; color:#adb8b4; font: .78rem/1.4 Arial,sans-serif; }
+    .scout-badge { flex:0 0 auto; padding:.25rem .55rem; border:1px solid #8c744d; border-radius:99px; color:#e4c888; background:#443c2e; font:700 .67rem Arial,sans-serif; letter-spacing:.06em; text-transform:uppercase; }
+    .scout-equivalent { margin:.25rem 0 .75rem; color:#c3c9c4; font: .78rem/1.4 Arial,sans-serif; }
+    .scout-equivalent strong { color:#e0c17b; }
+    .scout-table-wrap { overflow-x:auto; }
+    .scout-stats { width:100%; border-collapse:collapse; color:#e1e3dd; font:.76rem Arial,sans-serif; text-align:center; }
+    .scout-stats th,.scout-stats td { padding:.42rem .35rem; border:1px solid #485254; }
+    .scout-stats th { color:#dfc68f; background:#333c3e; }
+    .scout-stats th:first-child,.scout-stats td:first-child { text-align:left; }
+    .scout-stats .stat-increased { color:#83d899; font-weight:700; }
+    .scout-rule-group { margin-top:.8rem; }
+    .scout-rule-group h4 { margin:0 0 .4rem; color:#d7bc80; font:700 .72rem Arial,sans-serif; letter-spacing:.08em; text-transform:uppercase; }
+    .scout-rules { display:grid; gap:.4rem; }
+    .scout-rule { padding:.5rem .6rem; border-left:2px solid #7f6946; color:#cbd0cb; background:#1a2022; font:.76rem/1.5 Arial,sans-serif; }
+    .scout-rule strong { color:#eddfbd; }
+    .scout-skill-editor { margin:.75rem 0; padding:.65rem; border:1px solid #536062; background:#202729; }
+    .scout-skill-editor h4 { margin:0 0 .35rem; color:#e0c17b; font:700 .75rem Arial,sans-serif; letter-spacing:.07em; text-transform:uppercase; }
+    .scout-skill-row { display:flex; justify-content:space-between; align-items:center; gap:.5rem; margin:.35rem 0; padding:.4rem .5rem; border-left:2px solid #8c744d; background:#1a2022; font:.75rem Arial,sans-serif; }
+    .scout-skill-row span { display:grid; gap:.18rem; }
+    .scout-skill-row strong { color:#eddfbd; }
+    .scout-skill-row small { color:#b9c0bc; font-size:.68rem; }
+    .scout-skill-add { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.55rem; }
+    .scout-skill-add select { flex:1 1 220px; min-width:0; padding:.4rem; }
+    .scout-equipment-section { margin-top:.85rem; padding:.7rem; border:1px solid #465052; background:#202729; }
+    .scout-equipment-section h4 { margin:0 0 .35rem; color:#d7bc80; font:700 .75rem Arial,sans-serif; letter-spacing:.08em; text-transform:uppercase; }
+    .scout-equipment-intro { margin:0 0 .55rem; color:#adb8b4; font:.72rem/1.4 Arial,sans-serif; }
+    .scout-equipment-choice { display:flex; flex-wrap:wrap; gap:.35rem; align-items:center; margin:.35rem 0; color:#d0d5d1; font:.72rem Arial,sans-serif; }
+    .scout-equipment-choice select { width:auto; min-width:220px; padding:.35rem; }
+    .scout-equipment-stats { margin-top:.35rem; color:#bfc8c3; font:.71rem/1.45 Arial,sans-serif; }
+    .scout-equipment-stats strong { color:#dfc68f; }
+    .scout-equipment-special { margin:.25rem 0 0 1rem; padding:0; color:#b0bbb6; font:.69rem/1.4 Arial,sans-serif; }
+    .scout-loadout-result { color:#e0c17b; }
+    .scout-loadout-match { margin-left:.35rem; color:#adb8b4; font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; }
+    .scout-note { margin:.65rem 0 0; color:#d0a66c; font:.74rem/1.4 Arial,sans-serif; }
+    .scouting-panel .empty { border-color:#536062; color:#b7bfbb; background:#202729; }
     .footer-note { margin: 1rem 0 0; color: #685a47; text-align: center; font: .75rem/1.5 Arial, sans-serif; }
     .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     @media (max-width: 820px) {
       .layout { grid-template-columns: 1fr; }
       .grid.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .unit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .unit-cards-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .scout-heroes { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .territory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .builder-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
@@ -276,11 +483,25 @@
       .tabs { overflow-x: auto; flex-wrap: nowrap; }
       .tab { flex: 0 0 auto; padding: .65rem; }
       .unit-grid { grid-template-columns: 1fr 1fr; }
+      .unit-cards-grid { grid-template-columns:1fr; }
+      .unit-equipment { align-items: flex-start; }
       .unit-grid .wide { grid-column: 1 / -1; }
       .builder-controls, .builder-choices, .build-options { grid-template-columns: 1fr; }
       .ledger-row, .vault-row, .battle-row { grid-template-columns: 1fr auto; gap: .35rem; }
       .log-form { grid-template-columns: 1fr 1fr; }
       .log-form .field:nth-child(2) { grid-column: 1 / -1; }
+      .scouting-panel { padding:.65rem; }
+      .scout-hero-card, .scout-henchman-card { padding:.65rem .75rem; }
+      .scout-heroes { grid-template-columns:1fr; }
+      .scout-hero-head { gap:.5rem; }
+      .scout-stats { font-size:.68rem; }
+      .scout-stats th,.scout-stats td { padding:.35rem .25rem; }
+      .scout-dice-roll { grid-template-columns:repeat(4,minmax(0,1fr)); }
+      .scout-dice-pair { gap:0; padding:0; border:0; background:transparent; }
+      .scout-dice-faces { gap:0; }
+      .scout-die { width:28px; height:28px; }
+      .scout-die-wrap { font-size:.42rem; letter-spacing:0; }
+      .scout-xp-boxes { grid-template-columns:repeat(10,minmax(1.2rem,1fr)); }
     }
     @media print {
       body { background: #fff; }
@@ -314,10 +535,10 @@
   </div>
 
   <main>
-    <div class="notice"><strong>Local campaign roster.</strong> Your changes auto-save in this browser on this device. Use <em>Export backup</em> to keep or transfer a JSON copy. The army catalogue and unit stats are read from the included clone over localhost; direct <code>file://</code> use still supports campaign tracking but not the catalogue. Rule descriptions open online when available.</div>
     <nav class="tabs" aria-label="Roster sections" role="tablist">
       <button class="tab" id="tab-overview" role="tab" aria-selected="true" aria-controls="panel-overview" data-tab="overview">Campaign</button>
       <button class="tab" id="tab-army" role="tab" aria-selected="false" aria-controls="panel-army" data-tab="army">Order of Battle</button>
+      <button class="tab scouting-tab" id="tab-scouting" role="tab" aria-selected="false" aria-controls="panel-scouting" data-tab="scouting">Scouting Warband</button>
       <button class="tab" id="tab-domain" role="tab" aria-selected="false" aria-controls="panel-domain" data-tab="domain">Domain &amp; Vault</button>
       <button class="tab" id="tab-ledger" role="tab" aria-selected="false" aria-controls="panel-ledger" data-tab="ledger">Campaign Log</button>
     </nav>
@@ -425,8 +646,36 @@
           <div class="category-breakdown-content" id="categoryBreakdown"><p class="hint">Choose a faction and composition to see category points.</p></div>
         </details>
         <div class="metrics" id="armyMetricsPanel"></div>
-        <div id="unitList"></div>
+        <div id="unitList" class="unit-cards-grid"></div>
         <div id="armyWarningsPanel"></div>
+      </section>
+    </section>
+
+    <section class="panel scouting-panel" id="panel-scouting" role="tabpanel" aria-labelledby="tab-scouting" hidden>
+      <section>
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Mordheim campaign force</p>
+            <h2 style="margin:0 0 .45rem;color:#eddfbd">Scouting Warband</h2>
+            <p class="scout-intro">Champions selected in the Order of Battle appear here as heroes, using their closest Mordheim model profile and special rules. Add campaign skills to a hero to apply its mapped characteristic increase or rule to the corresponding Old World champion. Their selected weapons, armour and equipment are also mapped below.</p>
+            <p class="scout-summary" id="scoutingSummary">Loading Mordheim profiles…</p>
+          </div>
+          <button class="button primary no-print" id="mordheimBattleModeButton" type="button">⚔ Battle mode</button>
+        </div>
+        <div class="scout-mooks-controls no-print">
+          <div class="field"><label for="scoutingTargetCost">Desired warband cost (gc)</label><input id="scoutingTargetCost" type="number" min="1" step="1" value="500"></div>
+          <button class="button primary" id="roundUpMooks" type="button">Roll and add mooks</button>
+          <button class="button ghost" id="clearMooks" type="button">Clear henchmen</button>
+          <div class="scout-dice-roll" id="scoutingDiceRoll" role="group" aria-label="No dice rolled yet"></div>
+          <p class="scout-mooks-status" id="scoutingMooksStatus" role="status" aria-live="polite">Roll and add automatically, or enter real dice results under Manual dice input.</p>
+          <details class="scout-manual-rolls"><summary>Manual dice input</summary><div class="scout-manual-rolls-fields">
+            <div class="field dice-field"><label id="mookTypeRollLabel" for="mookTypeRoll">Type die result</label><select id="mookTypeRoll"><option>1</option></select></div>
+            <div class="field dice-field"><label for="mookSizeD3">Size D3</label><select id="mookSizeD3"><option>1</option><option>2</option><option>3</option></select></div>
+            <button class="button ghost" id="addManualMooks" type="button">Add these results</button>
+          </div></details>
+          <details class="scout-dice-guide"><summary>Dice selection order</summary><p>Roll the smallest type die that covers the listed choices. The result selects that numbered type; if the result is higher than the number of choices, reroll. If there are more than 20 types, the first 20 in Order of Battle order are used.</p><ol id="scoutingDiceOptions"></ol></details>
+        </div>
+        <div id="scoutingHeroes" class="scout-heroes" aria-live="polite"></div>
       </section>
     </section>
 
@@ -529,6 +778,14 @@
     <div class="battle-dialog-head"><div><p class="section-kicker" style="margin:0 0 .15rem">Quick reference</p><h2 id="battleModeTitle">Battle mode · Order of Battle</h2></div><button class="button small" type="button" data-close-battle-mode>Close</button></div>
     <div class="battle-dialog-content" id="battleModeContent"></div>
   </dialog>
+  <dialog class="scout-details-dialog" id="scoutingDetailsDialog" aria-labelledby="scoutingDetailsTitle">
+    <div class="scout-details-head"><h2 id="scoutingDetailsTitle">Scouting Warband details</h2><button class="button small" type="button" data-close-scouting-details>Close</button></div>
+    <div class="scout-details-content" id="scoutingDetailsContent"></div>
+  </dialog>
+  <dialog class="unit-details-dialog" id="unitDetailsDialog" aria-labelledby="unitDetailsTitle">
+    <div class="unit-details-head"><h2 id="unitDetailsTitle">Unit details</h2><button class="button small" type="button" data-close-unit-details>Close</button></div>
+    <div class="unit-details-content" id="unitDetailsContent"></div>
+  </dialog>
 
   <script>
     (() => {
@@ -571,12 +828,14 @@
       const blank = () => ({
         campaign: { armyName: '', faction: '', location: '', generalName: '', startingSize: 'Vanguard', startingGold: 5, notes: '', strongholdName: '', strongholdLevel: 'Stronghold', barracks: 0, outposts: 0, quest: '', questReward: '', questProgress: 0, questGoal: 3, questNotes: '' },
         builder: { army: '', composition: '', compositionRule: 'open-war', category: 'characters', foreignChoice: '', foreignArmy: '', foreignComposition: '', foreignMagicArmy: '', foreignUnitIds: [], foreignCategory: 'characters', pointsLimit: 500, pending: null },
-        territories: [], units: [], vault: [], ledger: [], battles: [], questHistory: []
+         territories: [], units: [], scoutingHenchmen: [], scoutingOrder: [], vault: [], ledger: [], battles: [], questHistory: []
       });
       let data = loadData();
       let armyManifest = null, armyCatalog = null, armyRules = null, magicCatalog = null, spellCatalog = null, rulesIndexCatalog = null;
+      let scoutingCatalog = null, scoutingAssignments = null, scoutingEquipmentMap = null, scoutingSkillMap = null, scoutingSkillAccess = null, scoutingLoadError = '', scoutingLoadPromise = null;
       const factionCatalogs = new Map();
       let builderLoadPromise = null;
+      let activeReorderDrag = null;
       const $ = (s, root = document) => root.querySelector(s);
       const $$ = (s, root = document) => [...root.querySelectorAll(s)];
       const safe = value => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -588,6 +847,32 @@
         const response = await fetch(sourceURL(path));
         if (!response.ok) throw new Error(`Could not load ${path} (${response.status}).`);
         return response.json();
+      }
+      async function loadScoutingSources() {
+        if (scoutingLoadPromise) return scoutingLoadPromise;
+        scoutingLoadPromise = (async () => {
+          try {
+            const [statsResponse,assignmentsResponse,equipmentResponse,skillsResponse,skillAccessResponse] = await Promise.all([
+              fetch(new URL('Mord-World/champion-mordheim-stats.json',window.location.href)),
+              fetch(new URL('Mord-World/champion-mordheim-assignments.json',window.location.href)),
+              fetch(new URL('Mord-World/old-world-mordheim-equivalents.json',window.location.href)),
+              fetch(new URL('Mord-World/skill-condition-mapping.json',window.location.href)),
+              fetch(new URL('Mord-World/hero-skill-access.json',window.location.href))
+            ]);
+            if (!statsResponse.ok) throw new Error(`Could not load Mord-World/champion-mordheim-stats.json (${statsResponse.status}).`);
+            if (!assignmentsResponse.ok) throw new Error(`Could not load Mord-World/champion-mordheim-assignments.json (${assignmentsResponse.status}).`);
+            if (!equipmentResponse.ok) throw new Error(`Could not load Mord-World/old-world-mordheim-equivalents.json (${equipmentResponse.status}).`);
+            if (!skillsResponse.ok) throw new Error(`Could not load Mord-World/skill-condition-mapping.json (${skillsResponse.status}).`);
+            if (!skillAccessResponse.ok) throw new Error(`Could not load Mord-World/hero-skill-access.json (${skillAccessResponse.status}).`);
+            [scoutingCatalog,scoutingAssignments,scoutingEquipmentMap,scoutingSkillMap,scoutingSkillAccess] = await Promise.all([statsResponse.json(),assignmentsResponse.json(),equipmentResponse.json(),skillsResponse.json(),skillAccessResponse.json()]);
+            scoutingLoadError = '';
+          } catch (error) {
+            scoutingLoadError = error.message;
+          }
+          renderScoutingWarband();
+          renderUnits();
+        })();
+        return scoutingLoadPromise;
       }
       function displayName(id) { return String(id || '').split('-').map(word => word ? word[0].toUpperCase() + word.slice(1) : '').join(' '); }
       function datasetUnitName(unit) { return String(unit?.name_en || unit?.id || '').replace(/\s*\{[^}]*\}/g,'').replace(/\s*\(renegade\)/gi,'').trim(); }
@@ -620,7 +905,7 @@
             $('#builderCategory').value = data.builder.category || 'characters';
             $('#compositionRule').value = data.builder.compositionRule || 'open-war';
             $('#builderStatus').textContent = 'Local catalog ready. Select a unit to configure its options and points before adding it to your roster.';
-            renderBuilderUnitSelect(); renderBuilderPreview(); renderBuilderValidation();
+            renderBuilderUnitSelect(); renderBuilderPreview(); renderBuilderValidation(); renderScoutingWarband();
           } catch (error) {
             $('#builderStatus').textContent = `Army catalog unavailable: ${error.message} Open this app through the local server so it can read the cloned old-world-builder/ folder.`;
           }
@@ -919,7 +1204,7 @@
         const selectedCount = Object.values(generated).reduce((sum,spells) => sum + (spells || []).length,0);
         const signatureCount = Object.entries(generated).reduce((sum,[lore,spells]) => sum + (spells || []).filter(spell => loreSpellEntries(build,lore)[spell]?.index === 'signature').length,0);
         const maxSpells = generatedSpellLimit(build), maxSignature = Number(build.maxSignatureSpells ?? 1);
-        return `<details class="build-details" data-build-spells ${build.spellsExpanded ? 'open' : ''}><summary>Spells · ${selectedCount}/${maxSpells} generated</summary>${!plan.multiBase && plan.base.length > 1 ? `<div class="field" style="margin:.55rem 0"><label>Selected lore</label><select data-spell-lore data-id="${safe(unit.id)}">${plan.base.map(lore => `<option value="${safe(lore)}" ${lore === plan.activeLore ? 'selected' : ''}>${safe(displayName(lore))}</option>`).join('')}</select></div>` : ''}${shownLores.map(lore => `<div class="spell-lore"><h4>${safe(displayName(lore))}</h4><div class="build-options">${Object.entries(loreSpellEntries(build,lore)).map(([spell,details]) => {
+        return `<details class="build-details" data-build-spells data-unit-id="${safe(unit.id)}" ${build.spellsExpanded ? 'open' : ''}><summary>Spells · ${selectedCount}/${maxSpells} generated</summary>${!plan.multiBase && plan.base.length > 1 ? `<div class="field" style="margin:.55rem 0"><label>Selected lore</label><select data-spell-lore data-id="${safe(unit.id)}">${plan.base.map(lore => `<option value="${safe(lore)}" ${lore === plan.activeLore ? 'selected' : ''}>${safe(displayName(lore))}</option>`).join('')}</select></div>` : ''}${shownLores.map(lore => `<div class="spell-lore"><h4>${safe(displayName(lore))}</h4><div class="build-options">${Object.entries(loreSpellEntries(build,lore)).map(([spell,details]) => {
             const checked = (generated[lore] || []).includes(spell);
             const isSignature = details.index === 'signature';
             const disabled = (!checked && selectedCount >= maxSpells) || (!checked && isSignature && signatureCount >= maxSignature);
@@ -1007,14 +1292,14 @@
         if (unit.__parent) {
           unit.__parent.points = getBuiltUnitPoints(unit.__parent.build);
           if (unit.__parent.id === 'pending') renderBuilderPreview(); else renderUnits();
-          save(); updateSummaries(); renderBuilderValidation();
+          save(); renderScoutingWarband(); updateSummaries(); renderBuilderValidation();
           return;
         }
         unit.points = getBuiltUnitPoints(unit.build);
         unit.spells = spellSelectionText(unit.build);
         if (unit.id === 'pending') renderBuilderPreview();
         else renderUnits();
-        save(); updateSummaries(); renderBuilderValidation();
+        save(); renderScoutingWarband(); updateSummaries(); renderBuilderValidation();
       }
       function buildChoiceGroup(unit, field, label) {
         const options = (unit.build[field] || []).map((option, index) => ({ option, index })).filter(({ option }) => availableForComposition(option, unit.build.composition));
@@ -1047,7 +1332,8 @@
           const exclusiveActive = field === 'command' && option.exclusive === true && (unit.build.command || []).find(other => other !== option && other.active && other.exclusive === true);
           const disabled = option.alwaysActive || Boolean(exclusiveActive && !option.active);
           const childExclusive = (option.options || []).find(child => child.active && child.exclusive);
-          return `<div><label><input type="checkbox" data-build-toggle="${field}" data-id="${safe(unit.id)}" data-index="${index}" ${option.active || option.alwaysActive ? 'checked' : ''} ${disabled ? 'disabled' : ''}>${safe(option.name_en || 'Option')} · ${Number(option.points || 0)} pts${option.perModel ? '/model' : ''}</label>${option.notes?.name_en ? `<span class="build-option-note">${safe(option.notes.name_en)}</span>` : ''}${option.stackable ? `<label class="build-option-note">Count <input type="number" min="${Number(option.minimum || 0)}" max="${Number(option.maximum || 99)}" value="${Number(option.stackableCount || option.minimum || 0)}" data-build-stack="${field}" data-id="${safe(unit.id)}" data-index="${index}" style="width:4.2rem;padding:.2rem"></label>` : ''}${(option.active || option.alwaysActive) ? (option.options || []).map((child,childIndex) => `<label style="margin-left:1rem"><input type="checkbox" data-build-child="${field}" data-id="${safe(unit.id)}" data-index="${index}" data-child-index="${childIndex}" ${child.active || child.alwaysActive ? 'checked' : ''} ${child.alwaysActive || (childExclusive && child.exclusive && !child.active) ? 'disabled' : ''}>${safe(child.name_en || 'Sub-option')} · ${Number(child.points || 0)} pts</label>`).join('') : ''}</div>`;
+          const customChampionName = field === 'command' && /champion/i.test(option.name_en || '') ? String(option.mordheimCustomName || '').trim() : '';
+          return `<div><label><input type="checkbox" data-build-toggle="${field}" data-id="${safe(unit.id)}" data-index="${index}" ${option.active || option.alwaysActive ? 'checked' : ''} ${disabled ? 'disabled' : ''}>${safe(option.name_en || 'Option')}${customChampionName ? ` · ${safe(customChampionName)}` : ''} · ${Number(option.points || 0)} pts${option.perModel ? '/model' : ''}</label>${option.notes?.name_en ? `<span class="build-option-note">${safe(option.notes.name_en)}</span>` : ''}${option.stackable ? `<label class="build-option-note">Count <input type="number" min="${Number(option.minimum || 0)}" max="${Number(option.maximum || 99)}" value="${Number(option.stackableCount || option.minimum || 0)}" data-build-stack="${field}" data-id="${safe(unit.id)}" data-index="${index}" style="width:4.2rem;padding:.2rem"></label>` : ''}${(option.active || option.alwaysActive) ? (option.options || []).map((child,childIndex) => `<label style="margin-left:1rem"><input type="checkbox" data-build-child="${field}" data-id="${safe(unit.id)}" data-index="${index}" data-child-index="${childIndex}" ${child.active || child.alwaysActive ? 'checked' : ''} ${child.alwaysActive || (childExclusive && child.exclusive && !child.active) ? 'disabled' : ''}>${safe(child.name_en || 'Sub-option')} · ${Number(child.points || 0)} pts</label>`).join('') : ''}</div>`;
         }).join('')}</div></div>`;
       }
       function builderMagicGroupMarkup(unit, group, index, kind, commandIndex = -1) {
@@ -1123,9 +1409,41 @@
       function specialRulesFor(build) {
         return build?.armyComposition?.[build.composition]?.specialRules || build?.specialRules || null;
       }
-      function renderUnitReference(build) {
+      let editingCharacteristics = null;
+      function renderUnitReference(build, unit = null, editable = false) {
         const stats = unitProfile(build);
-        const statsMarkup = stats.length ? `<div style="overflow-x:auto"><table class="profile-table"><thead><tr>${['Model','M','WS','BS','S','T','W','I','A','Ld'].map(name => `<th>${name}</th>`).join('')}</tr></thead><tbody>${stats.map(row => `<tr>${['Name','M','WS','BS','S','T','W','I','A','Ld'].map(key => `<td>${safe(row[key] ?? '')}</td>`).join('')}</tr>`).join('')}</tbody></table></div>` : '<p class="hint">No profile is listed for this unit in the included rules index.</p>';
+        const statKeys = ['M','WS','BS','S','T','W','I','A','Ld'];
+        const championMatches = scoutingActiveChampionMatches(unit);
+        const isEditing = editable && editingCharacteristics?.unitId === unit?.id;
+        const statsMarkup = stats.length ? `${editable ? `<div class="characteristic-editor">${isEditing ? `<button class="button small primary" data-action="save-characteristics" data-id="${safe(unit.id)}" type="button">Save characteristics</button><button class="button small ghost" data-action="cancel-characteristics" type="button">Cancel</button>` : `<button class="button small no-print" data-action="edit-characteristics" data-id="${safe(unit.id)}" type="button" ${editingCharacteristics ? 'disabled title="Finish the other unit profile edit first"' : ''}>EDIT CHARACTERISTICS</button>`}</div>` : ''}${championMatches.length ? '<p class="hint">Bold green characteristics include Mordheim profile comparisons and selected skill bonuses.</p>' : ''}<div style="overflow-x:auto"><table class="profile-table"><thead><tr>${['Model',...statKeys].map(name => `<th>${name}</th>`).join('')}</tr></thead><tbody>${stats.map(row => {
+          const modelName = String(row.Name || 'Model');
+          const overrides = unit?.characteristicOverrides?.[modelName] || {};
+          const champion = championMatches.find(({command}) => normalizeScoutingLabel(scoutingChampionSourceRow(unit,command)?.Name) === normalizeScoutingLabel(modelName));
+          const comparison = champion ? scoutingHeroStatComparison(unit,champion.command,champion.match) : null;
+          const editing = isEditing;
+          const values = statKeys.map(key => {
+            const original = row[key] ?? '';
+            const base = comparison?.values[key] ?? original;
+            const hasOverride = Object.prototype.hasOwnProperty.call(overrides,key);
+            const override = overrides[key];
+            const baseMaximum = scoutingStatMaximum(base), overrideMaximum = scoutingStatMaximum(override);
+            const value = hasOverride && baseMaximum !== null && overrideMaximum !== null ? String(Math.max(baseMaximum,overrideMaximum)) : hasOverride ? override : base;
+            const valueMaximum = scoutingStatMaximum(value);
+            const changedClass = hasOverride && valueMaximum !== null && baseMaximum !== null && valueMaximum !== baseMaximum
+              ? (valueMaximum > baseMaximum ? 'stat-increased' : 'stat-decreased')
+              : comparison && scoutingStatRaised(original,base) ? 'stat-increased' : '';
+            return `<td class="${changedClass}">${editing ? `<input class="characteristic-input" type="text" inputmode="text" aria-label="${safe(modelName)} ${key}" data-characteristic-key="${key}" value="${safe(value)}" placeholder="${safe(base)}">` : safe(value)}</td>`;
+          }).join('');
+          return `<tr><td>${safe(modelName)}</td>${values}</tr>`;
+        }).join('')}</tbody></table></div>` : '<p class="hint">No profile is listed for this unit in the included rules index.</p>';
+        const campaignRulesMarkup = stats.map(row => {
+          const modelName = String(row.Name || 'Model');
+          const customRules = unit?.customSpecialRules?.[modelName] || [];
+          const skillRules = scoutingChampionSkillRules(unit,modelName);
+          const rules = [...customRules,...skillRules];
+          if (!editable && !rules.length) return '';
+          return `<div class="model-campaign-rules"><strong>${safe(modelName)} · Campaign rules</strong>${rules.map((rule,index) => `<span class="campaign-rule"><span><b>${safe(rule.name)}</b>${rule.description ? ` — ${safe(rule.description)}` : ''}</span>${editable && index < customRules.length ? `<button type="button" aria-label="Remove ${safe(rule.name)} from ${safe(modelName)}" data-action="remove-campaign-rule" data-id="${safe(unit.id)}" data-model-name="${safe(modelName)}" data-index="${index}">×</button>` : ''}</span>`).join('')}${editable ? `<button class="button small no-print" type="button" data-action="add-campaign-rule" data-id="${safe(unit.id)}" data-model-name="${safe(modelName)}">Add special rule</button>` : ''}</div>`;
+        }).join('');
         const sources = [{ name:build?.name_en || 'Unit', rules:specialRulesFor(build) }, ...(build?.detachments || []).map(detachment => ({ name:detachment.build?.name_en || detachment.name_en || 'Detachment', rules:specialRulesFor(detachment.build) }))].filter(source => source.rules?.name_en);
         const rulesMarkup = sources.length ? sources.map(source => {
           const ruleNames = [...new Set(source.rules.name_en.split(/,\s*/).map(name => name.trim()).filter(Boolean))];
@@ -1134,15 +1452,16 @@
             return entry?.url ? `<button class="rule-link" type="button" data-rule-name="${safe(name)}" data-rule-url="${safe(entry.url)}">${safe(name)}${entry.page ? `<span class="rule-page">${safe(entry.page)}</span>` : ''}</button>` : `<span class="badge">${safe(name)}</span>`;
           }).join('')}</div></div>`;
         }).join('') : '<p class="hint">No special rules are listed for this unit.</p>';
-        return `<details class="unit-reference"><summary>Profile &amp; special rules</summary><div class="reference-content"><h4 style="margin:.15rem 0 .4rem;color:#573b2d">Unit profile</h4>${statsMarkup}<h4 style="margin:.8rem 0 .35rem;color:#573b2d">Special rules</h4>${rulesMarkup}</div></details>`;
+        return `<details class="unit-reference"><summary>Profile &amp; special rules</summary><div class="reference-content"><h4 style="margin:.15rem 0 .4rem;color:#573b2d">Unit profile</h4>${statsMarkup}${campaignRulesMarkup}<h4 style="margin:.8rem 0 .35rem;color:#573b2d">Special rules</h4>${rulesMarkup}</div></details>`;
       }
       function openBattleMode() {
         const dialog = $('#battleModeDialog');
         const root = $('#battleModeContent');
+        $('#battleModeTitle').textContent = 'Battle mode · Order of Battle';
         if (!data.units.length) {
           root.innerHTML = '<div class="empty">Add units to your Order of Battle to see their profiles and rules here.</div>';
         } else {
-          root.innerHTML = data.units.map((unit,index) => `<article class="battle-mode-unit"><h3>${index + 1}. ${safe(unit.name || 'Unnamed unit')}${unit.general ? ' · General' : ''}</h3>${unit.build ? renderUnitReference(unit.build).replace('<details class="unit-reference">','<details class="unit-reference" open>') : '<p class="hint" style="margin:.4rem 0 0">This unit was entered manually and has no linked catalogue profile.</p>'}</article>`).join('');
+          root.innerHTML = data.units.map((unit,index) => `<article class="battle-mode-unit"><h3>${index + 1}. ${safe(unit.name || 'Unnamed unit')}${unit.general ? ' · General' : ''}</h3>${unit.build ? renderUnitReference(unit.build,unit).replace('<details class="unit-reference">','<details class="unit-reference" open>') : '<p class="hint" style="margin:.4rem 0 0">This unit was entered manually and has no linked catalogue profile.</p>'}</article>`).join('');
         }
         dialog.showModal();
       }
@@ -1384,7 +1703,49 @@
         return counts;
       }
       function unitPoints(unit) { return unit.build ? getBuiltUnitPoints(unit.build) : Number(unit.points || 0); }
+      function unitEquipmentSummary(unit) {
+        const names = [];
+        const add = name => { if (name && !names.includes(String(name))) names.push(String(name)); };
+        const addOptions = options => (options || []).forEach(option => {
+          if (option.active || option.equippedDefault || option.alwaysActive) {
+            add(option.name_en);
+            addOptions(option.options);
+          }
+        });
+        const build = unit.build;
+        if (build) {
+          addOptions(build.equipment);
+          addOptions(build.armor);
+          addOptions(build.mounts);
+          (build.command || []).filter(command => command.active).forEach(command => {
+            addOptions(command.options);
+            (command.magic?.selected || []).forEach(item => add(item.name_en || item.name));
+          });
+          (build.items || []).flatMap(group => group.selected || []).forEach(item => add(item.name_en || item.name));
+        }
+        String(unit.magicItems || '').split(/[\n,;]+/).map(item => item.trim()).filter(Boolean).forEach(add);
+        if (names.length) return names.join(' · ');
+        return String(unit.notes || '').trim() || 'No equipment recorded';
+      }
       function totalPoints() { return data.units.reduce((sum, unit) => sum + unitPoints(unit), 0); }
+      function unitPointsFieldFor(unitId) {
+        const dialog = $('#unitDetailsDialog');
+        return dialog?.open && dialog.dataset.unitId === String(unitId) ? $('#unitDetailsContent input[data-field="points"]') : null;
+      }
+      function reorderByKey(items,keyFor,draggedKey,targetKey,after) {
+        const sourceIndex = items.findIndex(item => keyFor(item) === draggedKey);
+        const targetIndex = items.findIndex(item => keyFor(item) === targetKey);
+        if (sourceIndex < 0 || targetIndex < 0 || sourceIndex === targetIndex) return false;
+        const [item] = items.splice(sourceIndex,1);
+        let destination = targetIndex + (after ? 1 : 0);
+        if (sourceIndex < destination) destination--;
+        items.splice(destination,0,item);
+        return true;
+      }
+      function clearReorderDrag() {
+        $$('.unit-card.is-dragging,.scout-unit-card.is-dragging,.drag-over-before,.drag-over-after').forEach(card => card.classList.remove('is-dragging','drag-over-before','drag-over-after'));
+        activeReorderDrag = null;
+      }
       function totalUnitLimit() { return Math.min(30, startInfo().units + Math.max(0, Number(data.campaign.barracks || 0)) * 2); }
       function setInput(id, value) { const el = document.getElementById(id); if (el && document.activeElement !== el) el.value = value ?? ''; }
       function populateFields() {
@@ -1394,6 +1755,12 @@
           if (document.activeElement !== el) el.value = value ?? '';
         });
         renderAll();
+      }
+      function unitChampionNameMarkup(unit) {
+        const champions = (unit?.build?.command || []).filter(command => command.active && /champion/i.test(command.name_en || '') && String(command.mordheimCustomName || '').trim());
+        if (!champions.length) return '';
+        const names = champions.map(command => `${scoutingCommandLabel(command.name_en) || 'Champion'}: ${String(command.mordheimCustomName).trim()}`);
+        return `<div class="unit-champion-name"><span>Champion</span><strong>${safe(names.join(' · '))}</strong></div>`;
       }
       function updateSummaries() {
         const start = startInfo(), caps = strongholdCaps(), { limits, wizardLevel, territoryCapacityBonus } = computedLimits();
@@ -1444,12 +1811,19 @@
       }
       function renderUnits() {
         const root = $('#unitList');
-        if (!data.units.length) { root.innerHTML = '<div class="empty" style="margin-top:1rem">Your order of battle is empty. Add your general first, then record the rest of your starting force.</div>'; return; }
-        const expandedBuildCards = new Set($$('.unit-card').filter(card => card.querySelector('[data-build-main][open]')).map(card => card.dataset.id));
-        root.innerHTML = data.units.map((u, i) => `<article class="unit-card ${u.general ? 'is-general' : ''}" data-id="${safe(u.id)}">
-          <div class="unit-top"><div class="unit-title"><span class="unit-number">${i + 1}</span><strong>${safe(u.name || 'Unnamed unit')}</strong><span class="badge">${safe(rankFor(u))}</span></div><button class="button danger small no-print" data-action="remove-unit" data-id="${safe(u.id)}" type="button">Remove</button></div>
+        if (!data.units.length) { root.innerHTML = '<div class="empty" style="margin-top:1rem">Your order of battle is empty. Add your general first, then record the rest of your starting force.</div>'; refreshUnitDetailsDialog(); return; }
+        const detailsDialog = $('#unitDetailsDialog');
+        const activeUnitId = detailsDialog?.open ? detailsDialog.dataset.unitId : '';
+        const dialogContent = $('#unitDetailsContent');
+        const expandedBuildCards = new Set(activeUnitId && dialogContent?.querySelector('[data-build-main][open]') ? [activeUnitId] : []);
+        const expandedReferences = new Set(activeUnitId && dialogContent?.querySelector('.unit-reference[open]') ? [activeUnitId] : []);
+        root.innerHTML = data.units.map((u, i) => `<article class="unit-card ${u.general ? 'is-general' : ''} ${['character','wizard'].includes(u.role) ? 'is-hero' : 'is-troop'}" data-id="${safe(u.id)}" data-order-type="unit" data-order-key="${safe(u.id)}" draggable="true">
+          <div class="unit-top"><div class="unit-summary"><div class="unit-title"><span class="unit-drag-grip" data-drag-handle draggable="true" title="Drag to reorder" aria-label="Drag to reorder">⠿</span><span class="unit-number">${i + 1}</span><strong>${safe(u.name || 'Unnamed unit')}</strong><span class="unit-type-tag ${['character','wizard'].includes(u.role) ? 'hero' : 'troop'}">${['character','wizard'].includes(u.role) ? 'Hero' : 'Troop'}</span></div>${unitChampionNameMarkup(u)}<div class="unit-equipment"><span>Equipment</span><strong>${safe(unitEquipmentSummary(u))}</strong></div><div class="unit-renown"><span class="renown-label">Renown</span>${u.named ? '<span class="badge">Named · no renown</span>' : `<span class="renown-track" role="img" aria-label="${Math.min(30,Math.max(0,Math.floor(Number(u.renown) || 0)))} of 30 renown earned${Number(u.renown) > 30 ? `; ${Number(u.renown)} total` : ''}" title="${Number(u.renown) || 0} renown">${Array.from({length:30},(_,slot) => `<span class="renown-box ${slot < Math.min(30,Math.max(0,Math.floor(Number(u.renown) || 0))) ? 'earned' : ''}"></span>`).join('')}</span>`}<span class="badge">${safe(rankFor(u))}</span></div></div><span class="unit-cost" aria-label="${unitPoints(u).toLocaleString()} points" title="${unitPoints(u).toLocaleString()} points">${unitPoints(u).toLocaleString()}<small>points</small></span></div>
+          <button class="unit-details-button" type="button" data-open-unit-details data-unit-id="${safe(u.id)}" data-unit-title="${safe(u.name || 'Unnamed unit')}">Edit details</button>
+          <template data-unit-details><div class="unit-editor-content">
+          <div class="record-head"><span class="hint">Roster and campaign details</span><button class="button danger small no-print" data-action="remove-unit" data-id="${safe(u.id)}" type="button">Remove unit</button></div>
           ${u.build && (u.build.notes?.name_en || u.build.specialRules?.name_en) ? `<p class="hint">${safe([u.build.notes?.name_en,u.build.specialRules?.name_en].filter(Boolean).join(' · '))}</p>` : ''}
-          ${u.build ? renderUnitReference(u.build) : ''}
+          ${u.build ? (expandedReferences.has(u.id) ? renderUnitReference(u.build,u,true).replace('<details class="unit-reference">','<details class="unit-reference" open>') : renderUnitReference(u.build,u,true)) : ''}
           <div class="unit-grid">
             <div class="field wide"><label>Unit / character name</label><input data-collection="units" data-id="${safe(u.id)}" data-field="name" value="${safe(u.name)}" placeholder="Unit name"></div>
             <div class="field"><label>Primary role / slot</label><select data-collection="units" data-id="${safe(u.id)}" data-field="role">${ROLES.map(([v, label]) => `<option value="${v}" ${u.role === v ? 'selected' : ''}>${safe(label)}</option>`).join('')}</select></div>
@@ -1466,15 +1840,10 @@
             <div class="field"><label>Veteran abilities</label><textarea data-collection="units" data-id="${safe(u.id)}" data-field="abilities" placeholder="Record abilities earned">${safe(u.abilities)}</textarea></div>
             <div class="field"><label>Notes</label><textarea data-collection="units" data-id="${safe(u.id)}" data-field="notes" placeholder="Equipment, upgrades, injury details…">${safe(u.notes)}</textarea></div>
           </div>
-          ${u.build ? `<details class="build-details" data-build-main style="margin-top:.7rem" ${(u.build.expanded || expandedBuildCards.has(u.id)) ? 'open' : ''}><summary>Configure unit · ${safe(displayName(u.build.category))} · ${safe(displayName(u.build.composition))}</summary><div class="builder-choices">${buildChoiceGroup(u,'equipment','Weapons & equipment')}${buildChoiceGroup(u,'armor','Armour')}${buildChoiceGroup(u,'mounts','Mount')}${renderBuildToggles(u,'options','Unit options')}${renderBuildToggles(u,'command','Command options')}${renderBuilderMagic(u)}${renderBuilderSpells(u)}${renderBuilderDetachments(u)}</div></details>` : ''}
+          ${u.build ? `<details class="build-details" data-build-main data-unit-id="${safe(u.id)}" style="margin-top:.7rem" ${(u.build.expanded || expandedBuildCards.has(u.id)) ? 'open' : ''}><summary>Configure unit · ${safe(displayName(u.build.category))} · ${safe(displayName(u.build.composition))}</summary><div class="builder-choices">${buildChoiceGroup(u,'equipment','Weapons & equipment')}${buildChoiceGroup(u,'armor','Armour')}${buildChoiceGroup(u,'mounts','Mount')}${renderBuildToggles(u,'options','Unit options')}${renderBuildToggles(u,'command','Command options')}${renderBuilderMagic(u)}${renderBuilderSpells(u)}${renderBuilderDetachments(u)}</div></details>` : ''}
+          </div></template>
         </article>`).join('');
-        $$('.unit-card').forEach(card => {
-          const unit = data.units.find(item => item.id === card.dataset.id);
-          const mainDetails = card.querySelector('[data-build-main]');
-          if (mainDetails && (expandedBuildCards.has(card.dataset.id) || unit?.build?.expanded)) mainDetails.setAttribute('open','');
-          const spellDetails = card.querySelector('[data-build-spells]');
-          if (spellDetails && unit?.build?.spellsExpanded) spellDetails.setAttribute('open','');
-        });
+        refreshUnitDetailsDialog();
       }
       function renderVault() {
         const root = $('#vaultList');
@@ -1503,8 +1872,870 @@
         if (!data.questHistory.length) { root.innerHTML = '<div class="hint">Completed quests will be listed here.</div>'; return; }
         root.innerHTML = data.questHistory.map((q, i) => `<div class="record"><div class="record-head"><strong>${safe(q.name)}</strong><button class="button danger small no-print" data-action="remove-quest" data-index="${i}" type="button">Remove</button></div>${q.reward ? `<div class="hint">Reward: ${safe(q.reward)}</div>` : ''}</div>`).join('');
       }
+      function normalizeScoutingLabel(value) {
+        return String(value || '').replace(/\s*\{[^}]*\}/g,'').replace(/\s*\([^)]*\)/g,'').replace(/&/g,' and ').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
+      }
+      function scoutingCommandLabel(value) {
+        return String(value || '').replace(/\s*\(champion\).*$/i,'').replace(/,\s*.*$/,'').trim();
+      }
+      function scoutingFactionMappings(armies, armyName, armyId) {
+        return Object.entries(armies || {}).find(([name]) => [armyName,displayName(armyId)].some(candidate => normalizeScoutingLabel(name) === normalizeScoutingLabel(candidate)))?.[1] || {};
+      }
+      function scoutingAssignmentEquivalent(assignment, profile) {
+        if (profile?.matchedModel) return profile.matchedModel;
+        const model = String(assignment?.model || '').trim();
+        return model.replace(/\s+—\s+.+\s+·\s+(?:Hero|Henchman)$/i,'').trim();
+      }
+      function scoutingMatchLikelihoodLabel(value) {
+        return ({ strong:'Strong match', good:'Good match', approximate:'Approximate match', weak:'Weak match', none:'No direct match' })[value] || '';
+      }
+      function scoutingProfileFor(build, command) {
+        if (!scoutingCatalog || !build) return null;
+        const armyId = build.army || data.builder.army;
+        const armyName = armyManifest?.armies?.find(army => army.id === armyId)?.name_en || displayName(armyId);
+        const unitName = datasetUnitName(build);
+        const championName = scoutingCommandLabel(command.name_en);
+        const findChampionMapping = mappings => Object.entries(mappings || {}).find(([key]) => {
+          const separator = key.indexOf(' — ');
+          return separator >= 0 && normalizeScoutingLabel(key.slice(0,separator)) === normalizeScoutingLabel(unitName) && normalizeScoutingLabel(key.slice(separator + 3)) === normalizeScoutingLabel(championName);
+        })?.[1];
+        const sourceMapping = findChampionMapping(scoutingFactionMappings(scoutingCatalog.armies,armyName,armyId));
+        const assignment = findChampionMapping(scoutingFactionMappings(scoutingAssignments?.assignments,armyName,armyId));
+        const mapping = assignment ? { ...sourceMapping, ...assignment } : sourceMapping;
+        if (!mapping) return null;
+        const profile = scoutingCatalog.profiles?.[mapping.profileId] || null;
+        if (assignment) {
+          mapping.equivalent = scoutingAssignmentEquivalent(assignment,profile);
+          mapping.warband = assignment.warband || profile?.warband || '';
+          mapping.mappingNote = [sourceMapping?.mappingNote,assignment.note,mapping.warband ? `Selected Mordheim warband: ${mapping.warband}.` : '',scoutingMatchLikelihoodLabel(assignment.likelihood)].filter(Boolean).join(' ');
+        }
+        return { mapping, profile };
+      }
+      function scoutingChampionSourceRow(unit, command) {
+        const rows = unitProfile(unit?.build);
+        const championName = normalizeScoutingLabel(scoutingCommandLabel(command?.name_en));
+        return rows.find(row => normalizeScoutingLabel(row.Name) === championName) || rows[0] || null;
+      }
+      function scoutingActiveChampionMatches(unit) {
+        if (!scoutingCatalog || !unit?.build) return [];
+        return (unit.build.command || []).flatMap((command,commandIndex) => {
+          if (!command.active || !/champion/i.test(command.name_en || '')) return [];
+          const match = scoutingProfileFor(unit.build,command);
+          return match?.profile ? [{ command, commandIndex, match }] : [];
+        });
+      }
+      function scoutingStatMaximum(value) {
+        const values = String(value ?? '').match(/-?\d+(?:\.\d+)?/g)?.map(Number).filter(Number.isFinite) || [];
+        return values.length ? Math.max(...values) : null;
+      }
+      function scoutingStatWithBonus(value, bonus) {
+        const source = String(value ?? '').trim();
+        if (!/^\d+(?:\.\d+)?$/.test(source)) return source || '—';
+        return String(Number(source) + (Number(bonus) || 0));
+      }
+      function scoutingSkillEntry(skillId) { return scoutingSkillMap?.skills?.[skillId] || null; }
+      function scoutingSkillApplication(skillId) {
+        const skill = scoutingSkillEntry(skillId);
+        if (!skill) return null;
+        const suggestion = String(skill.suggestion || '');
+        const statName = suggestion.match(/^\+1\s+(Movement|Weapon Skill|Ballistic Skill|Strength|Toughness|Wounds|Initiative|Attacks|Leadership|Wizard Level)\b/i)?.[1] || '';
+        const statKeys = { Movement:'M', 'Weapon Skill':'WS', 'Ballistic Skill':'BS', Strength:'S', Toughness:'T', Wounds:'W', Initiative:'I', Attacks:'A', Leadership:'Ld' };
+        const statKey = Object.entries(statKeys).find(([name]) => name.toLowerCase() === statName.toLowerCase())?.[1] || '';
+        const ruleNames = (skill.oldWorldRules || []).map(rule => String(rule).replace(/\s+\([^)]*\)\s*$/,'').trim()).filter(Boolean);
+        if (suggestion && !statName) {
+          const suggestedRule = suggestion.split(':')[0].replace(/\s+\([^)]*\/[^)]*\)\s*$/,'').trim();
+          if (suggestedRule && !ruleNames.some(name => name.toLowerCase() === suggestedRule.toLowerCase())) ruleNames.push(suggestedRule);
+        }
+        return { skill, statName, statKey, ruleNames };
+      }
+      function scoutingSelectedSkills(command) {
+        return [...new Set((command?.mordheimSkills || []).filter(skillId => scoutingSkillEntry(skillId)))];
+      }
+      function scoutingSkillStatBonuses(command) {
+        const bonuses = {};
+        scoutingSelectedSkills(command).forEach(skillId => {
+          const application = scoutingSkillApplication(skillId);
+          if (application?.statKey) bonuses[application.statKey] = (bonuses[application.statKey] || 0) + 1;
+        });
+        return bonuses;
+      }
+      function scoutingStatAdvanceBonuses(record) {
+        const bonuses = {};
+        Object.entries(record?.mordheimStatAdvances || {}).forEach(([key,value]) => {
+          const count = Math.max(0,Math.floor(Number(value) || 0));
+          if (['M','WS','BS','S','T','W','I','A','Ld'].includes(key) && count) bonuses[key] = count;
+        });
+        return bonuses;
+      }
+      function scoutingAvailableAdvanceSkills(unit, command) {
+        const match = scoutingProfileFor(unit?.build,command);
+        const profileId = match?.mapping?.profileId;
+        const availableIds = scoutingSkillAccess?.units?.[profileId]?.availableSkills || [];
+        const acquired = scoutingSelectedSkills(command);
+        return Object.entries(scoutingSkillMap?.skills || {}).filter(([skillId]) => availableIds.includes(skillId) && !acquired.includes(skillId));
+      }
+      function scoutingSkillRuleDetailsMarkup(skillId) {
+        const skill = scoutingSkillEntry(skillId);
+        if (!skill) return '';
+        const application = scoutingSkillApplication(skillId);
+        const ruleUrl = `https://mordheimer.net/docs/campaigns/skills#${safe(skillId)}`;
+        return `<div class="scout-skill-detail"><strong>${safe(displayName(skillId))} · ${safe(skill.category || 'Skill')}</strong><p>${safe(skill.effect || 'No skill description is available.')}</p>${skill.note ? `<p><b>Rules note:</b> ${safe(skill.note)}</p>` : ''}${skill.suggestion ? `<p><b>Optional Old World adaptation:</b> ${safe(skill.suggestion)}</p>` : ''}${application?.ruleNames?.length ? `<p><b>Related Old World rules:</b> ${safe(application.ruleNames.join(', '))}</p>` : ''}<a href="${ruleUrl}" target="_blank" rel="noreferrer">Full Mordheimer skill rules ↗</a></div>`;
+      }
+      function scoutingAdvanceHistoryMarkup(record) {
+        const advances = Array.isArray(record?.mordheimAdvances) ? record.mordheimAdvances : [];
+        if (!advances.length) return '';
+        return `<section class="scout-advance-history"><h4>Recorded advances</h4>${advances.map(advance => `<article class="scout-advance-entry"><strong>${safe(advance.label || advance.result || 'Advance')}</strong><small>${advance.first && advance.second ? `2D6 ${advance.first}+${advance.second}=${advance.total} · ` : ''}${safe(advance.date || '')}</small>${advance.skillId ? scoutingSkillRuleDetailsMarkup(advance.skillId) : ''}</article>`).join('')}</section>`;
+      }
+      function scoutingChampionSkillRules(unit, modelName) {
+        return scoutingActiveChampionMatches(unit).flatMap(({command}) => {
+          const sourceName = scoutingChampionSourceRow(unit,command)?.Name;
+          if (normalizeScoutingLabel(sourceName) !== normalizeScoutingLabel(modelName)) return [];
+          return scoutingSelectedSkills(command).flatMap(skillId => {
+            const application = scoutingSkillApplication(skillId);
+            if (!application) return [];
+            const skillName = displayName(skillId);
+            const effects = [];
+            if (application.statName) effects.push({ name:`Mordheim skill: ${skillName}`, description:`+1 ${application.statName}${application.statKey ? ' applied to this Old World champion.' : ' recorded as a campaign benefit.'}` });
+            application.ruleNames.forEach(ruleName => effects.push({ name:ruleName, description:`Granted by Mordheim skill: ${skillName}.` }));
+            if (!effects.length) effects.push({ name:`Mordheim skill: ${skillName}`, description:'Selected skill recorded for this champion.' });
+            return effects;
+          });
+        });
+      }
+      function scoutingSkillEditorMarkup(unit, command, commandIndex) {
+        if (!scoutingSkillMap?.skills) return '';
+        const selected = scoutingSelectedSkills(command);
+        const options = scoutingAvailableAdvanceSkills(unit,command);
+        const selectedMarkup = selected.length ? selected.map(skillId => {
+          const skill = scoutingSkillEntry(skillId);
+          return `<div class="scout-skill-row"><span><strong>${safe(displayName(skillId))}</strong><small>${safe(skill?.category || 'Skill')} · ${safe(skill?.match || 'unmapped')} Old World match</small>${scoutingSkillRuleDetailsMarkup(skillId)}</span><button class="button danger small no-print" type="button" aria-label="Remove ${safe(displayName(skillId))}" data-action="remove-scouting-skill" data-id="${safe(unit.id)}" data-command-index="${commandIndex}" data-skill-id="${safe(skillId)}">Remove</button></div>`;
+        }).join('') : '<p class="scout-intro">No skills recorded for this hero yet.</p>';
+        const optionMarkup = options.map(([skillId,skill]) => `<option value="${safe(skillId)}">${safe(displayName(skillId))} · ${safe(skill.category || 'Skill')}</option>`).join('');
+        const profileId = scoutingProfileFor(unit?.build,command)?.mapping?.profileId;
+        const access = scoutingSkillAccess?.units?.[profileId];
+        const accessNote = access?.categories?.length
+          ? `Available categories: ${access.categories.join(', ')}.`
+          : access?.status === 'unpublished'
+            ? 'This warband’s skill table is unpublished in the local reference, so no standard skills are offered.'
+            : 'No standard skill-table access is mapped for this profile, so no standard skills are offered.';
+        return `<section class="scout-skill-editor"><h4>Mordheim skills</h4><p class="scout-intro">Recorded skills are saved to this Hero and their rules are shown below. ${safe(accessNote)} Warband-specific skills are not in the standard skills catalogue.</p>${selectedMarkup}<div class="scout-skill-add"><label class="visually-hidden" for="scout-skill-${safe(unit.id)}-${commandIndex}">Choose a Mordheim skill</label><select id="scout-skill-${safe(unit.id)}-${commandIndex}" data-scouting-skill-select ${options.length ? '' : 'disabled'}><option value="">${options.length ? 'Choose a skill…' : 'No additional standard skills available'}</option>${optionMarkup}</select><button class="button small primary no-print" type="button" data-action="add-scouting-skill" data-id="${safe(unit.id)}" data-command-index="${commandIndex}" ${options.length ? '' : 'disabled'}>Add skill</button></div></section>`;
+      }
+      function scoutingExperience(record) {
+        const experience = Math.max(0,Math.floor(Number(record?.mordheimExperience) || 0));
+        const savedNext = Math.floor(Number(record?.mordheimNextAdvance) || 0);
+        const next = savedNext > 0 ? savedNext : (Math.floor(experience / 2) + 1) * 2;
+        return { experience, next, ready:experience >= next };
+      }
+      function scoutingExperienceMarkup(record, kind, id, commandIndex = '') {
+        const { experience, next, ready } = scoutingExperience(record);
+        const target = `data-xp-kind="${kind}" data-xp-id="${safe(id)}" data-xp-command-index="${commandIndex}"`;
+        const status = ready ? `Level-up ready — make an advance roll now (marker at ${next} XP).` : `${next - experience} XP until the next advance (at ${next} XP).`;
+        const pending = record?.mordheimPendingAdvance;
+        const boxCount = Math.max(30,Math.ceil((experience + 12) / 12) * 12);
+        const boxes = Array.from({length:boxCount},(_,index) => {
+          const value = index + 1;
+          const marker = value % 2 === 0;
+          const title = marker ? `${value} XP · advance marker` : `${value} XP`;
+          return `<button class="scout-xp-box${value <= experience ? ' earned' : ''}${marker ? ' advance-marker' : ''}" type="button" data-action="set-scouting-xp" data-xp-value="${value}" ${target} aria-label="Set experience to ${value}" aria-pressed="${value <= experience}" title="${title}">${value}</button>`;
+        }).join('');
+        let pendingControls = '';
+        if (pending?.type === 'skill' && kind === 'hero') {
+          const unit = data.units.find(item => item.id === id), command = unit?.build?.command?.[Number(commandIndex)];
+          const options = scoutingAvailableAdvanceSkills(unit,command);
+          pendingControls = `<label class="scout-advance-choice-label">New skill<select data-advance-skill-select ${options.length ? '' : 'disabled'}><option value="">${options.length ? 'Choose an available skill…' : 'No standard skills available for this profile'}</option>${options.map(([skillId,skill]) => `<option value="${safe(skillId)}">${safe(displayName(skillId))} · ${safe(skill.category || 'Skill')}</option>`).join('')}</select></label><div data-advance-skill-details>${options.length ? '<p class="scout-intro">Choose a skill to read its rule before recording the advance.</p>' : '<p class="scout-intro">No skill can be selected automatically because this profile has no mapped standard skill access. Use the warband’s full rules to resolve this advance.</p>'}</div>`;
+        } else if (pending?.type === 'stat-choice') {
+          pendingControls = `<label class="scout-advance-choice-label">Choose characteristic<select data-advance-stat-select><option value="">Choose a characteristic…</option>${pending.choices.map(choice => `<option value="${safe(choice)}">+1 ${safe(choice)}</option>`).join('')}</select></label>`;
+        }
+        const noSkillOptions = pending?.type === 'skill' && kind === 'hero' && !scoutingAvailableAdvanceSkills(data.units.find(item => item.id === id),data.units.find(item => item.id === id)?.build?.command?.[Number(commandIndex)]).length;
+        const needsChoice = pending?.type === 'stat-choice' || pending?.type === 'skill';
+        const prompt = ready ? `<div class="scout-xp-prompt" role="status" aria-live="polite"><h5>${pending ? 'Advance roll result' : 'Advance ready'}</h5>${pending ? `<p><strong>2D6:</strong> ${pending.first} + ${pending.second} = ${pending.total}</p><p>${safe(pending.result)}</p>${pendingControls}<div class="scout-xp-actions"><button class="button small primary" type="button" data-action="complete-scouting-advance" data-advance-record-button ${target} ${needsChoice || noSkillOptions ? 'disabled' : ''}>Record advance &amp; continue</button></div>` : `<p>Roll and resolve the Mordheim advance for this ${kind === 'hero' ? 'Hero' : 'Henchman group'}.</p><div class="scout-xp-actions"><button class="button small primary" type="button" data-action="roll-scouting-advance" ${target}>Roll 2D6</button></div>`}</div>` : '';
+        return `<section class="scout-xp-tracker"><div class="scout-xp-head"><h4>Experience tracker · ${experience} XP</h4>${ready ? '<span class="badge scout-xp-ready">Level-up ready</span>' : '<span class="badge">Campaign XP</span>'}</div><div class="scout-xp-boxes" role="group" aria-label="Experience points; click a box to set XP">${boxes}</div><p class="scout-xp-progress${ready ? ' ready' : ''}" role="status" aria-live="polite">${status}</p>${prompt}${scoutingAdvanceHistoryMarkup(record)}<p class="scout-xp-note">Henchmen track XP as a group. Every second box is an advance marker by default. Resolve eligible rolls after the battle with both players present. <a href="https://mordheimer.net/docs/campaigns/experience" target="_blank" rel="noreferrer">Experience rules</a> · <a href="https://relicandruin.net/" target="_blank" rel="noreferrer">Relic &amp; Ruin</a></p></section>`;
+      }
+      function scoutingExperienceRecord(kind, id, commandIndex) {
+        if (kind === 'henchman') return (data.scoutingHenchmen || []).find(group => group.id === id) || null;
+        const unit = data.units.find(item => item.id === id);
+        return unit?.build?.command?.[Number(commandIndex)] || null;
+      }
+      function resolveScoutingAdvance(kind, id, commandIndex) {
+        const record = scoutingExperienceRecord(kind,id,commandIndex);
+        if (!record) return;
+        const state = scoutingExperience(record);
+        if (!state.ready) return;
+        const first = Math.ceil(Math.random() * 6), second = Math.ceil(Math.random() * 6), total = first + second;
+        let result = '';
+        let type = 'special', choices = [];
+        if (kind === 'hero') {
+          if (total <= 5 || total >= 10) { type = 'skill'; result = 'New Skill. Select an available standard skill for this Hero.'; }
+          else if (total === 6) { type = 'stat'; result = `Characteristic increase: ${Math.ceil(Math.random() * 6) <= 3 ? '+1 Strength' : '+1 Attack'}.`; }
+          else if (total === 7) { type = 'stat-choice'; choices = ['Weapon Skill','Ballistic Skill']; result = 'Characteristic increase: choose +1 Weapon Skill or +1 Ballistic Skill.'; }
+          else if (total === 8) { type = 'stat'; result = `Characteristic increase: ${Math.ceil(Math.random() * 6) <= 3 ? '+1 Initiative' : '+1 Leadership'}.`; }
+          else { type = 'stat'; result = `Characteristic increase: ${Math.ceil(Math.random() * 6) <= 3 ? '+1 Wound' : '+1 Toughness'}.`; }
+        } else if (total <= 4) { type = 'stat'; result = 'Advance: +1 Initiative for the henchman group.'; }
+        else if (total === 5) { type = 'stat'; result = 'Advance: +1 Strength for the henchman group.'; }
+        else if (total <= 7) { type = 'stat-choice'; choices = ['Ballistic Skill','Weapon Skill']; result = 'Advance: choose +1 Ballistic Skill or +1 Weapon Skill for the henchman group.'; }
+        else if (total === 8) { type = 'stat'; result = 'Advance: +1 Attack for the henchman group.'; }
+        else if (total === 9) { type = 'stat'; result = 'Advance: +1 Leadership for the henchman group.'; }
+        else result = 'The lad’s got talent! Promote one henchman to a Hero (subject to your warband’s Hero limit); the group rolls again for its remaining members.';
+        record.mordheimPendingAdvance = { first, second, total, type, choices, result, atExperience:state.next };
+        save();
+        renderScoutingWarband();
+      }
+      function completeScoutingAdvance(kind, id, commandIndex, sourceAction) {
+        const record = scoutingExperienceRecord(kind,id,commandIndex);
+        if (!record || !record.mordheimPendingAdvance) return;
+        const pending = record.mordheimPendingAdvance;
+        const prompt = sourceAction?.closest('.scout-xp-prompt');
+        let label = pending.result;
+        let skillId = '';
+        if (pending.type === 'skill' && kind === 'hero') {
+          skillId = prompt?.querySelector('[data-advance-skill-select]')?.value || '';
+          const unit = data.units.find(item => item.id === id), command = unit?.build?.command?.[Number(commandIndex)];
+          if (!skillId || !scoutingAvailableAdvanceSkills(unit,command).some(([candidate]) => candidate === skillId)) return;
+          command.mordheimSkills = scoutingSelectedSkills(command);
+          if (!command.mordheimSkills.includes(skillId)) command.mordheimSkills.push(skillId);
+          label = `New Skill: ${displayName(skillId)}`;
+        } else if (pending.type === 'stat' || pending.type === 'stat-choice') {
+          const statName = pending.type === 'stat-choice'
+            ? prompt?.querySelector('[data-advance-stat-select]')?.value
+            : pending.result.match(/\+1\s+(Movement|Weapon Skill|Ballistic Skill|Strength|Toughness|Wound|Initiative|Attack|Leadership)/i)?.[1];
+          const statKeys = { Movement:'M', 'Weapon Skill':'WS', 'Ballistic Skill':'BS', Strength:'S', Toughness:'T', Wound:'W', Initiative:'I', Attack:'A', Leadership:'Ld' };
+          const statKey = Object.entries(statKeys).find(([name]) => name.toLowerCase() === String(statName || '').toLowerCase())?.[1];
+          if (!statKey) return;
+          record.mordheimStatAdvances ||= {};
+          record.mordheimStatAdvances[statKey] = (Number(record.mordheimStatAdvances[statKey]) || 0) + 1;
+          label = `+1 ${statName}`;
+        }
+        record.mordheimAdvances ||= [];
+        record.mordheimAdvances.push({ first:pending.first, second:pending.second, total:pending.total, atExperience:pending.atExperience, date:today(), type:pending.type, skillId, label, result:pending.result });
+        record.mordheimNextAdvance = scoutingExperience(record).next + 2;
+        delete record.mordheimPendingAdvance;
+        save();
+        renderScoutingWarband();
+        if (kind === 'hero') renderUnits();
+      }
+      function appendScoutingExperienceTrackers(heroes, henchmen) {
+        const root = $('#scoutingHeroes');
+        heroes.forEach(({unit,command,commandIndex}) => {
+          const key = `hero-${unit.id}-${commandIndex}`;
+          const template = root.querySelector(`[data-scout-card="${CSS.escape(key)}"]`)?.closest('.scout-unit-card')?.querySelector('template[data-scout-details]');
+          if (template) template.innerHTML += scoutingExperienceMarkup(command,'hero',unit.id,commandIndex);
+        });
+        henchmen.forEach(group => {
+          const key = `henchman-${group.id}`;
+          const template = root.querySelector(`[data-scout-card="${CSS.escape(key)}"]`)?.closest('.scout-unit-card')?.querySelector('template[data-scout-details]');
+          if (template) template.innerHTML += scoutingExperienceMarkup(group,'henchman',group.id);
+        });
+      }
+      function scoutingHeroStatComparison(unit, command, match) {
+        const oldWorld = scoutingChampionSourceRow(unit,command) || {};
+        const mordheim = match?.profile?.stats || {};
+        const values = {};
+        for (const key of ['M','WS','BS','S','T','W','I','A','Ld']) {
+          const oldValue = oldWorld[key], mordheimValue = mordheim[key];
+          const oldMaximum = scoutingStatMaximum(oldValue), mordheimMaximum = scoutingStatMaximum(mordheimValue);
+          if (oldMaximum !== null && mordheimMaximum !== null) values[key] = String(Math.max(oldMaximum,mordheimMaximum));
+          else if (oldMaximum !== null) values[key] = String(oldMaximum);
+          else if (mordheimMaximum !== null) values[key] = String(mordheimMaximum);
+          else values[key] = String(oldValue ?? mordheimValue ?? '');
+        }
+        const bonuses = scoutingSkillStatBonuses(command);
+        for (const [key,bonus] of Object.entries(bonuses)) {
+          const maximum = scoutingStatMaximum(values[key]);
+          if (maximum !== null) values[key] = String(maximum + bonus);
+        }
+        const advances = scoutingStatAdvanceBonuses(command);
+        for (const [key,bonus] of Object.entries(advances)) {
+          const maximum = scoutingStatMaximum(values[key]);
+          if (maximum !== null) values[key] = String(maximum + bonus);
+        }
+        return { oldWorld, mordheim, values };
+      }
+      function scoutingStatRaised(source, merged) {
+        const sourceMaximum = scoutingStatMaximum(source), mergedMaximum = scoutingStatMaximum(merged);
+        if (sourceMaximum !== null && mergedMaximum !== null) return mergedMaximum > sourceMaximum;
+        return String(source ?? '') !== String(merged ?? '');
+      }
+      function scoutingRuleGroup(title, rules) {
+        if (!rules?.length) return '';
+        return `<div class="scout-rule-group"><h4>${safe(title)}</h4><div class="scout-rules">${rules.map(rule => `<div class="scout-rule"><strong>${safe(rule.name)}</strong>${rule.description ? ` — ${safe(rule.description)}` : ''}</div>`).join('')}</div></div>`;
+      }
+      function scoutingBattleSkillRules(command) {
+        return scoutingSelectedSkills(command).flatMap(skillId => {
+          const application = scoutingSkillApplication(skillId);
+          if (!application) return [];
+          const skillName = displayName(skillId);
+          const description = [application.skill.effect,application.skill.suggestion,application.skill.note].filter(Boolean).join(' ');
+          const rules = [];
+          if (application.statName) rules.push({ name:`+1 ${application.statName} · ${skillName}`, description, section:'Hero skill' });
+          application.ruleNames.forEach(name => rules.push({ name, description, section:'Hero skill' }));
+          return rules;
+        });
+      }
+      function scoutingBattleParticipants() {
+        const participants = [];
+        data.units.forEach(unit => (unit.build?.command || []).forEach((command,commandIndex) => {
+          if (!command.active || !/champion/i.test(command.name_en || '')) return;
+          const match = scoutingProfileFor(unit.build,command);
+          const profile = match?.profile || null;
+          const equivalent = match?.mapping?.equivalent || 'No Mordheim equivalent found';
+          const title = String(command.mordheimCustomName || '').trim() || equivalent;
+          const profileRules = [
+            ...(profile?.modelSpecialRules || []).map(rule => ({ ...rule, section:'Model' })),
+            ...(profile?.warbandSpecialRules || []).map(rule => ({ ...rule, section:'Warband' })),
+            ...scoutingBattleSkillRules(command)
+          ];
+          participants.push({
+            cardId:`mordheim-battle-card-hero-${unit.id}-${commandIndex}`,
+            key:`hero-${unit.id}-${commandIndex}`,
+            title,
+            type:'Hero',
+            source:unit.name || datasetUnitName(unit.build),
+            equivalent,
+            warband:match?.mapping?.warband || profile?.warband || '',
+            profile,
+            stats:profile ? scoutingHeroStatComparison(unit,command,match).values : null,
+            equipment:scoutingEquipmentSummary(scoutingLoadoutFor(unit.build,unit)),
+            mappingNote:match?.mapping?.mappingNote || '',
+            rules:profileRules
+          });
+        }));
+        (data.scoutingHenchmen || []).forEach(group => {
+          const profile = scoutingCatalog.profiles?.[group.profileId] || null;
+          participants.push({
+            cardId:`mordheim-battle-card-henchman-${group.id}`,
+            key:`henchman-${group.id}`,
+            title:`${group.equivalent} × ${Number(group.size || 1)}`,
+            type:'Henchmen',
+            source:group.sourceName || '',
+            equivalent:group.equivalent || '',
+            warband:profile?.warband || '',
+            profile,
+            stats:profile?.stats || null,
+            equipment:scoutingEquipmentSummary(group.equipment || []),
+            mappingNote:group.mappingNote || '',
+            rules:[
+              ...(profile?.modelSpecialRules || []).map(rule => ({ ...rule, section:'Model' })),
+              ...(profile?.warbandSpecialRules || []).map(rule => ({ ...rule, section:'Warband' }))
+            ]
+          });
+        });
+        const savedOrder = new Map((Array.isArray(data.scoutingOrder) ? data.scoutingOrder : []).map((key,index) => [key,index]));
+        participants.sort((a,b) => (savedOrder.get(a.key) ?? Infinity) - (savedOrder.get(b.key) ?? Infinity));
+        return participants;
+      }
+      function openMordheimBattleMode() {
+        const dialog = $('#battleModeDialog');
+        const root = $('#battleModeContent');
+        $('#battleModeTitle').textContent = 'Battle mode · Mordheim warband';
+        const participants = scoutingBattleParticipants();
+        if (!participants.length) {
+          root.innerHTML = '<div class="empty">Add Mordheim heroes or henchmen in the Scouting Warband tab to prepare for battle.</div>';
+        } else {
+          const rulesByKey = new Map();
+          participants.forEach(participant => {
+            participant.ruleRefs = participant.rules.map(rule => {
+              const key = `${String(rule.name || 'Rule').trim()}\u0000${String(rule.description || '').trim()}`;
+              if (!rulesByKey.has(key)) rulesByKey.set(key,{ id:`mordheim-battle-rule-${rulesByKey.size + 1}`, name:String(rule.name || 'Rule'), description:String(rule.description || ''), participants:[] });
+              const reference = rulesByKey.get(key);
+              if (!reference.participants.some(item => item.cardId === participant.cardId)) reference.participants.push({ cardId:participant.cardId, title:participant.title });
+              return { ...reference, section:rule.section || '' };
+            });
+          });
+          const cards = participants.map(participant => {
+            const statKeys = scoutingCatalog.statOrder || ['M','WS','BS','S','T','W','I','A','Ld'];
+            const statsMarkup = participant.stats ? `<div class="scout-table-wrap"><table class="scout-stats"><thead><tr><th>Model</th>${statKeys.map(key => `<th>${safe(key)}</th>`).join('')}</tr></thead><tbody><tr><td>${safe(participant.profile?.matchedModel || participant.equivalent)}</td>${statKeys.map(key => `<td>${safe(participant.stats[key] ?? '—')}</td>`).join('')}</tr></tbody></table></div>` : '';
+            const rulesMarkup = participant.ruleRefs.length ? `<p class="mordheim-battle-rules"><strong>Rules:</strong></p><div class="mordheim-battle-rule-links">${participant.ruleRefs.map(rule => `<a href="#${safe(rule.id)}" data-mordheim-battle-link data-target-id="${safe(rule.id)}">${rule.section ? `${safe(rule.section)} · ` : ''}${safe(rule.name)}</a>`).join('')}</div>` : '<p class="mordheim-battle-rules">No mapped special rules.</p>';
+            return `<article class="battle-mode-unit mordheim-battle-card" id="${safe(participant.cardId)}"><h3><span>${safe(participant.title)}</span><span class="scout-type-tag ${participant.type === 'Hero' ? 'hero' : 'henchman'}">${safe(participant.type)}</span></h3><p class="mordheim-battle-subtitle">${safe(participant.source)} → ${safe(participant.equivalent)}${participant.warband ? ` · ${safe(participant.warband)}` : ''}</p>${statsMarkup}<p class="mordheim-battle-equipment"><strong>Equipment:</strong> ${safe(participant.equipment || 'None mapped')}</p>${participant.mappingNote ? `<p class="mordheim-battle-subtitle">${safe(participant.mappingNote)}</p>` : ''}${rulesMarkup}</article>`;
+          }).join('');
+          const ruleEntries = [...rulesByKey.values()].map(rule => `<article class="mordheim-rule-entry" id="${safe(rule.id)}"><h4>${safe(rule.name)}</h4>${rule.description ? `<p>${safe(rule.description)}</p>` : '<p>No description is available.</p>'}<div class="mordheim-rule-backlinks"><strong>Unit cards:</strong>${rule.participants.map(item => `<a href="#${safe(item.cardId)}" data-mordheim-battle-link data-target-id="${safe(item.cardId)}">${safe(item.title)}</a>`).join('')}</div></article>`).join('');
+          const reference = `<section class="mordheim-rule-reference" id="mordheim-battle-rules"><h3>Rules reference</h3><p class="mordheim-battle-subtitle">Full text is collected here; use each link to return to the relevant unit card.</p>${ruleEntries || '<p>No long-text rules are associated with these models.</p>'}</section>`;
+          root.innerHTML = `${cards}${reference}`;
+        }
+        dialog.showModal();
+      }
+      function splitScoutingEquipmentNames(value) {
+        const names = []; let current = '', depth = 0;
+        for (const character of String(value || '')) {
+          if (character === '(') depth++;
+          else if (character === ')') depth = Math.max(0,depth - 1);
+          if (character === ',' && depth === 0) {
+            if (current.trim()) names.push(current.trim());
+            current = '';
+          } else current += character;
+        }
+        if (current.trim()) names.push(current.trim());
+        return names;
+      }
+      function scoutingLoadoutFor(build, unit) {
+        if (!scoutingEquipmentMap || !build) return [];
+        const normalize = value => String(value || '').trim().toLowerCase().replace(/\s+/g,' ');
+        const weaponRows = new Map((scoutingEquipmentMap.weaponMappings || []).map(row => [normalize(row.oldWorldName),row]));
+        const armourRows = new Map((scoutingEquipmentMap.armourMappings || []).map(row => [normalize(row.oldWorldName),row]));
+        const magicWeaponRows = new Map((scoutingEquipmentMap.magicWeaponMappings || []).map(row => [normalize(row.oldWorldName),row]));
+        const magicArmourRows = new Map((scoutingEquipmentMap.magicArmourMappings || []).map(row => [normalize(row.oldWorldName),row]));
+        const rows = new Map();
+        const add = (label, category, lookup) => splitScoutingEquipmentNames(label).forEach(name => {
+          const mapping = lookup.get(normalize(name));
+          if (!mapping) return;
+          const key = `${category}|${normalize(name)}`;
+          const choices = mapping.mordheimEquivalentOptions || [];
+          const savedChoice = unit?.mordheimEquipmentChoices?.[key];
+          const equivalent = choices.includes(savedChoice) ? savedChoice : (mapping.defaultMordheimEquivalent || mapping.mordheimEquivalent);
+          const baseStats = scoutingEquipmentMap.mordheimEquipmentStats?.[equivalent] || null;
+          const additionalAttackRules = mapping.mordheimAdditionalAttack ? (scoutingEquipmentMap.mordheimEquipmentStats?.['Additional close-combat weapon']?.specialRules || []) : [];
+          const stats = baseStats ? { ...baseStats, specialRules:[...(baseStats.specialRules || []),...additionalAttackRules] } : null;
+          rows.set(key,{ oldWorldName:name, category, mapping, equivalent, stats, choices, choiceKey:key, savedChoice });
+        });
+        const collectActive = (items, category, lookup, parentActive = true) => (items || []).forEach(item => {
+          if (!item || !parentActive || !(item.active || item.equippedDefault || item.alwaysActive) || !availableForComposition(item,build.composition)) return;
+          add(item.name_en,category,lookup);
+          collectActive(item.options,category,lookup,true);
+        });
+        collectActive(build.equipment,'Weapons & equipment',weaponRows);
+        collectActive(build.armor,'Armour',armourRows);
+        collectActive(build.options,'Weapons & equipment',weaponRows);
+        collectActive(build.options,'Armour',armourRows);
+        collectActive(build.mounts,'Weapons & equipment',weaponRows);
+        collectActive(build.mounts,'Armour',armourRows);
+        (build.command || []).filter(command => command.active).forEach(command => {
+          collectActive(command.options,'Weapons & equipment',weaponRows);
+          collectActive(command.options,'Armour',armourRows);
+        });
+        const selectedMagic = [
+          ...(build.items || []).flatMap(group => group.selected || []),
+          ...(build.command || []).flatMap(command => command.active ? (command.magic?.selected || []) : [])
+        ];
+        selectedMagic.forEach(item => {
+          const name = item.name_en || item.name || '';
+          add(name,'Magic weapon',magicWeaponRows);
+          add(name,'Magic armour',magicArmourRows);
+        });
+        const loadoutRows = [...rows.values()];
+        loadoutRows.forEach(row => {
+          const hasOtherMeleeWeapon = loadoutRows.some(other => other.choiceKey !== row.choiceKey && /close combat/i.test(other.stats?.range || ''));
+          if (row.choices.includes('Dagger (free)') && hasOtherMeleeWeapon && !row.savedChoice) {
+            row.equivalent = 'Dagger (free)';
+            const baseStats = scoutingEquipmentMap.mordheimEquipmentStats?.[row.equivalent] || null;
+            const additionalAttackRules = row.mapping.mordheimAdditionalAttack ? (scoutingEquipmentMap.mordheimEquipmentStats?.['Additional close-combat weapon']?.specialRules || []) : [];
+            row.stats = baseStats ? { ...baseStats, specialRules:[...(baseStats.specialRules || []),...additionalAttackRules] } : null;
+          }
+          delete row.savedChoice;
+        });
+        return loadoutRows;
+      }
+      function scoutingLoadoutMarkup(build, unit) {
+        if (!scoutingEquipmentMap) return '';
+        const rows = scoutingLoadoutFor(build,unit);
+        if (!rows.length) return `<section class="scout-equipment-section"><h4>Equipment</h4><p class="scout-equipment-intro">No mapped weapons, armour or equipment are selected for this unit.</p></section>`;
+        return `<section class="scout-equipment-section"><h4>Equipment</h4><p class="scout-equipment-intro">Selected Old World loadout and closest Mordheim equivalents</p><div class="scout-rules">${rows.map(({oldWorldName,category,mapping,equivalent,stats,choices,choiceKey}) => {
+          const displayedEquivalent = equivalent ? `${equivalent}${mapping.mordheimAdditionalAttack ? ' (additional weapon)' : ''}` : 'No direct Mordheim equivalent';
+          const match = mapping.match === 'close' ? 'close match' : mapping.match === 'approximate' ? 'approximate' : 'no direct match';
+          const choiceLabel = mapping.mordheimAdditionalAttack ? 'Choose Mordheim additional weapon' : 'Choose Mordheim hand weapon';
+          const choiceMarkup = choices.length ? `<label class="scout-equipment-choice">${choiceLabel}<select data-scouting-handweapon data-id="${safe(unit.id)}" data-choice-key="${safe(choiceKey)}">${choices.map(choice => `<option value="${safe(choice)}" ${choice === equivalent ? 'selected' : ''}>${safe(choice === 'Hammer, Staff, Mace or Club' ? 'Club / Mace / Hammer' : choice)}</option>`).join('')}</select></label>` : '';
+          const statValues = stats ? [stats.range && `Range: ${stats.range}`, stats.strength && `Strength: ${stats.strength}`, stats.save && `Save: ${stats.save}`, stats.saveModifier && `Save modifier: ${stats.saveModifier}`, stats.cost && `Cost: ${stats.cost}`, stats.availability && `Availability: ${stats.availability}`].filter(Boolean) : [];
+          const statsMarkup = stats ? `<div class="scout-equipment-stats"><strong>Stats:</strong> ${statValues.map(safe).join(' · ')}${stats.specialRules?.length ? `<ul class="scout-equipment-special">${stats.specialRules.map(rule => `<li>${safe(rule)}</li>`).join('')}</ul>` : ''}</div>` : '';
+          return `<div class="scout-rule"><strong>${safe(oldWorldName)}</strong> <span class="scout-loadout-match">${safe(category)}</span>${choiceMarkup}<br><span class="scout-loadout-result">${safe(displayedEquivalent)}</span><span class="scout-loadout-match">${safe(match)}</span>${mapping.note ? `<br>${safe(mapping.note)}` : ''}${statsMarkup}</div>`;
+        }).join('')}</div></section>`;
+      }
+      function scoutingCostBounds(value) {
+        if (Number.isFinite(value)) return { min:value, max:value };
+        if (value && Number.isFinite(value.min) && Number.isFinite(value.max)) return { min:value.min, max:value.max };
+        return null;
+      }
+      function scoutingAddCost(total, cost) {
+        if (!cost) return total;
+        total.min += cost.min; total.max += cost.max; total.count++;
+        return total;
+      }
+      function scoutingFormatCost(total) {
+        if (!total || !total.count) return '0 gc';
+        const min = Math.round(total.min * 100) / 100, max = Math.round(total.max * 100) / 100;
+        return `${min === max ? min : `${min}–${max}`} gc`;
+      }
+      function scoutingCostBadge(total) {
+        if (!total?.count) return '—';
+        const min = Math.round(total.min * 100) / 100, max = Math.round(total.max * 100) / 100;
+        return min === max ? String(min) : `${min}–${max}`;
+      }
+      function scoutingEquipmentSummary(rows) {
+        const equipment = [...new Set((rows || []).map(row => row.equivalent || row.oldWorldName).filter(Boolean))];
+        return equipment.length ? equipment.join(' · ') : 'No mapped equipment';
+      }
+      function scoutingEquipmentCost(row) {
+        const values = scoutingEquipmentMap?.mordheimEquipmentCostValues?.[row.equivalent];
+        if (values == null) return null;
+        let cost = scoutingCostBounds(values);
+        if (!cost && Number.isFinite(values.min) && Number.isFinite(values.max)) cost = { min:values.min, max:values.max };
+        if (!cost && Number.isFinite(values.cost)) {
+          const isAdditionalDagger = row.mapping.mordheimAdditionalAttack && row.equivalent === 'Dagger';
+          const isBrace = /\bbrace\b/i.test(row.oldWorldName) && Number.isFinite(values.braceCost);
+          const amount = isAdditionalDagger ? values.additionalCost : isBrace ? values.braceCost : values.cost;
+          if (Number.isFinite(amount)) cost = { min:amount, max:amount };
+        }
+        if (row.equivalent === 'Dagger' && !row.mapping.mordheimAdditionalAttack && values.cost === 0) cost = { min:0, max:0 };
+        return cost;
+      }
+      function scoutingHeroCost(profileId, build, unit) {
+        const hireCost = scoutingCostBounds(scoutingCatalog?.hireCosts?.[profileId]);
+        const equipmentRows = scoutingLoadoutFor(build,unit);
+        const equipmentCost = { min:0, max:0, count:0 };
+        let unpricedItems = 0;
+        equipmentRows.forEach(row => {
+          if (!row.equivalent) return;
+          const cost = scoutingEquipmentCost(row);
+          if (cost) scoutingAddCost(equipmentCost,cost);
+          else unpricedItems++;
+        });
+        const combined = { min:0, max:0, count:0 };
+        if (hireCost) scoutingAddCost(combined,hireCost);
+        if (equipmentCost.count) scoutingAddCost(combined,equipmentCost);
+        return { hireCost, equipmentCost, combined, unpricedItems, equipmentRows };
+      }
+      function scoutingHenchmanCandidates() {
+        if (!scoutingCatalog || !scoutingEquipmentMap) return [];
+        const candidates = [];
+        data.units.filter(unit => unit.build && unit.build.category !== 'characters').forEach(unit => {
+          const armyId = unit.build.army || data.builder.army;
+          const armyName = armyManifest?.armies?.find(army => army.id === armyId)?.name_en || displayName(armyId);
+          const factionMappings = Object.entries(scoutingCatalog.coreModelMappings || {}).find(([name]) => normalizeScoutingLabel(name) === normalizeScoutingLabel(armyName))?.[1];
+          if (!factionMappings) return;
+          const sourceName = datasetUnitName(unit.build);
+          const mapping = Object.entries(factionMappings).find(([name]) => normalizeScoutingLabel(name) === normalizeScoutingLabel(sourceName))?.[1];
+          if (!mapping?.profileId || !scoutingCostBounds(mapping.hireCostGc ?? scoutingCatalog.hireCosts?.[mapping.profileId])) return;
+          const profile = scoutingCatalog.profiles?.[mapping.profileId];
+          if (!profile) return;
+           const henchmanBuild = { ...unit.build, command:[] };
+            const sampleUnit = { mordheimEquipmentChoices:{} };
+            const allEquipmentRows = scoutingLoadoutFor(henchmanBuild,sampleUnit);
+            const equipment = allEquipmentRows.map(row => {
+              const cost = scoutingEquipmentCost(row);
+              const randomChoices = row.choices.includes('Dagger (free)') && row.equivalent !== 'Dagger (free)' ? row.choices : [];
+              return row.equivalent ? { oldWorldName:row.oldWorldName, equivalent:row.equivalent, costMin:cost?.min ?? null, costMax:cost?.max ?? null, randomChoices, mordheimAdditionalAttack:Boolean(row.mapping.mordheimAdditionalAttack) } : null;
+           }).filter(Boolean);
+           const unpricedEquipmentCount = allEquipmentRows.filter(row => row.equivalent && !scoutingEquipmentCost(row)).length;
+          const hireCost = scoutingCostBounds(mapping.hireCostGc ?? scoutingCatalog.hireCosts?.[mapping.profileId]);
+          if (!hireCost) return;
+          const maxMatch = mapping.profileId.match(/-\d+-(\d+)-/);
+          const maxSize = maxMatch ? Math.max(1,Number(maxMatch[1])) : 5;
+           candidates.push({ unit, sourceName, mapping, profile, hireCost, equipment, unpricedEquipmentCount, maxSize });
+        });
+        return candidates;
+      }
+      function refreshScoutingDetailsDialog() {
+        const dialog = $('#scoutingDetailsDialog');
+        if (!dialog?.open) return;
+        const cardKey = dialog.dataset.scoutCard;
+        const button = $$('[data-open-scouting-details]').find(item => item.dataset.scoutCard === cardKey);
+        const template = button?.closest('.scout-unit-card')?.querySelector('template[data-scout-details]');
+        if (!button || !template) { dialog.close(); return; }
+        const content = $('#scoutingDetailsContent');
+        const title = $('#scoutingDetailsTitle');
+        if (title.textContent !== button.dataset.scoutingTitle) title.textContent = button.dataset.scoutingTitle;
+        if (content.innerHTML !== template.innerHTML) content.innerHTML = template.innerHTML;
+      }
+      function openScoutingDetails(button) {
+        const dialog = $('#scoutingDetailsDialog');
+        const template = button.closest('.scout-unit-card')?.querySelector('template[data-scout-details]');
+        if (!dialog || !template) return;
+        dialog.dataset.scoutCard = button.dataset.scoutCard;
+        $('#scoutingDetailsTitle').textContent = button.dataset.scoutingTitle || 'Scouting Warband details';
+        $('#scoutingDetailsContent').innerHTML = template.innerHTML;
+        dialog.showModal();
+      }
+      function refreshUnitDetailsDialog() {
+        const dialog = $('#unitDetailsDialog');
+        if (!dialog?.open) return;
+        const unitId = dialog.dataset.unitId;
+        const button = $$('.unit-card [data-open-unit-details]').find(item => item.dataset.unitId === unitId);
+        const template = button?.closest('.unit-card')?.querySelector('template[data-unit-details]');
+        if (!button || !template) { dialog.close(); return; }
+        const content = $('#unitDetailsContent');
+        const title = $('#unitDetailsTitle');
+        if (title.textContent !== button.dataset.unitTitle) title.textContent = button.dataset.unitTitle;
+        if (content.innerHTML !== template.innerHTML) content.innerHTML = template.innerHTML;
+      }
+      function openUnitDetails(button) {
+        const dialog = $('#unitDetailsDialog');
+        const template = button.closest('.unit-card')?.querySelector('template[data-unit-details]');
+        if (!dialog || !template) return;
+        dialog.dataset.unitId = button.dataset.unitId;
+        $('#unitDetailsTitle').textContent = button.dataset.unitTitle || 'Unit details';
+        $('#unitDetailsContent').innerHTML = template.innerHTML;
+        dialog.showModal();
+      }
+      function scoutingHenchmanEquipment(candidate,selection = 'default') {
+        return candidate.equipment.map(item => {
+          const options = item.randomChoices?.length ? item.randomChoices : [item.equivalent];
+          const pricedOptions = options.map(equivalent => {
+            const cost = scoutingEquipmentCost({ oldWorldName:item.oldWorldName, equivalent, mapping:{ mordheimAdditionalAttack:item.mordheimAdditionalAttack } });
+            return { equivalent, costMin:cost?.min ?? null, costMax:cost?.max ?? null };
+          });
+          let selected;
+          if (selection === 'random' && pricedOptions.length > 1) selected = pricedOptions[Math.floor(Math.random() * pricedOptions.length)];
+          else if (selection === 'cheapest') selected = pricedOptions.reduce((best,option) => {
+            const cost = scoutingCostMidpoint({min:option.costMin || 0,max:option.costMax || 0});
+            const bestCost = best ? scoutingCostMidpoint({min:best.costMin || 0,max:best.costMax || 0}) : Infinity;
+            return cost < bestCost ? option : best;
+          },null);
+          else selected = pricedOptions.find(option => option.equivalent === item.equivalent) || pricedOptions[0];
+          return { oldWorldName:item.oldWorldName, ...selected };
+        });
+      }
+      function scoutingCostMidpoint(cost) { return (Number(cost.min || 0) + Number(cost.max || 0)) / 2; }
+      function scoutingCurrentWarbandCost() {
+        const heroCost = data.units.flatMap(unit => (unit.build?.command || []).filter(command => command.active && /champion/i.test(command.name_en || '')).map(command => ({unit,command})))
+          .reduce((sum,{unit,command}) => {
+            const match = scoutingProfileFor(unit.build,command);
+            const cost = scoutingHeroCost(match?.mapping?.profileId,unit.build,unit);
+            return sum + (cost.combined.count ? scoutingCostMidpoint(cost.combined) : 0);
+          },0);
+        return heroCost + (data.scoutingHenchmen || []).reduce((sum,group) => sum + scoutingCostMidpoint({min:Number(group.costMin || 0),max:Number(group.costMax || 0)}),0);
+      }
+      function scoutingHenchmanPerModelCost(candidate,equipment = candidate.equipment) {
+        const min = candidate.hireCost.min + equipment.reduce((sum,item) => sum + Number(item.costMin || 0),0);
+        const max = candidate.hireCost.max + equipment.reduce((sum,item) => sum + Number(item.costMax || 0),0);
+        return scoutingCostMidpoint({min,max});
+      }
+      function scoutingTypeDieSides(count) {
+        return [3,4,6,8,10,20].find(sides => count <= sides) || 20;
+      }
+      function scoutingTrianglePips(value,sides) {
+        const layouts = {4:[1,2,1],8:[1,2,2,3],10:[1,2,3,4],20:[1,3,4,5,7]};
+        const rows = layouts[sides] || [];
+        const points = [];
+        let remaining = value;
+        rows.forEach((capacity,row) => {
+          const count = Math.min(capacity,remaining);
+          const y = sides === 4 ? [20,38,52][row] : sides === 10 ? 15 + row * 12 : sides === 20 ? 19 + row * 9 : 17 + row * 11;
+          const edgeWidth = sides === 10 ? (y - 4) * 17 / 56 : sides === 20 ? (y - 10) * 30 / 47 : (y - 5) * 28 / 52;
+          const halfWidth = Math.max(0,edgeWidth - (sides >= 10 ? 3 : 4));
+          for (let index = 0; index < count; index++) {
+            const x = count === 1 ? 32 : 32 - halfWidth + (2 * halfWidth * index) / (count - 1);
+            points.push([x,y]);
+          }
+          remaining -= count;
+        });
+        return points;
+      }
+      function scoutingDieMarkup(value,sides,label,isType = false) {
+        const squarePips = {
+          1:[[32,32]],
+          2:[[18,18],[46,46]],
+          3:[[18,18],[32,32],[46,46]],
+          4:[[18,18],[46,18],[18,46],[46,46]],
+          5:[[18,18],[46,18],[32,32],[18,46],[46,46]],
+          6:[[18,14],[46,14],[18,32],[46,32],[18,50],[46,50]],
+        };
+        const triangular = [4,8,10,20].includes(sides);
+        const pips = triangular ? scoutingTrianglePips(value,sides) : (squarePips[value] || []);
+        const face = sides === 4 || sides === 8
+          ? '<polygon points="32,5 60,57 4,57"'
+          : sides === 10
+            ? '<polygon points="32,4 49,60 15,60"'
+            : sides === 20
+              ? '<polygon points="32,10 62,57 2,57"'
+              : '<rect x="2" y="2" width="60" height="60" rx="11"';
+        const fill = isType ? '#a9322c' : '#f4ecd9';
+        const stroke = isType ? '#f0a59e' : '#b9a77f';
+        const pipFill = isType ? '#fff5e8' : '#33291f';
+        const shapeMarkup = `${face} fill="${fill}" stroke="${stroke}" stroke-width="3"${face.startsWith('<rect') ? '/>' : '></polygon>'}`;
+        const radius = sides >= 10 ? 2.1 : 3.4;
+        return `<div class="scout-die-wrap"><svg class="scout-die" viewBox="0 0 64 64" aria-hidden="true">${shapeMarkup}${pips.map(([x,y]) => `<circle cx="${x}" cy="${y}" r="${radius}" fill="${pipFill}"/>`).join('')}</svg><span>${safe(label)}</span></div>`;
+      }
+      function showScoutingDice(typeRoll,typeSides,sizeD3) {
+        const view = $('#scoutingDiceRoll');
+        if (!view) return;
+        const pair = [...view.children].find(child => child.dataset.noFit === 'true') || document.createElement('div');
+        pair.className = 'scout-dice-pair';
+        delete pair.dataset.noFit;
+        pair.setAttribute('role','img');
+        pair.setAttribute('aria-label',`Type D${typeSides} showing ${typeRoll}; Size D3 showing ${sizeD3}`);
+        pair.innerHTML = `<div class="scout-dice-faces">${scoutingDieMarkup(typeRoll,typeSides,`Type D${typeSides}`,true)}${scoutingDieMarkup(sizeD3,3,'Size D3')}</div><span class="scout-dice-result"></span>`;
+        view.append(pair);
+        while (view.children.length > 8) view.firstElementChild.remove();
+        view.setAttribute('aria-label',`${view.children.length} most recent dice rolls`);
+        return pair;
+      }
+      function setScoutingDiceResult(pair,result) {
+        if (!pair) return;
+        const output = pair.querySelector('.scout-dice-result');
+        if (output) output.textContent = result;
+        if (result === 'No fit') pair.dataset.noFit = 'true';
+        else delete pair.dataset.noFit;
+        pair.setAttribute('aria-label',`${pair.getAttribute('aria-label')}; ${result}`);
+      }
+      let scoutingRollInProgress = false;
+      async function rollScoutingHenchmen() {
+        if (scoutingRollInProgress) return;
+        const target = Number($('#scoutingTargetCost')?.value);
+        const status = $('#scoutingMooksStatus');
+        if (!Number.isFinite(target) || target < 1) { status.textContent = 'Enter a desired warband cost greater than 0 gc.'; return; }
+        const button = $('#roundUpMooks');
+        scoutingRollInProgress = true;
+        if (button) button.disabled = true;
+        let rolls = 0, currentCost = scoutingCurrentWarbandCost(), stopReason = '';
+        try {
+          while (currentCost < target && rolls < 500) {
+            const candidates = scoutingHenchmanCandidates().slice(0,20);
+            if (!candidates.length) { stopReason = 'No mapped henchmen found.'; break; }
+            const remaining = target - currentCost;
+            if (!candidates.some(candidate => scoutingHenchmanPerModelCost(candidate,scoutingHenchmanEquipment(candidate,'cheapest')) <= remaining)) {
+              stopReason = 'No affordable group fits the remaining budget.';
+              break;
+            }
+            const typeSides = scoutingTypeDieSides(candidates.length);
+            $('#mookTypeRoll').value = String(1 + Math.floor(Math.random() * candidates.length));
+            $('#mookSizeD3').value = String(1 + Math.floor(Math.random() * 3));
+            const dicePair = showScoutingDice(Number($('#mookTypeRoll').value),typeSides,Number($('#mookSizeD3').value));
+            status.textContent = '';
+            await new Promise(resolve => setTimeout(resolve,400));
+            const result = generateScoutingHenchmen({quiet:true});
+            setScoutingDiceResult(dicePair,result?.display || 'No result');
+            rolls++;
+            if (result?.currentCost != null) currentCost = result.currentCost;
+            if (result?.error) { stopReason = result.error; break; }
+            if (!result?.hasAffordable) { stopReason = 'No affordable group fits the remaining budget.'; break; }
+          }
+          if (rolls >= 500 && currentCost < target) stopReason = 'Stopped after 500 rolls.';
+          status.textContent = currentCost >= target ? '' : stopReason || '';
+        } finally {
+          scoutingRollInProgress = false;
+          if (button) button.disabled = false;
+          renderScoutingWarband();
+        }
+      }
+      function generateScoutingHenchmen({quiet = false} = {}) {
+        if (scoutingRollInProgress && !quiet) return;
+        const status = $('#scoutingMooksStatus');
+        const target = Number($('#scoutingTargetCost')?.value);
+        if (!Number.isFinite(target) || target < 1) {
+          if (!quiet) status.textContent = 'Enter a desired warband cost greater than 0 gc.';
+          return {error:'Enter a desired warband cost greater than 0 gc.'};
+        }
+        const candidates = scoutingHenchmanCandidates().slice(0,20);
+        if (!candidates.length) {
+          const error = 'No mapped henchmen found. Add non-Character Old World units with Mordheim core-model equivalents to your Order of Battle.';
+          if (!quiet) status.textContent = error;
+          return {error};
+        }
+        const typeRoll = Number($('#mookTypeRoll')?.value), typeSides = scoutingTypeDieSides(candidates.length), sizeD3 = Number($('#mookSizeD3')?.value);
+        if (!Number.isInteger(typeRoll) || typeRoll < 1 || typeRoll > candidates.length || ![1,2,3].includes(sizeD3)) {
+          const error = `Enter a valid D${typeSides} type result and D3 size result.`;
+          if (!quiet) status.textContent = error;
+          return {error};
+        }
+        const dicePair = quiet ? null : showScoutingDice(typeRoll,typeSides,sizeD3);
+        const currentCost = scoutingCurrentWarbandCost();
+        if (currentCost >= target) {
+          if (!quiet) status.textContent = '';
+          setScoutingDiceResult(dicePair,'At target');
+          return {error:'Target already reached.',currentCost,hasAffordable:false,display:'At target'};
+        }
+        const candidate = candidates[typeRoll - 1];
+        const equipment = scoutingHenchmanEquipment(candidate,'random');
+        const perModel = scoutingHenchmanPerModelCost(candidate,equipment);
+        const perModelMin = candidate.hireCost.min + equipment.reduce((sum,item) => sum + Number(item.costMin || 0),0);
+        const perModelMax = candidate.hireCost.max + equipment.reduce((sum,item) => sum + Number(item.costMax || 0),0);
+        const remaining = target - currentCost;
+        const hasAffordable = candidates.some(option => scoutingHenchmanPerModelCost(option,scoutingHenchmanEquipment(option,'cheapest')) <= remaining);
+        const affordableSize = perModel ? Math.floor(remaining / perModel) : 0;
+        const size = Math.min(sizeD3,candidate.maxSize,affordableSize);
+        if (!size) {
+          if (!quiet) status.textContent = '';
+          setScoutingDiceResult(dicePair,'No fit');
+          return {added:false,currentCost,hasAffordable,display:'No fit'};
+        }
+        const costMin = size * perModelMin, costMax = size * perModelMax;
+        const group = { id:uid(), sourceName:candidate.sourceName, sourceFaction:candidate.unit.build.army || data.builder.army, equivalent:candidate.mapping.equivalent, profileId:candidate.mapping.profileId, size, maxSize:candidate.maxSize, equipment, unpricedEquipmentCount:candidate.unpricedEquipmentCount, costMin, costMax, mappingNote:candidate.mapping.mappingNote || '' };
+        data.scoutingHenchmen ||= [];
+        data.scoutingHenchmen.push(group);
+        const estimate = currentCost + size * perModel;
+        const display = `${size}× ${candidate.mapping.equivalent}`;
+        if (!quiet) status.textContent = '';
+        setScoutingDiceResult(dicePair,display);
+        save();
+        if (!quiet) renderScoutingWarband();
+        return {added:true,currentCost:estimate,hasAffordable:estimate < target,display};
+      }
+      function renderScoutingWarband() {
+        const root = $('#scoutingHeroes'), summary = $('#scoutingSummary');
+        if (!root || !summary) return;
+        const diceOptions = $('#scoutingDiceOptions');
+        if (!scoutingCatalog) {
+          if (diceOptions) diceOptions.innerHTML = '';
+          summary.textContent = scoutingLoadError ? 'Mordheim profiles unavailable' : 'Loading Mordheim profiles…';
+          root.innerHTML = `<div class="empty">${scoutingLoadError ? `Could not load Mordheim profiles or equipment mappings (${safe(scoutingLoadError)}). Open the roster through the local server to access the Mord-World JSON files.` : 'Preparing your scouting warband…'}</div>`;
+          return;
+        }
+        const diceCandidates = scoutingHenchmanCandidates().slice(0,20);
+        if (diceOptions) diceOptions.innerHTML = diceCandidates.map(candidate => `<li>${safe(candidate.sourceName)} → ${safe(candidate.mapping.equivalent)}</li>`).join('') || '<li>No mapped henchmen available</li>';
+        const typeRoll = $('#mookTypeRoll'), typeRollLabel = $('#mookTypeRollLabel');
+        if (typeRoll && typeRollLabel) {
+          const sides = scoutingTypeDieSides(diceCandidates.length);
+          const previous = Number(typeRoll.value) || 1;
+          typeRoll.innerHTML = Array.from({length:Math.max(1,Math.min(sides,diceCandidates.length || 1))},(_,index) => `<option value="${index + 1}">${index + 1}</option>`).join('');
+          typeRoll.value = String(Math.min(previous,Math.max(1,diceCandidates.length)));
+          typeRollLabel.textContent = `Type D${sides} result`;
+          typeRoll.disabled = !diceCandidates.length;
+        }
+        const heroes = data.units.flatMap(unit => (unit.build?.command || []).flatMap((command,commandIndex) =>
+          command.active && /champion/i.test(command.name_en || '') ? [{ unit, command, commandIndex, match:scoutingProfileFor(unit.build,command) }] : []));
+        const henchmen = data.scoutingHenchmen || [];
+        const modelCount = henchmen.reduce((sum,group) => sum + Number(group.size || 0),0);
+        summary.textContent = `${heroes.length} Mordheim hero${heroes.length === 1 ? '' : 'es'} · ${modelCount} henchman${modelCount === 1 ? '' : 'men'} in ${henchmen.length} group${henchmen.length === 1 ? '' : 's'}`;
+        const heroCosts = heroes.map(({unit,match}) => scoutingHeroCost(match?.mapping?.profileId,unit.build,unit));
+        const warbandCost = { min:0, max:0, count:0 };
+        heroCosts.forEach(cost => {
+          if (cost.hireCost) scoutingAddCost(warbandCost,cost.hireCost);
+          if (cost.equipmentCost.count) scoutingAddCost(warbandCost,cost.equipmentCost);
+        });
+        henchmen.forEach(group => scoutingAddCost(warbandCost,{min:Number(group.costMin || 0),max:Number(group.costMax || 0)}));
+        const heroMarkup = heroes.map(({unit,command,commandIndex,match},index) => {
+          const profile = match?.profile;
+          const orderUnitName = unit.name || datasetUnitName(unit.build);
+          const equivalent = match?.mapping?.equivalent || 'No Mordheim equivalent found';
+          const customName = String(command.mordheimCustomName || '');
+          const displayHeroName = customName.trim() || equivalent;
+          const stats = profile?.stats;
+          const statKeys = scoutingCatalog.statOrder || ['M','WS','BS','S','T','W','I','A','Ld'];
+          const comparison = scoutingHeroStatComparison(unit,command,match);
+          const statsMarkup = `${scoutingSkillEditorMarkup(unit,command,commandIndex)}${stats ? `<p class="scout-intro">Bold green characteristics include the higher Old World/Mordheim profile and any selected skill bonuses.</p><div class="scout-table-wrap"><table class="scout-stats"><thead><tr><th>Model</th>${statKeys.map(key => `<th>${safe(key)}</th>`).join('')}</tr></thead><tbody><tr><td>${safe(profile.matchedModel || equivalent)}</td>${statKeys.map(key => `<td class="${scoutingStatRaised(stats[key],comparison.values[key]) ? 'stat-increased' : ''}">${safe(comparison.values[key] ?? '—')}</td>`).join('')}</tr></tbody></table></div>` : '<p class="scout-intro">No matching Mordheim profile was found for this champion. The hero remains listed, but its characteristics are unavailable.</p>'}`;
+          const cost = heroCosts[index];
+          const equipmentRows = scoutingLoadoutFor(unit.build,unit);
+          const cardKey = `hero-${unit.id}-${commandIndex}`;
+          const costBadgeTitle = cost.combined.count ? scoutingFormatCost(cost.combined) : 'Cost unavailable';
+          const costParts = [cost.hireCost && `Hire: ${scoutingFormatCost({ ...cost.hireCost, count:1 })}`, cost.equipmentCost.count && `Mapped equipment: ${scoutingFormatCost(cost.equipmentCost)}`].filter(Boolean);
+          const costMarkup = cost.combined.count ? `<p class="scout-cost-value">${costParts.join(' · ')} · Hero total: ${safe(scoutingFormatCost(cost.combined))}</p>` : '';
+          const rulesMarkup = profile ? `${scoutingRuleGroup('Model special rules',profile.modelSpecialRules)}${scoutingRuleGroup(`${profile.warband} warband rules`,profile.warbandSpecialRules)}` : '';
+          const sourceMarkup = profile?.sourceUrl ? `<p class="scout-intro" style="margin-top:.65rem"><a href="${safe(profile.sourceUrl)}" target="_blank" rel="noreferrer" style="color:#d8bd81">Mordheimer source ↗</a></p>` : '';
+          return { key:cardKey, markup:`<article class="scout-hero-card scout-unit-card" data-order-type="scout" data-order-key="${safe(cardKey)}" draggable="true"><div class="scout-card-top"><div class="scout-card-title"><div class="scout-card-name-row"><span class="scout-drag-grip" data-drag-handle draggable="true" title="Drag to reorder" aria-label="Drag to reorder">⠿</span><h3 data-scouting-hero-display>${safe(displayHeroName)}</h3><span class="scout-type-tag hero">Hero</span></div><div class="scout-model-mapping" aria-label="Old World unit mapped to Mordheim model"><div class="scout-model-mapping-box"><span>Order of Battle</span><strong>${safe(orderUnitName)}</strong></div><span class="scout-model-mapping-arrow" aria-hidden="true">→</span><div class="scout-model-mapping-box mordheim"><span>Mordheim model</span><strong>${safe(equivalent)}</strong></div></div></div><span class="scout-cost-badge" title="${safe(costBadgeTitle)}" aria-label="Hero cost ${safe(costBadgeTitle)}">${safe(scoutingCostBadge(cost.combined))}<small>gc</small></span></div><label class="scout-hero-name-field">Custom hero name (optional)<input type="text" maxlength="80" value="${safe(customName)}" placeholder="e.g. Grubnash" aria-label="Custom name for ${safe(equivalent)}" data-scouting-hero-name data-unit-id="${safe(unit.id)}" data-command-index="${commandIndex}"></label><div class="scout-card-equipment"><span>Equipment</span><strong>${safe(scoutingEquipmentSummary(equipmentRows))}</strong></div><button class="scout-details-button" type="button" data-open-scouting-details data-scout-card="${safe(cardKey)}" data-scouting-title="${safe(displayHeroName)}">View details</button><template data-scout-details><div class="scout-card-detail-content"><p class="scout-equivalent"><strong>Mordheim equivalent:</strong> ${safe(equivalent)}${profile?.warband ? ` · ${safe(profile.warband)}` : ''}</p>${costMarkup}${statsMarkup}${scoutingLoadoutMarkup(unit.build,unit)}${match?.mapping?.mappingNote ? `<p class="scout-note">Closest match: ${safe(match.mapping.mappingNote)}.</p>` : ''}${rulesMarkup || (profile ? '<p class="scout-intro" style="margin-top:.65rem">No additional special rules are listed for this model or warband.</p>' : '')}${sourceMarkup}</div></template></article>` };
+        });
+        const henchmanMarkup = henchmen.map(group => {
+          const profile = scoutingCatalog.profiles?.[group.profileId];
+          const stats = profile?.stats;
+          const statKeys = scoutingCatalog.statOrder || ['M','WS','BS','S','T','W','I','A','Ld'];
+          const statAdvances = scoutingStatAdvanceBonuses(group);
+          const statsMarkup = stats ? `<div class="scout-table-wrap"><table class="scout-stats"><thead><tr><th>Model</th>${statKeys.map(key => `<th>${safe(key)}</th>`).join('')}</tr></thead><tbody><tr><td>${safe(profile.matchedModel || group.equivalent)}</td>${statKeys.map(key => `<td class="${statAdvances[key] ? 'stat-increased' : ''}">${safe(scoutingStatWithBonus(stats[key],statAdvances[key]))}</td>`).join('')}</tr></tbody></table></div>` : '';
+          const equipmentMarkup = group.equipment?.length ? `<p class="scout-henchman-equipment"><strong>Old World selected gear → Mordheim mapping (per model):</strong> ${group.equipment.map(item => `${safe(item.oldWorldName)} → ${safe(item.equivalent)}${Number.isFinite(item.costMin) && Number.isFinite(item.costMax) ? ` (${safe(scoutingFormatCost({min:item.costMin,max:item.costMax,count:1}) + ' per model')})` : ' (price unavailable)'}`).join(' · ')}${group.unpricedEquipmentCount ? ` · ${Number(group.unpricedEquipmentCount)} mapped item${group.unpricedEquipmentCount === 1 ? '' : 's'} without a fixed price excluded from the estimate` : ''}</p>` : `<p class="scout-henchman-equipment">No mapped equipment selected on the Old World unit.${group.unpricedEquipmentCount ? ` ${Number(group.unpricedEquipmentCount)} mapped item${group.unpricedEquipmentCount === 1 ? '' : 's'} without a fixed price excluded from the estimate.` : ''}</p>`;
+          const groupCost = { min:Number(group.costMin || 0),max:Number(group.costMax || 0),count:1 };
+          const cardKey = `henchman-${group.id}`;
+          return { key:cardKey, markup:`<article class="scout-henchman-card scout-unit-card" data-order-type="scout" data-order-key="${safe(cardKey)}" draggable="true"><div class="scout-card-top"><div class="scout-card-title"><div class="scout-card-name-row"><span class="scout-drag-grip" data-drag-handle draggable="true" title="Drag to reorder" aria-label="Drag to reorder">⠿</span><h3>${safe(group.equivalent)} × ${Number(group.size || 1)}</h3><span class="scout-type-tag henchman">Henchman</span></div><div class="scout-model-mapping" aria-label="Old World unit mapped to Mordheim model"><div class="scout-model-mapping-box"><span>Order of Battle</span><strong>${safe(group.sourceName)}</strong></div><span class="scout-model-mapping-arrow" aria-hidden="true">→</span><div class="scout-model-mapping-box mordheim"><span>Mordheim model</span><strong>${safe(group.equivalent)}</strong></div></div></div><span class="scout-cost-badge" title="${safe(scoutingFormatCost(groupCost))}" aria-label="Henchman group cost ${safe(scoutingFormatCost(groupCost))}">${safe(scoutingCostBadge(groupCost))}<small>gc</small></span></div><div class="scout-card-equipment"><span>Equipment</span><strong>${safe(scoutingEquipmentSummary(group.equipment))}</strong></div><button class="scout-details-button" type="button" data-open-scouting-details data-scout-card="${safe(cardKey)}" data-scouting-title="${safe(group.equivalent)} × ${Number(group.size || 1)}">View details</button><template data-scout-details><div class="scout-card-detail-content"><div class="scout-card-actions"><button class="button danger small no-print" type="button" data-action="remove-scouting-henchman" data-id="${safe(group.id)}">Remove group</button></div><p class="scout-equivalent"><strong>Mordheim henchmen:</strong> ${safe(profile?.warband || 'Mapped warband')} · Hire and equipment: ${safe(scoutingFormatCost(groupCost))}</p>${statsMarkup}${equipmentMarkup}${group.mappingNote ? `<p class="scout-note">${safe(group.mappingNote)}</p>` : ''}</div></template></article>` };
+        });
+        const scoutCards = [...heroMarkup,...henchmanMarkup];
+        const savedScoutOrder = new Map((Array.isArray(data.scoutingOrder) ? data.scoutingOrder : []).map((key,index) => [key,index]));
+        scoutCards.sort((a,b) => {
+          const aOrder = savedScoutOrder.get(a.key), bOrder = savedScoutOrder.get(b.key);
+          if (aOrder === undefined && bOrder === undefined) return 0;
+          if (aOrder === undefined) return 1;
+          if (bOrder === undefined) return -1;
+          return aOrder - bOrder;
+        });
+        root.innerHTML = `<div class="scout-warband-cost"><strong>Estimated warband cost: ${safe(scoutingFormatCost(warbandCost))}</strong></div>${scoutCards.map(card => card.markup).join('')}${!heroes.length && !henchmen.length ? '<div class="empty">No Mordheim heroes or henchmen yet. Add a unit with a champion option or use “Round up some mooks” to generate henchmen from mapped Order of Battle units.</div>' : ''}`;
+        appendScoutingExperienceTrackers(heroes,henchmen);
+        refreshScoutingDetailsDialog();
+      }
       function renderAll() {
-        renderTerritories(); renderUnits(); renderBuilderPreview(); renderVault(); renderLedger(); renderBattles(); renderQuestHistory(); updateSummaries(); renderBuilderValidation();
+        renderTerritories(); renderUnits(); renderBuilderPreview(); renderVault(); renderLedger(); renderBattles(); renderQuestHistory(); renderScoutingWarband(); updateSummaries(); renderBuilderValidation();
       }
       function setTab(name) {
         $$('.tab').forEach(tab => tab.setAttribute('aria-selected', String(tab.dataset.tab === name)));
@@ -1571,21 +2802,53 @@
             data.campaign.generalName = el.value;
             setInput('generalName', el.value);
           }
-          const title = el.closest('.unit-card')?.querySelector('.unit-title strong');
+          const card = document.querySelector(`.unit-card[data-id="${CSS.escape(id)}"]`);
+          const title = card?.querySelector('.unit-title strong');
           if (title) title.textContent = el.value || 'Unnamed unit';
+          const editButton = card?.querySelector('[data-open-unit-details]');
+          if (editButton) editButton.dataset.unitTitle = el.value || 'Unnamed unit';
+          const dialog = $('#unitDetailsDialog');
+          if (dialog?.open && dialog.dataset.unitId === id) $('#unitDetailsTitle').textContent = el.value || 'Unnamed unit';
+        }
+        if (collection === 'units' && entry) {
+          const card = document.querySelector(`.unit-card[data-id="${CSS.escape(id)}"]`);
+          const cost = card?.querySelector('.unit-cost');
+          if (cost) {
+            const points = unitPoints(entry).toLocaleString();
+            cost.innerHTML = `${points}<small>points</small>`;
+            cost.setAttribute('aria-label',`${points} points`);
+            cost.title = `${points} points`;
+          }
+          const equipment = card?.querySelector('.unit-equipment strong');
+          if (equipment) equipment.textContent = unitEquipmentSummary(entry);
         }
         }
         if (scope === 'campaign' && field === 'startingSize') setInput('startingGold', data.campaign.startingGold);
-        save(); updateSummaries(); renderBuilderValidation();
+        save(); renderScoutingWarband(); updateSummaries(); renderBuilderValidation();
         if (collection === 'units' && ['role','renown','named','general'].includes(field)) renderUnits();
         if (collection === 'units' && field === 'models' && entry?.build) {
-          const pointsField = document.querySelector(`.unit-card[data-id="${CSS.escape(id)}"] input[data-field="points"]`);
+          const pointsField = unitPointsFieldFor(id);
           if (pointsField) pointsField.value = getBuiltUnitPoints(entry.build);
         }
         if (collection === 'vault' && field === 'kind') renderVault();
       }
       document.addEventListener('input', event => {
         const el = event.target;
+        if (el.matches('[data-scouting-hero-name]')) {
+          const unit = data.units.find(item => item.id === el.dataset.unitId);
+          const command = unit?.build?.command?.[Number(el.dataset.commandIndex)];
+          if (!command) return;
+          command.mordheimCustomName = el.value;
+          const card = el.closest('.scout-hero-card');
+          const display = card?.querySelector('[data-scouting-hero-display]');
+          const modelName = el.getAttribute('aria-label')?.replace(/^Custom name for\s*/, '') || 'Hero';
+          const displayName = el.value.trim() || modelName;
+          if (display) display.textContent = displayName;
+          card?.querySelector('[data-open-scouting-details]')?.setAttribute('data-scouting-title',displayName);
+          save();
+          renderUnits();
+          return;
+        }
         if (el.matches('[data-field]')) updateField(el);
         if (el.hasAttribute('data-pending-field')) {
           const unit = data.builder.pending;
@@ -1618,7 +2881,7 @@
             const value = Math.max(Number(el.min || 1),Number(el.value || 1));
             detachment.build.strength = el.max ? Math.min(value,Number(el.max)) : value;
             parent.points = getBuiltUnitPoints(parent.build);
-            const pointsNode = parent.id === 'pending' ? $('#pendingPoints') : document.querySelector(`.unit-card[data-id="${CSS.escape(parent.id)}"] input[data-field="points"]`);
+            const pointsNode = parent.id === 'pending' ? $('#pendingPoints') : unitPointsFieldFor(parent.id);
             if (pointsNode) parent.id === 'pending' ? pointsNode.textContent = `${parent.points} points` : pointsNode.value = parent.points;
             save(); updateSummaries(); renderBuilderValidation();
           }
@@ -1629,12 +2892,33 @@
           if (option) option.stackableCount = Number(el.value || 0);
           if (unit?.__parent) { refreshConfiguredUnit(unit); return; }
           save(); updateSummaries(); renderBuilderValidation();
-          const pointsField = unit && document.querySelector(`.unit-card[data-id="${CSS.escape(unit.id)}"] input[data-field="points"]`);
+          const pointsField = unit && unitPointsFieldFor(unit.id);
           if (pointsField) pointsField.value = getBuiltUnitPoints(unit.build);
         }
       });
       document.addEventListener('change', event => {
         const el = event.target;
+        if (el.matches('[data-advance-skill-select]')) {
+          const details = el.closest('.scout-xp-prompt')?.querySelector('[data-advance-skill-details]');
+          const recordButton = el.closest('.scout-xp-prompt')?.querySelector('[data-advance-record-button]');
+          if (details) details.innerHTML = el.value ? scoutingSkillRuleDetailsMarkup(el.value) : '<p class="scout-intro">Choose a skill to read its rule before recording the advance.</p>';
+          if (recordButton) recordButton.disabled = !el.value;
+          return;
+        }
+        if (el.matches('[data-advance-stat-select]')) {
+          const recordButton = el.closest('.scout-xp-prompt')?.querySelector('[data-advance-record-button]');
+          if (recordButton) recordButton.disabled = !el.value;
+          return;
+        }
+        if (el.matches('[data-scouting-handweapon]')) {
+          const unit = data.units.find(item => item.id === el.dataset.id);
+          const mapping = (scoutingEquipmentMap?.weaponMappings || []).find(row => (row.mordheimEquivalentOptions || []).includes(el.value));
+          if (!unit || !mapping) return;
+          unit.mordheimEquipmentChoices ||= {};
+          unit.mordheimEquipmentChoices[el.dataset.choiceKey] = el.value;
+          save(); renderScoutingWarband();
+          return;
+        }
         if (el.id === 'builderUnit') { selectCatalogUnit(el.value); return; }
         if (el.hasAttribute('data-detachment-strength')) { refreshConfiguredUnit(getConfigUnit(el.dataset.id)); return; }
         if (el.hasAttribute('data-pending-field')) {
@@ -1713,19 +2997,85 @@
       document.addEventListener('toggle', event => {
         const details = event.target;
         if (!(details instanceof HTMLDetailsElement)) return;
-        const card = details.closest('.unit-card');
-        const unit = card && getConfigUnit(card.dataset.id);
+        const unitId = details.dataset.unitId || details.closest('.unit-card')?.dataset.id;
+        const unit = unitId && getConfigUnit(unitId);
         if (!unit?.build) return;
         if (details.hasAttribute('data-build-main')) unit.build.expanded = details.open;
         if (details.hasAttribute('data-build-spells')) unit.build.spellsExpanded = details.open;
         save();
       }, true);
+      document.addEventListener('dragstart', event => {
+        const card = event.target.closest('[data-order-type][data-order-key][draggable="true"]');
+        if (!card) return;
+        activeReorderDrag = { type:card.dataset.orderType, key:card.dataset.orderKey };
+        card.classList.add('is-dragging');
+        if (event.dataTransfer) {
+          event.dataTransfer.effectAllowed = 'move';
+          event.dataTransfer.setData('text/plain',`${activeReorderDrag.type}:${activeReorderDrag.key}`);
+        }
+      });
+      document.addEventListener('dragover', event => {
+        const card = event.target.closest('[data-order-type][data-order-key][draggable="true"]');
+        if (!activeReorderDrag || !card || card.dataset.orderType !== activeReorderDrag.type) return;
+        event.preventDefault();
+        $$('.drag-over-before,.drag-over-after').forEach(item => item.classList.remove('drag-over-before','drag-over-after'));
+        const rect = card.getBoundingClientRect();
+        const edges = [
+          [Math.abs(event.clientX - rect.left),'drag-over-before'],
+          [Math.abs(rect.right - event.clientX),'drag-over-after'],
+          [Math.abs(event.clientY - rect.top),'drag-over-before'],
+          [Math.abs(rect.bottom - event.clientY),'drag-over-after']
+        ];
+        card.classList.add(edges.reduce((nearest,current) => current[0] < nearest[0] ? current : nearest)[1]);
+        if (event.dataTransfer) event.dataTransfer.dropEffect = 'move';
+      });
+      document.addEventListener('drop', event => {
+        const card = event.target.closest('[data-order-type][data-order-key][draggable="true"]');
+        if (!activeReorderDrag || !card || card.dataset.orderType !== activeReorderDrag.type) return;
+        event.preventDefault();
+        const after = card.classList.contains('drag-over-after');
+        let changed = false;
+        if (activeReorderDrag.type === 'unit') {
+          changed = reorderByKey(data.units,unit => String(unit.id),activeReorderDrag.key,card.dataset.orderKey,after);
+        } else if (activeReorderDrag.type === 'scout') {
+          const order = $$('.scout-unit-card').map(item => item.dataset.orderKey);
+          changed = reorderByKey(order,key => key,activeReorderDrag.key,card.dataset.orderKey,after);
+          if (changed) data.scoutingOrder = order;
+        }
+        clearReorderDrag();
+        if (changed) { save(); renderAll(); }
+      });
+      document.addEventListener('dragend', clearReorderDrag);
       document.addEventListener('click', event => {
+        const unitDetailsButton = event.target.closest('[data-open-unit-details]');
+        if (unitDetailsButton) { openUnitDetails(unitDetailsButton); return; }
+        if (event.target.closest('[data-close-unit-details]')) { $('#unitDetailsDialog').close(); return; }
+        const scoutingDetailsButton = event.target.closest('[data-open-scouting-details]');
+        if (scoutingDetailsButton) { openScoutingDetails(scoutingDetailsButton); return; }
+        if (event.target.closest('[data-close-scouting-details]')) { $('#scoutingDetailsDialog').close(); return; }
+        if (event.target.closest('#roundUpMooks')) { rollScoutingHenchmen(); return; }
+        if (event.target.closest('#mordheimBattleModeButton')) { openMordheimBattleMode(); return; }
+        if (event.target.closest('#addManualMooks')) { generateScoutingHenchmen(); return; }
+        if (event.target.closest('#clearMooks')) {
+          if (scoutingRollInProgress) return;
+          data.scoutingHenchmen = [];
+          data.scoutingOrder = (data.scoutingOrder || []).filter(key => !String(key).startsWith('henchman-'));
+          const diceView = $('#scoutingDiceRoll');
+          if (diceView) { diceView.replaceChildren(); diceView.setAttribute('aria-label','No dice rolled yet'); }
+          $('#scoutingMooksStatus').textContent = 'Generated henchmen cleared.';
+          save(); renderScoutingWarband(); return;
+        }
         const ruleButton = event.target.closest('[data-rule-url]');
         if (ruleButton) { openRuleDescription(ruleButton.dataset.ruleName,ruleButton.dataset.ruleUrl); return; }
         if (event.target.closest('[data-close-rules]')) { $('#ruleDialog').close(); return; }
         if (event.target.closest('#battleModeButton')) { openBattleMode(); return; }
         if (event.target.closest('[data-close-battle-mode]')) { $('#battleModeDialog').close(); return; }
+        const battleReference = event.target.closest('[data-mordheim-battle-link]');
+        if (battleReference) {
+          event.preventDefault();
+          document.getElementById(battleReference.dataset.targetId)?.scrollIntoView({ behavior:'smooth', block:'start' });
+          return;
+        }
         const tab = event.target.closest('[data-tab]');
         if (tab) setTab(tab.dataset.tab);
         const open = event.target.closest('[data-open-tab]');
@@ -1733,6 +3083,115 @@
         const action = event.target.closest('[data-action]');
         if (!action) return;
         const { action: name, id, index } = action.dataset;
+        if (name === 'set-scouting-xp') {
+          const kind = action.dataset.xpKind, recordId = action.dataset.xpId, commandIndex = action.dataset.xpCommandIndex;
+          const record = scoutingExperienceRecord(kind,recordId,commandIndex);
+          if (!record) return;
+          const state = scoutingExperience(record);
+          record.mordheimNextAdvance = state.next;
+          const experience = Math.max(0,Number(action.dataset.xpValue) || 0);
+          record.mordheimExperience = experience;
+          save();
+          renderScoutingWarband();
+          return;
+        }
+        if (name === 'roll-scouting-advance') {
+          resolveScoutingAdvance(action.dataset.xpKind,action.dataset.xpId,action.dataset.xpCommandIndex);
+          return;
+        }
+        if (name === 'complete-scouting-advance') {
+          completeScoutingAdvance(action.dataset.xpKind,action.dataset.xpId,action.dataset.xpCommandIndex,action);
+          return;
+        }
+        if (name === 'add-scouting-skill') {
+          const unit = data.units.find(item => item.id === id);
+          const commandIndex = Number(action.dataset.commandIndex);
+          const command = unit?.build?.command?.[commandIndex];
+          const skillId = action.closest('.scout-skill-editor')?.querySelector('[data-scouting-skill-select]')?.value;
+          if (!command || !scoutingAvailableAdvanceSkills(unit,command).some(([candidate]) => candidate === skillId)) return;
+          command.mordheimSkills = scoutingSelectedSkills(command);
+          if (!command.mordheimSkills.includes(skillId)) command.mordheimSkills.push(skillId);
+          save(); renderScoutingWarband(); renderUnits();
+          return;
+        }
+        if (name === 'remove-scouting-skill') {
+          const unit = data.units.find(item => item.id === id);
+          const command = unit?.build?.command?.[Number(action.dataset.commandIndex)];
+          if (!command) return;
+          command.mordheimSkills = (command.mordheimSkills || []).filter(skillId => skillId !== action.dataset.skillId);
+          if (!command.mordheimSkills.length) delete command.mordheimSkills;
+          save(); renderScoutingWarband(); renderUnits();
+          return;
+        }
+        if (name === 'remove-scouting-henchman') {
+          data.scoutingHenchmen = (data.scoutingHenchmen || []).filter(group => group.id !== id);
+          data.scoutingOrder = (data.scoutingOrder || []).filter(key => key !== `henchman-${id}`);
+          $('#scoutingMooksStatus').textContent = 'Henchman group removed.';
+          save(); renderScoutingWarband();
+          return;
+        }
+        if (name === 'edit-characteristics') {
+          if (editingCharacteristics) return;
+          editingCharacteristics = { unitId:id };
+          renderUnits();
+          return;
+        }
+        if (name === 'cancel-characteristics') {
+          editingCharacteristics = null;
+          renderUnits();
+          return;
+        }
+        if (name === 'save-characteristics') {
+          const unit = data.units.find(item => item.id === id);
+          const rows = $('#unitDetailsContent .profile-table tbody');
+          if (!unit || !rows) return;
+          const defaults = new Map(unitProfile(unit.build).map(row => [String(row.Name || 'Model'),row]));
+          const championMatches = scoutingActiveChampionMatches(unit);
+          unit.characteristicOverrides ||= {};
+          rows.querySelectorAll('tr').forEach(row => {
+            const modelName = row.querySelector('td')?.textContent || 'Model';
+            const base = defaults.get(modelName) || {};
+            const champion = championMatches.find(({command}) => normalizeScoutingLabel(scoutingChampionSourceRow(unit,command)?.Name) === normalizeScoutingLabel(modelName));
+            const comparison = champion ? scoutingHeroStatComparison(unit,champion.command,champion.match) : null;
+            const values = {};
+            row.querySelectorAll('[data-characteristic-key]').forEach(input => {
+              const key = input.dataset.characteristicKey;
+              const value = input.value.trim();
+              if (!['M','WS','BS','S','T','W','I','A','Ld'].includes(key)) return;
+              if (value !== '' && value !== String(comparison?.values[key] ?? base[key] ?? '')) values[key] = value;
+            });
+            if (Object.keys(values).length) unit.characteristicOverrides[modelName] = values;
+            else delete unit.characteristicOverrides[modelName];
+          });
+          if (!Object.keys(unit.characteristicOverrides).length) delete unit.characteristicOverrides;
+          editingCharacteristics = null;
+          save(); renderUnits();
+          return;
+        }
+        if (name === 'add-campaign-rule') {
+          const unit = data.units.find(item => item.id === id);
+          const modelName = action.dataset.modelName;
+          if (!unit || !modelName) return;
+          const ruleName = window.prompt(`Special rule for ${modelName}:`);
+          if (!ruleName?.trim()) return;
+          const description = window.prompt('Optional rule description (leave blank if not needed):') || '';
+          unit.customSpecialRules ||= {};
+          unit.customSpecialRules[modelName] ||= [];
+          unit.customSpecialRules[modelName].push({ name:ruleName.trim(), description:description.trim() });
+          save(); renderUnits();
+          return;
+        }
+        if (name === 'remove-campaign-rule') {
+          const unit = data.units.find(item => item.id === id);
+          const modelName = action.dataset.modelName;
+          const rules = unit?.customSpecialRules?.[modelName];
+          if (!rules) return;
+          rules.splice(Number(index),1);
+          if (!rules.length) delete unit.customSpecialRules[modelName];
+          if (!Object.keys(unit.customSpecialRules).length) delete unit.customSpecialRules;
+          save(); renderUnits();
+          return;
+        }
         if (name === 'add-detachment') {
           const parent = getConfigUnit(id);
           const select = document.querySelector(`select[data-detachment-select][data-id="${CSS.escape(id)}"]`);
@@ -1804,6 +3263,7 @@
         if (name === 'remove-unit') {
           const removed = data.units.find(item => item.id === id);
           if (removed && removed.general) data.campaign.generalName = '';
+          data.scoutingOrder = (data.scoutingOrder || []).filter(key => !String(key).startsWith(`hero-${id}-`));
           data.vault.forEach(item => { if (item.assigned === id) item.assigned = ''; });
         }
         if (mapping[name]) data[mapping[name]] = data[mapping[name]].filter(item => item.id !== id);
@@ -1865,6 +3325,7 @@
       populateFields();
       if (!$('#goldDate').value) $('#goldDate').value = today();
       loadArmySources();
+      loadScoutingSources();
     })();
   </script>
 </body>
