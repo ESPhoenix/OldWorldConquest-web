@@ -40,18 +40,8 @@
       overflow: hidden;
       color: #f5ead0;
       padding: 2rem max(1rem, calc((100vw - 1220px) / 2));
-      background:
-        linear-gradient(110deg, #241d1a 0%, #3a2520 55%, #672c24 100%);
+      background: linear-gradient(110deg, #241d1a 0%, #3a2520 55%, #672c24 100%);
       border-bottom: 5px solid var(--gold);
-    }
-    .masthead::after {
-      content: "✠";
-      position: absolute;
-      right: max(2rem, calc((100vw - 1180px) / 2));
-      top: -2.5rem;
-      font-size: 12rem;
-      color: #d2b36b12;
-      pointer-events: none;
     }
     .eyebrow, .section-kicker {
       margin: 0 0 .35rem;
@@ -74,6 +64,7 @@
     }
     .toolbar .spacer { flex: 1; }
     .save-status { color: #d8c8a7; font: .8rem Arial, sans-serif; margin: 0 .5rem; }
+    .roster-select { width:auto; min-width:10rem; max-width:min(18rem, 48vw); padding:.55rem .6rem; border-color:#796b5b; color:#fff5dd; background:#352b25; font:700 .78rem Arial,sans-serif; }
     .button {
       border: 1px solid #9b7841;
       border-radius: 3px;
@@ -458,6 +449,35 @@
     .scout-note { margin:.65rem 0 0; color:#d0a66c; font:.74rem/1.4 Arial,sans-serif; }
     .scouting-panel .empty { border-color:#536062; color:#b7bfbb; background:#202729; }
     .footer-note { margin: 1rem 0 0; color: #685a47; text-align: center; font: .75rem/1.5 Arial, sans-serif; }
+    .challenge-banner { margin-bottom:1rem; padding:.75rem .9rem; border-left:4px solid var(--gold); color:#554532; background:#f7edd9; font:.82rem/1.45 Arial,sans-serif; }
+    .campaign-shape { display:flex; flex-wrap:wrap; gap:.35rem; margin:.65rem 0; }
+    .campaign-shape span { padding:.35rem .55rem; border:1px solid #c4ad83; color:#55392a; background:#f8f0df; font:700 .76rem Arial,sans-serif; }
+    .campaign-battles { display:grid; gap:.7rem; }
+    .campaign-battle { padding:.85rem; border:1px solid #cbb995; border-left:4px solid #b9aa8e; background:#fffaf0; }
+    .campaign-battle.current { border-left-color:var(--red); box-shadow:0 2px 10px #57211d18; }
+    .campaign-battle.done { border-left-color:var(--green); background:#f2f7ee; }
+    .campaign-battle h3 { display:flex; flex-wrap:wrap; justify-content:space-between; gap:.4rem; margin:0 0 .35rem; color:#573b2d; }
+    .campaign-battle p { margin:.3rem 0; font:.82rem/1.45 Arial,sans-serif; }
+    .campaign-result-form { display:grid; grid-template-columns:minmax(160px,.7fr) minmax(220px,1.3fr) auto; gap:.55rem; align-items:end; margin-top:.7rem; }
+    .campaign-checks { display:flex; flex-wrap:wrap; gap:.4rem .8rem; align-items:center; min-height:2.3rem; }
+    .campaign-checks label { display:inline-flex; gap:.35rem; align-items:center; font:400 .75rem Arial,sans-serif; letter-spacing:0; }
+    .campaign-checks input { width:auto; }
+    .campaign-ledger { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.7rem; margin:.75rem 0; }
+    .campaign-player-state { padding:.65rem; border:1px solid #d3c3a3; background:#f8f0df; font:.78rem/1.45 Arial,sans-serif; }
+    .campaign-player-state strong { display:block; margin-bottom:.25rem; color:#573b2d; }
+    .campaign-objectives { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.55rem; margin:.65rem 0; }
+    .campaign-objective { padding:.6rem; border:1px solid #d3c3a3; background:#f8f0df; }
+    .campaign-objective strong { display:block; margin-bottom:.2rem; color:#573b2d; font:.76rem Arial,sans-serif; }
+    .campaign-objective p { margin:.2rem 0; color:#5d5143; font:.73rem/1.4 Arial,sans-serif; }
+    .campaign-objective-controls { display:flex; flex-wrap:wrap; gap:.35rem .7rem; align-items:center; margin-top:.45rem; }
+    .campaign-objective-controls label { display:inline-flex; gap:.3rem; align-items:center; font:400 .72rem Arial,sans-serif; letter-spacing:0; }
+    .campaign-objective-controls input[type="checkbox"] { width:auto; }
+    .campaign-objective-count { width:5rem; }
+    .campaign-action-row { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.8rem; }
+    .campaign-branches { margin-top:.65rem; padding:.6rem .7rem; border:1px dashed #bea77c; color:#5d4a34; background:#f7efdf; font:.74rem/1.45 Arial,sans-serif; }
+    .campaign-branches strong { display:block; margin-bottom:.25rem; color:#573b2d; }
+    .campaign-branches ul { margin:.2rem 0 0; padding-left:1.2rem; }
+    .campaign-note { color:#74675b; font:.72rem/1.4 Arial,sans-serif; }
     .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     @media (max-width: 820px) {
       .layout { grid-template-columns: 1fr; }
@@ -487,6 +507,8 @@
       .unit-equipment { align-items: flex-start; }
       .unit-grid .wide { grid-column: 1 / -1; }
       .builder-controls, .builder-choices, .build-options { grid-template-columns: 1fr; }
+      .campaign-result-form, .campaign-ledger { grid-template-columns:1fr; }
+      .campaign-objectives { grid-template-columns:1fr; }
       .ledger-row, .vault-row, .battle-row { grid-template-columns: 1fr auto; gap: .35rem; }
       .log-form { grid-template-columns: 1fr 1fr; }
       .log-form .field:nth-child(2) { grid-column: 1 / -1; }
@@ -530,6 +552,10 @@
     <input class="visually-hidden" id="importFile" type="file" accept="application/json,.json">
     <button class="button" id="printButton" type="button">Print roster</button>
     <span class="spacer"></span>
+    <label class="visually-hidden" for="rosterSelect">Active roster</label>
+    <select class="roster-select" id="rosterSelect" aria-label="Active roster"></select>
+    <button class="button small" id="renameRosterButton" type="button">Rename</button>
+    <button class="button small danger" id="deleteRosterButton" type="button">Delete</button>
     <span class="save-status" id="saveStatus" role="status" aria-live="polite">Saved in this browser</span>
     <button class="button ghost" id="resetButton" type="button">New roster</button>
   </div>
@@ -540,7 +566,6 @@
       <button class="tab" id="tab-army" role="tab" aria-selected="false" aria-controls="panel-army" data-tab="army">Order of Battle</button>
       <button class="tab scouting-tab" id="tab-scouting" role="tab" aria-selected="false" aria-controls="panel-scouting" data-tab="scouting">Scouting Warband</button>
       <button class="tab" id="tab-domain" role="tab" aria-selected="false" aria-controls="panel-domain" data-tab="domain">Domain &amp; Vault</button>
-      <button class="tab" id="tab-ledger" role="tab" aria-selected="false" aria-controls="panel-ledger" data-tab="ledger">Campaign Log</button>
     </nav>
 
     <section class="panel" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
@@ -551,7 +576,7 @@
             <h2>Army &amp; domain</h2>
             <div class="grid">
               <div class="field"><label for="armyName">Army name</label><input id="armyName" data-scope="campaign" data-field="armyName" placeholder="e.g. The March of Nuln"></div>
-              <div class="field"><label for="faction">Faction</label><input id="faction" data-scope="campaign" data-field="faction" placeholder="e.g. Kingdom of Bretonnia"></div>
+              <div class="field"><label for="builderArmy">Faction</label><select id="builderArmy" data-scope="builder" data-field="army"><option value="">Loading factions…</option></select></div>
               <div class="field"><label for="location">Place of origin</label><input id="location" data-scope="campaign" data-field="location" placeholder="Nuln, Border Princes…"></div>
               <div class="field"><label for="generalName">Current general</label><input id="generalName" data-scope="campaign" data-field="generalName" placeholder="General's name"></div>
               <div class="field"><label for="startingSize">Starting size</label>
@@ -603,7 +628,7 @@
             <h2>Gold crowns</h2>
             <div class="gold-total"><strong id="goldTotal">0</strong><span>Gold available</span></div>
             <p class="hint" style="margin:.65rem 0 0">Starting Gold plus the income and expenses recorded in the Campaign Log.</p>
-            <button class="button small no-print" style="margin-top:.8rem" data-open-tab="ledger" type="button">Record a transaction</button>
+            <button class="button small no-print" style="margin-top:.8rem" data-scroll-target="goldForm" type="button">Record a transaction</button>
           </section>
           <section class="card">
             <p class="section-kicker">Stronghold summary</p>
@@ -612,15 +637,64 @@
           </section>
         </aside>
       </div>
+      <section class="card">
+        <p class="section-kicker">Conquest challenge</p>
+        <h2>Generate a linked campaign</h2>
+        <p>Challenge another saved roster, choose quests after acceptance, then generate a three- or four-game shape. Each Mordheim matchup draws from three thematic scenarios and avoids repeats when possible. Battle cards show both players’ quest objectives; recorded results update quest progress, branches, roles, boons, and both rosters’ Battle Records.</p>
+        <div class="challenge-banner">Challenges and progress are stored in this browser only. This static roster app does not send invitations or synchronize between devices; both players need to accept and record results here together.</div>
+        <div id="challengeRoot"></div>
+        <div id="challengeHistoryRoot"></div>
+      </section>
+      <div class="layout">
+        <div class="stack">
+          <section class="card">
+            <p class="section-kicker">Campaign log · Gold</p>
+            <h2>Gold ledger</h2>
+            <div class="gold-total" style="margin-bottom:1rem"><strong id="ledgerGoldTotal">0</strong><span>Current balance</span></div>
+            <form class="log-form no-print" id="goldForm">
+              <div class="field"><label for="goldDate">Date</label><input id="goldDate" type="date" required></div>
+              <div class="field"><label for="goldDescription">Reason</label><input id="goldDescription" placeholder="Battle income, recruitment…" required></div>
+              <div class="field"><label for="goldAmount">Amount</label><input id="goldAmount" type="number" min="1" step="1" placeholder="5" required></div>
+              <div class="field"><label for="goldDirection">Transaction</label><div style="display:flex;gap:.4rem"><select id="goldDirection"><option value="income">Income</option><option value="expense">Expense</option></select><button class="button primary" type="submit">Add</button></div></div>
+            </form>
+            <hr class="subtle-rule">
+            <div id="ledgerList"></div>
+          </section>
+        </div>
+        <div class="stack">
+          <section class="card">
+            <div class="section-head">
+              <div><p class="section-kicker">Campaign log · Chronicle</p><h2>Battle record</h2><p>Challenge campaign battles are added here for both rosters as results are recorded.</p></div>
+              <button class="button primary no-print" id="addBattle" type="button">＋ Add battle</button>
+            </div>
+            <div id="battleList"></div>
+          </section>
+          <section class="card">
+            <p class="section-kicker">Income reference</p>
+            <h2>Gold after a battle</h2>
+            <p class="hint">The criteria are cumulative. Use the points limit for that battle to choose the correct column.</p>
+            <div style="overflow-x:auto">
+              <table style="width:100%;border-collapse:collapse;font: .78rem Arial,sans-serif">
+                <thead><tr><th style="text-align:left;padding:.45rem;border-bottom:1px solid #bca984">Result</th><th style="padding:.45rem;border-bottom:1px solid #bca984">500–750</th><th style="padding:.45rem;border-bottom:1px solid #bca984">751–1250</th><th style="padding:.45rem;border-bottom:1px solid #bca984">1251–1750</th><th style="padding:.45rem;border-bottom:1px solid #bca984">1751+</th></tr></thead>
+                <tbody>
+                  <tr><td style="padding:.4rem">Fought a Conquest battle</td><td style="text-align:center">+5</td><td style="text-align:center">+8</td><td style="text-align:center">+10</td><td style="text-align:center">+12</td></tr>
+                  <tr><td style="padding:.4rem">Major victory</td><td style="text-align:center">+3</td><td style="text-align:center">+4</td><td style="text-align:center">+5</td><td style="text-align:center">+6</td></tr>
+                  <tr><td style="padding:.4rem">Minor victory</td><td style="text-align:center">+2</td><td style="text-align:center">+2</td><td style="text-align:center">+3</td><td style="text-align:center">+3</td></tr>
+                  <tr><td style="padding:.4rem">General took part and survived</td><td style="text-align:center">+1</td><td style="text-align:center">+1</td><td style="text-align:center">+2</td><td style="text-align:center">+2</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
     </section>
 
     <section class="panel" id="panel-army" role="tabpanel" aria-labelledby="tab-army" hidden>
       <section class="card builder-card">
         <div class="section-head">
-          <div><p class="section-kicker">Army list builder</p><h2>Choose from the faction catalogue</h2><p>Pick a faction and composition, add units from its dataset, then configure models, equipment, mounts, options, command, and magic items. Calculated points feed directly into this Conquest roster.</p></div>
+          <div><p class="section-kicker">Army list builder</p><h2>Build the campaign army</h2><p>Choose the faction on the Campaign tab, then select its composition and add units from the catalogue. Configure models, equipment, mounts, options, command, and magic items; calculated points feed directly into this Conquest roster.</p></div>
         </div>
         <div class="builder-controls">
-          <div class="field"><label for="builderArmy">Faction</label><select id="builderArmy" data-scope="builder" data-field="army"><option value="">Loading factions…</option></select></div>
           <div class="field"><label for="builderComposition">Army composition</label><select id="builderComposition" data-scope="builder" data-field="composition"><option value="">Select a faction first</option></select></div>
           <div class="field"><label for="compositionRule">Matched-play rule</label><select id="compositionRule" data-scope="builder" data-field="compositionRule"><option value="open-war">Open War / Standard</option><option value="grand-melee">Grand Melee</option><option value="combined-arms">Combined Arms</option><option value="grand-melee-combined-arms">Grand Melee + Combined Arms</option><option value="battle-march">Battle March</option></select></div>
           <div class="field"><label for="builderCategory">Unit category</label><select id="builderCategory" data-scope="builder" data-field="category"><option value="characters">Characters</option><option value="core">Core</option><option value="special">Special</option><option value="rare">Rare</option><option value="allies">Allies</option><option value="mercenaries">Mercenaries</option></select></div>
@@ -722,51 +796,6 @@
       </div>
     </section>
 
-    <section class="panel" id="panel-ledger" role="tabpanel" aria-labelledby="tab-ledger" hidden>
-      <div class="layout">
-        <div class="stack">
-          <section class="card">
-            <p class="section-kicker">Aftermath sequence · Step 1</p>
-            <h2>Gold ledger</h2>
-            <div class="gold-total" style="margin-bottom:1rem"><strong id="ledgerGoldTotal">0</strong><span>Current balance</span></div>
-            <form class="log-form no-print" id="goldForm">
-              <div class="field"><label for="goldDate">Date</label><input id="goldDate" type="date" required></div>
-              <div class="field"><label for="goldDescription">Reason</label><input id="goldDescription" placeholder="Battle income, recruitment…" required></div>
-              <div class="field"><label for="goldAmount">Amount</label><input id="goldAmount" type="number" min="1" step="1" placeholder="5" required></div>
-              <div class="field"><label for="goldDirection">Transaction</label><div style="display:flex;gap:.4rem"><select id="goldDirection"><option value="income">Income</option><option value="expense">Expense</option></select><button class="button primary" type="submit">Add</button></div></div>
-            </form>
-            <hr class="subtle-rule">
-            <div id="ledgerList"></div>
-          </section>
-        </div>
-        <div class="stack">
-          <section class="card">
-            <div class="section-head">
-              <div><p class="section-kicker">Campaign chronicle</p><h2>Battle record</h2></div>
-              <button class="button primary no-print" id="addBattle" type="button">＋ Add battle</button>
-            </div>
-            <div id="battleList"></div>
-          </section>
-          <section class="card">
-            <p class="section-kicker">Income reference</p>
-            <h2>Gold after a battle</h2>
-            <p class="hint">The criteria are cumulative. Use the points limit for that battle to choose the correct column.</p>
-            <div style="overflow-x:auto">
-              <table style="width:100%;border-collapse:collapse;font: .78rem Arial,sans-serif">
-                <thead><tr><th style="text-align:left;padding:.45rem;border-bottom:1px solid #bca984">Result</th><th style="padding:.45rem;border-bottom:1px solid #bca984">500–750</th><th style="padding:.45rem;border-bottom:1px solid #bca984">751–1250</th><th style="padding:.45rem;border-bottom:1px solid #bca984">1251–1750</th><th style="padding:.45rem;border-bottom:1px solid #bca984">1751+</th></tr></thead>
-                <tbody>
-                  <tr><td style="padding:.4rem">Fought a Conquest battle</td><td style="text-align:center">+5</td><td style="text-align:center">+8</td><td style="text-align:center">+10</td><td style="text-align:center">+12</td></tr>
-                  <tr><td style="padding:.4rem">Major victory</td><td style="text-align:center">+3</td><td style="text-align:center">+4</td><td style="text-align:center">+5</td><td style="text-align:center">+6</td></tr>
-                  <tr><td style="padding:.4rem">Minor victory</td><td style="text-align:center">+2</td><td style="text-align:center">+2</td><td style="text-align:center">+3</td><td style="text-align:center">+3</td></tr>
-                  <tr><td style="padding:.4rem">General took part and survived</td><td style="text-align:center">+1</td><td style="text-align:center">+1</td><td style="text-align:center">+2</td><td style="text-align:center">+2</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-        </div>
-      </div>
-    </section>
-
     <p class="footer-note">Conquest campaign aid based on the rules recorded in <em>Conquest.md</em>. This is an independent, editable tracker; it does not replace the rules or faction army books.</p>
   </main>
 
@@ -791,6 +820,68 @@
     (() => {
       'use strict';
       const STORAGE_KEY = 'old-world-conquest-roster-v1';
+      const CHALLENGE_STORAGE_KEY = 'old-world-conquest-challenges-v1';
+      const CHALLENGE_QUESTS = ['Search for the Artefact','Master of Magic','Defend Your Realm','Scout Fertile Lands'];
+      const CHALLENGE_SHAPES = {
+        3: [['M','O','M'],['O','M','O'],['M','M','O'],['O','M','M']],
+        4: [['M','O','M','O'],['O','M','O','M'],['M','O','O','M'],['O','M','M','O']]
+      };
+      const SCENARIO_BOONS = {
+        'Hidden Treasure': { theme:'Relic recovered', name:'Recovered relic', effect:'Choose one friendly unit. Once this battle, it may claim a 6+ Regeneration save.', tag:'relic' },
+        'The Item Lost': { theme:'Relic recovered', name:'Recovered relic', effect:'Choose one friendly unit. Once this battle, it may claim a 6+ Regeneration save.', tag:'relic' },
+        'Defend the Find': { theme:'Relic recovered', name:'Recovered relic', effect:'Choose one friendly unit. Once this battle, it may claim a 6+ Regeneration save.', tag:'relic' },
+        'The Great Library': { theme:'Arcane knowledge', name:'Arcane insight', effect:'One friendly Wizard may re-roll one failed casting roll. If no Wizard is included, one friendly unit may instead re-roll one failed Panic test.', tag:'arcane' },
+        "The Wizard's Tower": { theme:'Arcane knowledge', name:'Arcane insight', effect:'One friendly Wizard may re-roll one failed casting roll. If no Wizard is included, one friendly unit may instead re-roll one failed Panic test.', tag:'arcane' },
+        'Breakthrough': { theme:'Route discovered', name:'Forward scouts', effect:'Before deployment, choose one friendly non-Character unit. Up to D3 models in it gain the Scouts special rule for this battle.', tag:'route' },
+        'River Watch': { theme:'Route discovered', name:'Forward scouts', effect:'Before deployment, choose one friendly non-Character unit. Up to D3 models in it gain the Scouts special rule for this battle.', tag:'route' },
+        'Occupy': { theme:'Ground secured', name:'Rallying cry', effect:'Choose one friendly unit. Once this battle, it may re-roll one failed Panic test.', tag:'territory' },
+        'Surprise Attack': { theme:'Enemy plans disrupted', name:'Spoiled orders', effect:'Choose one enemy non-Character unit. It cannot make a move during the first turn (it can still make compulsory moves).', tag:'ambush' },
+        'Street Fight': { theme:'Close-quarters tactics', name:'Readied counter', effect:'Choose one friendly unit. Once this battle, it may re-roll one failed charge roll.', tag:'urban', questTags:['route'] },
+        'Wyrdstone Hunt': { theme:'Relic recovered', name:'Recovered wyrdstone', effect:'Choose one friendly unit. Once this battle, it may claim a 6+ Regeneration save.', tag:'relic' },
+        'Finders Keepers': { theme:'Route discovered', name:'Outrider maps', effect:'Before deployment, choose one friendly non-Character unit. Up to D3 models in it gain the Scouts special rule for this battle.', tag:'route' },
+        'Gift of the Truthsayers': { theme:'Arcane knowledge', name:'Truthsayer charm', effect:'One friendly Wizard may re-roll one failed casting roll. If no Wizard is included, one friendly unit may instead re-roll one failed Panic test.', tag:'arcane' },
+        'The Ogham Stones': { theme:'Arcane knowledge', name:'Ogham ward', effect:'One friendly Wizard may re-roll one failed casting roll. If no Wizard is included, one friendly unit may instead re-roll one failed Panic test.', tag:'arcane' },
+        'Defend the Tomb': { theme:'Relic recovered', name:'Tomb relic', effect:'Choose one friendly unit. Once this battle, it may claim a 6+ Regeneration save.', tag:'relic' },
+        'Tomb Raid': { theme:'Relic recovered', name:'Tomb relic', effect:'Choose one friendly unit. Once this battle, it may claim a 6+ Regeneration save.', tag:'relic' },
+        'Through Black Fire Pass': { theme:'Route discovered', name:'Pass scouts', effect:'Before deployment, choose one friendly non-Character unit. Up to D3 models in it gain the Scouts special rule for this battle.', tag:'route' },
+        'Lost Temple of the Slann': { theme:'Arcane knowledge', name:'Slann map', effect:'One friendly Wizard may re-roll one failed casting roll. If no Wizard is included, one friendly unit may instead re-roll one failed Panic test.', tag:'arcane' },
+        'The Watchtower': { theme:'Ground secured', name:'Beacon signals', effect:'Choose one friendly unit. Once this battle, it may re-roll one failed Panic test.', tag:'territory' },
+        'Defend the Village!': { theme:'Ground secured', name:'Village rally', effect:'Choose one friendly unit. Once this battle, it may re-roll one failed Panic test.', tag:'territory' },
+        'Defend the Oasis': { theme:'Ground secured', name:'Well-guarded stores', effect:'Choose one friendly unit. Once this battle, it may re-roll one failed Panic test.', tag:'territory' },
+        'Encampment Raid': { theme:'Enemy plans disrupted', name:'Camp sabotage', effect:'Choose one enemy non-Character unit. It cannot make a move during the first turn (it can still make compulsory moves).', tag:'ambush' },
+        'Protect the Prince': { theme:'Ground secured', name:'Bodyguard signals', effect:'Choose one friendly unit. Once this battle, it may re-roll one failed Panic test.', tag:'territory' },
+        'Rescue': { theme:'Route discovered', name:'Escape route', effect:'Before deployment, choose one friendly non-Character unit. Up to D3 models in it gain the Scouts special rule for this battle.', tag:'route' },
+        'The Gauntlet': { theme:'Relic recovered', name:'Ancient treasure', effect:'Choose one friendly unit. Once this battle, it may claim a 6+ Regeneration save.', tag:'relic', questTags:['route'] },
+        'Haunted Treasure': { theme:'Relic recovered', name:'Banshee-warded treasure', effect:'Choose one friendly unit. Once this battle, it may claim a 6+ Regeneration save.', tag:'relic' }
+      };
+      const SCENARIO_OBJECTIVES = {
+        'Hidden Treasure':'Search each unsearched building outside deployment zones once; roll 2D6 when a warrior enters, and find the chest on 12 (the last unsearched building contains it automatically). Carry the chest off your own table edge to win; otherwise, the warband that does not fail its Rout test wins.',
+        'The Item Lost':'Pick up the wand at the centre marker and carry it off any table edge for an immediate win. If nobody extracts it, the last warband that has not failed its Rout test wins.',
+        'Defend the Find':'The attacker wins if, at the end of the defender’s turn, more standing attacker models than defender models are within 6″ of the objective building. Either warband can also win when the opponent fails a Rout test.',
+        'The Great Library':'Tomes are available to collect, but the published winner is the last warband that has not failed its Rout test (allied warbands may share the win). Collecting Tomes alone does not decide the winner.',
+        "The Wizard's Tower":'Carry the tower’s chests off the table. The warband with the most chests wins; if tied, the warband that caused more casualties wins.',
+        'Breakthrough':'The attacker wins by moving 2 or more standing warriors to within 2″ of the defender’s table edge. If the attacker fails a Rout test first, the defender wins.',
+        'Occupy':'Occupy the marked D3+2 buildings: each counts for you only while at least one of your standing models is inside and no enemy model is inside. The game lasts up to 8 turns; if a warband voluntarily routs, the other is considered to occupy all buildings.',
+        'Surprise Attack':'The warband that does not fail its Rout test wins. There is no separate scoring threshold; the defender’s warriors arrive as reinforcements on 4+ from turn 2.',
+        'River Watch':'The attacker wins immediately by getting at least 25% of its non-animal warband off the north table edge. Otherwise, win by making the opposing warband fail a Rout test; the defender only tests after 50% are Out of Action.',
+        'Street Fight':'Move all your remaining warriors off the street through the opponent’s table edge to win; you cannot leave by your own edge. You can also win by making the opponent fail a Rout test.',
+        'Wyrdstone Hunt':'Pick up the D3+1 wyrdstone counters by moving into contact. The warband that does not fail its Rout test wins; keep counters in your possession for the aftermath.',
+        'Finders Keepers':'Search the stash building, take at least half its wyrdstone counters, and carry them off within 8″ of your own starting corner for an immediate win. Otherwise, a failed Rout test loses.',
+        'Gift of the Truthsayers':'The artefact lies on the central crag; seize and retain it to claim the artefact reward. The published battle winner is the warband that makes its opponent fail a Rout test.',
+        'The Ogham Stones':'After 8 turns, the warband with the most models standing within the Ogham Stone circle wins.',
+        'Defend the Tomb':'The attacker wins if, at the end of the defender’s turn, the attacker has more standing models inside the objective room. The warband that gets the treasure out wins; a Rout test can also end the battle.',
+        'Tomb Raid':'Reach the central chamber, pick up the chest by spending a turn in contact, and carry it off the board. Removing the chest wins; a Rout test can also end the game.',
+        'Through Black Fire Pass':'The defender wins by getting half the warband off the western escape edge. Otherwise, the last warband that has not failed its Rout test wins.',
+        'Lost Temple of the Slann':'The story objective is control of the central temple; by the published victory rule, the last warband that has not failed its Rout test wins (allied warbands may share victory).',
+        'The Watchtower':'Win by making the opposing warband fail its Rout test. The defender can light the beacon to bring on reinforcements; the attacker can interrupt or prevent it.',
+        'Defend the Village!':'The warband that makes its opponent fail a Rout test wins. The defender also saves the village if fewer than 25% of its villagers are taken Out of Action.',
+        'Defend the Oasis':'The attacker wins if, at the end of a turn, it has more models within 6″ of the well than the defender. Either side can also win by making the opponent fail a Rout test.',
+        'Encampment Raid':'Use Defend the Find’s camp-control condition: the attacker wins by having more standing models within 6″ of the camp at the end of the defender’s turn. The defender may only Rout voluntarily after 50% casualties.',
+        'Protect the Prince':'The defender wins if the prince leaves the correct table edge while under their control. The attacker wins by taking the prince Out of Action; if he escapes another edge, neither side wins.',
+        'Rescue':'The attacker wins by getting the prisoner off the board. The defender wins if the attacker loses half its models; the defender also loses if three-quarters of its models are lost.',
+        'The Gauntlet':'Take and hold the treasure for two turns, or carry it back to your deployment zone. Rout tests are disabled.',
+        'Haunted Treasure':'Find the chest in the central building and carry it off your own table edge. The warband that recovers it wins; otherwise the last warband standing wins after Rout tests.'
+      };
       const SIZES = {
         Vanguard: { territories: 1, points: 500, units: 6, gold: 5 },
         Brigade: { territories: 1, points: 1000, units: 8, gold: 8 },
@@ -830,10 +921,20 @@
         builder: { army: '', composition: '', compositionRule: 'open-war', category: 'characters', foreignChoice: '', foreignArmy: '', foreignComposition: '', foreignMagicArmy: '', foreignUnitIds: [], foreignCategory: 'characters', pointsLimit: 500, pending: null },
          territories: [], units: [], scoutingHenchmen: [], scoutingOrder: [], vault: [], ledger: [], battles: [], questHistory: []
       });
-      let data = loadData();
+      let rosterBook = loadRosterBook();
+      let activeRosterId = rosterBook.activeId;
+      let data = rosterBook.rosters.find(roster => roster.id === activeRosterId).data;
+      let challengeBook = loadChallengeBook();
+      let challengeMatrix = null, challengeMatrixPromise = null;
       let armyManifest = null, armyCatalog = null, armyRules = null, magicCatalog = null, spellCatalog = null, rulesIndexCatalog = null;
       let scoutingCatalog = null, scoutingAssignments = null, scoutingEquipmentMap = null, scoutingSkillMap = null, scoutingSkillAccess = null, scoutingLoadError = '', scoutingLoadPromise = null;
       const factionCatalogs = new Map();
+      function factionFromCampaignName() {
+        const campaignFaction = String(data.campaign?.faction || '').trim().toLowerCase();
+        return armyManifest?.armies?.find(army => campaignFaction &&
+          [army.id.replace(/-/g, ' '), army.name_en].some(name => String(name || '').toLowerCase() === campaignFaction)
+        );
+      }
       let builderLoadPromise = null;
       let activeReorderDrag = null;
       const $ = (s, root = document) => root.querySelector(s);
@@ -897,9 +998,11 @@
             armyRules = rulesModule.rules;
             const selector = $('#builderArmy');
             selector.innerHTML = '<option value="">Choose a faction…</option>' + armyManifest.armies.map(army => `<option value="${safe(army.id)}">${safe(army.name_en || displayName(army.id))}</option>`).join('');
-            if (data.builder.army && armyManifest.armies.some(army => army.id === data.builder.army)) {
-              selector.value = data.builder.army;
-              await selectBuilderFaction(data.builder.army, false);
+            const armyId = armyManifest.armies.some(army => army.id === data.builder.army) ? data.builder.army : factionFromCampaignName()?.id;
+            if (armyId) {
+              data.builder.army = armyId;
+              selector.value = armyId;
+              await selectBuilderFaction(armyId, false);
             }
             $('#builderPointsLimit').value = data.builder.pointsLimit || startInfo().points;
             $('#builderCategory').value = data.builder.category || 'characters';
@@ -915,11 +1018,15 @@
       async function selectBuilderFaction(armyId, updateCampaign = true) {
         if (!armyId) {
           armyCatalog = null; data.builder.army = ''; data.builder.composition = '';
+          data.campaign.faction = '';
           $('#builderComposition').innerHTML = '<option value="">Select a faction first</option>';
           renderBuilderUnitSelect(); renderBuilderValidation(); return;
         }
+        data.builder.army = armyId;
+        const selectionRosterId = activeRosterId;
         try {
           if (!factionCatalogs.has(armyId)) factionCatalogs.set(armyId, await fetchSourceJSON(`public/games/the-old-world/${armyId}.json`));
+          if (activeRosterId !== selectionRosterId || data.builder.army !== armyId) return;
           armyCatalog = factionCatalogs.get(armyId);
           data.builder.army = armyId;
           const armyInfo = armyManifest.armies.find(army => army.id === armyId);
@@ -929,7 +1036,6 @@
             renderBuilderForeignSelectors();
           if (updateCampaign && armyInfo) {
             data.campaign.faction = armyInfo.name_en || displayName(armyId);
-            setInput('faction', data.campaign.faction);
           }
           renderBuilderUnitSelect(); renderBuilderValidation(); updateSummaries(); save();
         } catch (error) {
@@ -1637,16 +1743,632 @@
         categoryRoot.innerHTML = rulesRows || '<p class="hint">No category limits are defined for this composition.</p>';
         root.innerHTML = `${issues.length ? `<div class="warn-box"><strong>Army-list checks · ${issues.length}</strong><br>${issues.map(safe).join('<br>')}</div>` : '<div class="success-box">No composition issues detected by the integrated checks.</div>'}<p class="hint" style="margin:.55rem 0 0">Checks include faction unit limits and points, matched-play composition, required units, mounted restrictions, general, magic-item, and basic wizard limits. Specialized faction checks may still require the full Old World Builder.</p>`;
       }
-      function loadData() {
+      function normalizeRosterData(saved) {
+        const defaults = blank();
+        if (!saved || !saved.campaign || !Array.isArray(saved.units)) return defaults;
+        const normalized = { ...defaults, ...saved, campaign: { ...defaults.campaign, ...saved.campaign }, builder: { ...defaults.builder, ...saved.builder } };
+        for (const key of ['territories','units','scoutingHenchmen','scoutingOrder','vault','ledger','battles','questHistory']) if (!Array.isArray(normalized[key])) normalized[key] = [];
+        return normalized;
+      }
+      function loadRosterBook() {
         try {
           const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-          if (saved && saved.campaign && Array.isArray(saved.units)) return { ...blank(), ...saved, campaign: { ...blank().campaign, ...saved.campaign }, builder: { ...blank().builder, ...saved.builder } };
+          if (Array.isArray(saved?.rosters) && saved.rosters.length) {
+            const rosters = saved.rosters.filter(roster => roster && roster.id).map((roster,index) => ({
+              id:String(roster.id), name:String(roster.name || `Roster ${index + 1}`), data:normalizeRosterData(roster.data)
+            }));
+            if (rosters.length) return { rosters, activeId:rosters.some(roster => roster.id === saved.activeId) ? saved.activeId : rosters[0].id };
+          }
+          // Migrate the original single-roster save without losing any campaign data.
+          if (saved?.campaign && Array.isArray(saved.units)) {
+            const id = `roster-${Date.now().toString(36)}`;
+            return { rosters:[{ id, name:saved.campaign.armyName || 'My Roster', data:normalizeRosterData(saved) }], activeId:id };
+          }
         } catch (_) {}
-        return blank();
+        const id = 'roster-default';
+        return { rosters:[{ id, name:'Roster 1', data:blank() }], activeId:id };
+      }
+      function loadChallengeBook() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(CHALLENGE_STORAGE_KEY));
+          return { active:saved?.active || null, history:Array.isArray(saved?.history) ? saved.history : [] };
+        } catch (_) { return { active:null, history:[] }; }
+      }
+      function saveChallengeBook() {
+        try { localStorage.setItem(CHALLENGE_STORAGE_KEY,JSON.stringify(challengeBook)); }
+        catch (_) { $('#saveStatus').textContent = 'Could not save challenge locally'; }
+      }
+      function rosterById(id) { return rosterBook.rosters.find(roster => roster.id === id); }
+      function challengeRosterName(id, fallback = 'Unknown roster') {
+        const roster = rosterById(id);
+        return roster?.name || roster?.data?.campaign?.armyName || fallback;
+      }
+      function challengeSideName(campaign,side) {
+        return side === 'a'
+          ? challengeRosterName(campaign.challengerId,campaign.challengerName)
+          : challengeRosterName(campaign.challengedId,campaign.challengedName);
+      }
+      function challengeQuestSelect(id,value) {
+        return `<select id="${id}" data-challenge-field="${id === 'challengeQuestA' ? 'questA' : 'questB'}"><option value="">Choose a quest…</option>${CHALLENGE_QUESTS.map(quest => `<option value="${safe(quest)}" ${value === quest ? 'selected' : ''}>${safe(quest)}</option>`).join('')}</select>`;
+      }
+      async function loadChallengeMatrix() {
+        if (challengeMatrixPromise) return challengeMatrixPromise;
+        challengeMatrixPromise = (async () => {
+          try {
+            const [matrixResponse,poolsResponse] = await Promise.all([
+              fetch(new URL('Mord-World/Conquest_Mordheim_Quest_Matchups.md',window.location.href)),
+              fetch(new URL('Mord-World/Conquest_Mordheim_Scenario_Pools.json',window.location.href))
+            ]);
+            if (!matrixResponse.ok) throw new Error(`Could not load quest matchup matrix (${matrixResponse.status}).`);
+            if (!poolsResponse.ok) throw new Error(`Could not load Mordheim scenario pools (${poolsResponse.status}).`);
+            const [text,poolData] = await Promise.all([matrixResponse.text(),poolsResponse.json()]);
+            const lines = text.split(/\r?\n/);
+            const headerIndex = lines.findIndex(line => line.includes("Attacker's quest") && line.includes('Defender'));
+            if (headerIndex < 0) throw new Error('Quest matchup table was not found.');
+            const headers = lines[headerIndex].split('|').slice(1,-1).map(cell => cell.trim());
+            const quests = headers.slice(1).map(cell => cell.replace(/^\*\*|\*\*$/g,''));
+            const matrix = {};
+            for (const line of lines.slice(headerIndex + 2)) {
+              if (!line.trim().startsWith('|')) break;
+              const cells = line.split('|').slice(1,-1).map(cell => cell.trim());
+              const attacker = cells[0]?.replace(/^\*\*|\*\*$/g,'');
+              if (!CHALLENGE_QUESTS.includes(attacker)) continue;
+              matrix[attacker] = {};
+              quests.forEach((defender,index) => {
+                const match = cells[index + 1]?.match(/^\[([^\]]+)\]\(([^)]+)\)\s*—\s*(.*)$/);
+                if (match) matrix[attacker][defender] = { scenario:match[1], url:match[2], hook:match[3] };
+              });
+            }
+            if (!CHALLENGE_QUESTS.every(quest => matrix[quest] && CHALLENGE_QUESTS.every(defender => matrix[quest][defender]))) throw new Error('The quest matchup table is incomplete.');
+            for (const attacker of CHALLENGE_QUESTS) for (const defender of CHALLENGE_QUESTS) {
+              const cell = matrix[attacker][defender];
+              const ids = poolData?.matrix?.[attacker]?.[defender];
+              if (!Array.isArray(ids) || ids.length !== 3 || new Set(ids).size !== 3) throw new Error(`The ${attacker} / ${defender} matchup must have three distinct scenarios.`);
+              cell.scenarios = ids.map(id => {
+              const scenario = poolData.scenarios?.[id];
+                if (!scenario || !SCENARIO_BOONS[scenario.title] || !SCENARIO_OBJECTIVES[scenario.title] || scenario.tag !== SCENARIO_BOONS[scenario.title].tag) throw new Error(`Scenario pool entry “${id}” is missing its title, matching theme, boon, or objective.`);
+                return { ...scenario, id, scenario:scenario.title, hook:scenario.title === cell.scenario ? cell.hook : scenario.hook };
+              });
+              if (!cell.scenarios.some(scenario => scenario.scenario === cell.scenario)) throw new Error(`The current matrix scenario ${cell.scenario} is missing from its three-scenario pool.`);
+            }
+            challengeMatrix = matrix;
+          } catch (error) { challengeMatrix = null; challengeMatrixError = error.message; }
+          renderChallengeCampaign();
+        })();
+        return challengeMatrixPromise;
+      }
+      let challengeMatrixError = '';
+      function campaignRolesAt(campaign,index) {
+        let attacker = 'a', defender = 'b';
+        for (let previous = 0; previous < index; previous++) {
+          if (campaign.shape[previous] !== 'O') continue;
+          const winner = campaign.results[previous]?.winner;
+          if (winner === 'a') { attacker = 'b'; defender = 'a'; }
+          else if (winner === 'b') { attacker = 'a'; defender = 'b'; }
+        }
+        return { attacker, defender };
+      }
+      function campaignScenarioAt(campaign,index) {
+        const roles = campaignRolesAt(campaign,index);
+        const cell = campaignScenarioForRoles(campaign,roles);
+        const chosenId = campaign.scenarioSelections?.[index];
+        const recordedTitle = campaign.results?.[index]?.scenarioTitle;
+        return { ...cell, matchup:cell.scenarios?.find(scenario => scenario.id === chosenId) || cell.scenarios?.find(scenario => scenario.scenario === recordedTitle) || cell.matchup };
+      }
+      function campaignScenarioForRoles(campaign,roles) {
+        const questA = roles.attacker === 'a' ? campaign.questA : campaign.questB;
+        const questD = roles.defender === 'a' ? campaign.questA : campaign.questB;
+        const cell = challengeMatrix?.[questA]?.[questD] || null;
+        const baseMatchup = cell ? { scenario:cell.scenario, url:cell.url, hook:cell.hook } : null;
+        return { ...roles, questA, questD, cell, scenarios:cell?.scenarios || [], matchup:baseMatchup };
+      }
+      function campaignCellKey(questA,questD) { return `${questA}|||${questD}`; }
+      function shuffledCampaignPool(items) {
+        const result = [...items];
+        for (let i = result.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [result[i],result[j]] = [result[j],result[i]];
+        }
+        return result;
+      }
+      function ensureCampaignScenario(campaign,index) {
+        campaign.scenarioSelections ||= {};
+        const roles = campaignRolesAt(campaign,index);
+        const cell = campaignScenarioForRoles(campaign,roles);
+        if (!cell.scenarios.length) return false;
+        const existing = campaign.scenarioSelections[index];
+        if (existing && cell.scenarios.some(scenario => scenario.id === existing)) return false;
+        const key = campaignCellKey(cell.questA,cell.questD);
+        campaign.scenarioDeck ||= {};
+        campaign.scenarioDeck[key] ||= shuffledCampaignPool(cell.scenarios.map(scenario => scenario.id));
+        const used = Object.entries(campaign.scenarioSelections).filter(([stage]) => Number(stage) !== index).map(([,id]) => id);
+        const selected = campaign.scenarioDeck[key].find(id => !used.includes(id)) || campaign.scenarioDeck[key][0];
+        campaign.scenarioSelections[index] = selected;
+        return true;
+      }
+      function campaignBranchPreview(campaign,index,type,matchup,aName,bName) {
+        const nextType = campaign.shape[index + 1];
+        if (type === 'M') {
+          if (nextType === 'O') {
+            const theme = SCENARIO_BOONS[matchup?.scenario]?.name || 'scenario-themed boon';
+            return `<div class="campaign-branches"><strong>Possible branches</strong><ul><li>${safe(aName)} wins → A can earn quest progress and receives ${safe(theme)} for the next Old World battle.</li><li>${safe(bName)} wins → B can earn quest progress and receives ${safe(theme)} for the next Old World battle.</li><li>Draw → check each objective for quest progress; no boon is awarded.</li></ul></div>`;
+          }
+          if (nextType === 'M') return '<div class="campaign-branches"><strong>Possible branches</strong>Record quest progress from this result; roles stay the same for the linked Mordheim mission.</div>';
+          return `<div class="campaign-branches"><strong>Possible branches</strong>${safe(aName)} or ${safe(bName)} can claim the campaign with a win; a draw leaves it contested.</div>`;
+        }
+        if (nextType === 'M') {
+          const before = campaignRolesAt(campaign,index);
+          const candidates = [
+            { winner:'a', roles:{attacker:'b',defender:'a'} },
+            { winner:'b', roles:{attacker:'a',defender:'b'} },
+            { winner:'draw', roles:before }
+          ];
+          const branches = candidates.map(candidate => {
+            const matchupAfter = campaignScenarioForRoles(campaign,candidate.roles);
+            const attackerName = candidate.roles.attacker === 'a' ? aName : bName;
+            const defenderName = candidate.roles.defender === 'a' ? aName : bName;
+            const outcome = candidate.winner === 'draw' ? 'Draw' : `${candidate.winner === 'a' ? aName : bName} wins`;
+            const options = matchupAfter.scenarios.map(scenario => scenario.scenario).join(', ');
+            return `<li>${safe(outcome)} → ${safe(defenderName)} defends; ${safe(attackerName)} attacks. Next scenario is randomly drawn from: ${safe(options)}.</li>`;
+          }).join('');
+          return `<div class="campaign-branches"><strong>Possible branches into Mordheim</strong><ul>${branches}</ul></div>`;
+        }
+        if (nextType === 'O') return '<div class="campaign-branches"><strong>Possible branches</strong>The next Old World battle follows; the most recent Old World result before a Mordheim game will set its attacker and defender.</div>';
+        return `<div class="campaign-branches"><strong>Possible branches</strong>${safe(aName)} or ${safe(bName)} can claim the campaign with a win; a draw leaves it contested.</div>`;
+      }
+      function mordheimScenarioQualifiesForScout(scenario) {
+        const source = SCENARIO_BOONS[scenario];
+        return ['route','territory'].includes(source?.tag) || (source?.questTags || []).some(tag => ['route','territory'].includes(tag));
+      }
+      function mordheimQuestObjective(quest,role,scenario) {
+        const scoutEligible = mordheimScenarioQualifiesForScout(scenario);
+        const focus = {
+          'Search for the Artefact':role === 'attacker' ? 'Relic hunters: seize the treasure or artifact before the rival warband.' : 'Relic guardians: recover or defend the prize and deny it to the rival warband.',
+          'Master of Magic':role === 'attacker' ? 'Arcane pursuit: claim the lore, tome, wand, or magical source at stake.' : 'Arcane wardens: secure the lore or magical prize before it is lost or stolen.',
+          'Defend Your Realm':role === 'attacker' ? 'Take the contested ground and dislodge its defenders.' : 'Hold the ground and deny the attackers their objective.',
+          'Scout Fertile Lands':role === 'attacker' ? 'Scouts: map and force a passage through the route.' : 'Rearguard: protect the route and stop the scouts.'
+        }[quest] || 'Pursue your warband’s campaign objective.';
+        let credit;
+        if (quest === 'Scout Fertile Lands') {
+          credit = scoutEligible
+            ? `This ${SCENARIO_BOONS[scenario].theme.toLowerCase()} matchup qualifies. If your warband fulfills the published scenario objective above, Scout Fertile Lands completes (normal reward; not +1 point), regardless of the recorded battle result. If you do not fulfill that objective, you gain no Scout credit—even if you win.`
+            : `This matchup does not qualify for Scout Fertile Lands. It awards no Scout quest point or completion; use the Old World edge objective or spend 1 Gold under the Conquest rules.`;
+        } else {
+          credit = 'Gain 1 Campaign Quest Mark (record as +1 quest point) if you win. On a draw, gain 1 only if you achieved the published scenario objective above. On a loss without objective success, gain 0. Quest progress is capped at the normal 3-point completion threshold.';
+        }
+        return { focus, credit };
+      }
+      function oldWorldQuestRule(quest) {
+        if (quest === 'Search for the Artefact') return { kind:'count', label:'Friendly units wholly within the opponent’s territory at battle end', detail:'Gain 1 quest point per qualifying unit. You may spend 1 Gold for +1 quest point.' };
+        if (quest === 'Master of Magic') return { kind:'count', label:'Friendly Wizard casting rolls of 8+', detail:'Gain 1 quest point per qualifying casting roll. You may spend 1 Gold for +1 quest point.' };
+        if (quest === 'Defend Your Realm') return { kind:'count', label:'Friendly units wholly within your territory at battle end', detail:'Gain 1 quest point per qualifying unit. You may spend 1 Gold for +1 quest point.' };
+        return { kind:'scout', label:'Any friendly unit wholly within 4″ of a battlefield edge and wholly outside your territory at battle end', detail:'Meet this condition to complete the quest, or spend 1 Gold to complete it.' };
+      }
+      function campaignRosterGold(rosterId) {
+        const roster = rosterById(rosterId);
+        const rosterData = roster?.data;
+        return Number(rosterData?.campaign?.startingGold || 0) + (rosterData?.ledger || []).reduce((sum,row) => sum + Number(row.delta || 0),0);
+      }
+      function oldWorldQuestObjectiveMarkup(campaign,side,stageIndex,editable) {
+        const suffix = side.toUpperCase();
+        const quest = campaign[`quest${suffix}`];
+        const rule = oldWorldQuestRule(quest);
+        const rosterId = side === 'a' ? campaign.challengerId : campaign.challengedId;
+        const name = challengeSideName(campaign,side);
+        const objectiveControl = editable ? rule.kind === 'count'
+          ? `<div class="campaign-objective-controls"><label for="questCount${suffix}${stageIndex}">Qualifying events</label><input class="campaign-objective-count" id="questCount${suffix}${stageIndex}" name="questCount${suffix}" type="number" min="0" step="1" value="0"><label><input type="checkbox" name="questGold${suffix}"> Spend 1 Gold for +1 point</label></div>`
+          : `<div class="campaign-objective-controls"><label><input type="checkbox" name="questScout${suffix}"> Condition met</label><label><input type="checkbox" name="questGold${suffix}"> Spend 1 Gold to complete</label></div>`
+          : '';
+        return `<div class="campaign-objective"><strong>${safe(name)} · ${safe(quest)}</strong><p><b>Objective:</b> ${safe(rule.label)}</p><p>${safe(rule.detail)}${editable ? ` Gold available: ${campaignRosterGold(rosterId)}.` : ''}</p>${objectiveControl}</div>`;
+      }
+      function campaignProgressMarkup(campaign,side) {
+        const quest = campaign[`quest${side.toUpperCase()}`];
+        const progress = Number(campaign[`progress${side.toUpperCase()}`] || 0);
+        const marks = Number(campaign[`marks${side.toUpperCase()}`] || 0);
+        const complete = Boolean(campaign[`complete${side.toUpperCase()}`]);
+        const track = quest === 'Scout Fertile Lands' ? (complete ? 'Quest completed' : 'Route objective required') : `${Math.min(3,progress)} / 3 quest points`;
+        return `<div class="campaign-player-state"><strong>${safe(challengeRosterName(campaign[side === 'a' ? 'challengerId' : 'challengedId'],campaign[side === 'a' ? 'challengerName' : 'challengedName']))}</strong>${safe(quest || 'Quest not selected')} · ${safe(track)}<br>Campaign marks earned: ${marks}${complete ? '<br><span class="badge good">Quest complete · claim its normal reward</span>' : ''}</div>`;
+      }
+      function renderChallengeCampaign() {
+        const root = $('#challengeRoot');
+        if (!root) return;
+        if (challengeMatrix) {
+          const logChanged = [...(challengeBook.history || []),challengeBook.active].filter(Boolean).map(ensureCampaignBattleLogs).some(Boolean);
+          if (logChanged) { saveChallengeBook(); save(); }
+        }
+        const historyRoot = $('#challengeHistoryRoot');
+        if (historyRoot) historyRoot.innerHTML = renderChallengeHistoryMarkup();
+        const campaign = challengeBook.active;
+        const activeState = campaign && ['pending','accepted','active','complete'].includes(campaign.status);
+        const opponents = rosterBook.rosters.filter(roster => roster.id !== activeRosterId);
+        const previous = campaign && !activeState ? `<div class="success-box"><strong>Previous challenge: ${safe(campaignRosterName(campaign.challengerId,campaign.challengerName))} vs ${safe(campaignRosterName(campaign.challengedId,campaign.challengedName))}</strong> · ${campaign.status === 'complete' ? 'Campaign complete.' : 'Challenge declined.'}</div>` : '';
+        const createForm = `<section class="record"><h3>Issue a challenge</h3>${opponents.length ? `<div class="grid"><div class="field"><label for="challengeOpponent">Challenge another saved roster</label><select id="challengeOpponent">${opponents.map(roster => `<option value="${safe(roster.id)}">${safe(roster.name)}</option>`).join('')}</select></div><div class="field"><label>Your roster</label><input value="${safe(challengeRosterName(activeRosterId))}" disabled></div></div><div class="campaign-action-row"><button class="button primary" type="button" data-challenge-action="create">Create challenge</button></div>` : '<div class="empty">Create another roster first so there is an opponent to challenge.</div>'}</section>`;
+        if (!activeState) { root.innerHTML = `${previous}${createForm}${challengeMatrix ? '' : `<p class="warn-box">${safe(challengeMatrixError || 'Loading the quest matchup matrix…')}</p>`}`; return; }
+        const aName = challengeRosterName(campaign.challengerId,campaign.challengerName);
+        const bName = challengeRosterName(campaign.challengedId,campaign.challengedName);
+        if (campaign.status === 'pending') {
+          const isTarget = activeRosterId === campaign.challengedId;
+          root.innerHTML = `<section class="record"><div class="record-head"><strong>Challenge pending</strong><span class="badge">${safe(aName)} → ${safe(bName)}</span></div><p class="hint">${isTarget ? 'You are on the challenged roster. Accept or decline this challenge.' : `Switch the active roster to “${safe(bName)}” so that player can accept or decline.`}</p><div class="campaign-action-row"><button class="button primary" type="button" data-challenge-action="accept" ${isTarget ? '' : 'disabled'}>Accept challenge</button><button class="button danger" type="button" data-challenge-action="decline" ${isTarget ? '' : 'disabled'}>Decline</button></div></section>`;
+          return;
+        }
+        if (campaign.status === 'accepted') {
+          const rosterA = rosterById(campaign.challengerId), rosterB = rosterById(campaign.challengedId);
+          const defaultA = CHALLENGE_QUESTS.includes(rosterA?.data?.campaign?.quest) ? rosterA.data.campaign.quest : '';
+          const defaultB = CHALLENGE_QUESTS.includes(rosterB?.data?.campaign?.quest) ? rosterB.data.campaign.quest : '';
+          root.innerHTML = `<section class="record"><div class="record-head"><strong>Challenge accepted</strong><span class="badge good">Choose one quest each</span></div><div class="grid"><div class="field"><label for="challengeQuestA">${safe(aName)} · quest</label>${challengeQuestSelect('challengeQuestA',campaign.questA || defaultA)}</div><div class="field"><label for="challengeQuestB">${safe(bName)} · quest</label>${challengeQuestSelect('challengeQuestB',campaign.questB || defaultB)}</div><div class="field full"><label for="challengeLocation">Campaign location (optional)</label><input id="challengeLocation" data-challenge-field="location" value="${safe(campaign.location || '')}" placeholder="Border town, river crossing…"></div></div><p class="campaign-note">Quest marks earned here are tracked with this challenge. Update each roster's Quest Log and apply normal rewards when appropriate.</p>${challengeMatrix ? '' : `<p class="warn-box">${safe(challengeMatrixError || 'Loading the quest matchup matrix…')}</p>`}<div class="campaign-action-row"><button class="button primary" type="button" data-challenge-action="generate" ${challengeMatrix && (campaign.questA || defaultA) && (campaign.questB || defaultB) ? '' : 'disabled'}>Roll shape &amp; generate campaign</button></div></section>`;
+          return;
+        }
+        root.innerHTML = renderActiveChallenge(campaign,aName,bName);
+      }
+      function renderActiveChallenge(campaign,aName,bName) {
+        const shape = campaign.shape || [];
+        const stageIndex = campaign.results.length;
+        const counts = { M:0, O:0 };
+        let scenarioSelectionChanged = false;
+        const stages = shape.map((type,index) => {
+          counts[type]++;
+          const result = campaign.results[index];
+          const current = index === stageIndex && campaign.status === 'active';
+          const mayRevealMordheim = index <= stageIndex || Boolean(result);
+          if (type === 'M' && mayRevealMordheim && (!result || campaign.scenarioSelections?.[index])) scenarioSelectionChanged = ensureCampaignScenario(campaign,index) || scenarioSelectionChanged;
+          const roles = type === 'M' && mayRevealMordheim ? campaignScenarioAt(campaign,index) : null;
+          const matchup = roles?.matchup;
+          const title = `${type === 'M' ? 'Mordheim' : 'Old World'} battle ${counts[type]}`;
+          let details = type === 'M'
+            ? roles ? `<p><strong>${safe(aName)}</strong> (${roles.attacker === 'a' ? 'attacker' : 'defender'}) vs <strong>${safe(bName)}</strong> (${roles.attacker === 'b' ? 'attacker' : 'defender'}).</p>${matchup ? `<p><strong>${safe(matchup.scenario)}</strong> — ${safe(matchup.hook)}</p>` : '<p class="warn-box">Quest matchup unavailable; check the local matchup matrix.</p>'}` : '<p>Attacker/defender roles and the matchup scenario will be set from the preceding Old World result.</p>'
+            : `<p>Fight a normal Conquest Old World battle. Use any boon earned from the preceding Mordheim game.</p><div class="campaign-objectives">${oldWorldQuestObjectiveMarkup(campaign,'a',index,false)}${oldWorldQuestObjectiveMarkup(campaign,'b',index,false)}</div>`;
+          if (type === 'M' && roles && matchup) {
+            const roleA = roles.attacker === 'a' ? 'attacker' : 'defender';
+            const roleB = roles.attacker === 'b' ? 'attacker' : 'defender';
+            const missionObjective = SCENARIO_OBJECTIVES[matchup.scenario] || 'Use the selected scenario’s published victory condition.';
+            const objectiveA = mordheimQuestObjective(campaign.questA,roleA,matchup.scenario);
+            const objectiveB = mordheimQuestObjective(campaign.questB,roleB,matchup.scenario);
+            details += `<p class="campaign-note">Randomly selected from this quest matchup’s 3 thematic scenarios; this campaign avoids repeating a Mordheim scenario when possible.</p>`;
+            details += `<p class="campaign-note">The matchup’s attacker/defender labels set the story roles. Follow the scenario’s own setup to determine its actual attacker/defender where it differs.</p><div class="campaign-objectives"><div class="campaign-objective"><strong>${safe(aName)} · ${safe(campaign.questA)} · story role: ${safe(roleA)}</strong><p><b>Quest focus:</b> ${safe(objectiveA.focus)}</p><p><b>Scenario condition:</b> ${safe(missionObjective)}</p><p><b>Quest credit:</b> ${safe(objectiveA.credit)}</p></div><div class="campaign-objective"><strong>${safe(bName)} · ${safe(campaign.questB)} · story role: ${safe(roleB)}</strong><p><b>Quest focus:</b> ${safe(objectiveB.focus)}</p><p><b>Scenario condition:</b> ${safe(missionObjective)}</p><p><b>Quest credit:</b> ${safe(objectiveB.credit)}</p></div></div>`;
+          }
+          if (type === 'O' && index > 0 && campaign.shape[index - 1] === 'M' && campaign.results[index - 1]?.boon) {
+            const boon = campaign.results[index - 1].boon;
+            details += `<div class="success-box"><strong>${safe(boon.title)}</strong><br>${safe(boon.effect)}</div>`;
+          }
+          if (result) {
+            const winnerText = result.winner === 'draw' ? 'Draw' : `${result.winner === 'a' ? safe(aName) : safe(bName)} wins`;
+            details += `<p><strong>Result:</strong> ${winnerText}</p>`;
+            if (result.messages?.length) details += `<p>${result.messages.map(safe).join('<br>')}</p>`;
+            if (result.boon) details += `<div class="success-box"><strong>${safe(result.boon.title)}</strong> · ${safe(result.boon.theme)}<br>${safe(result.boon.effect)}<br><span class="campaign-note">${safe(result.boon.story)}</span></div>`;
+          } else if (current) {
+            details += `<form class="campaign-result-form" data-campaign-result-form="${index}"><div class="field"><label for="campaignWinner${index}">Battle result</label><select id="campaignWinner${index}" name="winner" required><option value="">Record result…</option><option value="a">${safe(aName)} wins</option><option value="b">${safe(bName)} wins</option><option value="draw">Draw</option></select></div>${type === 'M' ? `<div class="field"><span class="field-label">Did each warband achieve the published scenario objective above?</span><div class="campaign-checks"><label><input type="checkbox" name="objectiveA"> ${safe(aName)}</label><label><input type="checkbox" name="objectiveB"> ${safe(bName)}</label></div></div>` : `<div class="campaign-objectives">${oldWorldQuestObjectiveMarkup(campaign,'a',index,true)}${oldWorldQuestObjectiveMarkup(campaign,'b',index,true)}</div>`}<button class="button primary" type="button" data-challenge-action="record-result" data-stage="${index}">Record result</button></form>`;
+            details += campaignBranchPreview(campaign,index,type,matchup,aName,bName);
+          }
+          return `<article class="campaign-battle ${result ? 'done' : current ? 'current' : ''}"><h3><span>${index + 1}. ${safe(title)}</span><span class="badge ${result ? 'good' : current ? 'warn' : ''}">${result ? 'Resolved' : current ? 'Current battle' : 'Upcoming'}</span></h3>${details}</article>`;
+        }).join('');
+        if (scenarioSelectionChanged) saveChallengeBook();
+        const completed = campaign.status === 'complete';
+        const shapeLabel = shape.join(' · ').replaceAll('M','Mordheim').replaceAll('O','Old World');
+        const location = campaign.location || 'the contested borderlands';
+        const premise = `Seeking ${campaign.questA}, ${aName} has entered ${location}; ${bName} stands in the way while pursuing ${campaign.questB}. Their conflict will unfold through ${shapeLabel}.`;
+        const epilogue = completed ? campaign.finalWinner === 'draw'
+          ? `${aName} and ${bName} withdraw with the campaign objective unresolved.`
+          : `${campaign.finalWinner === 'a' ? aName : bName} claims the field; the rival force survives to pursue its unfinished quest.` : '';
+        return `<div class="record-head"><strong>${safe(aName)} vs ${safe(bName)}</strong><span class="badge ${completed ? 'good' : 'warn'}">${completed ? 'Campaign complete' : 'In progress'}</span></div><div class="challenge-banner"><strong>Campaign premise.</strong> ${safe(premise)}</div><div class="campaign-shape">${shape.map(type => `<span>${type === 'M' ? 'Mordheim' : 'Old World'}</span>`).join('')}</div><p class="campaign-note">${shape.length} games · ${safe(shapeLabel)} · length roll ${campaign.lengthRoll}, shape roll ${campaign.shapeRoll}${campaign.location ? ` · ${safe(campaign.location)}` : ''}</p><div class="campaign-ledger">${campaignProgressMarkup(campaign,'a')}${campaignProgressMarkup(campaign,'b')}</div><div class="campaign-battles">${stages}</div>${completed ? `<div class="success-box"><strong>Campaign epilogue.</strong> ${safe(epilogue)}</div>` : ''}<div class="campaign-action-row">${campaign.results.length ? '<button class="button small" type="button" data-challenge-action="undo-result">Undo last result</button>' : ''}${completed ? '<button class="button" type="button" data-challenge-action="new">Start another challenge</button>' : ''}</div>`;
+      }
+      function initialCampaignProgress(rosterId,quest) {
+        const roster = rosterById(rosterId);
+        return roster?.data?.campaign?.quest === quest ? Math.max(0,Number(roster.data.campaign.questProgress || 0)) : 0;
+      }
+      function generateChallengeCampaign(campaign) {
+        campaign.questA = $('#challengeQuestA').value;
+        campaign.questB = $('#challengeQuestB').value;
+        campaign.location = $('#challengeLocation').value.trim();
+        if (!CHALLENGE_QUESTS.includes(campaign.questA) || !CHALLENGE_QUESTS.includes(campaign.questB)) { alert('Both players must choose a quest.'); return; }
+        if (!challengeMatrix) { alert(challengeMatrixError || 'The quest matchup matrix has not loaded yet.'); return; }
+        const lengthRoll = Math.floor(Math.random() * 6) + 1;
+        const length = lengthRoll <= 3 ? 3 : 4;
+        const shapeRoll = Math.floor(Math.random() * 4) + 1;
+        campaign.lengthRoll = lengthRoll;
+        campaign.shapeRoll = shapeRoll;
+        campaign.shape = deepCopy(CHALLENGE_SHAPES[length][shapeRoll - 1]);
+        campaign.results = [];
+        campaign.scenarioSelections = {};
+        campaign.scenarioDeck = {};
+        for (const attackerQuest of CHALLENGE_QUESTS) for (const defenderQuest of CHALLENGE_QUESTS) {
+          const cell = challengeMatrix[attackerQuest][defenderQuest];
+          campaign.scenarioDeck[campaignCellKey(attackerQuest,defenderQuest)] = shuffledCampaignPool(cell.scenarios.map(scenario => scenario.id));
+        }
+        campaign.progressA = initialCampaignProgress(campaign.challengerId,campaign.questA);
+        campaign.progressB = initialCampaignProgress(campaign.challengedId,campaign.questB);
+        campaign.marksA = 0; campaign.marksB = 0;
+        campaign.completeA = campaign.questA !== 'Scout Fertile Lands' && campaign.progressA >= 3;
+        campaign.completeB = campaign.questB !== 'Scout Fertile Lands' && campaign.progressB >= 3;
+        campaign.status = 'active';
+        campaign.finalWinner = null;
+        saveChallengeBook(); renderChallengeCampaign();
+      }
+      function campaignMark(campaign,side,won,draw,objective,scenario) {
+        const suffix = side.toUpperCase();
+        const quest = campaign[`quest${suffix}`];
+        const completeKey = `complete${suffix}`, progressKey = `progress${suffix}`, marksKey = `marks${suffix}`;
+        if (campaign[completeKey]) return '';
+        const scoutEligible = mordheimScenarioQualifiesForScout(scenario);
+        if (quest === 'Scout Fertile Lands') {
+          if (!objective || !scoutEligible) return `${challengeSideName(campaign,side)} does not earn Scout Fertile Lands progress from this objective.`;
+          campaign[completeKey] = true;
+          campaign[marksKey] = Number(campaign[marksKey] || 0) + 1;
+          return `${challengeSideName(campaign,side)} completes Scout Fertile Lands; claim its normal reward.`;
+        }
+        if (!won && !(draw && objective)) return `${challengeSideName(campaign,side)} gains no Campaign Quest Mark for ${quest} from this Mordheim result.`;
+        campaign[progressKey] = Math.min(3,Number(campaign[progressKey] || 0) + 1);
+        campaign[marksKey] = Number(campaign[marksKey] || 0) + 1;
+        if (campaign[progressKey] >= 3) {
+          campaign[completeKey] = true;
+          return `${challengeSideName(campaign,side)} completes ${quest}; claim its normal reward.`;
+        }
+        return `${challengeSideName(campaign,side)} earns one quest mark (${campaign[progressKey]}/3).`;
+      }
+      function oldWorldQuestInput(form,side) {
+        const suffix = side.toUpperCase();
+        const rawCount = Number(form.querySelector(`[name="questCount${suffix}"]`)?.value || 0);
+        return {
+          count:Number.isFinite(rawCount) ? Math.max(0,Math.floor(rawCount)) : 0,
+          condition:Boolean(form.querySelector(`[name="questScout${suffix}"]`)?.checked),
+          spendGold:Boolean(form.querySelector(`[name="questGold${suffix}"]`)?.checked)
+        };
+      }
+      function shouldSpendQuestGold(campaign,side,input) {
+        const suffix = side.toUpperCase();
+        if (campaign[`complete${suffix}`] || !input.spendGold) return false;
+        const quest = campaign[`quest${suffix}`];
+        if (quest === 'Scout Fertile Lands') return !input.condition;
+        const remaining = Math.max(0,3 - Number(campaign[`progress${suffix}`] || 0));
+        return input.count < remaining;
+      }
+      function applyOldWorldQuestProgress(campaign,side,input,scenario) {
+        const suffix = side.toUpperCase();
+        const quest = campaign[`quest${suffix}`];
+        const progressKey = `progress${suffix}`, marksKey = `marks${suffix}`, completeKey = `complete${suffix}`;
+        const name = challengeSideName(campaign,side);
+        if (campaign[completeKey]) return `${name} had already completed ${quest}; no additional quest progress.`;
+        if (quest === 'Scout Fertile Lands') {
+          const spent = shouldSpendQuestGold(campaign,side,input);
+          if (!input.condition && !spent) return `${name} does not complete Scout Fertile Lands; no quest progress gained.`;
+          campaign[completeKey] = true;
+          campaign[marksKey] = Number(campaign[marksKey] || 0) + 1;
+          return `${name} completes Scout Fertile Lands${spent ? ' by spending 1 Gold' : ' by reaching the battlefield edge outside their territory'}; make 2 exploration rolls in the aftermath.`;
+        }
+        const before = Number(campaign[progressKey] || 0);
+        const remaining = Math.max(0,3 - before);
+        let gained = Math.min(remaining,input.count);
+        let spent = false;
+        if (gained < remaining && shouldSpendQuestGold(campaign,side,input)) { gained++; spent = true; }
+        if (!gained) return `${name} gains no quest points for ${quest} this battle.`;
+        campaign[progressKey] = before + gained;
+        campaign[marksKey] = Number(campaign[marksKey] || 0) + gained;
+        if (campaign[progressKey] >= 3) {
+          campaign[completeKey] = true;
+          return `${name} gains ${gained} quest point${gained === 1 ? '' : 's'} for ${quest}${spent ? ' (including 1 Gold)' : ''}, reaching 3/3 and completing it. Claim the normal reward.`;
+        }
+        return `${name} gains ${gained} quest point${gained === 1 ? '' : 's'} for ${quest}${spent ? ' (including 1 Gold)' : ''}, now ${campaign[progressKey]}/3.`;
+      }
+      function addCampaignQuestGoldExpense(campaign,side) {
+        const rosterId = side === 'a' ? campaign.challengerId : campaign.challengedId;
+        const roster = rosterById(rosterId);
+        if (!roster) return null;
+        roster.data.ledger ||= [];
+        const entry = { id:uid(), date:today(), description:`Challenge quest: ${campaign[`quest${side.toUpperCase()}`]}`, delta:-1 };
+        roster.data.ledger.push(entry);
+        return { rosterId, entryId:entry.id };
+      }
+      function campaignScenarioById(id) {
+        if (!id || !challengeMatrix) return null;
+        for (const attacker of CHALLENGE_QUESTS) for (const defender of CHALLENGE_QUESTS) {
+          const scenario = challengeMatrix[attacker]?.[defender]?.scenarios?.find(item => item.id === id);
+          if (scenario) return scenario;
+        }
+        return null;
+      }
+      function campaignRecordedScenarioAt(campaign,index,result = campaign.results?.[index]) {
+        if (result?.scenarioTitle) return { scenario:result.scenarioTitle, hook:result.scenarioHook || '' };
+        const selected = campaignScenarioById(campaign.scenarioSelections?.[index]);
+        if (selected) return selected;
+        if (campaign.shape?.[index] !== 'M') return null;
+        const roles = campaignRolesAt(campaign,index);
+        const questA = roles.attacker === 'a' ? campaign.questA : campaign.questB;
+        const questD = roles.defender === 'a' ? campaign.questA : campaign.questB;
+        const cell = challengeMatrix?.[questA]?.[questD];
+        return cell ? { scenario:cell.scenario, hook:cell.hook } : null;
+      }
+      function campaignBattleLogEntry(campaign,index,side,result) {
+        const ownRosterId = side === 'a' ? campaign.challengerId : campaign.challengedId;
+        const otherSide = side === 'a' ? 'b' : 'a';
+        const roster = rosterById(ownRosterId);
+        if (!roster) return null;
+        const type = campaign.shape[index];
+        const scenario = type === 'M' ? campaignRecordedScenarioAt(campaign,index,result) : null;
+        const outcome = result.winner === 'draw' ? 'Draw' : result.winner === side ? 'Campaign win' : 'Campaign loss';
+        const plan = type === 'M' ? `Mordheim · ${scenario?.scenario || 'Scenario'}` : 'The Old World · Conquest';
+        const notes = [
+          `Challenge campaign: ${campaign.questA} vs ${campaign.questB}. Game ${index + 1} of ${campaign.shape.length}.`,
+          scenario?.hook ? `Story: ${scenario.hook}` : '',
+          ...(result.messages || []),
+          result.boon ? `Next Old World boon for ${challengeSideName(campaign,result.winner)}: ${result.boon.title} — ${result.boon.effect}` : ''
+        ].filter(Boolean);
+        return {
+          id:uid(), challengeId:campaign.id, stageIndex:index, date:result.date || String(campaign.createdAt || today()).slice(0,10),
+          opponent:challengeSideName(campaign,otherSide), points:'Campaign', result:outcome, plan, notes:notes.join(' ')
+        };
+      }
+      function ensureCampaignBattleLogs(campaign) {
+        if (!campaign?.id || !Array.isArray(campaign.results) || !Array.isArray(campaign.shape)) return false;
+        let changed = false;
+        campaign.results.forEach((result,index) => {
+          campaign.loggedStages ||= {};
+          if (campaign.loggedStages[index]) return;
+          for (const side of ['a','b']) {
+            const roster = rosterById(side === 'a' ? campaign.challengerId : campaign.challengedId);
+            if (!roster) continue;
+            roster.data.battles ||= [];
+            const exists = roster.data.battles.some(entry => entry.challengeId === campaign.id && Number(entry.stageIndex) === index);
+            if (!exists) {
+              const entry = campaignBattleLogEntry(campaign,index,side,result);
+              if (entry) { roster.data.battles.push(entry); changed = true; }
+            }
+          }
+          campaign.loggedStages[index] = true;
+          changed = true;
+        });
+        return changed;
+      }
+      function renderChallengeHistoryMarkup() {
+        const past = (challengeBook.history || []).filter(campaign => Array.isArray(campaign.shape) && Array.isArray(campaign.results));
+        if (!past.length) return '';
+        const entries = past.slice().reverse().map(campaign => {
+          const aName = challengeRosterName(campaign.challengerId,campaign.challengerName);
+          const bName = challengeRosterName(campaign.challengedId,campaign.challengedName);
+          const shape = (campaign.shape || []).map(type => type === 'M' ? 'Mordheim' : 'Old World').join(' → ');
+          const games = campaign.shape.map((type,index) => {
+            const result = campaign.results[index];
+            if (!result) return `<article class="campaign-battle"><h3>${index + 1}. ${type === 'M' ? 'Mordheim' : 'Old World'}</h3><p>Not played.</p></article>`;
+            const name = type === 'M' ? (campaignRecordedScenarioAt(campaign,index,result)?.scenario || 'Mordheim scenario') : 'Old World';
+            const winner = result.winner === 'draw' ? 'Draw' : `${result.winner === 'a' ? safe(aName) : safe(bName)} wins`;
+            return `<article class="campaign-battle done"><h3><span>${index + 1}. ${safe(name)}</span><span class="badge good">${winner}</span></h3>${result.messages?.length ? `<p>${result.messages.map(safe).join('<br>')}</p>` : ''}${result.boon ? `<p><strong>${safe(result.boon.title)}</strong> · ${safe(result.boon.effect)}</p>` : ''}</article>`;
+          }).join('');
+          return `<section class="record"><div class="record-head"><strong>${safe(aName)} vs ${safe(bName)}</strong><span class="badge">${campaign.status === 'complete' ? 'Complete' : safe(campaign.status)}</span></div><p class="campaign-note">${safe(shape)}${campaign.location ? ` · ${safe(campaign.location)}` : ''}<br>${safe(campaign.questA)} vs ${safe(campaign.questB)}</p><div class="campaign-battles">${games}</div></section>`;
+        }).join('');
+        return `<details class="build-details campaign-past"><summary>Past challenge campaigns · ${past.length}</summary><div class="stack" style="margin-top:.6rem">${entries}</div></details>`;
+      }
+      function createCampaignBoon(scenario,winnerQuest,winnerName) {
+        const source = SCENARIO_BOONS[scenario];
+        if (!source) return null;
+        const questPursuit = {
+          'Search for the Artefact':'the sought relic',
+          'Master of Magic':'arcane lore',
+          'Defend Your Realm':'the defence of their realm',
+          'Scout Fertile Lands':'new routes through the land'
+        }[winnerQuest] || 'their campaign objective';
+        return {
+          title:`${source.name} from ${scenario}`,
+          theme:source.theme,
+          effect:source.effect,
+          story:`${winnerName} turns the ${scenario} victory into an advantage while pursuing ${questPursuit}.`
+        };
+      }
+      function recordChallengeResult(campaign,index) {
+        const form = $(`[data-campaign-result-form="${index}"]`);
+        const winner = form?.querySelector('[name="winner"]')?.value;
+        if (!['a','b','draw'].includes(winner)) { alert('Select a battle result first.'); return; }
+        const type = campaign.shape[index];
+        const objectives = {
+          a:Boolean(form.querySelector('[name="objectiveA"]')?.checked),
+          b:Boolean(form.querySelector('[name="objectiveB"]')?.checked)
+        };
+        const before = Object.fromEntries(['progressA','progressB','marksA','marksB','completeA','completeB'].map(key => [key,campaign[key]]));
+        const result = { winner, objectives, before, date:today(), messages:[] };
+        if (type === 'M') {
+          const matchup = campaignScenarioAt(campaign,index).matchup;
+          const scenario = matchup?.scenario;
+          result.scenarioTitle = matchup?.scenario || '';
+          result.scenarioHook = matchup?.hook || '';
+          for (const side of ['a','b']) {
+            const message = campaignMark(campaign,side,winner === side,winner === 'draw',objectives[side],scenario);
+            if (message) result.messages.push(message);
+          }
+          if (winner !== 'draw' && campaign.shape[index + 1] === 'O') {
+            const winnerQuest = winner === 'a' ? campaign.questA : campaign.questB;
+            const winnerName = winner === 'a' ? challengeRosterName(campaign.challengerId,campaign.challengerName) : challengeRosterName(campaign.challengedId,campaign.challengedName);
+            result.boon = createCampaignBoon(scenario,winnerQuest,winnerName);
+          }
+        } else {
+          const questInputs = { a:oldWorldQuestInput(form,'a'), b:oldWorldQuestInput(form,'b') };
+          for (const side of ['a','b']) {
+            if (shouldSpendQuestGold(campaign,side,questInputs[side]) && campaignRosterGold(side === 'a' ? campaign.challengerId : campaign.challengedId) < 1) {
+              alert(`${challengeSideName(campaign,side)} does not have 1 Gold available for this quest option.`);
+              return;
+            }
+          }
+          result.goldSpent = [];
+          for (const side of ['a','b']) {
+            const input = questInputs[side];
+            const spendsGold = shouldSpendQuestGold(campaign,side,input);
+            if (spendsGold) {
+              const expense = addCampaignQuestGoldExpense(campaign,side);
+              if (expense) result.goldSpent.push(expense);
+            }
+            const message = applyOldWorldQuestProgress(campaign,side,input);
+            if (message) result.messages.push(message);
+          }
+        }
+        campaign.results.push(result);
+        if (campaign.results.length >= campaign.shape.length) {
+          campaign.status = 'complete';
+          campaign.finalWinner = winner;
+        }
+        ensureCampaignBattleLogs(campaign);
+        saveChallengeBook(); save(); renderAll();
+      }
+      function undoChallengeResult(campaign) {
+        if (!campaign.results.length || campaign.status === 'accepted') return;
+        const last = campaign.results.pop();
+        for (const side of ['a','b']) {
+          const roster = rosterById(side === 'a' ? campaign.challengerId : campaign.challengedId);
+          if (roster) roster.data.battles = (roster.data.battles || []).filter(entry => !(entry.challengeId === campaign.id && Number(entry.stageIndex) === campaign.results.length));
+        }
+        if (campaign.loggedStages) delete campaign.loggedStages[campaign.results.length];
+        for (const expense of last.goldSpent || []) {
+          const roster = rosterById(expense.rosterId);
+          if (roster) roster.data.ledger = (roster.data.ledger || []).filter(entry => entry.id !== expense.entryId);
+        }
+        Object.assign(campaign,last.before || {});
+        campaign.status = 'active';
+        campaign.finalWinner = null;
+        saveChallengeBook(); save(); renderAll();
+      }
+      function handleChallengeAction(action,actionElement) {
+        const current = challengeBook.active;
+        if (action === 'create') {
+          const targetId = $('#challengeOpponent')?.value;
+          const challenger = activeRoster(), target = rosterById(targetId);
+          if (!challenger || !target || target.id === challenger.id) return;
+          if (current && ['pending','accepted','active'].includes(current.status)) { alert('Finish or decline the current challenge before starting another.'); return; }
+          if (current) challengeBook.history.push(current);
+          challengeBook.active = {
+            id:uid(), status:'pending', challengerId:challenger.id, challengerName:challenger.name,
+            challengedId:target.id, challengedName:target.name, createdAt:new Date().toISOString()
+          };
+          saveChallengeBook(); renderChallengeCampaign(); return;
+        }
+        if (!current) return;
+        if (action === 'accept') {
+          if (activeRosterId !== current.challengedId) { alert('Select the challenged roster before accepting.'); return; }
+          current.status = 'accepted';
+          saveChallengeBook(); renderChallengeCampaign(); return;
+        }
+        if (action === 'decline') {
+          if (activeRosterId !== current.challengedId) return;
+          current.status = 'declined'; saveChallengeBook(); renderChallengeCampaign(); return;
+        }
+        if (action === 'generate') { generateChallengeCampaign(current); return; }
+        if (action === 'record-result') { recordChallengeResult(current,Number(actionElement?.dataset.stage)); return; }
+        if (action === 'undo-result') { undoChallengeResult(current); return; }
+        if (action === 'new') {
+          if (current.status === 'complete' || current.status === 'declined') {
+            challengeBook.history.push(current); challengeBook.active = null;
+            saveChallengeBook(); renderChallengeCampaign();
+          }
+        }
+      }
+      function activeRoster() { return rosterBook.rosters.find(roster => roster.id === activeRosterId); }
+      function renderRosterManager() {
+        const select = $('#rosterSelect');
+        if (!select) return;
+        select.innerHTML = rosterBook.rosters.map(roster => `<option value="${safe(roster.id)}">${safe(roster.name)}</option>`).join('');
+        select.value = activeRosterId;
+        $('#deleteRosterButton').disabled = rosterBook.rosters.length < 2;
       }
       function save() {
         try {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+          const current = activeRoster();
+          if (current) current.data = data;
+          rosterBook.activeId = activeRosterId;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({ format:'Old World Conquest Rosters', version:2, activeId:activeRosterId, rosters:rosterBook.rosters }));
           $('#saveStatus').textContent = `Saved locally · ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
         } catch (_) { $('#saveStatus').textContent = 'Could not save locally — export a backup'; }
       }
@@ -1749,12 +2471,27 @@
       function totalUnitLimit() { return Math.min(30, startInfo().units + Math.max(0, Number(data.campaign.barracks || 0)) * 2); }
       function setInput(id, value) { const el = document.getElementById(id); if (el && document.activeElement !== el) el.value = value ?? ''; }
       function populateFields() {
+        renderRosterManager();
         $$('#panel-overview [data-field], #panel-domain [data-field]').forEach(el => {
           const scope = el.dataset.scope;
           const value = scope === 'campaign' ? data.campaign[el.dataset.field] : '';
           if (document.activeElement !== el) el.value = value ?? '';
         });
+        $$('[data-scope="builder"][data-field]').forEach(el => {
+          if (document.activeElement !== el) el.value = data.builder[el.dataset.field] ?? '';
+        });
         renderAll();
+        const armyId = data.builder.army || factionFromCampaignName()?.id;
+        if (armyManifest && armyId) {
+          data.builder.army = armyId;
+          $('#builderArmy').value = armyId;
+          selectBuilderFaction(armyId, false);
+        } else if (armyManifest) {
+          armyCatalog = null;
+          $('#builderArmy').value = '';
+          $('#builderComposition').innerHTML = '<option value="">Select a faction first</option>';
+          renderBuilderForeignSelectors(); renderBuilderUnitSelect(); renderBuilderPreview(); renderBuilderValidation();
+        }
       }
       function unitChampionNameMarkup(unit) {
         const champions = (unit?.build?.command || []).filter(command => command.active && /champion/i.test(command.name_en || '') && String(command.mordheimCustomName || '').trim());
@@ -2735,7 +3472,7 @@
         refreshScoutingDetailsDialog();
       }
       function renderAll() {
-        renderTerritories(); renderUnits(); renderBuilderPreview(); renderVault(); renderLedger(); renderBattles(); renderQuestHistory(); renderScoutingWarband(); updateSummaries(); renderBuilderValidation();
+        renderTerritories(); renderUnits(); renderBuilderPreview(); renderVault(); renderLedger(); renderBattles(); renderQuestHistory(); renderScoutingWarband(); renderChallengeCampaign(); updateSummaries(); renderBuilderValidation();
       }
       function setTab(name) {
         $$('.tab').forEach(tab => tab.setAttribute('aria-selected', String(tab.dataset.tab === name)));
@@ -3047,6 +3784,10 @@
       });
       document.addEventListener('dragend', clearReorderDrag);
       document.addEventListener('click', event => {
+        const challengeAction = event.target.closest('[data-challenge-action]');
+        if (challengeAction) { handleChallengeAction(challengeAction.dataset.challengeAction,challengeAction); return; }
+        const scrollTarget = event.target.closest('[data-scroll-target]');
+        if (scrollTarget) { document.getElementById(scrollTarget.dataset.scrollTarget)?.scrollIntoView({ behavior:'smooth', block:'center' }); return; }
         const unitDetailsButton = event.target.closest('[data-open-unit-details]');
         if (unitDetailsButton) { openUnitDetails(unitDetailsButton); return; }
         if (event.target.closest('[data-close-unit-details]')) { $('#unitDetailsDialog').close(); return; }
@@ -3270,6 +4011,14 @@
         if (name === 'remove-quest') data.questHistory.splice(Number(index), 1);
         save(); renderAll();
       });
+      document.addEventListener('change', event => {
+        const field = event.target.closest('[data-challenge-field]');
+        if (!field || challengeBook.active?.status !== 'accepted') return;
+        challengeBook.active[field.dataset.challengeField] = field.value;
+        saveChallengeBook();
+        const generateButton = $('[data-challenge-action="generate"]');
+        if (generateButton) generateButton.disabled = !challengeMatrix || !$('#challengeQuestA')?.value || !$('#challengeQuestB')?.value;
+      });
       $('#addCatalogUnit').addEventListener('click', addCatalogUnit);
       $('#addTerritory').addEventListener('click', () => { data.territories.push({ id: uid(), type: 'old-keep', name: '', upgraded: false, notes: '' }); save(); renderAll(); });
       $('#addVault').addEventListener('click', () => { data.vault.push({ id: uid(), kind: 'Magic Item', name: '', assigned: '' }); save(); renderVault(); });
@@ -3297,6 +4046,36 @@
         const notes = prompt('Battle notes (optional):') || '';
         data.battles.push({ id: uid(), date, opponent, points, result, plan, notes }); save(); renderBattles();
       });
+      $('#rosterSelect').addEventListener('change', event => {
+        save();
+        const next = rosterBook.rosters.find(roster => roster.id === event.target.value);
+        if (!next) return;
+        activeRosterId = next.id;
+        data = next.data;
+        populateFields();
+        save();
+      });
+      $('#renameRosterButton').addEventListener('click', () => {
+        const roster = activeRoster();
+        const name = prompt('Roster name:', roster?.name || '');
+        if (name === null) return;
+        const trimmed = name.trim();
+        if (!trimmed) { alert('Enter a name for this roster.'); return; }
+        roster.name = trimmed;
+        renderRosterManager(); save();
+      });
+      $('#deleteRosterButton').addEventListener('click', () => {
+        if (rosterBook.rosters.length < 2) return;
+        const roster = activeRoster();
+        if (!confirm(`Delete “${roster.name}” and all of its campaign data? This cannot be undone.`)) return;
+        const index = rosterBook.rosters.findIndex(item => item.id === activeRosterId);
+        rosterBook.rosters.splice(index, 1);
+        const next = rosterBook.rosters[Math.max(0, index - 1)];
+        activeRosterId = next.id;
+        data = next.data;
+        populateFields();
+        save();
+      });
       $('#exportButton').addEventListener('click', () => {
         const blob = new Blob([JSON.stringify({ format: 'Old World Conquest Roster', version: 1, exportedAt: new Date().toISOString(), ...data }, null, 2)], { type: 'application/json' });
         const link = document.createElement('a');
@@ -3311,21 +4090,27 @@
           const parsed = JSON.parse(await file.text());
           const imported = parsed.campaign ? parsed : parsed.data;
           if (!imported || !imported.campaign || !Array.isArray(imported.units)) throw new Error('That file does not look like a Conquest roster backup.');
-          data = { ...blank(), ...imported, campaign: { ...blank().campaign, ...imported.campaign }, builder: { ...blank().builder, ...imported.builder } };
-          for (const key of ['territories','units','vault','ledger','battles','questHistory']) if (!Array.isArray(data[key])) data[key] = [];
+          data = normalizeRosterData(imported);
+          const roster = activeRoster();
+          if (roster && data.campaign.armyName) roster.name = data.campaign.armyName;
           save(); populateFields();
         } catch (error) { alert(`Could not import roster: ${error.message}`); }
         event.target.value = '';
       });
       $('#printButton').addEventListener('click', () => window.print());
       $('#resetButton').addEventListener('click', () => {
-        if (!confirm('Start a new roster? This replaces the roster saved in this browser. Export a backup first if you need it.')) return;
-        data = blank(); localStorage.removeItem(STORAGE_KEY); populateFields(); save(); setTab('overview');
+        save();
+        const roster = { id:uid(), name:`Roster ${rosterBook.rosters.length + 1}`, data:blank() };
+        rosterBook.rosters.push(roster);
+        activeRosterId = roster.id;
+        data = roster.data;
+        populateFields(); save(); setTab('overview');
       });
       populateFields();
       if (!$('#goldDate').value) $('#goldDate').value = today();
       loadArmySources();
       loadScoutingSources();
+      loadChallengeMatrix();
     })();
   </script>
 </body>

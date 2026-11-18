@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "description": "Three thematically curated Mordheim scenario choices for every attacker-quest / defender-quest matchup. The campaign generator shuffles each cell's choices at campaign creation and avoids repeating a scenario within a campaign when possible.",
+  "scenarios": {
+    "hidden-treasure": { "title": "Hidden Treasure", "url": "Mordheimer_Scraped/campaigns/scenarios/mordheim-rulebook/hidden-treasure.md", "tag": "relic", "hook": "Search ruined cellars for a chest before a rival warband carries it away." },
+    "haunted-treasure": { "title": "Haunted Treasure", "url": "Mordheimer_Scraped/campaigns/scenarios/archive-pestilen/haunted-treasure-archive-pestilen.md", "tag": "relic", "hook": "Find the chest in a ruined house while a Banshee guards the hoard." },
+    "wyrdstone-hunt": { "title": "Wyrdstone Hunt", "url": "Mordheimer_Scraped/campaigns/scenarios/mordheim-rulebook/wyrdstone-hunt.md", "tag": "relic", "hook": "Both bands sweep a ruined warehouse for scattered wyrdstone." },
+    "finders-keepers": { "title": "Finders Keepers", "url": "Mordheimer_Scraped/campaigns/scenarios/town-cryer/finders-keepers.md", "tag": "route", "hook": "Race through the outskirts to recover a stash and escape with it." },
+    "item-lost": { "title": "The Item Lost", "url": "Mordheimer_Scraped/campaigns/scenarios/town-cryer/the-item-lost.md", "tag": "relic", "hook": "A wand lies in the street; whichever band extracts it controls the prize." },
+    "gift-of-truthsayers": { "title": "Gift of the Truthsayers", "url": "Mordheimer_Scraped/campaigns/scenarios/town-cryer/gift-of-the-truthsayers.md", "tag": "arcane", "hook": "A magical artefact lies on a fenland crag as the bog turns hostile." },
+    "ogham-stones": { "title": "The Ogham Stones", "url": "Mordheimer_Scraped/campaigns/scenarios/town-cryer/the-ogham-stones.md", "tag": "arcane", "hook": "Rival warbands contest ancient stones that magnify a wizard's power." },
+    "defend-the-find": { "title": "Defend the Find", "url": "Mordheimer_Scraped/campaigns/scenarios/mordheim-rulebook/defend-the-find.md", "tag": "relic", "hook": "Attackers storm a building where defenders have secured a cache." },
+    "defend-the-tomb": { "title": "Defend the Tomb", "url": "Mordheimer_Scraped/campaigns/scenarios/town-cryer/defend-the-tomb.md", "tag": "relic", "hook": "A treasure carrier tries to escape a burial chamber before rivals seize the chest." },
+    "tomb-raid": { "title": "Tomb Raid", "url": "Mordheimer_Scraped/campaigns/scenarios/town-cryer/tomb-raid.md", "tag": "relic", "hook": "Both bands race through a tomb to seize and extract its chest." },
+    "breakthrough": { "title": "Breakthrough", "url": "Mordheimer_Scraped/campaigns/scenarios/mordheim-rulebook/breakthrough.md", "tag": "route", "hook": "One band attempts to force a passage across the defender's line." },
+    "through-black-fire-pass": { "title": "Through Black Fire Pass", "url": "Mordheimer_Scraped/campaigns/scenarios/fanatic-magazine/through-black-fire-pass.md", "tag": "route", "hook": "An ambush on a mountain trade route becomes a race to escape the pass." },
+    "great-library": { "title": "The Great Library", "url": "Mordheimer_Scraped/campaigns/scenarios/fanatic-online/the-great-library.md", "tag": "arcane", "hook": "Rival scholars fight over scattered tomes in the charred library." },
+    "wizards-tower": { "title": "The Wizard's Tower", "url": "Mordheimer_Scraped/campaigns/scenarios/archive-pestilen/the-wizards-tower.md", "tag": "arcane", "hook": "Ambushers pursue treasure-laden heroes as they flee the wizard's tower." },
+    "lost-temple-slann": { "title": "Lost Temple of the Slann", "url": "Mordheimer_Scraped/campaigns/scenarios/town-cryer/lost-temple-of-the-slann.md", "tag": "arcane", "hook": "A forgotten temple shelters arcane relics and its defending force." },
+    "watchtower": { "title": "The Watchtower", "url": "Mordheimer_Scraped/campaigns/scenarios/fanatic-magazine/the-watchtower.md", "tag": "territory", "hook": "Raiders try to silence a signal while the border garrison holds its tower." },
+    "occupy": { "title": "Occupy", "url": "Mordheimer_Scraped/campaigns/scenarios/mordheim-rulebook/occupy.md", "tag": "territory", "hook": "Both warbands fight to secure the buildings that command the district." },
+    "defend-the-village": { "title": "Defend the Village!", "url": "Mordheimer_Scraped/campaigns/scenarios/archive-pestilen/defend-the-village.md", "tag": "territory", "hook": "One warband protects villagers against a raiding force." },
+    "defend-the-oasis": { "title": "Defend the Oasis", "url": "Mordheimer_Scraped/campaigns/scenarios/town-cryer/defend-the-oasis.md", "tag": "territory", "hook": "Attackers press a vital well while defenders strive to hold it." },
+    "surprise-attack": { "title": "Surprise Attack", "url": "Mordheimer_Scraped/campaigns/scenarios/mordheim-rulebook/surprise-attack.md", "tag": "ambush", "hook": "A scattered patrol must rally against a sudden attack." },
+    "encampment-raid": { "title": "Encampment Raid", "url": "Mordheimer_Scraped/campaigns/scenarios/town-cryer/encampment-raid.md", "tag": "ambush", "hook": "Raiders assault a fortified warband camp to seize its stores." },
+    "protect-the-prince": { "title": "Protect the Prince", "url": "Mordheimer_Scraped/campaigns/scenarios/town-cryer/protect-the-prince.md", "tag": "territory", "hook": "Bodyguards escort a prince across the field while raiders hunt him." },
+    "river-watch": { "title": "River Watch", "url": "Mordheimer_Scraped/campaigns/scenarios/fanatic-magazine/river-watch.md", "tag": "route", "hook": "Smugglers try to cross the river and escape over the guarded north bank." },
+    "street-fight": { "title": "Street Fight", "url": "Mordheimer_Scraped/campaigns/scenarios/mordheim-rulebook/street-fight.md", "tag": "urban", "hook": "Rival scouts fight for passage down a street with no retreat." },
+    "rescue": { "title": "Rescue", "url": "Mordheimer_Scraped/campaigns/scenarios/archive-pestilen/rescue.md", "tag": "route", "hook": "Attackers break into a hideout to free a captured warrior." },
+    "the-gauntlet": { "title": "The Gauntlet", "url": "Mordheimer_Scraped/campaigns/scenarios/town-cryer/the-gauntlet.md", "tag": "relic", "hook": "Warbands race through trapped corridors toward an ancient treasure." }
+  },
+  "matrix": {
+    "Search for the Artefact": {
+      "Search for the Artefact": ["hidden-treasure", "wyrdstone-hunt", "finders-keepers"],
+      "Master of Magic": ["item-lost", "gift-of-truthsayers", "ogham-stones"],
+      "Defend Your Realm": ["defend-the-find", "defend-the-tomb", "tomb-raid"],
+      "Scout Fertile Lands": ["breakthrough", "finders-keepers", "through-black-fire-pass"]
+    },
+    "Master of Magic": {
+      "Search for the Artefact": ["item-lost", "lost-temple-slann", "hidden-treasure"],
+      "Master of Magic": ["great-library", "wizards-tower", "ogham-stones"],
+      "Defend Your Realm": ["wizards-tower", "watchtower", "defend-the-find"],
+      "Scout Fertile Lands": ["item-lost", "lost-temple-slann", "gift-of-truthsayers"]
+    },
+    "Defend Your Realm": {
+      "Search for the Artefact": ["defend-the-find", "defend-the-tomb", "haunted-treasure"],
+      "Master of Magic": ["wizards-tower", "watchtower", "great-library"],
+      "Defend Your Realm": ["occupy", "defend-the-village", "defend-the-oasis"],
+      "Scout Fertile Lands": ["surprise-attack", "encampment-raid", "protect-the-prince"]
+    },
+    "Scout Fertile Lands": {
+      "Search for the Artefact": ["breakthrough", "wyrdstone-hunt", "finders-keepers"],
+      "Master of Magic": ["item-lost", "lost-temple-slann", "gift-of-truthsayers"],
+      "Defend Your Realm": ["river-watch", "defend-the-oasis", "through-black-fire-pass"],
+      "Scout Fertile Lands": ["street-fight", "rescue", "the-gauntlet"]
+    }
+  }
+}

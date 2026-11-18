@@ -9,7 +9,7 @@ The current [Conquest rules](Conquest.md#quests) list **four** quests, rather th
 3. [Defend Your Realm](Conquest.md#defend-your-realm)
 4. [Scout Fertile Lands](Conquest.md#scout-fertile-lands)
 
-This is a first-pass scenario picker for a thematic Mordheim game between Old World battles. It pairs the two armies' active Conquest goals with a Mordheim scenario that can tell the story of their collision. The quest goals below are narrative framings, not extra Mordheim rules or changes to Conquest quest progress/rewards.
+This is the thematic matchup guide for Mordheim interludes between Old World battles. It pairs the two armies' active Conquest goals with scenarios that can tell the story of their collision. The quest goals below are narrative framings, not extra Mordheim rules or changes to Conquest quest progress/rewards.
 
 ## Attacker vs. defender grid
 
@@ -23,6 +23,14 @@ Rows are the **attacker's active quest**; columns are the **defender's active qu
 | **Scout Fertile Lands** | [Breakthrough](Mordheimer_Scraped/campaigns/scenarios/mordheim-rulebook/breakthrough.md) — scouts push through the treasure hunters' line to reach uncharted ground. | [The Item Lost](Mordheimer_Scraped/campaigns/scenarios/town-cryer/the-item-lost.md) — the scouts have found the wand; the attacking wizard's band tries to retrieve it. | [River Watch](Mordheimer_Scraped/campaigns/scenarios/fanatic-magazine/river-watch.md) — the scouts attempt a night crossing past the defender's guarded border. | [Street Fight](Mordheimer_Scraped/campaigns/scenarios/mordheim-rulebook/street-fight.md) — the attacking scouts try to force a passage through a route held by rival scouts. |
 
 The attacker/defender labels are narrative roles for choosing and framing the encounter. Follow the selected Mordheim scenario's own setup and victory conditions; where it does not assign attacker and defender, use the labels only to establish who initiated the encounter and what each side wants.
+
+## Three-scenario pools for the campaign generator
+
+The web campaign generator uses [`Conquest_Mordheim_Scenario_Pools.json`](Conquest_Mordheim_Scenario_Pools.json), which defines **three thematic scenario choices for every directed attacker-quest / defender-quest cell**. Some scenarios appear in multiple pools, but no scenario appears in more than four of the 16 cells. The Markdown grid above remains the first-choice pairing and directional story hook; its scenario is included in the matching JSON pool.
+
+When a campaign is generated, the app shuffles every cell's three scenarios. At each Mordheim node it draws from the pool for the current quest pair and roles, avoiding any scenario already used in that campaign when an unused option is available. This handles role changes caused by Old World results while keeping the random selection reproducible for the saved campaign.
+
+Scenario title, hook, quest objectives, and thematic boon are displayed from the selected scenario. Follow that scenario's published setup and victory conditions; the campaign's quest mark/completion rules are tracked separately.
 
 ## Using this between Old World games
 
